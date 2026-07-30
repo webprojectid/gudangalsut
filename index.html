@@ -639,6 +639,7 @@
         .menu-history { --menu-icon-bg: rgba(249,115,22,0.14); --menu-icon-color: #fb923c; --menu-icon-border: rgba(249,115,22,0.18); }
         .menu-ticket { --menu-icon-bg: rgba(244,63,94,0.14); --menu-icon-color: #fb7185; --menu-icon-border: rgba(244,63,94,0.18); }
         .menu-time { --menu-icon-bg: rgba(99,102,241,0.14); --menu-icon-color: #818cf8; --menu-icon-border: rgba(99,102,241,0.18); }
+                .menu-account { --menu-icon-bg: rgba(244,114,182,0.14); --menu-icon-color: #f472b6; --menu-icon-border: rgba(244,114,182,0.18); }
 
         /* Tooltip only while collapsed to a rail (not pinned, not hovered open) */
         .menu-item::after {
@@ -1246,8 +1247,36 @@
               <div class="control close"></div>
               <div class="control minimize"></div>
               <div class="control maximize"></div>
+</div>
+
+            <!-- ACCOUNT SETTINGS PAGE -->
+            <div class="page" id="page-accountSettings">
+                <div class="glass-card animate-in">
+                    <div class="card-header-flex">
+                        <h2 class="card-title"><i class="fas fa-users-gear" style="color:#f472b6;"></i> Account Settings</h2>
+                        <span class="badge badge-primary badge-pill" id="accountCount">0 users</span>
+                    </div>
+                    <div style="background: var(--info-bg); border: 1px solid rgba(56,189,248,0.2); padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-6); font-size:13px; color:var(--text-secondary);">
+                        <i class="fas fa-info-circle" style="color:var(--info);"></i> Kelola role setiap user. Role menentukan tampilan menu dan akses fitur.
+                    </div>
+                    <div class="table-container adaptive">
+                        <table>
+                            <thead><tr><th>Username</th><th>Nama Lengkap</th><th>Role</th><th style="width:120px;">Aksi</th></tr></thead>
+                            <tbody id="accountTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: var(--space-6); display: flex; gap: var(--space-3);">
+                        <button class="btn btn-primary btn-md" id="btnSaveRoles" onclick="saveAccountRoles()" disabled>
+                            <i class="fas fa-save"></i> Simpan Perubahan
+                        </button>
+                        <button class="btn btn-ghost btn-md" onclick="loadAccountSettings()">
+                            <i class="fas fa-rotate"></i> Reset
+                        </button>
+                    </div>
+                </div>
             </div>
-          </div>
+
+        </div>
           <div class="text">Memuat...</div>
         </div>
     </div>
@@ -1498,6 +1527,9 @@
 
                 <div class="menu-item menu-time" role="button" tabindex="0" onclick="showPage('timeManagement', this)" data-tooltip="Time Management">
                     <i class="fas fa-calendar-days"></i> <span class="menu-label-text">Time Management</span>
+                </div>
+                <div class="menu-item menu-account" role="button" tabindex="0" id="menuAccountSettings" onclick="showPage('accountSettings', this)" data-tooltip="Account Settings" style="display:none;">
+                    <i class="fas fa-users-gear"></i> <span class="menu-label-text">Account Settings</span>
                 </div>
             </div>
 
@@ -1832,7 +1864,7 @@
                     </div>
                     <div class="table-container adaptive">
                         <table>
-                            <thead><tr><th>Nama Barang</th><th>Lokasi</th><th>Tersedia</th><th>Rusak</th><th>Stok Paten</th></tr></thead>
+                            <thead><tr><th>Nama Barang</th><th>Lokasi</th><th>Tersedia</th><th>Rusak</th><th>Permanen</th><th>Stok Paten</th></tr></thead>
                             <tbody id="stockGudangTable"></tbody>
                         </table>
                     </div>
@@ -2399,6 +2431,10 @@
                 if (dropHint) dropHint.style.display = 'none';
             }
 
+            // Account Settings: hanya admin
+            const menuAccount = document.getElementById('menuAccountSettings');
+            if (menuAccount) menuAccount.style.display = viewOnly ? 'none' : '';
+
             // Transaksi: sembunyikan tombol aksi
             const transaksiActions = document.querySelectorAll('#page-transaksi .btn-primary, #page-transaksi .btn-warning');
             transaksiActions.forEach(btn => { btn.style.display = viewOnly ? 'none' : ''; });
@@ -2619,6 +2655,7 @@
                 case 'stockOpname': loadStockOpname(); break; case 'transaksi': loadTransaksi(); break;
                 case 'activeTicket': loadActiveTicket(); loadReturnedTicket(); break;
                 case 'timeManagement': loadTimeManagement(); break;
+                case 'accountSettings': loadAccountSettings(); break;
             }
             // Re-apply view-only mode after page load
             setTimeout(applyViewOnlyMode, 300);
@@ -3645,19 +3682,20 @@
         // ============================================
         async function loadStockGudang() {
             showLoading();
-            try { const data = await sbGet('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; renderStockGudang(data); }
+            try { const data = await sbGet('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; renderStockGudang(data); }
             catch (error) { hideLoading(); showToast('Gagal memuat stock gudang', 'error'); }
         }
 
         function renderStockGudang(data) {
             document.getElementById('stockCount').textContent = `${data.length} items`;
             const tbody = document.getElementById('stockGudangTable');
-            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>'; return; }
+            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>'; return; }
             tbody.innerHTML = data.map(item => {
                 const tersedia = parseInt(item.tersedia) || 0;
                 const rusak = parseInt(item.rusak) || 0;
+                const permanen = parseInt(item.permanen) || 0;
                 const paten = parseInt(item.stok_paten) || 0;
-                return `<tr><td><strong>${esc(item.nama_barang || '-')}</strong></td><td>${esc(item.lokasi_barang || '-')}</td><td><strong style="font-size:16px;">${tersedia}</strong></td><td>${rusak > 0 ? '<span class="badge badge-danger badge-pill">' + rusak + '</span>' : '<span class="badge badge-success badge-pill">0</span>'}</td><td>${paten}</td></tr>`;
+                return `<tr><td><strong>${esc(item.nama_barang || '-')}</strong></td><td>${esc(item.lokasi_barang || '-')}</td><td><strong style="font-size:16px;">${tersedia}</strong></td><td>${rusak > 0 ? '<span class="badge badge-danger badge-pill">' + rusak + '</span>' : '<span class="badge badge-success badge-pill">0</span>'}</td><td>${permanen > 0 ? '<span class="badge badge-danger badge-pill">' + permanen + '</span>' : '<span class="badge badge-dark badge-pill">0</span>'}</td><td>${paten}</td></tr>`;
             }).join('');
         }
         function filterStockGudang() {
@@ -4604,6 +4642,89 @@
             }
         }
 
+
+        // ============================================
+        // ACCOUNT SETTINGS (ADMIN ONLY)
+        // ============================================
+        let accountUsers = [];
+        let accountRoleChanges = {};
+
+        async function loadAccountSettings() {
+            if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
+            showLoading();
+            try {
+                const data = await sbGet('users', 'select=*&order=id.asc');
+                hideLoading();
+                accountUsers = data;
+                accountRoleChanges = {};
+                document.getElementById('btnSaveRoles').disabled = true;
+                renderAccountTable(data);
+            } catch (error) { hideLoading(); showToast('Gagal memuat data user', 'error'); }
+        }
+
+        function renderAccountTable(data) {
+            document.getElementById('accountCount').textContent = data.length + ' users';
+            const tbody = document.getElementById('accountTableBody');
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada user</td></tr>';
+                return;
+            }
+            const isSelf = u => appState.currentUser && appState.currentUser.username === u.username;
+            tbody.innerHTML = data.map(u => {
+                const currentRole = accountRoleChanges[u.id] !== undefined ? accountRoleChanges[u.id] : (u.role || '-');
+                return `<tr>
+                    <td><strong style="font-family:var(--font-mono);">${esc(u.username)}</strong>${isSelf(u) ? ' <span class="badge badge-info">Anda</span>' : ''}</td>
+                    <td>${esc(u.nama_lengkap || '-')}</td>
+                    <td>
+                        <select id="role_${u.id}" onchange="onRoleChange(${u.id}, this.value)" style="padding:6px 12px; border-radius:var(--radius-sm); background:var(--surface-2); border:1px solid var(--border-default); color:var(--text-primary); font-size:13px; outline:none; min-width:200px;">
+                            <option value="administrator" ${currentRole === 'administrator' ? 'selected' : ''}>Administrator</option>
+                            <option value="IT Support Section Head" ${currentRole === 'IT Support Section Head' ? 'selected' : ''}>IT Support Section Head</option>
+                            <option value="IT Support Staff" ${currentRole === 'IT Support Staff' ? 'selected' : ''}>IT Support Staff</option>
+                            <option value="IT Support Officer" ${currentRole === 'IT Support Officer' ? 'selected' : ''}>IT Support Officer</option>
+                            <option value="IT Junior Support" ${currentRole === 'IT Junior Support' ? 'selected' : ''}>IT Junior Support</option>
+                        </select>
+                    </td>
+                    <td>${currentRole !== (u.role || '-') ? '<span class="badge badge-warning">Berubah</span>' : '<span class="badge badge-dark">-</span>'}</td>
+                </tr>`;
+            }).join('');
+        }
+
+        function onRoleChange(userId, newRole) {
+            const user = accountUsers.find(u => u.id === userId);
+            if (!user) return;
+            if (newRole === (user.role || '-')) {
+                delete accountRoleChanges[userId];
+            } else {
+                accountRoleChanges[userId] = newRole;
+            }
+            document.getElementById('btnSaveRoles').disabled = Object.keys(accountRoleChanges).length === 0;
+            renderAccountTable(accountUsers);
+        }
+
+        async function saveAccountRoles() {
+            const changes = Object.entries(accountRoleChanges);
+            if (changes.length === 0) { showToast('Tidak ada perubahan', 'warning'); return; }
+            const userNames = changes.map(([id, role]) => {
+                const u = accountUsers.find(us => us.id === parseInt(id));
+                return u ? `<b>${esc(u.username)}</b> &rarr; ${esc(role)}` : '';
+            }).filter(Boolean).join('<br>');
+            if (!(await showCustomConfirm('Simpan Role', userNames + '<br><br>Simpan perubahan role?'))) return;
+            showLoading();
+            try {
+                for (const [userId, newRole] of changes) {
+                    await sbUpdate('users', 'id', parseInt(userId), { role: newRole });
+                }
+                const adminChange = changes.find(([id]) => parseInt(id) === appState.currentUser?.id);
+                if (adminChange) appState.currentUser.role = adminChange[1];
+                await writeLog('Account Settings', 'Ubah Role', '', String(changes.length), '', changes.map(([id, r]) => {
+                    const u = accountUsers.find(us => us.id === parseInt(id));
+                    return (u ? u.username : id) + ' → ' + r;
+                }).join(', '), '');
+                hideLoading();
+                showToast(changes.length + ' role berhasil disimpan!', 'success');
+                loadAccountSettings();
+            } catch (error) { hideLoading(); showToast('Gagal menyimpan role', 'error'); console.error(error); }
+        }
 
         document.getElementById('loginPassword').addEventListener('keypress', e => { if (e.key === 'Enter') handleLogin(); });
         document.getElementById('loginUsername').addEventListener('keypress', e => { if (e.key === 'Enter') handleLogin(); });
