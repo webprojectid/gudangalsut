@@ -4653,13 +4653,20 @@
             if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
             showLoading();
             try {
-                const data = await sbGet('users', 'select=*&order=id.asc');
+                const res = await fetch('https://sufiawwyymeoiqjtjbzd.supabase.co/rest/v1/users?select=id,username,role,nama_lengkap&order=id.asc', {
+                    headers: {
+                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI',
+                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI'
+                    }
+                });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
                 hideLoading();
                 accountUsers = data;
                 accountRoleChanges = {};
                 document.getElementById('btnSaveRoles').disabled = true;
                 renderAccountTable(data);
-            } catch (error) { hideLoading(); showToast('Gagal memuat data user', 'error'); }
+            } catch (error) { hideLoading(); showToast('Gagal memuat data user: ' + error.message, 'error'); }
         }
 
         function renderAccountTable(data) {
@@ -4712,7 +4719,16 @@
             showLoading();
             try {
                 for (const [userId, newRole] of changes) {
-                    await sbUpdate('users', 'id', parseInt(userId), { role: newRole });
+                    await fetch('https://sufiawwyymeoiqjtjbzd.supabase.co/rest/v1/users?id=eq.' + userId, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI',
+                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI',
+                            'Prefer': 'return=minimal'
+                        },
+                        body: JSON.stringify({ role: newRole })
+                    });
                 }
                 const adminChange = changes.find(([id]) => parseInt(id) === appState.currentUser?.id);
                 if (adminChange) appState.currentUser.role = adminChange[1];
