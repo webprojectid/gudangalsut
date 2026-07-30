@@ -1247,36 +1247,8 @@
               <div class="control close"></div>
               <div class="control minimize"></div>
               <div class="control maximize"></div>
-</div>
-
-            <!-- ACCOUNT SETTINGS PAGE -->
-            <div class="page" id="page-accountSettings">
-                <div class="glass-card animate-in">
-                    <div class="card-header-flex">
-                        <h2 class="card-title"><i class="fas fa-users-gear" style="color:#f472b6;"></i> Account Settings</h2>
-                        <span class="badge badge-primary badge-pill" id="accountCount">0 users</span>
-                    </div>
-                    <div style="background: var(--info-bg); border: 1px solid rgba(56,189,248,0.2); padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-6); font-size:13px; color:var(--text-secondary);">
-                        <i class="fas fa-info-circle" style="color:var(--info);"></i> Kelola role setiap user. Role menentukan tampilan menu dan akses fitur.
-                    </div>
-                    <div class="table-container adaptive">
-                        <table>
-                            <thead><tr><th>Username</th><th>Nama Lengkap</th><th>Role</th><th style="width:120px;">Aksi</th></tr></thead>
-                            <tbody id="accountTableBody"></tbody>
-                        </table>
-                    </div>
-                    <div style="margin-top: var(--space-6); display: flex; gap: var(--space-3);">
-                        <button class="btn btn-primary btn-md" id="btnSaveRoles" onclick="saveAccountRoles()" disabled>
-                            <i class="fas fa-save"></i> Simpan Perubahan
-                        </button>
-                        <button class="btn btn-ghost btn-md" onclick="loadAccountSettings()">
-                            <i class="fas fa-rotate"></i> Reset
-                        </button>
-                    </div>
-                </div>
             </div>
-
-        </div>
+          </div>
           <div class="text">Memuat...</div>
         </div>
     </div>
@@ -1492,30 +1464,30 @@
                     <i class="fas fa-chart-pie"></i> <span class="menu-label-text">Dashboard</span>
                 </div>
 
-                <div class="menu-divider"></div>
-                <div class="menu-label">Inventaris</div>
+                <div class="menu-divider" id="menuDivInventaris"></div>
+                <div class="menu-label" id="menuLabelInventaris">Inventaris</div>
 
-                <div class="menu-item menu-entry" role="button" tabindex="0" onclick="showPage('dataEntry', this)" data-tooltip="Data Entry">
+                <div class="menu-item menu-entry" role="button" tabindex="0" id="menuDataEntry" onclick="showPage('dataEntry', this)" data-tooltip="Data Entry">
                     <i class="fas fa-arrow-right-to-bracket"></i> <span class="menu-label-text">Data Entry</span>
                 </div>
-                <div class="menu-item menu-master" role="button" tabindex="0" onclick="showPage('masterBarang', this)" data-tooltip="Master Barang">
+                <div class="menu-item menu-master" role="button" tabindex="0" id="menuMasterBarang" onclick="showPage('masterBarang', this)" data-tooltip="Master Barang">
                     <i class="fas fa-tags"></i> <span class="menu-label-text">Master Barang</span>
                 </div>
-                <div class="menu-item menu-stock" role="button" tabindex="0" onclick="showPage('stockGudang', this)" data-tooltip="Stock Gudang">
+                <div class="menu-item menu-stock" role="button" tabindex="0" id="menuStockGudang" onclick="showPage('stockGudang', this)" data-tooltip="Stock Gudang">
                     <i class="fas fa-layer-group"></i> <span class="menu-label-text">Stock Gudang</span>
                 </div>
 
-                <div class="menu-divider"></div>
-                <div class="menu-label">Opname</div>
+                <div class="menu-divider" id="menuDivOpname"></div>
+                <div class="menu-label" id="menuLabelOpname">Opname</div>
 
-                <div class="menu-item menu-opname" role="button" tabindex="0" onclick="showPage('stockOpname', this)" data-tooltip="Stock Opname">
+                <div class="menu-item menu-opname" role="button" tabindex="0" id="menuStockOpname" onclick="showPage('stockOpname', this)" data-tooltip="Stock Opname">
                     <i class="fas fa-list-check"></i> <span class="menu-label-text">Stock Opname</span>
                 </div>
 
                 <div class="menu-divider"></div>
                 <div class="menu-label">Laporan</div>
 
-                <div class="menu-item menu-history" role="button" tabindex="0" onclick="showPage('transaksi', this)" data-tooltip="Riwayat Transaksi">
+                <div class="menu-item menu-history" role="button" tabindex="0" id="menuTransaksi" onclick="showPage('transaksi', this)" data-tooltip="Riwayat Transaksi">
                     <i class="fas fa-timeline"></i> <span class="menu-label-text">Riwayat Transaksi</span>
                 </div>
                 <div class="menu-item menu-ticket" role="button" tabindex="0" onclick="showPage('activeTicket', this)" data-tooltip="Active Ticket">
@@ -1611,32 +1583,33 @@
         
                     <!-- SECTION 2: ALERT ROW -->
                     <div id="dash-alert-row" class="bento-col-12 animate-in delay-1 dash-alert-row" style="display: none;">
-                        <i class="fas fa-exclamation-triangle"></i> <span id="dash-alert-text"></span>
+                        <i class="fas fa-exclamation-triangle"></i> <span id="dash-alert-text" style="flex:1;"></span>
+                        <button onclick="document.getElementById('dash-alert-row').classList.remove('visible')" style="background:none;border:none;color:var(--warning);cursor:pointer;font-size:16px;padding:0 4px;line-height:1;" title="Tutup">&times;</button>
                     </div>
         
                     <!-- SECTION 3: STAT CARDS ROW -->
-                    <div class="glass-card bento-col-3 stat-card animate-in delay-1">
+                    <div class="glass-card bento-col-3 stat-card animate-in delay-1" style="cursor:pointer;" onclick="dashGoTransaksi()" title="Klik untuk lihat transaksi bulan ini">
                         <div class="stat-header">
                             <div class="stat-label-wrap"><i class="fas fa-exchange-alt stat-icon" style="color:var(--primary);"></i><span class="text-label" id="dash-stat-trx-label">Transaksi Bulan Ini</span></div>
                         </div>
                         <div class="stat-val-wrap"><h3 class="stat-val" id="dash-stat-trx">0</h3></div>
                         <div style="margin-top:auto; font-size:11px; color:var(--text-muted);" id="dash-stat-trx-sub">bulan sebelumnya: 0</div>
                     </div>
-                    <div class="glass-card bento-col-3 stat-card animate-in delay-2" style="border-top: 2px solid var(--warning);">
+                    <div class="glass-card bento-col-3 stat-card animate-in delay-2" style="border-top: 2px solid var(--warning); cursor:pointer;" onclick="showPage('activeTicket')" title="Klik untuk lihat active ticket">
                         <div class="stat-header">
                             <div class="stat-label-wrap"><i class="fas fa-ticket-alt stat-icon" style="color:var(--warning);"></i><span class="text-label">Barang Dipinjam Aktif</span></div>
                         </div>
                         <div class="stat-val-wrap"><h3 class="stat-val" id="dash-stat-aktif">0</h3></div>
                         <div style="margin-top:auto; font-size:11px; color:var(--text-muted);" id="dash-stat-aktif-sub">tiket belum kembali</div>
                     </div>
-                    <div class="glass-card bento-col-3 stat-card animate-in delay-3" id="card-rusak" style="border-top: 2px solid var(--danger);">
+                    <div class="glass-card bento-col-3 stat-card animate-in delay-3" id="card-rusak" style="border-top: 2px solid var(--danger); cursor:pointer;" onclick="dashGoStock('rusak')" title="Klik untuk lihat barang rusak">
                         <div class="stat-header">
                             <div class="stat-label-wrap"><i class="fas fa-exclamation-triangle stat-icon" id="icon-rusak" style="color:var(--danger);"></i><span class="text-label">Item Rusak</span></div>
                         </div>
                         <div class="stat-val-wrap"><h3 class="stat-val" id="dash-stat-rusak">0</h3></div>
                         <div style="margin-top:auto; font-size:11px; color:var(--text-muted);" id="dash-stat-rusak-sub">di 0 SKU berbeda</div>
                     </div>
-                    <div class="glass-card bento-col-3 stat-card animate-in delay-4" title="Barang yang qty tersedia = 0 di semua lokasi">
+                    <div class="glass-card bento-col-3 stat-card animate-in delay-4" title="Barang yang qty tersedia = 0 di semua lokasi" style="cursor:pointer;" onclick="dashGoStock('habis')" title="Klik untuk lihat barang stok habis">
                         <div class="stat-header">
                             <div class="stat-label-wrap"><i class="fas fa-box-open stat-icon" style="color:var(--text-muted);"></i><span class="text-label">SKU Stok Habis</span></div>
                         </div>
@@ -1662,7 +1635,7 @@
         
                     <!-- SECTION 5: CHART ROW 2 -->
                     <div class="glass-card bento-col-6 animate-in delay-4" style="display:flex; flex-direction:column; min-height: 300px;">
-                        <div class="card-header-flex"><span class="text-label">Top 8 Peminjam Paling Aktif</span></div>
+                        <div class="card-header-flex"><span class="text-label" id="dash-peminjam-title">Top 8 Peminjam Bulan Ini</span></div>
                         <div style="flex:1; position: relative;"><canvas id="chartPeminjam"></canvas></div>
                     </div>
                     <div class="glass-card bento-col-6 animate-in delay-4" style="display:flex; flex-direction:column; min-height: 300px;">
@@ -1670,19 +1643,31 @@
                         <div style="flex:1; position: relative;"><canvas id="chartLokasi"></canvas></div>
                     </div>
         
-                    <!-- SECTION 6: TABLE ROW -->
-                    <div class="glass-card bento-col-12 animate-in delay-4" style="display:flex; flex-direction:column;">
-                        <div class="card-header-flex" style="margin-bottom: 16px;">
-                            <span class="text-label">Barang Dipinjam Belum Kembali (Active Tickets)</span>
+                    <!-- SECTION 6: HEATMAP + NON-EVENT TABLE -->
+                    <div class="glass-card bento-col-6 animate-in delay-4" style="display:flex; flex-direction:column; min-height: 280px;">
+                        <div class="card-header-flex">
+                            <span class="text-label" id="dash-heatmap-title">Heatmap Aktivitas</span>
+                        </div>
+                        <div id="dash-heatmap" style="flex:1; display:grid; grid-template-columns:repeat(7,1fr); gap:3px; align-content:start; font-size:10px;"></div>
+                        <div style="display:flex; gap:12px; align-items:center; margin-top:8px; font-size:10px; color:var(--text-muted);">
+                            <span><span style="display:inline-block;width:10px;height:10px;background:var(--surface-2);border-radius:2px;margin-right:4px;"></span> Sepi</span>
+                            <span><span style="display:inline-block;width:10px;height:10px;background:rgba(var(--primary-rgb),0.3);border-radius:2px;margin-right:4px;"></span></span>
+                            <span><span style="display:inline-block;width:10px;height:10px;background:rgba(var(--primary-rgb),0.6);border-radius:2px;margin-right:4px;"></span></span>
+                            <span><span style="display:inline-block;width:10px;height:10px;background:var(--primary);border-radius:2px;margin-right:4px;"></span> Ramai</span>
+                        </div>
+                    </div>
+                    <div class="glass-card bento-col-6 animate-in delay-4" style="display:flex; flex-direction:column;">
+                        <div class="card-header-flex" style="margin-bottom: 12px;">
+                            <span class="text-label">Barang Dipinjam (Non-Event)</span>
                             <button class="btn-ghost btn-sm btn" onclick="showPage('activeTicket')">Lihat Semua <i class="fas fa-arrow-right"></i></button>
                         </div>
-                        <div class="table-container adaptive">
+                        <div class="table-container" style="max-height: 240px; overflow-y: auto;">
                             <table>
-                                <thead><tr><th>No. Tiket</th><th>Nama Peminjam</th><th>Kode Barang</th><th>Nama Barang</th><th>Qty</th><th>Tanggal Keluar</th></tr></thead>
-                                <tbody id="dash-table-active"></tbody>
+                                <thead><tr><th>No. Tiket</th><th>Peminjam</th><th>Barang</th><th>Qty</th></tr></thead>
+                                <tbody id="dash-table-non-event"></tbody>
                             </table>
                         </div>
-                        <div style="margin-top: 12px; font-size: 11px; color: var(--text-muted);" id="dash-table-active-footer"></div>
+                        <div style="margin-top: 8px; font-size: 11px; color: var(--text-muted);" id="dash-table-non-event-footer"></div>
                     </div>
         
                     <!-- SECTION 7: BOTTOM ROW -->
@@ -1844,8 +1829,15 @@
                     </div>
                     <div class="table-container adaptive">
                         <table>
-                            <thead><tr><th>Kode</th><th>Nama Barang</th><th>Lokasi</th><th>Tersedia</th><th>Paten</th><th>Status</th></tr></thead>
+                            <thead><tr>
+                <th style="cursor:pointer;" onclick="appState.sortMaster={col:'kode_barang',asc:appState.sortMaster.col==='kode_barang'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Kode<span id="sortMkode"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortMaster={col:'nama_barang',asc:appState.sortMaster.col==='nama_barang'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Nama Barang<span id="sortMnama"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortMaster={col:'lokasi_barang',asc:appState.sortMaster.col==='lokasi_barang'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Lokasi<span id="sortMlokasi"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortMaster={col:'tersedia',asc:appState.sortMaster.col==='tersedia'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Tersedia<span id="sortMtersedia"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortMaster={col:'stok_paten',asc:appState.sortMaster.col==='stok_paten'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Paten<span id="sortMpaten"></span></th>
+                <th>Status</th></tr></thead>
                             <tbody id="masterBarangTable"></tbody>
+                            <tfoot id="masterBarangFoot"></tfoot>
                         </table>
                     </div>
                 </div>
@@ -1864,8 +1856,15 @@
                     </div>
                     <div class="table-container adaptive">
                         <table>
-                            <thead><tr><th>Nama Barang</th><th>Lokasi</th><th>Tersedia</th><th>Rusak</th><th>Permanen</th><th>Stok Paten</th></tr></thead>
+                            <thead><tr>
+                <th style="cursor:pointer;" onclick="appState.sortStock={col:'nama_barang',asc:appState.sortStock.col==='nama_barang'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Nama Barang<span id="sortSnama"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortStock={col:'lokasi_barang',asc:appState.sortStock.col==='lokasi_barang'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Lokasi<span id="sortSlokasi"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortStock={col:'tersedia',asc:appState.sortStock.col==='tersedia'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Tersedia<span id="sortStersedia"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortStock={col:'rusak',asc:appState.sortStock.col==='rusak'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Rusak<span id="sortSrusak"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortStock={col:'permanen',asc:appState.sortStock.col==='permanen'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Permanen<span id="sortSpermanen"></span></th>
+                <th style="cursor:pointer;" onclick="appState.sortStock={col:'stok_paten',asc:appState.sortStock.col==='stok_paten'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Stok Paten<span id="sortSpaten"></span></th></tr></thead>
                             <tbody id="stockGudangTable"></tbody>
+                            <tfoot id="stockGudangFoot"></tfoot>
                         </table>
                     </div>
                 </div>
@@ -2083,6 +2082,33 @@
                         </div>
                     </div>
                 </div>
+
+            <!-- ACCOUNT SETTINGS PAGE -->
+            <div class="page" id="page-accountSettings">
+                <div class="glass-card animate-in">
+                    <div class="card-header-flex">
+                        <h2 class="card-title"><i class="fas fa-users-gear" style="color:#f472b6;"></i> Account Settings</h2>
+                        <span class="badge badge-primary badge-pill" id="accountCount">0 users</span>
+                    </div>
+                    <div style="background: var(--info-bg); border: 1px solid rgba(56,189,248,0.2); padding: var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-6); font-size:13px; color:var(--text-secondary);">
+                        <i class="fas fa-info-circle" style="color:var(--info);"></i> Kelola role setiap user. Role menentukan tampilan menu dan akses fitur.
+                    </div>
+                    <div class="table-container adaptive">
+                        <table>
+                            <thead><tr><th>Username</th><th>Nama Lengkap</th><th>Role</th><th style="width:120px;">Aksi</th></tr></thead>
+                            <tbody id="accountTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: var(--space-6); display: flex; gap: var(--space-3);">
+                        <button class="btn btn-primary btn-md" id="btnSaveRoles" onclick="saveAccountRoles()" disabled>
+                            <i class="fas fa-save"></i> Simpan Perubahan
+                        </button>
+                        <button class="btn btn-ghost btn-md" onclick="loadAccountSettings()">
+                            <i class="fas fa-rotate"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -2363,8 +2389,23 @@
             masterBarang: [], dataEntry: [], stockGudang: [], namaBarangList: [],
             itemCounter: 0, itemData: {}, isEditMode: false, editingRowIds: [], opnameData: [], activeTicketData: [],
             transaksiPage: 1, activeTicketPage: 1, PAGE_SIZE: 50,
-            currentUser: null
+            currentUser: null,
+            sortMaster: { col: '', asc: true }, sortStock: { col: '', asc: true }
         };
+        function sortData(data, col, asc) {
+            return [...data].sort((a, b) => {
+                let va = (a[col] || ''), vb = (b[col] || '');
+                const na = parseFloat(va), nb = parseFloat(vb);
+                if (!isNaN(na) && !isNaN(nb)) { va = na; vb = nb; }
+                else { va = String(va).toLowerCase(); vb = String(vb).toLowerCase(); }
+                if (va < vb) return asc ? -1 : 1;
+                if (va > vb) return asc ? 1 : -1;
+                return 0;
+            });
+        }
+        function sortArrow(col, state) {
+            return state.col === col ? (state.asc ? ' ▲' : ' ▼') : '';
+        }
         window.dashCharts = {}; 
 
         // ============================================
@@ -2434,6 +2475,12 @@
             // Account Settings: hanya admin
             const menuAccount = document.getElementById('menuAccountSettings');
             if (menuAccount) menuAccount.style.display = viewOnly ? 'none' : '';
+
+            // Master Barang, Stock Gudang, Stock Opname: hanya admin
+            ['menuDataEntry', 'menuMasterBarang', 'menuStockGudang', 'menuStockOpname', 'menuTransaksi', 'menuDivInventaris', 'menuLabelInventaris', 'menuDivOpname', 'menuLabelOpname'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = viewOnly ? 'none' : '';
+            });
 
             // Transaksi: sembunyikan tombol aksi
             const transaksiActions = document.querySelectorAll('#page-transaksi .btn-primary, #page-transaksi .btn-warning');
@@ -2648,6 +2695,9 @@
             }, 150);
 
             closeSidebar();
+
+            // Reset dashboard filters when navigating via sidebar (not via dashboard card click)
+            if (el) { stockFilter = ''; transaksiDateFilter = null; }
             
             switch (page) {
                 case 'dashboard': loadDashboard(); break; case 'dataEntry': loadDataEntry(); break;
@@ -2710,6 +2760,19 @@
             loadDashboard();
         }
 
+        // Dashboard card click helpers
+        let stockFilter = '';
+        let transaksiDateFilter = null;
+        function dashGoTransaksi() {
+            const period = getDashboardPeriod();
+            transaksiDateFilter = { start: period.start, end: period.end };
+            showPage('transaksi');
+        }
+        function dashGoStock(filter) {
+            stockFilter = filter;
+            showPage('stockGudang');
+        }
+
         async function loadDashboard() {
             showLoading();
             try {
@@ -2717,7 +2780,7 @@
                 // 1. Fetch Parallel Data
                 const [masterData, entryData, logData] = await Promise.all([
                     sbGet('master_barang', 'select=*'),
-                    sbGet('data_entry', 'select=*&order=id.desc&limit=1000'), 
+                    sbGet('data_entry', 'select=*&order=id.desc&limit=10000'), 
                     sbGet('log', 'select=*&order=id.desc&limit=1000') 
                 ]);
                 hideLoading();
@@ -2775,25 +2838,18 @@
                 const trxPeriod = periodEntryData.length;
                 const trxPrevious = previousEntryData.length;
                 
-                // Logic Tiket Aktif (Ada mutasi 2, gaada mutasi 1)
-                const mutasi1 = entriesAsOfPeriod.filter(d => parseInt(d.kode_mutasi) === 1);
-                const mutasi2 = entriesAsOfPeriod.filter(d => parseInt(d.kode_mutasi) === 2);
+                // Logic Tiket Aktif: hitung unique tiket dengan kode_mutasi=2
+                const activeTiketSet = new Set(entryData.filter(d => parseInt(d.kode_mutasi) === 2).map(d => d.nomor_tiket));
+                const uniqueActiveTickets = activeTiketSet.size;
+
+                let activeTicketsList = entryData.filter(d => parseInt(d.kode_mutasi) === 2);
                 const mutasi2Period = periodEntryData.filter(d => parseInt(d.kode_mutasi) === 2);
-                const ticketM1 = new Set(mutasi1.map(m => m.nomor_tiket));
-                
-                let activeTicketsList = [];
                 let overdueNames = new Set();
                 const thirtyDaysAgo = new Date(period.end);
                 thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-                
-                mutasi2.forEach(m => {
-                    if(!ticketM1.has(m.nomor_tiket)) {
-                        activeTicketsList.push(m);
-                        if(parseDateSafely(m.tanggal) < thirtyDaysAgo) overdueNames.add(normalizeName(m.nama_peminjam));
-                    }
+                activeTicketsList.forEach(m => {
+                    if(parseDateSafely(m.tanggal) < thirtyDaysAgo) overdueNames.add(normalizeName(m.nama_peminjam));
                 });
-
-                const uniqueActiveTickets = new Set(activeTicketsList.map(t => t.nomor_tiket)).size;
 
                 countUp(document.getElementById('dash-stat-trx'), trxPeriod);
                 countUp(document.getElementById('dash-stat-aktif'), uniqueActiveTickets);
@@ -2856,6 +2912,7 @@
                     dailyData[`m${code}`][dayIndex] += parseInt(item.qty) || 1;
                 });
                 document.getElementById('dash-mutasi-title').textContent = `Tren Mutasi Harian — ${period.label}`;
+                document.getElementById('dash-peminjam-title').textContent = `Top 8 Peminjam — ${period.label}`;
 
                 window.dashCharts.mutasi = new Chart(document.getElementById('chartMutasi'), {
                     type: 'bar',
@@ -2913,9 +2970,9 @@
 
                 // CHART C: Top Peminjam Aktif
                 const peminjamMap = {};
-                mutasi2Period.forEach(m => {
+                periodEntryData.filter(m => parseInt(m.kode_mutasi) === 1 || parseInt(m.kode_mutasi) === 2).forEach(m => {
                     const n = normalizeName(m.nama_peminjam);
-                    peminjamMap[n] = (peminjamMap[n] || 0) + 1;
+                    if (n && n !== 'Unknown') peminjamMap[n] = (peminjamMap[n] || 0) + 1;
                 });
                 const topPeminjam = Object.entries(peminjamMap).sort((a,b) => b[1] - a[1]).slice(0, 8);
                 
@@ -2937,9 +2994,9 @@
                 const locMap = {};
                 masterData.forEach(m => {
                     const l = m.lokasi_barang || 'Tanpa Lokasi';
-                    if(!locMap[l]) locMap[l] = { tersedia: 0, keluar: 0, rusak: 0 };
+                    if(!locMap[l]) locMap[l] = { tersedia: 0, dipinjam: 0, rusak: 0 };
                     locMap[l].tersedia += (parseInt(m.tersedia) || 0);
-                    locMap[l].keluar += (parseInt(m.keluar_peminjaman) || 0);
+                    locMap[l].dipinjam += Math.max(0, (parseInt(m.keluar_peminjaman) || 0) - (parseInt(m.masuk_peminjaman) || 0));
                     locMap[l].rusak += (parseInt(m.rusak) || 0);
                 });
                 const locLabels = Object.keys(locMap);
@@ -2950,41 +3007,61 @@
                         labels: locLabels,
                         datasets: [
                             { label: 'Tersedia', data: locLabels.map(l => locMap[l].tersedia), backgroundColor: '#4ade80' },
-                            { label: 'Keluar/Dipinjam', data: locLabels.map(l => locMap[l].keluar), backgroundColor: '#fbbf24' },
+                            { label: 'Dipinjam', data: locLabels.map(l => locMap[l].dipinjam), backgroundColor: '#fbbf24' },
                             { label: 'Rusak', data: locLabels.map(l => locMap[l].rusak), backgroundColor: '#f87171' }
                         ]
                     },
                     options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, barThickness: 24, scales: { x: { stacked: true }, y: { stacked: true } }, plugins: { legend: { position: 'top', labels: { boxWidth: 10 } } } }
                 });
 
-                // 5. TABLE: Active Tickets
-                activeTicketsList.sort((a,b) => parseDateSafely(a.tanggal) - parseDateSafely(b.tanggal));
-                const activeTop10 = activeTicketsList.slice(0, 10);
-                const tbody = document.getElementById('dash-table-active');
-                let fourteenDaysAgo = new Date(period.end); fourteenDaysAgo.setDate(fourteenDaysAgo.getDate() - 14);
+                // 5. HEATMAP + NON-EVENT TABLE
+                // Heatmap: count transactions per day
+                const daysInMonth = new Date(period.start.getFullYear(), period.start.getMonth() + 1, 0).getDate();
+                const dayCounts = Array(daysInMonth).fill(0);
+                periodEntryData.forEach(item => {
+                    const date = parseDateSafely(item.tanggal);
+                    if (!Number.isNaN(date.getTime()) && date.getMonth() === period.start.getMonth()) {
+                        dayCounts[date.getDate() - 1]++;
+                    }
+                });
+                const maxCount = Math.max(1, ...dayCounts);
+                const firstDay = new Date(period.start.getFullYear(), period.start.getMonth(), 1).getDay();
+                let heatCells = '';
+                // Empty cells before first day
+                for (let i = 0; i < firstDay; i++) heatCells += '<div></div>';
+                for (let d = 0; d < daysInMonth; d++) {
+                    const intensity = dayCounts[d] / maxCount;
+                    const alpha = intensity < 0.01 ? 0.06 : 0.1 + intensity * 0.9;
+                    heatCells += `<div style="background:rgba(var(--primary-rgb),${alpha.toFixed(2)});border-radius:3px;text-align:center;padding:3px 2px;font-weight:600;color:var(--text-primary);" title="${dayCounts[d]} transaksi">${d + 1}</div>`;
+                }
+                document.getElementById('dash-heatmap').innerHTML = heatCells;
+                document.getElementById('dash-heatmap-title').textContent = `Heatmap Aktivitas — ${period.label}`;
 
-                if(activeTop10.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:30px; color:var(--text-muted); font-style:italic;">Semua barang pinjaman sudah kembali.</td></tr>';
+                // Non-Event table: active tickets NOT from events
+                const nonEventList = activeTicketsList.filter(t => {
+                    const ket = (t.keterangan || '').toLowerCase();
+                    return !ket.includes('univ. alam sutera');
+                });
+                const tbody = document.getElementById('dash-table-non-event');
+                let fourteenDaysAgo = new Date(period.end); fourteenDaysAgo.setDate(fourteenDaysAgo.getDate() - 14);
+                if(nonEventList.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding:20px; color:var(--text-muted); font-style:italic;">Tidak ada pinjaman non-event.</td></tr>';
                 } else {
-                    tbody.innerHTML = activeTop10.map(t => {
+                    tbody.innerHTML = nonEventList.slice(0, 10).map(t => {
                         const pd = parseDateSafely(t.tanggal);
                         let bg = '';
                         if(pd < thirtyDaysAgo) bg = 'background: var(--danger-bg);';
                         else if(pd < fourteenDaysAgo) bg = 'background: var(--warning-bg);';
-
                         return `<tr style="${bg}">
                             <td><strong>${esc(t.nomor_tiket)}</strong></td>
                             <td>${esc(normalizeName(t.nama_peminjam))}</td>
-                            <td>${esc(t.kode_barang)}</td>
-                            <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(t.nama_barang)}</td>
+                            <td style="max-width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(t.nama_barang)}</td>
                             <td><strong>${t.qty}</strong></td>
-                            <td>${pd.toLocaleDateString('id-ID', {day:'numeric', month:'short', year:'numeric'})}</td>
                         </tr>`;
                     }).join('');
                 }
-                
-                let totalOverdue14 = activeTicketsList.filter(t => parseDateSafely(t.tanggal) < fourteenDaysAgo).length;
-                document.getElementById('dash-table-active-footer').innerHTML = `<b>${uniqueActiveTickets}</b> total tiket aktif &middot; <span style="color:var(--warning)"><b>${totalOverdue14}</b> item belum kembali > 14 hari</span>`;
+                let totalOverdue14 = nonEventList.filter(t => parseDateSafely(t.tanggal) < fourteenDaysAgo).length;
+                document.getElementById('dash-table-non-event-footer').innerHTML = `<b>${nonEventList.length}</b> barang non-event &middot; <span style="color:var(--warning)"><b>${totalOverdue14}</b> > 14 hari</span>`;
 
                 // 6. BOTTOM ROW RENDERING
                 // 6a. Activity List (periode terpilih)
@@ -3395,16 +3472,41 @@
         function renderMasterBarang(data) {
             document.getElementById('masterCount').textContent = `${data.length} items`;
             const tbody = document.getElementById('masterBarangTable');
-            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>'; return; }
-            tbody.innerHTML = data.map(item => {
+            const tfoot = document.getElementById('masterBarangFoot');
+            if (!data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>';
+                tfoot.innerHTML = '';
+                return;
+            }
+            const sorted = appState.sortMaster.col ? sortData(data, appState.sortMaster.col, appState.sortMaster.asc) : data;
+            let totTersedia = 0, totRusak = 0, totPermanen = 0;
+            tbody.innerHTML = sorted.map(item => {
                 const tersedia = parseInt(item.tersedia) || 0; const paten = parseInt(item.stok_paten) || 0;
+                const rusak = parseInt(item.rusak) || 0; const permanen = parseInt(item.permanen) || 0;
+                totTersedia += tersedia; totRusak += rusak; totPermanen += permanen;
                 let statusBadge = paten > 0 && tersedia < paten ? '<span class="badge badge-danger">Stok Rendah</span>' : tersedia === 0 ? '<span class="badge badge-warning">Habis</span>' : '<span class="badge badge-success">OK</span>';
                 return `<tr><td><strong>${esc(item.kode_barang || '-')}</strong></td><td>${esc(item.nama_barang || '-')}</td><td>${esc(item.lokasi_barang || '-')}</td><td><strong>${tersedia}</strong></td><td>${paten}</td><td>${statusBadge}</td></tr>`;
             }).join('');
+            tfoot.innerHTML = `<tr style="background:var(--surface-2); font-weight:700; border-top:2px solid var(--primary);">
+                <td colspan="3" style="text-align:right; color:var(--primary);">Jumlah</td>
+                <td><strong style="font-size:15px;">${totTersedia}</strong></td>
+                <td><span style="color:var(--danger);">${totRusak} Rusak</span></td>
+                <td><span style="color:var(--warning);">${totPermanen} Permanen</span></td>
+            </tr>`;
+            document.getElementById('sortMkode').textContent = sortArrow('kode_barang', appState.sortMaster);
+            document.getElementById('sortMnama').textContent = sortArrow('nama_barang', appState.sortMaster);
+            document.getElementById('sortMlokasi').textContent = sortArrow('lokasi_barang', appState.sortMaster);
+            document.getElementById('sortMtersedia').textContent = sortArrow('tersedia', appState.sortMaster);
+            document.getElementById('sortMpaten').textContent = sortArrow('stok_paten', appState.sortMaster);
         }
         function filterMasterBarang() {
-            const search = document.getElementById('searchMaster').value.toLowerCase();
-            const filtered = appState.masterBarang.filter(item => (item.kode_barang || '').toLowerCase().includes(search) || (item.nama_barang || '').toLowerCase().includes(search) || (item.lokasi_barang || '').toLowerCase().includes(search));
+            const search = document.getElementById('searchMaster').value.toLowerCase().trim();
+            const words = search.split(/\s+/).filter(w => w.length > 0);
+            const filtered = appState.masterBarang.filter(item => {
+                if (words.length === 0) return true;
+                const text = ((item.kode_barang || '') + ' ' + (item.nama_barang || '') + ' ' + (item.lokasi_barang || '')).toLowerCase();
+                return words.every(w => text.includes(w));
+            });
             renderMasterBarang(filtered);
         }
 
@@ -3682,26 +3784,52 @@
         // ============================================
         async function loadStockGudang() {
             showLoading();
-            try { const data = await sbGet('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; renderStockGudang(data); }
+            try { const data = await sbGet('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; filterStockGudang(); }
             catch (error) { hideLoading(); showToast('Gagal memuat stock gudang', 'error'); }
         }
 
         function renderStockGudang(data) {
             document.getElementById('stockCount').textContent = `${data.length} items`;
             const tbody = document.getElementById('stockGudangTable');
-            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>'; return; }
-            tbody.innerHTML = data.map(item => {
+            const tfoot = document.getElementById('stockGudangFoot');
+            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>'; tfoot.innerHTML = ''; return; }
+            const sorted = appState.sortStock.col ? sortData(data, appState.sortStock.col, appState.sortStock.asc) : data;
+            let totTersedia = 0, totRusak = 0, totPermanen = 0;
+            tbody.innerHTML = sorted.map(item => {
                 const tersedia = parseInt(item.tersedia) || 0;
                 const rusak = parseInt(item.rusak) || 0;
                 const permanen = parseInt(item.permanen) || 0;
                 const paten = parseInt(item.stok_paten) || 0;
+                totTersedia += tersedia; totRusak += rusak; totPermanen += permanen;
                 return `<tr><td><strong>${esc(item.nama_barang || '-')}</strong></td><td>${esc(item.lokasi_barang || '-')}</td><td><strong style="font-size:16px;">${tersedia}</strong></td><td>${rusak > 0 ? '<span class="badge badge-danger badge-pill">' + rusak + '</span>' : '<span class="badge badge-success badge-pill">0</span>'}</td><td>${permanen > 0 ? '<span class="badge badge-danger badge-pill">' + permanen + '</span>' : '<span class="badge badge-dark badge-pill">0</span>'}</td><td>${paten}</td></tr>`;
             }).join('');
+            tfoot.innerHTML = `<tr style="background:var(--surface-2); font-weight:700; border-top:2px solid var(--primary);">
+                <td colspan="2" style="text-align:right; color:var(--primary);">Jumlah</td>
+                <td><strong style="font-size:16px;">${totTersedia}</strong></td>
+                <td><span style="color:var(--danger);">${totRusak}</span></td>
+                <td><span style="color:var(--warning);">${totPermanen}</span></td>
+                <td></td>
+            </tr>`;
+            document.getElementById('sortSnama').textContent = sortArrow('nama_barang', appState.sortStock);
+            document.getElementById('sortSlokasi').textContent = sortArrow('lokasi_barang', appState.sortStock);
+            document.getElementById('sortStersedia').textContent = sortArrow('tersedia', appState.sortStock);
+            document.getElementById('sortSrusak').textContent = sortArrow('rusak', appState.sortStock);
+            document.getElementById('sortSpermanen').textContent = sortArrow('permanen', appState.sortStock);
+            document.getElementById('sortSpaten').textContent = sortArrow('stok_paten', appState.sortStock);
         }
         function filterStockGudang() {
-            const search = document.getElementById('searchStock').value.toLowerCase();
-            const filtered = appState.stockGudang.filter(item => (item.nama_barang || '').toLowerCase().includes(search) || (item.lokasi_barang || '').toLowerCase().includes(search));
-            renderStockGudang(filtered);
+            const search = document.getElementById('searchStock').value.toLowerCase().trim();
+            const words = search.split(/\s+/).filter(w => w.length > 0);
+            let data = appState.stockGudang;
+            if (stockFilter === 'rusak') data = data.filter(item => (parseInt(item.rusak) || 0) > 0);
+            else if (stockFilter === 'habis') data = data.filter(item => (parseInt(item.tersedia) || 0) === 0);
+            if (words.length > 0) {
+                data = data.filter(item => {
+                    const text = ((item.nama_barang || '') + ' ' + (item.lokasi_barang || '')).toLowerCase();
+                    return words.every(w => text.includes(w));
+                });
+            }
+            renderStockGudang(data);
         }
 
         // ============================================
@@ -4066,6 +4194,7 @@
         // RIWAYAT TRANSAKSI
         // ============================================
         async function loadTransaksi() {
+            transaksiDateFilter = null;
             showLoading();
             try { const data = await sbGet('data_entry', 'select=*,id&order=id.desc'); hideLoading(); appState.dataEntry = data; renderTransaksi(data); }
             catch (error) { hideLoading(); showToast('Gagal memuat transaksi', 'error'); }
@@ -4109,7 +4238,15 @@
         function filterTransaksi() {
             appState.transaksiPage = 1;
             const search = document.getElementById('searchTransaksi').value.toLowerCase();
-            const filtered = appState.dataEntry.filter(t => (t.kode_barang || '').toLowerCase().includes(search) || (t.nama_barang || '').toLowerCase().includes(search) || (t.keterangan || '').toLowerCase().includes(search) || (t.nama_peminjam || '').toLowerCase().includes(search));
+            let data = appState.dataEntry;
+            if (transaksiDateFilter) {
+                data = data.filter(t => {
+                    if (!t.tanggal) return false;
+                    const d = parseDateSafely(t.tanggal);
+                    return !Number.isNaN(d.getTime()) && d >= transaksiDateFilter.start && d < transaksiDateFilter.end;
+                });
+            }
+            const filtered = data.filter(t => (t.kode_barang || '').toLowerCase().includes(search) || (t.nama_barang || '').toLowerCase().includes(search) || (t.keterangan || '').toLowerCase().includes(search) || (t.nama_peminjam || '').toLowerCase().includes(search));
             renderTransaksi(filtered);
         }
 
