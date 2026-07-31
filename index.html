@@ -3322,9 +3322,15 @@
                         const oldRows = await sbGet('data_entry', `select=*&id=eq.${item._rowId}`);
                         if (oldRows && oldRows.length > 0) {
                             const old = oldRows[0];
-                            // SELALU reverse stok lama dulu, baru apply stok baru
-                            await reverseMasterBarangStock(old.kode_barang, parseInt(old.qty), parseInt(old.kode_mutasi));
-                            await updateMasterBarangStock(item.kodeBarang, item.qty, kodeMutasi);
+                            const oldKode = parseInt(old.kode_mutasi);
+                            const newKode = kodeMutasi;
+                            // 1↔2: counter-based, skip reverse (tersedia handled by new kode)
+                            if ((oldKode === 1 || oldKode === 2) && (newKode === 1 || newKode === 2)) {
+                                // Skip reverse, counter stays, tersedia by new kode only
+                            } else {
+                                await reverseMasterBarangStock(old.kode_barang, parseInt(old.qty), oldKode);
+                            }
+                            await updateMasterBarangStock(item.kodeBarang, item.qty, newKode);
                         }
                         await sbUpdate('data_entry', 'id', item._rowId, { tanggal, nomor_tiket: ticket, nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan });
                     }
