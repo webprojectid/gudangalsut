@@ -2423,8 +2423,9 @@
         // ============================================
         // AUTH
         // ============================================
-        const DEFAULT_PASSWORD = '_pR0t3<s3<uR3';
-        const ADMIN_USERNAME = 'sdp.csm.alsut';
+        // Credentials di-obfuscate (bukan plain text) — hindari kebaca langsung di view-source
+        const DEFAULT_PASSWORD = atob('X3BSMHQzPHMzPHVSZQ==');
+        const ADMIN_USERNAME = atob('c2RwLmNzbS5hbHN1dA==');
 
         function isAdmin() {
             return appState.currentUser && appState.currentUser.username === ADMIN_USERNAME;
@@ -4796,19 +4797,12 @@
             if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
             showLoading();
             try {
-                const res = await fetch('https://sufiawwyymeoiqjtjbzd.supabase.co/rest/v1/users?select=id,username,role,nama_lengkap&order=id.asc', {
-                    headers: {
-                        'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI',
-                        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI'
-                    }
-                });
-                if (!res.ok) throw new Error('HTTP ' + res.status);
-                const data = await res.json();
+                const res = await sbGet('users', 'select=id,username,role,nama_lengkap&order=id.asc');
                 hideLoading();
-                accountUsers = data;
+                accountUsers = res;
                 accountRoleChanges = {};
                 document.getElementById('btnSaveRoles').disabled = true;
-                renderAccountTable(data);
+                renderAccountTable(accountUsers);
             } catch (error) { hideLoading(); showToast('Gagal memuat data user: ' + error.message, 'error'); }
         }
 
@@ -4862,16 +4856,7 @@
             showLoading();
             try {
                 for (const [userId, newRole] of changes) {
-                    await fetch('https://sufiawwyymeoiqjtjbzd.supabase.co/rest/v1/users?id=eq.' + userId, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI',
-                            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN1Zmlhd3d5eW1lb2lxanRqYnpkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NDM2MDIzMiwiZXhwIjoyMDk5OTM2MjMyfQ.HXsQwwj0msWMw2VI1j5EbFshBcpnsZRU7qisu1IdnvI',
-                            'Prefer': 'return=minimal'
-                        },
-                        body: JSON.stringify({ role: newRole })
-                    });
+                    await sbUpdate('users', 'id', userId, { role: newRole });
                 }
                 const adminChange = changes.find(([id]) => parseInt(id) === appState.currentUser?.id);
                 if (adminChange) appState.currentUser.role = adminChange[1];
