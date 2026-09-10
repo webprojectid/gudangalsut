@@ -1735,6 +1735,7 @@
                                 </select>
                             </div>
                             <div class="form-group full-width"><label>Keterangan</label><textarea id="entryKeterangan" rows="2" placeholder="Keterangan tambahan..." disabled></textarea></div>
+                            <div class="form-group full-width"><label>Catatan (Opsional)</label><textarea id="entryCatatan" rows="3" placeholder="Catatan khusus (rusak, sebagian kembali, dll...)" disabled></textarea></div>
                         </div>
                         
                         <div id="editModeControl" style="display:none; margin-bottom: var(--space-6); text-align: right;">
@@ -1937,13 +1938,18 @@
                         <h2 class="card-title"><i class="fas fa-history"></i> Riwayat Transaksi</h2>
                         <span class="badge badge-primary badge-pill" id="transaksiCount">0 transaksi</span>
                     </div>
-                    <div class="form-group" style="position:relative;">
-                        <i class="fas fa-search" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
-                        <input type="text" id="searchTransaksi" placeholder="Cari tiket, kode, atau nama..." oninput="filterTransaksi()" style="padding-left:44px;">
+                    <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap; margin-bottom:12px;">
+                        <div class="form-group" style="position:relative; flex:1; min-width:220px; margin-bottom:0;">
+                            <i class="fas fa-search" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
+                            <input type="text" id="searchTransaksi" placeholder="Cari tiket, kode, nama, atau catatan..." oninput="filterTransaksi()" style="padding-left:44px;">
+                        </div>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnExportTransaksi" onclick="exportTransaksiToExcel()" style="white-space:nowrap; height:42px;">
+                            <i class="fas fa-file-excel"></i> Export Excel
+                        </button>
                     </div>
                     <div class="table-container adaptive">
                         <table>
-                            <thead><tr><th>Tanggal</th><th>Tiket</th><th>Peminjam</th><th>Kode</th><th>Nama Barang</th><th>Qty</th><th>Mutasi</th><th>Keterangan</th></tr></thead>
+                            <thead><tr><th>Tanggal</th><th>Tiket</th><th>Peminjam</th><th>Kode</th><th>Nama Barang</th><th>Qty</th><th>Mutasi</th><th>Keterangan</th><th>Catatan</th></tr></thead>
                             <tbody id="transaksiTable"></tbody>
                         </table>
                     </div>
@@ -3178,7 +3184,8 @@
             document.getElementById('entryTicket').value = first.nomor_tiket;
             document.getElementById('entryPeminjam').value = first.nama_peminjam;
             document.getElementById('entryKodeMutasi').value = first.kode_mutasi;
-            document.getElementById('entryKeterangan').value = first.keterangan;
+            document.getElementById('entryKeterangan').value = first.keterangan || '';
+            document.getElementById('entryCatatan').value = first.catatan || '';
             toggleFormInputs(false); document.getElementById('editModeControl').style.display = 'block'; document.getElementById('btnResetSearch').style.display = 'inline-flex';
             document.getElementById('itemsContainer').innerHTML = ''; appState.itemCounter = 0; appState.itemData = {};
             dataRows.forEach((row, index) => {
@@ -3287,6 +3294,7 @@
             const peminjam = document.getElementById('entryPeminjam').value;
             const kodeMutasi = parseInt(document.getElementById('entryKodeMutasi').value);
             const keterangan = document.getElementById('entryKeterangan').value || '-';
+            const catatan = document.getElementById('entryCatatan')?.value.trim() || '';
             if (!kodeMutasi) { showToast('Pilih kode mutasi!', 'error'); return; }
 
             // Validasi stok untuk kode mutasi keluar/rusak/permanen
@@ -3333,11 +3341,11 @@
                             }
                             await updateMasterBarangStock(item.kodeBarang, item.qty, newKode);
                         }
-                        await sbUpdate('data_entry', 'id', item._rowId, { tanggal, nomor_tiket: ticket, nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan });
+                        await sbUpdate('data_entry', 'id', item._rowId, { tanggal, nomor_tiket: ticket, nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan, catatan });
                     }
                     await writeLog('Data Entry', 'Edit Transaksi', items.map(i=>i.kodeBarang).join(','), items.map(i=>i.qty).join(','), String(kodeMutasi), items.map(i=>`${i.qty}x ${i.namaBarang}`).join('; '), `Tiket: ${ticket}`);
                 } else {
-                    const entryRows = items.map(item => ({ tanggal, nomor_tiket: ticket || 'Tidak melalui tiket', nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan }));
+                    const entryRows = items.map(item => ({ tanggal, nomor_tiket: ticket || 'Tidak melalui tiket', nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan, catatan }));
                     await sbInsert('data_entry', entryRows);
                     for (const item of items) {
                         await updateMasterBarangStock(item.kodeBarang, item.qty, kodeMutasi);
@@ -4197,6 +4205,57 @@
             } catch (error) { showToast('Gagal export', 'error'); }
         }
 
+        async function exportTransaksiToExcel() {
+            showLoading();
+            try {
+                // Ambil semua data transaksi dari appState.dataEntry
+                const all = appState.dataEntry || [];
+                if (!all || all.length === 0) {
+                    hideLoading();
+                    showToast('Tidak ada data untuk export', 'warning');
+                    return;
+                }
+
+                // Transform ke format Excel (tanpa ID & internal fields)
+                const rows = all.map(t => ({
+                    Tanggal: t.tanggal || '-',
+                    Tiket: t.nomor_tiket || '-',
+                    Peminjam: t.nama_peminjam || '-',
+                    Kode_Barang: t.kode_barang || '-',
+                    Nama_Barang: t.nama_barang || '-',
+                    Qty: t.qty || 0,
+                    Mutasi: getMutasiBadgeString(t.kode_mutasi), // helper baru di bawah
+                    Keterangan: t.keterangan || '-',
+                    Catatan: t.catatan || '-' // field baru!
+                }));
+
+                const worksheet = XLSX.utils.json_to_sheet(rows);
+                const workbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(workbook, worksheet, "Riwayat Transaksi");
+                XLSX.writeFile(workbook, `Transaksi_${new Date().toISOString().split('T')[0]}.xlsx`);
+
+                await writeLog('Export', 'Export Transaksi Excel', '-', String(all.length), '', 'Export Riwayat Transaksi', all.length + ' baris');
+                hideLoading();
+                showToast(`Berhasil export ${all.length} baris!`, 'success');
+            } catch (error) {
+                hideLoading();
+                console.error(error);
+                showToast('Gagal export: ' + error.message, 'error');
+            }
+        }
+
+        function getMutasiBadgeString(kode) {
+            const c = parseInt(kode);
+            switch (c) {
+                case 1: return 'Masuk Peminjaman';
+                case 2: return 'Keluar';
+                case 3: return 'Rusak';
+                case 4: return 'Permanen';
+                case 5: return 'Masuk Baru';
+                default: return '-';
+            }
+        }
+
         // ============================================
         // RIWAYAT TRANSAKSI
         // ============================================
@@ -4211,7 +4270,7 @@
             document.getElementById('transaksiCount').textContent = `${data.length} transaksi`;
             const tbody = document.getElementById('transaksiTable');
             if (!data || data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Belum ada transaksi</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Belum ada transaksi</td></tr>';
                 document.getElementById('transaksiPagination').innerHTML = '';
                 return;
             }
@@ -4234,7 +4293,7 @@
                 }
             };
 
-            tbody.innerHTML = slice.map(t => `<tr><td>${esc(t.tanggal || '-')}</td><td>${esc(t.nomor_tiket || '-')}</td><td>${esc(t.nama_peminjam || '-')}</td><td><strong>${esc(t.kode_barang || '-')}</strong></td><td>${esc(t.nama_barang || '-')}</td><td><strong>${t.qty || '-'}</strong></td><td>${getMutasiBadge(t.kode_mutasi)}</td><td>${esc(t.keterangan || '-')}</td></tr>`).join('');
+            tbody.innerHTML = slice.map(t => `<tr><td>${esc(t.tanggal || '-')}</td><td>${esc(t.nomor_tiket || '-')}</td><td>${esc(t.nama_peminjam || '-')}</td><td><strong>${esc(t.kode_barang || '-')}</strong></td><td>${esc(t.nama_barang || '-')}</td><td><strong>${t.qty || '-'}</strong></td><td>${getMutasiBadge(t.kode_mutasi)}</td><td>${esc(t.keterangan || '-')}</td><td style="max-width:260px; white-space:pre-wrap; ${t.catatan ? 'color:var(--tertiary); font-weight:600;' : 'color:var(--text-muted);'}">${t.catatan ? '<i class="fas fa-sticky-note" style="margin-right:5px;"></i>' + esc(t.catatan) : '-'}</td></tr>`).join('');
 
             renderPaginationControls('transaksiPagination', appState.transaksiPage, totalPages, (p) => {
                 appState.transaksiPage = p;
@@ -4253,13 +4312,74 @@
                     return !Number.isNaN(d.getTime()) && d >= transaksiDateFilter.start && d < transaksiDateFilter.end;
                 });
             }
-            const filtered = data.filter(t => (t.kode_barang || '').toLowerCase().includes(search) || (t.nama_barang || '').toLowerCase().includes(search) || (t.keterangan || '').toLowerCase().includes(search) || (t.nama_peminjam || '').toLowerCase().includes(search));
+            const filtered = data.filter(t => (t.kode_barang || '').toLowerCase().includes(search) || (t.nama_barang || '').toLowerCase().includes(search) || (t.keterangan || '').toLowerCase().includes(search) || (t.catatan || '').toLowerCase().includes(search) || (t.nama_peminjam || '').toLowerCase().includes(search) || (t.nomor_tiket || '').toLowerCase().includes(search));
             renderTransaksi(filtered);
         }
 
         // ============================================
         // ACTIVE TICKET
         // ============================================
+        // CATATAN PER TIKET — 1 tiket = 1 catatan.
+        // Disimpan di kolom data_entry.catatan (kolom sudah ada di Supabase).
+        // Semua baris milik satu tiket ikut di-update supaya nilainya konsisten,
+        // jadi tidak masalah baris mana yang dibaca saat grouping.
+        let ticketNoteRegistry = {};
+
+        function clearTicketNoteRegistry(prefix) {
+            Object.keys(ticketNoteRegistry).forEach(k => {
+                if (k.indexOf(prefix + '-') === 0) delete ticketNoteRegistry[k];
+            });
+        }
+
+        function registerTicketNote(prefix, idx, group) {
+            ticketNoteRegistry[prefix + '-' + idx] = {
+                nomor_tiket: group.nomor_tiket,
+                rowIds: (group.rowIds || []).slice(),
+                kode_mutasi: group.kode_mutasi || 0,
+                catatan: group.catatan || ''
+            };
+        }
+
+        async function saveTicketNote(prefix, idx) {
+            const rec = ticketNoteRegistry[prefix + '-' + idx];
+            if (!rec || !rec.rowIds.length) { showToast('Data tiket tidak ditemukan. Muat ulang halaman.', 'error'); return; }
+
+            // GUARD: tolak grup pseudo-tiket (kumpulan transaksi tak berhubungan).
+            // Tanpa ini, satu klik simpan bisa menimpa ratusan baris sekaligus.
+            if (!isRealTicketLabel(rec.nomor_tiket)) {
+                showToast('Catatan hanya bisa disimpan untuk tiket bernomor asli.', 'warning');
+                return;
+            }
+
+            // GUARD: batasi jumlah baris yang ditulis sekali jalan (pertahanan kedua
+            // setelah isRealTicketLabel). Tiket asli terbesar di data saat ini = 71 baris,
+            // sedangkan grup pseudo "Tidak melalui tiket" = 463 baris.
+            const MAX_ROWS_PER_TICKET = 250;
+            if (rec.rowIds.length > MAX_ROWS_PER_TICKET) {
+                showToast(`Tiket ini punya ${rec.rowIds.length} baris (melebihi batas ${MAX_ROWS_PER_TICKET}). Periksa datanya dulu.`, 'error');
+                return;
+            }
+
+            const ta = document.getElementById('note-' + prefix + '-' + idx);
+            if (!ta) return;
+            const note = ta.value.trim();
+            if (note.length > 500) { showToast('Catatan maksimal 500 karakter.', 'warning'); return; }
+            showLoading();
+            try {
+                for (const id of rec.rowIds) {
+                    await sbUpdate('data_entry', 'id', id, { catatan: note });
+                }
+                await writeLog('Active Ticket', 'Simpan Catatan', '-', String(rec.rowIds.length), String(rec.kode_mutasi), note || '(catatan dikosongkan)', 'Tiket #' + rec.nomor_tiket);
+                hideLoading();
+                showToast('Catatan tersimpan.', 'success');
+                if (prefix === 'act') loadActiveTicket(); else loadReturnedTicket();
+            } catch (e) {
+                hideLoading();
+                showToast('Gagal menyimpan catatan: ' + e.message, 'error');
+                console.error(e);
+            }
+        }
+
         async function loadActiveTicket() {
             showLoading();
             try { const data = await sbGet('data_entry', 'select=*,id&kode_mutasi=eq.2&order=id.desc'); hideLoading(); appState.activeTicketData = data; renderActiveTicket(data); }
@@ -4276,9 +4396,16 @@
                         tanggal: t.tanggal,
                         nama_peminjam: t.nama_peminjam,
                         keterangan: t.keterangan,
+                        catatan: t.catatan || '',
+                        kode_mutasi: parseInt(t.kode_mutasi) || 0,
+                        rowIds: [],
                         items: []
                     };
                 }
+                if (t.id !== undefined && t.id !== null) groups[tiket].rowIds.push(t.id);
+                // Satu tiket = satu catatan. Semua baris tiket menyimpan nilai yang sama,
+                // jadi ambil nilai pertama yang tidak kosong (aman kalau sebagian baris null).
+                if (!groups[tiket].catatan && t.catatan) groups[tiket].catatan = t.catatan;
                 groups[tiket].items.push({
                     kode: t.kode_barang || '-',
                     nama: t.nama_barang || '-',
@@ -4295,6 +4422,7 @@
         function renderActiveTicket(data) {
             const grouped = groupActiveTickets(data);
             document.getElementById('activeTicketCount').textContent = `${grouped.length} tiket belum kembali`;
+            clearTicketNoteRegistry('act');
             const tbody = document.getElementById('activeTicketTable');
             if (!grouped || grouped.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada tiket aktif</td></tr>';
@@ -4321,10 +4449,11 @@
 
                 const viewOnly = !isAdmin();
                 const itemList = t.items.map(i => `<span style="display:inline-block; background:var(--surface-2); padding:4px 10px; border-radius:6px; font-size:12px; margin:2px; border:1px solid var(--border-default);"><strong style="color:var(--primary-light); font-family:var(--font-mono);">${esc(i.kode)}</strong> ${esc(i.nama)} <span style="color:var(--text-muted);">x${i.qty}</span></span>`).join(' ');
+                registerTicketNote('act', idx, t);
 
                 return `<tr class="${rowClass}" ${viewOnly ? '' : `draggable="true" ondragstart="onDragTicket(event)" data-tiket="${esc(t.nomor_tiket)}"`} style="${viewOnly ? 'cursor:pointer;' : ''}">
                     <td>${esc(t.tanggal || '-')}</td>
-                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--warning);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="event.stopPropagation(); toggleTicketDetail('act-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-act-${idx}"></i></span></td>
+                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--warning);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="event.stopPropagation(); toggleTicketDetail('act-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-act-${idx}"></i></span>${t.catatan ? ' <i class="fas fa-sticky-note" style="color:var(--tertiary); font-size:12px;" title="Ada catatan"></i>' : ''}</td>
                     <td>${esc(t.nama_peminjam || '-')}</td>
                     <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Dipinjam</span></td>
                 </tr>
@@ -4335,6 +4464,7 @@
                             ${itemList}
                         </div>
                         ${t.keterangan ? `<div style="margin-top:8px; font-size:12px; color:var(--text-muted);"><i class="fas fa-info-circle"></i> ${esc(t.keterangan)}</div>` : ''}
+                        ${renderTicketNoteBox('act', idx, t)}
                     </td>
                 </tr>`;
             }).join('');
@@ -4355,6 +4485,52 @@
             }
         }
 
+        // Label pseudo-tiket: BUKAN tiket asli, melainkan kumpulan transaksi
+        // yang tidak saling berhubungan. Menulis catatan massal ke grup ini
+        // akan menimpa ratusan baris sekaligus, jadi dilarang.
+        const PSEUDO_TICKET_LABELS = ['tidak melalui tiket', 'tanpa tiket', '-', ''];
+
+        function isRealTicketLabel(num) {
+            const v = (num || '').toString().trim().toLowerCase();
+            return !PSEUDO_TICKET_LABELS.includes(v);
+        }
+
+        // Kotak catatan per tiket. Admin bisa tulis + simpan, view-only cuma baca.
+        function renderTicketNoteBox(prefix, idx, group) {
+            const viewOnly = !isAdmin();
+            const noteVal = esc(group.catatan || '');
+            const writable = isRealTicketLabel(group.nomor_tiket);
+
+            if (!writable) {
+                const n = (group.rowIds || []).length;
+                return `<div style="margin-top:12px; padding-top:10px; border-top:1px dashed var(--border-default);">
+                    <label style="display:block; font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">
+                        <i class="fas fa-sticky-note"></i> Catatan Pengembalian
+                    </label>
+                    <div style="padding:10px 12px; border-radius:var(--radius-sm); background:var(--warning-bg); border:1px solid var(--warning); color:var(--text-secondary); font-size:12px;">
+                        <i class="fas fa-triangle-exclamation" style="color:var(--warning); margin-right:6px;"></i>
+                        Grup ini berisi <strong>${n} transaksi tanpa nomor tiket</strong> yang tidak saling berhubungan.
+                        Catatan tidak bisa disimpan di sini karena akan menimpa semuanya.
+                        Gunakan menu <strong>Data Entry</strong> untuk mencatat transaksi satu per satu.
+                    </div>
+                </div>`;
+            }
+
+            return `<div style="margin-top:12px; padding-top:10px; border-top:1px dashed var(--border-default);">
+                <label style="display:block; font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">
+                    <i class="fas fa-sticky-note"></i> Catatan Pengembalian
+                </label>
+                <textarea id="note-${prefix}-${idx}" rows="2" ${viewOnly ? 'readonly' : ''}
+                    style="width:100%; padding:10px 12px; border-radius:var(--radius-sm); background:var(--surface-2); border:1px solid var(--border-default); color:var(--text-primary); font-size:13px; outline:none; resize:vertical; font-family:inherit;"
+                    placeholder="${viewOnly ? 'Tidak ada catatan.' : 'Contoh: hanya sebagian yang kembali, monitor sudah pecah, kabel hilang, dll...'}">${noteVal}</textarea>
+                ${viewOnly ? '' : `<div style="margin-top:8px; text-align:right;">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="event.stopPropagation(); saveTicketNote('${prefix}', ${idx})">
+                        <i class="fas fa-save"></i> Simpan Catatan
+                    </button>
+                </div>`}
+            </div>`;
+        }
+
         function filterActiveTicket() {
             appState.activeTicketPage = 1;
             const search = document.getElementById('searchActiveTicket').value.toLowerCase();
@@ -4363,7 +4539,8 @@
                 (t.nama_peminjam || '').toLowerCase().includes(search) ||
                 (t.kode_barang || '').toLowerCase().includes(search) ||
                 (t.nama_barang || '').toLowerCase().includes(search) ||
-                (t.keterangan || '').toLowerCase().includes(search)
+                (t.keterangan || '').toLowerCase().includes(search) ||
+                (t.catatan || '').toLowerCase().includes(search)
             );
             renderActiveTicket(filtered);
         }
@@ -4391,6 +4568,7 @@
         function renderReturnedTicket(data) {
             const grouped = groupActiveTickets(data);
             document.getElementById('returnedTicketCount').textContent = `${grouped.length} tiket sudah kembali`;
+            clearTicketNoteRegistry('ret');
             const tbody = document.getElementById('returnedTicketTable');
             if (!grouped || grouped.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada tiket yang sudah kembali</td></tr>';
@@ -4406,10 +4584,11 @@
 
             tbody.innerHTML = slice.map((t, idx) => {
                 const itemList = t.items.map(i => `<span style="display:inline-block; background:var(--surface-2); padding:4px 10px; border-radius:6px; font-size:12px; margin:2px; border:1px solid var(--border-default);"><strong style="color:var(--success); font-family:var(--font-mono);">${esc(i.kode)}</strong> ${esc(i.nama)} <span style="color:var(--text-muted);">x${i.qty}</span></span>`).join(' ');
+                registerTicketNote('ret', idx, t);
 
                 return `<tr style="cursor:pointer;">
                     <td>${esc(t.tanggal || '-')}</td>
-                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--success);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="toggleReturnedDetail('ret-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-ret-${idx}"></i></span></td>
+                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--success);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="toggleReturnedDetail('ret-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-ret-${idx}"></i></span>${t.catatan ? ' <i class="fas fa-sticky-note" style="color:var(--tertiary); font-size:12px;" title="Ada catatan"></i>' : ''}</td>
                     <td>${esc(t.nama_peminjam || '-')}</td>
                     <td><span class="badge badge-success"><i class="fas fa-check"></i> Sudah Kembali</span></td>
                 </tr>
@@ -4420,6 +4599,7 @@
                             ${itemList}
                         </div>
                         ${t.keterangan ? `<div style="margin-top:8px; font-size:12px; color:var(--text-muted);"><i class="fas fa-info-circle"></i> ${esc(t.keterangan)}</div>` : ''}
+                        ${renderTicketNoteBox('ret', idx, t)}
                     </td>
                 </tr>`;
             }).join('');
@@ -4448,7 +4628,8 @@
                 (t.nama_peminjam || '').toLowerCase().includes(search) ||
                 (t.kode_barang || '').toLowerCase().includes(search) ||
                 (t.nama_barang || '').toLowerCase().includes(search) ||
-                (t.keterangan || '').toLowerCase().includes(search)
+                (t.keterangan || '').toLowerCase().includes(search) ||
+                (t.catatan || '').toLowerCase().includes(search)
             );
             renderReturnedTicket(filtered);
         }
