@@ -2389,6 +2389,87 @@
         }
 
         // ============================================
+        // PAGINATION HELPER (fix cap 1000 baris)
+        // ============================================
+        // PostgREST membatasi 1000 baris per request, jadi limit=10000 di client
+        // diam-diam dipotong. Fungsi ini mengambil SEMUA baris dengan meminta
+        // per halaman 1000 secara paralel (beberapa halaman sekaligus).
+        //
+        // PENTING: pagination selalu diurutkan by 'id' (kolom unik) supaya
+        // deterministik. Mengurutkan by kolom bertanggal (banyak nilai kembar)
+        // bisa membuat baris terduplikasi/hilang di sambungan halaman.
+        // Pengurutan tampilan dilakukan di client setelah semua data terkumpul.
+        const SB_PAGE_SIZE = 1000;
+        const SB_WAVE = 5;          // halaman yang diminta bersamaan
+        const SB_MAX_WAVES = 40;    // pengaman: maksimal 40.000 baris
+
+        async function sbGetPage(table, parsed, from, to) {
+            const res = await fetch(EDGE_URL + '/api-proxy', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'x-session-token': sessionToken || '' },
+                body: JSON.stringify({
+                    action: 'get', table,
+                    params: {
+                        filters: parsed.filters || {},
+                        select: parsed.select || '*',
+                        order: { col: 'id', asc: true },   // deterministik
+                        range: { from, to }
+                    }
+                })
+            });
+            if (!res.ok) throw new Error('API error: ' + res.status);
+            return res.json();
+        }
+
+        async function sbGetAll(table, params = '') {
+            const parsed = parseParamString(params);
+            const out = [];
+            let from = 0, done = false, wave = 0;
+            while (!done && wave++ < SB_MAX_WAVES) {
+                const starts = [];
+                for (let i = 0; i < SB_WAVE; i++) starts.push(from + i * SB_PAGE_SIZE);
+                const pages = await Promise.all(
+                    starts.map(s => sbGetPage(table, parsed, s, s + SB_PAGE_SIZE - 1))
+                );
+                for (const page of pages) {
+                    if (!page || page.length === 0) { done = true; break; }
+                    for (const row of page) out.push(row);
+                    if (page.length < SB_PAGE_SIZE) { done = true; break; }
+                }
+                from += SB_WAVE * SB_PAGE_SIZE;
+            }
+            return out;
+        }
+
+        // Pengurutan tampilan di client. Sadar tanggal (format YYYY-MM-DD) dan
+        // memakai id sebagai pemecah seri supaya hasilnya selalu stabil.
+        function sortRowsBy(rows, col, asc) {
+            const dir = asc ? 1 : -1;
+            return [...rows].sort((a, b) => {
+                const va = (a[col] === null || a[col] === undefined) ? '' : String(a[col]);
+                const vb = (b[col] === null || b[col] === undefined) ? '' : String(b[col]);
+                if (va < vb) return -1 * dir;
+                if (va > vb) return 1 * dir;
+                const ia = parseInt(a.id) || 0, ib = parseInt(b.id) || 0;
+                return (ia - ib) * dir;
+            });
+        }
+
+        // Tanggal 'YYYY-MM-DD' bisa dibandingkan sebagai string, tapi baris
+        // bertanggal kosong/null harus selalu jatuh ke paling bawah.
+        function sortByTanggalDesc(rows) {
+            return [...rows].sort((a, b) => {
+                const ta = (a.tanggal || '').trim(), tb = (b.tanggal || '').trim();
+                if (!ta && !tb) return (parseInt(b.id) || 0) - (parseInt(a.id) || 0);
+                if (!ta) return 1;
+                if (!tb) return -1;
+                if (ta < tb) return 1;
+                if (ta > tb) return -1;
+                return (parseInt(b.id) || 0) - (parseInt(a.id) || 0);
+            });
+        }
+
+        // ============================================
         // APP STATE & GLOBALS
         // ============================================
         let appState = {
@@ -2785,10 +2866,12 @@
             try {
                 const period = getDashboardPeriod();
                 // 1. Fetch Parallel Data
+                // master_barang & data_entry pakai sbGetAll supaya tidak terpotong cap 1000 baris.
+                // log tetap limit=1000 karena memang hanya butuh aktivitas terbaru.
                 const [masterData, entryData, logData] = await Promise.all([
-                    sbGet('master_barang', 'select=*'),
-                    sbGet('data_entry', 'select=*&order=id.desc&limit=10000'), 
-                    sbGet('log', 'select=*&order=id.desc&limit=1000') 
+                    sbGetAll('master_barang', 'select=*'),
+                    sbGetAll('data_entry', 'select=*').then(sortByTanggalDesc),
+                    sbGet('log', 'select=*&order=id.desc&limit=1000')
                 ]);
                 hideLoading();
 
@@ -3161,8 +3244,8 @@
         async function loadDataEntry() {
             showLoading();
             try {
-                const list = await sbGet('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc'); hideLoading();
-                appState.namaBarangList = list.map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 }));
+                const list = await sbGetAll('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen'); hideLoading();
+                appState.namaBarangList = sortRowsBy(list, 'nama_barang', true).map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 }));
                 resetToNewEntry();
             } catch (error) { hideLoading(); showToast('Gagal memuat data barang', 'error'); }
         }
@@ -3354,7 +3437,7 @@
                 }
                 hideLoading(); showToast(`${items.length} barang berhasil disimpan!`, 'success');
                 // Refresh nama barang list agar stok ter-update
-                try { const list = await sbGet('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc'); appState.namaBarangList = list.map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 })); } catch(e) {}
+                try { const list = await sbGetAll('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen'); appState.namaBarangList = sortRowsBy(list, 'nama_barang', true).map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 })); } catch(e) {}
                 resetToNewEntry();
             } catch (error) { hideLoading(); showToast('Terjadi kesalahan. Silakan coba lagi.', 'error'); console.error(error); }
         }
@@ -3480,7 +3563,7 @@
         // ============================================
         async function loadMasterBarang() {
             showLoading();
-            try { const data = await sbGet('master_barang', 'select=*&kode_barang.asc'); hideLoading(); appState.masterBarang = data; renderMasterBarang(data); }
+            try { const data = await sbGetAll('master_barang', 'select=*'); hideLoading(); appState.masterBarang = sortRowsBy(data, 'id', true); renderMasterBarang(appState.masterBarang); }
             catch (error) { hideLoading(); showToast('Gagal memuat master barang', 'error'); }
         }
 
@@ -3799,7 +3882,7 @@
         // ============================================
         async function loadStockGudang() {
             showLoading();
-            try { const data = await sbGet('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; filterStockGudang(); }
+            try { const data = await sbGetAll('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten'); hideLoading(); appState.stockGudang = sortRowsBy(data, 'nama_barang', true); filterStockGudang(); }
             catch (error) { hideLoading(); showToast('Gagal memuat stock gudang', 'error'); }
         }
 
@@ -4262,7 +4345,7 @@
         async function loadTransaksi() {
             transaksiDateFilter = null;
             showLoading();
-            try { const data = await sbGet('data_entry', 'select=*,id&order=id.desc'); hideLoading(); appState.dataEntry = data; renderTransaksi(data); }
+            try { const data = await sbGetAll('data_entry', 'select=*,id'); hideLoading(); appState.dataEntry = sortByTanggalDesc(data); renderTransaksi(appState.dataEntry); }
             catch (error) { hideLoading(); showToast('Gagal memuat transaksi', 'error'); }
         }
 
@@ -4382,7 +4465,7 @@
 
         async function loadActiveTicket() {
             showLoading();
-            try { const data = await sbGet('data_entry', 'select=*,id&kode_mutasi=eq.2&order=id.desc'); hideLoading(); appState.activeTicketData = data; renderActiveTicket(data); }
+            try { const data = await sbGetAll('data_entry', 'select=*,id&kode_mutasi=eq.2'); hideLoading(); appState.activeTicketData = sortByTanggalDesc(data); renderActiveTicket(appState.activeTicketData); }
             catch (error) { hideLoading(); showToast('Gagal memuat data active ticket', 'error'); }
         }
 
@@ -4555,10 +4638,10 @@
             showLoading();
             try {
                 // Ambil semua kode_mutasi=1 (masuk peminjaman / sudah kembali)
-                const data = await sbGet('data_entry', 'select=*,id&kode_mutasi=eq.1&order=id.desc&limit=10000');
+                const data = await sbGetAll('data_entry', 'select=*,id&kode_mutasi=eq.1');
                 hideLoading();
-                returnedTicketData = data;
-                renderReturnedTicket(data);
+                returnedTicketData = sortByTanggalDesc(data);
+                renderReturnedTicket(returnedTicketData);
             } catch (error) {
                 hideLoading();
                 showToast('Gagal memuat data returned ticket', 'error');
