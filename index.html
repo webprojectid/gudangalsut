@@ -17,7 +17,7 @@
     <!-- SECURITY: No sniff -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GudangAlsut — Binus Alam Sutera Inventory</title>
+    <title>CSM ALSUT — Binus Alam Sutera Inventory</title>
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
     <!-- Fonts & Icons -->
@@ -1355,8 +1355,8 @@
         <main class="login-panel">
             <!-- Login Form -->
             <div class="glass-card-elevated login-box" id="loginFormBox">
-                <div class="login-logo brand-logo"><img class="brand-logo-img" src="assets/logo.svg.webp" alt="Logo GudangAlsut"></div>
-                <h1 class="login-title">Masuk ke GudangAlsut</h1>
+                <div class="login-logo brand-logo"><img class="brand-logo-img" src="assets/logo.svg.webp" alt="Logo CSM ALSUT"></div>
+                <h1 class="login-title">Masuk ke CSM ALSUT</h1>
                 <p class="login-subtitle">Gunakan akun yang diberikan admin sarana &amp; prasarana.</p>
 
                 <div class="form-group">
@@ -1451,9 +1451,9 @@
         <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <div class="sidebar-logo brand-logo"><img class="brand-logo-img" src="assets/logo.svg.webp" alt="Logo GudangAlsut"></div>
+                <div class="sidebar-logo brand-logo"><img class="brand-logo-img" src="assets/logo.svg.webp" alt="Logo CSM ALSUT"></div>
                 <div class="sidebar-header-text">
-                    <h2>GudangAlsut</h2>
+                    <h2>CSM ALSUT</h2>
                     <p>Binus Alam Sutera</p>
                 </div>
             </div>
@@ -1525,7 +1525,7 @@
                         <i class="fas fa-chevron-left"></i>
                     </button>
                     <div class="breadcrumb" id="pageTitle">
-                        <span class="crumb-home">GudangAlsut Workspace</span>
+                        <span class="crumb-home">CSM ALSUT Workspace</span>
                         <span class="current">Dashboard</span>
                     </div>
                 </div>
@@ -1735,7 +1735,6 @@
                                 </select>
                             </div>
                             <div class="form-group full-width"><label>Keterangan</label><textarea id="entryKeterangan" rows="2" placeholder="Keterangan tambahan..." disabled></textarea></div>
-                            <div class="form-group full-width"><label>Catatan (Opsional)</label><textarea id="entryCatatan" rows="3" placeholder="Catatan khusus (rusak, sebagian kembali, dll...)" disabled></textarea></div>
                         </div>
                         
                         <div id="editModeControl" style="display:none; margin-bottom: var(--space-6); text-align: right;">
@@ -1833,6 +1832,8 @@
                             <thead><tr>
                 <th style="cursor:pointer;" onclick="appState.sortMaster={col:'kode_barang',asc:appState.sortMaster.col==='kode_barang'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Kode<span id="sortMkode"></span></th>
                 <th style="cursor:pointer;" onclick="appState.sortMaster={col:'nama_barang',asc:appState.sortMaster.col==='nama_barang'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Nama Barang<span id="sortMnama"></span></th>
+                <th>Serial Number</th>
+                <th>FA Number</th>
                 <th style="cursor:pointer;" onclick="appState.sortMaster={col:'lokasi_barang',asc:appState.sortMaster.col==='lokasi_barang'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Lokasi<span id="sortMlokasi"></span></th>
                 <th style="cursor:pointer;" onclick="appState.sortMaster={col:'tersedia',asc:appState.sortMaster.col==='tersedia'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Tersedia<span id="sortMtersedia"></span></th>
                 <th style="cursor:pointer;" onclick="appState.sortMaster={col:'stok_paten',asc:appState.sortMaster.col==='stok_paten'?!appState.sortMaster.asc:true};renderMasterBarang(appState.masterBarang)">Paten<span id="sortMpaten"></span></th>
@@ -1938,18 +1939,13 @@
                         <h2 class="card-title"><i class="fas fa-history"></i> Riwayat Transaksi</h2>
                         <span class="badge badge-primary badge-pill" id="transaksiCount">0 transaksi</span>
                     </div>
-                    <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap; margin-bottom:12px;">
-                        <div class="form-group" style="position:relative; flex:1; min-width:220px; margin-bottom:0;">
-                            <i class="fas fa-search" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
-                            <input type="text" id="searchTransaksi" placeholder="Cari tiket, kode, nama, atau catatan..." oninput="filterTransaksi()" style="padding-left:44px;">
-                        </div>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnExportTransaksi" onclick="exportTransaksiToExcel()" style="white-space:nowrap; height:42px;">
-                            <i class="fas fa-file-excel"></i> Export Excel
-                        </button>
+                    <div class="form-group" style="position:relative;">
+                        <i class="fas fa-search" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
+                        <input type="text" id="searchTransaksi" placeholder="Cari tiket, kode, atau nama..." oninput="filterTransaksi()" style="padding-left:44px;">
                     </div>
                     <div class="table-container adaptive">
                         <table>
-                            <thead><tr><th>Tanggal</th><th>Tiket</th><th>Peminjam</th><th>Kode</th><th>Nama Barang</th><th>Qty</th><th>Mutasi</th><th>Keterangan</th><th>Catatan</th></tr></thead>
+                            <thead><tr><th>Tanggal</th><th>Tiket</th><th>Peminjam</th><th>Kode</th><th>Nama Barang</th><th>Qty</th><th>Mutasi</th><th>Keterangan</th></tr></thead>
                             <tbody id="transaksiTable"></tbody>
                         </table>
                     </div>
@@ -2003,7 +1999,7 @@
                     <div class="table-container" style="max-height: 600px; overflow-y: auto;">
                         <table>
                             <thead>
-                                <tr><th>Tanggal</th><th>No. Tiket</th><th>Peminjam</th><th>Status</th></tr>
+                                <tr><th>Tanggal</th><th>No. Tiket</th><th>Peminjam</th><th>Status</th><th style="width:120px;">Aksi</th></tr>
                             </thead>
                             <tbody id="returnedTicketTable"></tbody>
                         </table>
@@ -2101,7 +2097,7 @@
                     </div>
                     <div class="table-container adaptive">
                         <table>
-                            <thead><tr><th>Username</th><th>Nama Lengkap</th><th>Role</th><th style="width:120px;">Aksi</th></tr></thead>
+                            <thead><tr><th>Username</th><th>Nama Lengkap</th><th>Role</th><th style="width:160px;">Aksi</th></tr></thead>
                             <tbody id="accountTableBody"></tbody>
                         </table>
                     </div>
@@ -2389,87 +2385,6 @@
         }
 
         // ============================================
-        // PAGINATION HELPER (fix cap 1000 baris)
-        // ============================================
-        // PostgREST membatasi 1000 baris per request, jadi limit=10000 di client
-        // diam-diam dipotong. Fungsi ini mengambil SEMUA baris dengan meminta
-        // per halaman 1000 secara paralel (beberapa halaman sekaligus).
-        //
-        // PENTING: pagination selalu diurutkan by 'id' (kolom unik) supaya
-        // deterministik. Mengurutkan by kolom bertanggal (banyak nilai kembar)
-        // bisa membuat baris terduplikasi/hilang di sambungan halaman.
-        // Pengurutan tampilan dilakukan di client setelah semua data terkumpul.
-        const SB_PAGE_SIZE = 1000;
-        const SB_WAVE = 5;          // halaman yang diminta bersamaan
-        const SB_MAX_WAVES = 40;    // pengaman: maksimal 40.000 baris
-
-        async function sbGetPage(table, parsed, from, to) {
-            const res = await fetch(EDGE_URL + '/api-proxy', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'x-session-token': sessionToken || '' },
-                body: JSON.stringify({
-                    action: 'get', table,
-                    params: {
-                        filters: parsed.filters || {},
-                        select: parsed.select || '*',
-                        order: { col: 'id', asc: true },   // deterministik
-                        range: { from, to }
-                    }
-                })
-            });
-            if (!res.ok) throw new Error('API error: ' + res.status);
-            return res.json();
-        }
-
-        async function sbGetAll(table, params = '') {
-            const parsed = parseParamString(params);
-            const out = [];
-            let from = 0, done = false, wave = 0;
-            while (!done && wave++ < SB_MAX_WAVES) {
-                const starts = [];
-                for (let i = 0; i < SB_WAVE; i++) starts.push(from + i * SB_PAGE_SIZE);
-                const pages = await Promise.all(
-                    starts.map(s => sbGetPage(table, parsed, s, s + SB_PAGE_SIZE - 1))
-                );
-                for (const page of pages) {
-                    if (!page || page.length === 0) { done = true; break; }
-                    for (const row of page) out.push(row);
-                    if (page.length < SB_PAGE_SIZE) { done = true; break; }
-                }
-                from += SB_WAVE * SB_PAGE_SIZE;
-            }
-            return out;
-        }
-
-        // Pengurutan tampilan di client. Sadar tanggal (format YYYY-MM-DD) dan
-        // memakai id sebagai pemecah seri supaya hasilnya selalu stabil.
-        function sortRowsBy(rows, col, asc) {
-            const dir = asc ? 1 : -1;
-            return [...rows].sort((a, b) => {
-                const va = (a[col] === null || a[col] === undefined) ? '' : String(a[col]);
-                const vb = (b[col] === null || b[col] === undefined) ? '' : String(b[col]);
-                if (va < vb) return -1 * dir;
-                if (va > vb) return 1 * dir;
-                const ia = parseInt(a.id) || 0, ib = parseInt(b.id) || 0;
-                return (ia - ib) * dir;
-            });
-        }
-
-        // Tanggal 'YYYY-MM-DD' bisa dibandingkan sebagai string, tapi baris
-        // bertanggal kosong/null harus selalu jatuh ke paling bawah.
-        function sortByTanggalDesc(rows) {
-            return [...rows].sort((a, b) => {
-                const ta = (a.tanggal || '').trim(), tb = (b.tanggal || '').trim();
-                if (!ta && !tb) return (parseInt(b.id) || 0) - (parseInt(a.id) || 0);
-                if (!ta) return 1;
-                if (!tb) return -1;
-                if (ta < tb) return 1;
-                if (ta > tb) return -1;
-                return (parseInt(b.id) || 0) - (parseInt(a.id) || 0);
-            });
-        }
-
-        // ============================================
         // APP STATE & GLOBALS
         // ============================================
         let appState = {
@@ -2510,9 +2425,8 @@
         // ============================================
         // AUTH
         // ============================================
-        // Credentials di-obfuscate (bukan plain text) — hindari kebaca langsung di view-source
-        const DEFAULT_PASSWORD = atob('X3BSMHQzPHMzPHVSZQ==');
-        const ADMIN_USERNAME = atob('c2RwLmNzbS5hbHN1dA==');
+        const DEFAULT_PASSWORD = '_pR0t3<s3<uR3';
+        const ADMIN_USERNAME = 'sdp.csm.alsut';
 
         function isAdmin() {
             return appState.currentUser && appState.currentUser.username === ADMIN_USERNAME;
@@ -2866,12 +2780,10 @@
             try {
                 const period = getDashboardPeriod();
                 // 1. Fetch Parallel Data
-                // master_barang & data_entry pakai sbGetAll supaya tidak terpotong cap 1000 baris.
-                // log tetap limit=1000 karena memang hanya butuh aktivitas terbaru.
                 const [masterData, entryData, logData] = await Promise.all([
-                    sbGetAll('master_barang', 'select=*'),
-                    sbGetAll('data_entry', 'select=*').then(sortByTanggalDesc),
-                    sbGet('log', 'select=*&order=id.desc&limit=1000')
+                    sbGet('master_barang', 'select=*'),
+                    sbGet('data_entry', 'select=*&order=id.desc&limit=10000'), 
+                    sbGet('log', 'select=*&order=id.desc&limit=1000') 
                 ]);
                 hideLoading();
 
@@ -3244,8 +3156,8 @@
         async function loadDataEntry() {
             showLoading();
             try {
-                const list = await sbGetAll('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen'); hideLoading();
-                appState.namaBarangList = sortRowsBy(list, 'nama_barang', true).map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 }));
+                const list = await sbGet('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc'); hideLoading();
+                appState.namaBarangList = list.map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 }));
                 resetToNewEntry();
             } catch (error) { hideLoading(); showToast('Gagal memuat data barang', 'error'); }
         }
@@ -3267,8 +3179,7 @@
             document.getElementById('entryTicket').value = first.nomor_tiket;
             document.getElementById('entryPeminjam').value = first.nama_peminjam;
             document.getElementById('entryKodeMutasi').value = first.kode_mutasi;
-            document.getElementById('entryKeterangan').value = first.keterangan || '';
-            document.getElementById('entryCatatan').value = first.catatan || '';
+            document.getElementById('entryKeterangan').value = first.keterangan;
             toggleFormInputs(false); document.getElementById('editModeControl').style.display = 'block'; document.getElementById('btnResetSearch').style.display = 'inline-flex';
             document.getElementById('itemsContainer').innerHTML = ''; appState.itemCounter = 0; appState.itemData = {};
             dataRows.forEach((row, index) => {
@@ -3361,6 +3272,18 @@
             await sbUpdate('master_barang', 'kode_barang', kodeBarang, { masuk_peminjaman: masukPinjam, masuk_baru: masukBaru, keluar_peminjaman: keluar, rusak: rusak, permanen: permanen, tersedia: tersedia });
         }
 
+        // Terapkan delta stok koreksi (edit): hanya kolom yang disebut di delta yang berubah
+        async function adjustMasterStock(kodeBarang, delta) {
+            const rows = await sbGet('master_barang', `select=*&kode_barang=eq.${encodeURIComponent(kodeBarang)}`);
+            if (!rows || rows.length === 0) return;
+            const m = rows[0];
+            const upd = {};
+            ['masuk_peminjaman', 'masuk_baru', 'keluar_peminjaman', 'rusak', 'permanen', 'tersedia'].forEach(col => {
+                if (delta[col]) upd[col] = Math.max(0, (parseInt(m[col]) || 0) + delta[col]);
+            });
+            if (Object.keys(upd).length > 0) await sbUpdate('master_barang', 'kode_barang', kodeBarang, upd);
+        }
+
         async function submitEntry(e) {
             e.preventDefault();
             const items = []; const itemIds = Object.keys(appState.itemData);
@@ -3377,7 +3300,6 @@
             const peminjam = document.getElementById('entryPeminjam').value;
             const kodeMutasi = parseInt(document.getElementById('entryKodeMutasi').value);
             const keterangan = document.getElementById('entryKeterangan').value || '-';
-            const catatan = document.getElementById('entryCatatan')?.value.trim() || '';
             if (!kodeMutasi) { showToast('Pilih kode mutasi!', 'error'); return; }
 
             // Validasi stok untuk kode mutasi keluar/rusak/permanen
@@ -3398,37 +3320,57 @@
             showLoading();
             try {
                 if (appState.isEditMode && appState.editingRowIds.length > 0) {
-                    // Validasi stok untuk mode edit juga
+                    // Ambil baris asli tiap row yang sedang diedit
+                    const oldMap = {};
+                    await Promise.all(items.filter(i => i._rowId).map(async i => {
+                        const r = await sbGet('data_entry', `select=*&id=eq.${i._rowId}`);
+                        if (r && r.length) oldMap[i._rowId] = r[0];
+                    }));
+                    const eff = (k, q) => {
+                        switch (k) {
+                            case 1: return { tersedia: q };
+                            case 2: return { tersedia: -q };
+                            case 3: return { tersedia: -q, rusak: -q };
+                            case 4: return { tersedia: -q, permanen: -q };
+                            case 5: return { tersedia: q, masuk_baru: q };
+                            default: return {};
+                        }
+                    };
+                    const neg = o => { const n = {}; Object.entries(o).forEach(([k, v]) => n[k] = -v); return n; };
+                    // Validasi stok dengan memperhitungkan refund stok dari baris asli
                     if (kodeMutasi === 2 || kodeMutasi === 3 || kodeMutasi === 4) {
                         for (const item of items) {
                             const masterItem = appState.namaBarangList.find(m => m.kode === item.kodeBarang);
-                            if (masterItem && masterItem.tersedia <= 0) {
-                                hideLoading(); showToast(`Stok "${masterItem.nama}" habis! Tidak bisa diproses.`, 'error'); return;
-                            }
-                            if (masterItem && masterItem.tersedia < item.qty) {
-                                hideLoading(); showToast(`Stok "${masterItem.nama}" tidak cukup! Tersedia: ${masterItem.tersedia}, diminta: ${item.qty}.`, 'error'); return;
+                            if (!masterItem) continue;
+                            const old = oldMap[item._rowId];
+                            const refund = old && old.kode_barang === item.kodeBarang && [2, 3, 4].includes(parseInt(old.kode_mutasi)) ? (parseInt(old.qty) || 0) : 0;
+                            const avail = masterItem.tersedia + refund;
+                            if (avail < item.qty) {
+                                hideLoading(); showToast(`Stok "${masterItem.nama}" tidak cukup! Tersedia: ${avail}, diminta: ${item.qty}.`, 'error'); return;
                             }
                         }
                     }
                     for (const item of items) {
-                        const oldRows = await sbGet('data_entry', `select=*&id=eq.${item._rowId}`);
-                        if (oldRows && oldRows.length > 0) {
-                            const old = oldRows[0];
-                            const oldKode = parseInt(old.kode_mutasi);
-                            const newKode = kodeMutasi;
-                            // 1↔2: counter-based, skip reverse (tersedia handled by new kode)
-                            if ((oldKode === 1 || oldKode === 2) && (newKode === 1 || newKode === 2)) {
-                                // Skip reverse, counter stays, tersedia by new kode only
-                            } else {
-                                await reverseMasterBarangStock(old.kode_barang, parseInt(old.qty), oldKode);
+                        const old = oldMap[item._rowId];
+                        if (old) {
+                            const oldKode = parseInt(old.kode_mutasi), oldQty = parseInt(old.qty) || 0;
+                            const changed = old.kode_barang !== item.kodeBarang || oldQty !== item.qty || oldKode !== kodeMutasi;
+                            if (changed) {
+                                // Undo efek lama di barang lama (counter masuk/keluar tidak diubah)
+                                await adjustMasterStock(old.kode_barang, neg(eff(oldKode, oldQty)));
+                                // Terapkan efek baru di barang baru (counter masuk/keluar tidak diubah)
+                                await adjustMasterStock(item.kodeBarang, eff(kodeMutasi, item.qty));
                             }
-                            await updateMasterBarangStock(item.kodeBarang, item.qty, newKode);
+                            await sbUpdate('data_entry', 'id', item._rowId, { tanggal, nomor_tiket: ticket, nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan });
+                        } else {
+                            // Barang BARU ditambah ke tiket yang sedang diedit
+                            await sbInsert('data_entry', [{ tanggal, nomor_tiket: ticket || 'Tidak melalui tiket', nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan }]);
+                            await updateMasterBarangStock(item.kodeBarang, item.qty, kodeMutasi);
                         }
-                        await sbUpdate('data_entry', 'id', item._rowId, { tanggal, nomor_tiket: ticket, nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan, catatan });
                     }
                     await writeLog('Data Entry', 'Edit Transaksi', items.map(i=>i.kodeBarang).join(','), items.map(i=>i.qty).join(','), String(kodeMutasi), items.map(i=>`${i.qty}x ${i.namaBarang}`).join('; '), `Tiket: ${ticket}`);
                 } else {
-                    const entryRows = items.map(item => ({ tanggal, nomor_tiket: ticket || 'Tidak melalui tiket', nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan, catatan }));
+                    const entryRows = items.map(item => ({ tanggal, nomor_tiket: ticket || 'Tidak melalui tiket', nama_peminjam: peminjam, kode_barang: item.kodeBarang, nama_barang: item.namaBarang, qty: item.qty, kode_mutasi: kodeMutasi, keterangan }));
                     await sbInsert('data_entry', entryRows);
                     for (const item of items) {
                         await updateMasterBarangStock(item.kodeBarang, item.qty, kodeMutasi);
@@ -3437,7 +3379,7 @@
                 }
                 hideLoading(); showToast(`${items.length} barang berhasil disimpan!`, 'success');
                 // Refresh nama barang list agar stok ter-update
-                try { const list = await sbGetAll('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen'); appState.namaBarangList = sortRowsBy(list, 'nama_barang', true).map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 })); } catch(e) {}
+                try { const list = await sbGet('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc'); appState.namaBarangList = list.map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 })); } catch(e) {}
                 resetToNewEntry();
             } catch (error) { hideLoading(); showToast('Terjadi kesalahan. Silakan coba lagi.', 'error'); console.error(error); }
         }
@@ -3483,9 +3425,7 @@
             `;
             container.appendChild(row); updateItemCount();
             const searchInput = document.getElementById(`search_${itemId}`); const qtyInput = document.getElementById(`qty_${itemId}`);
-            if (!appState.isEditMode) {
-                if (searchInput) searchInput.disabled = false; if (qtyInput) qtyInput.disabled = false; setTimeout(() => { if(searchInput) searchInput.focus(); }, 100);
-            } else { if (searchInput) searchInput.disabled = true; if (qtyInput) qtyInput.disabled = true; }
+            if (searchInput) searchInput.disabled = false; if (qtyInput) qtyInput.disabled = false; setTimeout(() => { if(searchInput) searchInput.focus(); }, 100);
         }
 
         function removeItemRow(itemId) {
@@ -3563,16 +3503,17 @@
         // ============================================
         async function loadMasterBarang() {
             showLoading();
-            try { const data = await sbGetAll('master_barang', 'select=*'); hideLoading(); appState.masterBarang = sortRowsBy(data, 'id', true); renderMasterBarang(appState.masterBarang); }
+            try { const data = await sbGet('master_barang', 'select=*&kode_barang.asc'); hideLoading(); appState.masterBarang = data; renderMasterBarang(data); }
             catch (error) { hideLoading(); showToast('Gagal memuat master barang', 'error'); }
         }
 
         function renderMasterBarang(data) {
-            document.getElementById('masterCount').textContent = `${data.length} items`;
+            data = (data || []).filter(item => (parseInt(item.tersedia) || 0) > 0);
+            document.getElementById('masterCount').textContent = `Ditemukan ${data.length} jenis item`;
             const tbody = document.getElementById('masterBarangTable');
             const tfoot = document.getElementById('masterBarangFoot');
             if (!data || data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>';
                 tfoot.innerHTML = '';
                 return;
             }
@@ -3581,12 +3522,14 @@
             tbody.innerHTML = sorted.map(item => {
                 const tersedia = parseInt(item.tersedia) || 0; const paten = parseInt(item.stok_paten) || 0;
                 const rusak = parseInt(item.rusak) || 0; const permanen = parseInt(item.permanen) || 0;
+                const sn = !item.serial_number || /^tidak ada/i.test(item.serial_number) ? '-' : item.serial_number;
+                const fa = !item.fa_number || /^tidak ada/i.test(item.fa_number) ? '-' : item.fa_number;
                 totTersedia += tersedia; totRusak += rusak; totPermanen += permanen;
                 let statusBadge = paten > 0 && tersedia < paten ? '<span class="badge badge-danger">Stok Rendah</span>' : tersedia === 0 ? '<span class="badge badge-warning">Habis</span>' : '<span class="badge badge-success">OK</span>';
-                return `<tr><td><strong>${esc(item.kode_barang || '-')}</strong></td><td>${esc(item.nama_barang || '-')}</td><td>${esc(item.lokasi_barang || '-')}</td><td><strong>${tersedia}</strong></td><td>${paten}</td><td>${statusBadge}</td></tr>`;
+                return `<tr><td><strong>${esc(item.kode_barang || '-')}</strong></td><td>${esc(item.nama_barang || '-')}</td><td>${esc(sn)}</td><td>${esc(fa)}</td><td>${esc(item.lokasi_barang || '-')}</td><td><strong>${tersedia}</strong></td><td>${paten}</td><td>${statusBadge}</td></tr>`;
             }).join('');
             tfoot.innerHTML = `<tr style="background:var(--surface-2); font-weight:700; border-top:2px solid var(--primary);">
-                <td colspan="3" style="text-align:right; color:var(--primary);">Jumlah</td>
+                <td colspan="5" style="text-align:right; color:var(--primary);">Jumlah</td>
                 <td><strong style="font-size:15px;">${totTersedia}</strong></td>
                 <td><span style="color:var(--danger);">${totRusak} Rusak</span></td>
                 <td><span style="color:var(--warning);">${totPermanen} Permanen</span></td>
@@ -3602,7 +3545,7 @@
             const words = search.split(/\s+/).filter(w => w.length > 0);
             const filtered = appState.masterBarang.filter(item => {
                 if (words.length === 0) return true;
-                const text = ((item.kode_barang || '') + ' ' + (item.nama_barang || '') + ' ' + (item.lokasi_barang || '')).toLowerCase();
+                const text = ((item.kode_barang || '') + ' ' + (item.nama_barang || '') + ' ' + (item.serial_number || '') + ' ' + (item.fa_number || '') + ' ' + (item.lokasi_barang || '')).toLowerCase();
                 return words.every(w => text.includes(w));
             });
             renderMasterBarang(filtered);
@@ -3858,7 +3801,7 @@
                 try {
                     await sbInsert('master_barang', [{
                         kode_barang: kode, nama_barang: nama, serial_number: sn, fa_number: fa,
-                        lokasi_barang: lokasi, hasil_kalibrasi: 0, masuk_peminjaman: 0, masuk_baru: 0,
+                        lokasi_barang: lokasi, masuk_peminjaman: 0, masuk_baru: 0,
                         keluar_peminjaman: 0, rusak: 0, permanen: 0, tersedia: tersedia,
                         stok_paten: paten, last_opname_date: '', barcode: nama
                     }]);
@@ -3882,11 +3825,12 @@
         // ============================================
         async function loadStockGudang() {
             showLoading();
-            try { const data = await sbGetAll('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten'); hideLoading(); appState.stockGudang = sortRowsBy(data, 'nama_barang', true); filterStockGudang(); }
+            try { const data = await sbGet('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; filterStockGudang(); }
             catch (error) { hideLoading(); showToast('Gagal memuat stock gudang', 'error'); }
         }
 
         function renderStockGudang(data) {
+            data = (data || []).filter(item => (parseInt(item.tersedia) || 0) > 0);
             document.getElementById('stockCount').textContent = `${data.length} items`;
             const tbody = document.getElementById('stockGudangTable');
             const tfoot = document.getElementById('stockGudangFoot');
@@ -4288,64 +4232,13 @@
             } catch (error) { showToast('Gagal export', 'error'); }
         }
 
-        async function exportTransaksiToExcel() {
-            showLoading();
-            try {
-                // Ambil semua data transaksi dari appState.dataEntry
-                const all = appState.dataEntry || [];
-                if (!all || all.length === 0) {
-                    hideLoading();
-                    showToast('Tidak ada data untuk export', 'warning');
-                    return;
-                }
-
-                // Transform ke format Excel (tanpa ID & internal fields)
-                const rows = all.map(t => ({
-                    Tanggal: t.tanggal || '-',
-                    Tiket: t.nomor_tiket || '-',
-                    Peminjam: t.nama_peminjam || '-',
-                    Kode_Barang: t.kode_barang || '-',
-                    Nama_Barang: t.nama_barang || '-',
-                    Qty: t.qty || 0,
-                    Mutasi: getMutasiBadgeString(t.kode_mutasi), // helper baru di bawah
-                    Keterangan: t.keterangan || '-',
-                    Catatan: t.catatan || '-' // field baru!
-                }));
-
-                const worksheet = XLSX.utils.json_to_sheet(rows);
-                const workbook = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(workbook, worksheet, "Riwayat Transaksi");
-                XLSX.writeFile(workbook, `Transaksi_${new Date().toISOString().split('T')[0]}.xlsx`);
-
-                await writeLog('Export', 'Export Transaksi Excel', '-', String(all.length), '', 'Export Riwayat Transaksi', all.length + ' baris');
-                hideLoading();
-                showToast(`Berhasil export ${all.length} baris!`, 'success');
-            } catch (error) {
-                hideLoading();
-                console.error(error);
-                showToast('Gagal export: ' + error.message, 'error');
-            }
-        }
-
-        function getMutasiBadgeString(kode) {
-            const c = parseInt(kode);
-            switch (c) {
-                case 1: return 'Masuk Peminjaman';
-                case 2: return 'Keluar';
-                case 3: return 'Rusak';
-                case 4: return 'Permanen';
-                case 5: return 'Masuk Baru';
-                default: return '-';
-            }
-        }
-
         // ============================================
         // RIWAYAT TRANSAKSI
         // ============================================
         async function loadTransaksi() {
             transaksiDateFilter = null;
             showLoading();
-            try { const data = await sbGetAll('data_entry', 'select=*,id'); hideLoading(); appState.dataEntry = sortByTanggalDesc(data); renderTransaksi(appState.dataEntry); }
+            try { const data = await sbGet('data_entry', 'select=*,id&order=id.desc'); hideLoading(); appState.dataEntry = data; renderTransaksi(data); }
             catch (error) { hideLoading(); showToast('Gagal memuat transaksi', 'error'); }
         }
 
@@ -4353,7 +4246,7 @@
             document.getElementById('transaksiCount').textContent = `${data.length} transaksi`;
             const tbody = document.getElementById('transaksiTable');
             if (!data || data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Belum ada transaksi</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Belum ada transaksi</td></tr>';
                 document.getElementById('transaksiPagination').innerHTML = '';
                 return;
             }
@@ -4376,7 +4269,7 @@
                 }
             };
 
-            tbody.innerHTML = slice.map(t => `<tr><td>${esc(t.tanggal || '-')}</td><td>${esc(t.nomor_tiket || '-')}</td><td>${esc(t.nama_peminjam || '-')}</td><td><strong>${esc(t.kode_barang || '-')}</strong></td><td>${esc(t.nama_barang || '-')}</td><td><strong>${t.qty || '-'}</strong></td><td>${getMutasiBadge(t.kode_mutasi)}</td><td>${esc(t.keterangan || '-')}</td><td style="max-width:260px; white-space:pre-wrap; ${t.catatan ? 'color:var(--tertiary); font-weight:600;' : 'color:var(--text-muted);'}">${t.catatan ? '<i class="fas fa-sticky-note" style="margin-right:5px;"></i>' + esc(t.catatan) : '-'}</td></tr>`).join('');
+            tbody.innerHTML = slice.map(t => `<tr><td>${esc(t.tanggal || '-')}</td><td>${esc(t.nomor_tiket || '-')}</td><td>${esc(t.nama_peminjam || '-')}</td><td><strong>${esc(t.kode_barang || '-')}</strong></td><td>${esc(t.nama_barang || '-')}</td><td><strong>${t.qty || '-'}</strong></td><td>${getMutasiBadge(t.kode_mutasi)}</td><td>${esc(t.keterangan || '-')}</td></tr>`).join('');
 
             renderPaginationControls('transaksiPagination', appState.transaksiPage, totalPages, (p) => {
                 appState.transaksiPage = p;
@@ -4395,77 +4288,16 @@
                     return !Number.isNaN(d.getTime()) && d >= transaksiDateFilter.start && d < transaksiDateFilter.end;
                 });
             }
-            const filtered = data.filter(t => (t.kode_barang || '').toLowerCase().includes(search) || (t.nama_barang || '').toLowerCase().includes(search) || (t.keterangan || '').toLowerCase().includes(search) || (t.catatan || '').toLowerCase().includes(search) || (t.nama_peminjam || '').toLowerCase().includes(search) || (t.nomor_tiket || '').toLowerCase().includes(search));
+            const filtered = data.filter(t => (t.kode_barang || '').toLowerCase().includes(search) || (t.nama_barang || '').toLowerCase().includes(search) || (t.keterangan || '').toLowerCase().includes(search) || (t.nama_peminjam || '').toLowerCase().includes(search));
             renderTransaksi(filtered);
         }
 
         // ============================================
         // ACTIVE TICKET
         // ============================================
-        // CATATAN PER TIKET — 1 tiket = 1 catatan.
-        // Disimpan di kolom data_entry.catatan (kolom sudah ada di Supabase).
-        // Semua baris milik satu tiket ikut di-update supaya nilainya konsisten,
-        // jadi tidak masalah baris mana yang dibaca saat grouping.
-        let ticketNoteRegistry = {};
-
-        function clearTicketNoteRegistry(prefix) {
-            Object.keys(ticketNoteRegistry).forEach(k => {
-                if (k.indexOf(prefix + '-') === 0) delete ticketNoteRegistry[k];
-            });
-        }
-
-        function registerTicketNote(prefix, idx, group) {
-            ticketNoteRegistry[prefix + '-' + idx] = {
-                nomor_tiket: group.nomor_tiket,
-                rowIds: (group.rowIds || []).slice(),
-                kode_mutasi: group.kode_mutasi || 0,
-                catatan: group.catatan || ''
-            };
-        }
-
-        async function saveTicketNote(prefix, idx) {
-            const rec = ticketNoteRegistry[prefix + '-' + idx];
-            if (!rec || !rec.rowIds.length) { showToast('Data tiket tidak ditemukan. Muat ulang halaman.', 'error'); return; }
-
-            // GUARD: tolak grup pseudo-tiket (kumpulan transaksi tak berhubungan).
-            // Tanpa ini, satu klik simpan bisa menimpa ratusan baris sekaligus.
-            if (!isRealTicketLabel(rec.nomor_tiket)) {
-                showToast('Catatan hanya bisa disimpan untuk tiket bernomor asli.', 'warning');
-                return;
-            }
-
-            // GUARD: batasi jumlah baris yang ditulis sekali jalan (pertahanan kedua
-            // setelah isRealTicketLabel). Tiket asli terbesar di data saat ini = 71 baris,
-            // sedangkan grup pseudo "Tidak melalui tiket" = 463 baris.
-            const MAX_ROWS_PER_TICKET = 250;
-            if (rec.rowIds.length > MAX_ROWS_PER_TICKET) {
-                showToast(`Tiket ini punya ${rec.rowIds.length} baris (melebihi batas ${MAX_ROWS_PER_TICKET}). Periksa datanya dulu.`, 'error');
-                return;
-            }
-
-            const ta = document.getElementById('note-' + prefix + '-' + idx);
-            if (!ta) return;
-            const note = ta.value.trim();
-            if (note.length > 500) { showToast('Catatan maksimal 500 karakter.', 'warning'); return; }
-            showLoading();
-            try {
-                for (const id of rec.rowIds) {
-                    await sbUpdate('data_entry', 'id', id, { catatan: note });
-                }
-                await writeLog('Active Ticket', 'Simpan Catatan', '-', String(rec.rowIds.length), String(rec.kode_mutasi), note || '(catatan dikosongkan)', 'Tiket #' + rec.nomor_tiket);
-                hideLoading();
-                showToast('Catatan tersimpan.', 'success');
-                if (prefix === 'act') loadActiveTicket(); else loadReturnedTicket();
-            } catch (e) {
-                hideLoading();
-                showToast('Gagal menyimpan catatan: ' + e.message, 'error');
-                console.error(e);
-            }
-        }
-
         async function loadActiveTicket() {
             showLoading();
-            try { const data = await sbGetAll('data_entry', 'select=*,id&kode_mutasi=eq.2'); hideLoading(); appState.activeTicketData = sortByTanggalDesc(data); renderActiveTicket(appState.activeTicketData); }
+            try { const data = await sbGet('data_entry', 'select=*,id&kode_mutasi=eq.2&order=id.desc'); hideLoading(); appState.activeTicketData = data; renderActiveTicket(data); }
             catch (error) { hideLoading(); showToast('Gagal memuat data active ticket', 'error'); }
         }
 
@@ -4480,20 +4312,15 @@
                         nama_peminjam: t.nama_peminjam,
                         keterangan: t.keterangan,
                         catatan: t.catatan || '',
-                        kode_mutasi: parseInt(t.kode_mutasi) || 0,
-                        rowIds: [],
                         items: []
                     };
                 }
-                if (t.id !== undefined && t.id !== null) groups[tiket].rowIds.push(t.id);
-                // Satu tiket = satu catatan. Semua baris tiket menyimpan nilai yang sama,
-                // jadi ambil nilai pertama yang tidak kosong (aman kalau sebagian baris null).
-                if (!groups[tiket].catatan && t.catatan) groups[tiket].catatan = t.catatan;
                 groups[tiket].items.push({
                     kode: t.kode_barang || '-',
                     nama: t.nama_barang || '-',
                     qty: parseInt(t.qty) || 0
                 });
+                if (t.catatan) groups[tiket].catatan = t.catatan;
                 // Use earliest date for the group
                 if (t.tanggal && (!groups[tiket].tanggal || t.tanggal < groups[tiket].tanggal)) {
                     groups[tiket].tanggal = t.tanggal;
@@ -4505,7 +4332,6 @@
         function renderActiveTicket(data) {
             const grouped = groupActiveTickets(data);
             document.getElementById('activeTicketCount').textContent = `${grouped.length} tiket belum kembali`;
-            clearTicketNoteRegistry('act');
             const tbody = document.getElementById('activeTicketTable');
             if (!grouped || grouped.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada tiket aktif</td></tr>';
@@ -4532,22 +4358,23 @@
 
                 const viewOnly = !isAdmin();
                 const itemList = t.items.map(i => `<span style="display:inline-block; background:var(--surface-2); padding:4px 10px; border-radius:6px; font-size:12px; margin:2px; border:1px solid var(--border-default);"><strong style="color:var(--primary-light); font-family:var(--font-mono);">${esc(i.kode)}</strong> ${esc(i.nama)} <span style="color:var(--text-muted);">x${i.qty}</span></span>`).join(' ');
-                registerTicketNote('act', idx, t);
 
                 return `<tr class="${rowClass}" ${viewOnly ? '' : `draggable="true" ondragstart="onDragTicket(event)" data-tiket="${esc(t.nomor_tiket)}"`} style="${viewOnly ? 'cursor:pointer;' : ''}">
                     <td>${esc(t.tanggal || '-')}</td>
-                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--warning);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="event.stopPropagation(); toggleTicketDetail('act-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-act-${idx}"></i></span>${t.catatan ? ' <i class="fas fa-sticky-note" style="color:var(--tertiary); font-size:12px;" title="Ada catatan"></i>' : ''}</td>
+                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--warning);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="event.stopPropagation(); toggleTicketDetail('act-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-act-${idx}"></i></span></td>
                     <td>${esc(t.nama_peminjam || '-')}</td>
                     <td><span class="badge badge-warning"><i class="fas fa-clock"></i> Dipinjam</span></td>
                 </tr>
                 <tr id="detail-act-${idx}" class="ticket-detail-row" style="display:none;">
                     <td colspan="4" style="background:var(--surface-1); padding:12px 24px; border-bottom:2px solid var(--primary);">
-                        <div style="display:flex; flex-wrap:wrap; gap:4px; align-items:center;">
-                            <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-right:8px;"><i class="fas fa-box"></i> Barang:</span>
+                        <div>
+                            <div style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:8px;"><i class="fas fa-box"></i> Barang:</div>
                             ${itemList}
                         </div>
-                        ${t.keterangan ? `<div style="margin-top:8px; font-size:12px; color:var(--text-muted);"><i class="fas fa-info-circle"></i> ${esc(t.keterangan)}</div>` : ''}
-                        ${renderTicketNoteBox('act', idx, t)}
+                        <div style="display:flex; gap:8px; align-items:center; margin-top:10px;">
+                            <input id="activeTicketNote_${idx}" type="text" value="${esc(t.catatan)}" placeholder="Catatan tiket..." maxlength="500" ${isAdmin() ? '' : 'disabled'} style="flex:1; max-width:480px; padding:7px 10px; font-size:12px;">
+                            ${isAdmin() ? `<button class="btn btn-primary btn-sm" data-ticket="${esc(t.nomor_tiket)}" onclick="saveActiveTicketNote(this.dataset.ticket, ${idx})"><i class="fas fa-save"></i> Simpan</button>` : ''}
+                        </div>
                     </td>
                 </tr>`;
             }).join('');
@@ -4568,50 +4395,23 @@
             }
         }
 
-        // Label pseudo-tiket: BUKAN tiket asli, melainkan kumpulan transaksi
-        // yang tidak saling berhubungan. Menulis catatan massal ke grup ini
-        // akan menimpa ratusan baris sekaligus, jadi dilarang.
-        const PSEUDO_TICKET_LABELS = ['tidak melalui tiket', 'tanpa tiket', '-', ''];
-
-        function isRealTicketLabel(num) {
-            const v = (num || '').toString().trim().toLowerCase();
-            return !PSEUDO_TICKET_LABELS.includes(v);
-        }
-
-        // Kotak catatan per tiket. Admin bisa tulis + simpan, view-only cuma baca.
-        function renderTicketNoteBox(prefix, idx, group) {
-            const viewOnly = !isAdmin();
-            const noteVal = esc(group.catatan || '');
-            const writable = isRealTicketLabel(group.nomor_tiket);
-
-            if (!writable) {
-                const n = (group.rowIds || []).length;
-                return `<div style="margin-top:12px; padding-top:10px; border-top:1px dashed var(--border-default);">
-                    <label style="display:block; font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">
-                        <i class="fas fa-sticky-note"></i> Catatan Pengembalian
-                    </label>
-                    <div style="padding:10px 12px; border-radius:var(--radius-sm); background:var(--warning-bg); border:1px solid var(--warning); color:var(--text-secondary); font-size:12px;">
-                        <i class="fas fa-triangle-exclamation" style="color:var(--warning); margin-right:6px;"></i>
-                        Grup ini berisi <strong>${n} transaksi tanpa nomor tiket</strong> yang tidak saling berhubungan.
-                        Catatan tidak bisa disimpan di sini karena akan menimpa semuanya.
-                        Gunakan menu <strong>Data Entry</strong> untuk mencatat transaksi satu per satu.
-                    </div>
-                </div>`;
+        async function saveActiveTicketNote(nomorTiket, inputIndex) {
+            if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
+            const input = document.getElementById('activeTicketNote_' + inputIndex);
+            if (!input) return;
+            const note = input.value.trim();
+            showLoading();
+            try {
+                await sbUpdate('data_entry', 'nomor_tiket', nomorTiket, { catatan: note || null });
+                appState.activeTicketData.filter(item => item.nomor_tiket === nomorTiket).forEach(item => { item.catatan = note; });
+                await writeLog('Active Ticket', 'Simpan Catatan', '', '1', '2', 'Tiket #' + nomorTiket, note || 'Catatan dikosongkan');
+                hideLoading();
+                showToast('Catatan tiket berhasil disimpan.', 'success');
+            } catch (error) {
+                hideLoading();
+                showToast('Gagal menyimpan catatan.', 'error');
+                console.error(error);
             }
-
-            return `<div style="margin-top:12px; padding-top:10px; border-top:1px dashed var(--border-default);">
-                <label style="display:block; font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-bottom:6px;">
-                    <i class="fas fa-sticky-note"></i> Catatan Pengembalian
-                </label>
-                <textarea id="note-${prefix}-${idx}" rows="2" ${viewOnly ? 'readonly' : ''}
-                    style="width:100%; padding:10px 12px; border-radius:var(--radius-sm); background:var(--surface-2); border:1px solid var(--border-default); color:var(--text-primary); font-size:13px; outline:none; resize:vertical; font-family:inherit;"
-                    placeholder="${viewOnly ? 'Tidak ada catatan.' : 'Contoh: hanya sebagian yang kembali, monitor sudah pecah, kabel hilang, dll...'}">${noteVal}</textarea>
-                ${viewOnly ? '' : `<div style="margin-top:8px; text-align:right;">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="event.stopPropagation(); saveTicketNote('${prefix}', ${idx})">
-                        <i class="fas fa-save"></i> Simpan Catatan
-                    </button>
-                </div>`}
-            </div>`;
         }
 
         function filterActiveTicket() {
@@ -4622,8 +4422,7 @@
                 (t.nama_peminjam || '').toLowerCase().includes(search) ||
                 (t.kode_barang || '').toLowerCase().includes(search) ||
                 (t.nama_barang || '').toLowerCase().includes(search) ||
-                (t.keterangan || '').toLowerCase().includes(search) ||
-                (t.catatan || '').toLowerCase().includes(search)
+                (t.keterangan || '').toLowerCase().includes(search)
             );
             renderActiveTicket(filtered);
         }
@@ -4638,10 +4437,10 @@
             showLoading();
             try {
                 // Ambil semua kode_mutasi=1 (masuk peminjaman / sudah kembali)
-                const data = await sbGetAll('data_entry', 'select=*,id&kode_mutasi=eq.1');
+                const data = await sbGet('data_entry', 'select=*,id&kode_mutasi=eq.1&order=id.desc&limit=10000');
                 hideLoading();
-                returnedTicketData = sortByTanggalDesc(data);
-                renderReturnedTicket(returnedTicketData);
+                returnedTicketData = data;
+                renderReturnedTicket(data);
             } catch (error) {
                 hideLoading();
                 showToast('Gagal memuat data returned ticket', 'error');
@@ -4651,7 +4450,6 @@
         function renderReturnedTicket(data) {
             const grouped = groupActiveTickets(data);
             document.getElementById('returnedTicketCount').textContent = `${grouped.length} tiket sudah kembali`;
-            clearTicketNoteRegistry('ret');
             const tbody = document.getElementById('returnedTicketTable');
             if (!grouped || grouped.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada tiket yang sudah kembali</td></tr>';
@@ -4667,22 +4465,21 @@
 
             tbody.innerHTML = slice.map((t, idx) => {
                 const itemList = t.items.map(i => `<span style="display:inline-block; background:var(--surface-2); padding:4px 10px; border-radius:6px; font-size:12px; margin:2px; border:1px solid var(--border-default);"><strong style="color:var(--success); font-family:var(--font-mono);">${esc(i.kode)}</strong> ${esc(i.nama)} <span style="color:var(--text-muted);">x${i.qty}</span></span>`).join(' ');
-                registerTicketNote('ret', idx, t);
 
                 return `<tr style="cursor:pointer;">
                     <td>${esc(t.tanggal || '-')}</td>
-                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--success);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="toggleReturnedDetail('ret-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-ret-${idx}"></i></span>${t.catatan ? ' <i class="fas fa-sticky-note" style="color:var(--tertiary); font-size:12px;" title="Ada catatan"></i>' : ''}</td>
+                    <td style="display:flex; align-items:center; gap:8px;"><strong style="color: var(--success);">${esc(t.nomor_tiket || '-')}</strong> <span onclick="toggleReturnedDetail('ret-${idx}')" style="cursor:pointer; color:var(--text-muted); font-size:12px; padding:2px 6px; border-radius:4px; background:var(--surface-2); border:1px solid var(--border-default);" title="Lihat detail"><i class="fas fa-chevron-down" id="chevron-ret-${idx}"></i></span></td>
                     <td>${esc(t.nama_peminjam || '-')}</td>
                     <td><span class="badge badge-success"><i class="fas fa-check"></i> Sudah Kembali</span></td>
+                    <td>${isAdmin() ? `<button class="btn btn-warning btn-sm" data-ticket="${esc(t.nomor_tiket)}" onclick="event.stopPropagation(); undoReturnTicket(this.dataset.ticket)" title="Batalkan pengembalian"><i class="fas fa-undo"></i> UNDO</button>` : '-'}</td>
                 </tr>
                 <tr id="detail-ret-${idx}" class="ticket-detail-row" style="display:none;">
-                    <td colspan="4" style="background:var(--surface-1); padding:12px 24px; border-bottom:2px solid var(--success);">
+                    <td colspan="5" style="background:var(--surface-1); padding:12px 24px; border-bottom:2px solid var(--success);">
                         <div style="display:flex; flex-wrap:wrap; gap:4px; align-items:center;">
                             <span style="font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; margin-right:8px;"><i class="fas fa-box"></i> Barang:</span>
                             ${itemList}
                         </div>
                         ${t.keterangan ? `<div style="margin-top:8px; font-size:12px; color:var(--text-muted);"><i class="fas fa-info-circle"></i> ${esc(t.keterangan)}</div>` : ''}
-                        ${renderTicketNoteBox('ret', idx, t)}
                     </td>
                 </tr>`;
             }).join('');
@@ -4703,6 +4500,48 @@
             }
         }
 
+        async function undoReturnTicket(nomorTiket) {
+            if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
+            if (!(await showCustomConfirm('Undo Pengembalian', `Batalkan pengembalian tiket <b>#${esc(nomorTiket)}</b>?<br><br>Semua barang akan kembali menjadi dipinjam dan stok tersedia akan dikurangi.`))) return;
+
+            showLoading();
+            try {
+                const rows = await sbGet('data_entry', `select=*&nomor_tiket=eq.${encodeURIComponent(nomorTiket)}&kode_mutasi=eq.1&limit=10000`);
+                if (!rows || rows.length === 0) {
+                    hideLoading();
+                    showToast('Tiket tidak ditemukan atau sudah di-undo.', 'warning');
+                    return;
+                }
+
+                const qtyByKode = {};
+                rows.forEach(row => { qtyByKode[row.kode_barang] = (qtyByKode[row.kode_barang] || 0) + (parseInt(row.qty) || 0); });
+                for (const [kode, qty] of Object.entries(qtyByKode)) {
+                    const masterRows = await sbGet('master_barang', `select=tersedia&kode_barang=eq.${encodeURIComponent(kode)}`);
+                    if (!masterRows || masterRows.length === 0) throw new Error(`Master barang ${kode} tidak ditemukan`);
+                    if ((parseInt(masterRows[0].tersedia) || 0) < qty) throw new Error(`Stok ${kode} tidak cukup untuk di-undo`);
+                }
+
+                for (const [kode, qty] of Object.entries(qtyByKode)) {
+                    const masterRows = await sbGet('master_barang', `select=tersedia&kode_barang=eq.${encodeURIComponent(kode)}`);
+                    const tersedia = parseInt(masterRows[0].tersedia) || 0;
+                    await sbUpdate('master_barang', 'kode_barang', kode, { tersedia: tersedia - qty });
+                }
+                for (const row of rows) {
+                    await sbUpdate('data_entry', 'id', row.id, { kode_mutasi: 2 });
+                }
+
+                const items = rows.map(row => `${row.qty}x ${row.nama_barang}`).join(', ');
+                await writeLog('Returned Ticket', 'Undo Pengembalian', rows.map(row => row.kode_barang).join(','), String(rows.length), '2', `Tiket #${nomorTiket}: ${items}`, `PIC: ${rows[0]?.nama_peminjam || '-'}`);
+                hideLoading();
+                showToast(`Tiket #${nomorTiket} kembali menjadi pinjaman aktif.`, 'success');
+                await Promise.all([loadActiveTicket(), loadReturnedTicket()]);
+            } catch (error) {
+                hideLoading();
+                showToast('Gagal undo: ' + error.message, 'error');
+                console.error(error);
+            }
+        }
+
         function filterReturnedTicket() {
             returnedTicketPage = 1;
             const search = document.getElementById('searchReturnedTicket').value.toLowerCase();
@@ -4711,8 +4550,7 @@
                 (t.nama_peminjam || '').toLowerCase().includes(search) ||
                 (t.kode_barang || '').toLowerCase().includes(search) ||
                 (t.nama_barang || '').toLowerCase().includes(search) ||
-                (t.keterangan || '').toLowerCase().includes(search) ||
-                (t.catatan || '').toLowerCase().includes(search)
+                (t.keterangan || '').toLowerCase().includes(search)
             );
             renderReturnedTicket(filtered);
         }
@@ -5061,12 +4899,18 @@
             if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
             showLoading();
             try {
-                const res = await sbGet('users', 'select=id,username,role,nama_lengkap&order=id.asc');
+                const res = await fetch(EDGE_URL + '/admin-users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'x-session-token': sessionToken || '' },
+                    body: JSON.stringify({ action: 'list' })
+                });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
                 hideLoading();
-                accountUsers = res;
+                accountUsers = data;
                 accountRoleChanges = {};
                 document.getElementById('btnSaveRoles').disabled = true;
-                renderAccountTable(accountUsers);
+                renderAccountTable(data);
             } catch (error) { hideLoading(); showToast('Gagal memuat data user: ' + error.message, 'error'); }
         }
 
@@ -5092,7 +4936,11 @@
                             <option value="IT Junior Support" ${currentRole === 'IT Junior Support' ? 'selected' : ''}>IT Junior Support</option>
                         </select>
                     </td>
-                    <td>${currentRole !== (u.role || '-') ? '<span class="badge badge-warning">Berubah</span>' : '<span class="badge badge-dark">-</span>'}</td>
+                    <td>
+                        <button class="btn btn-ghost btn-sm" onclick="resetUserPassword(${u.id}, '${u.username}')" title="Reset password ke default">
+                            <i class="fas fa-key"></i> Reset
+                        </button>
+                    </td>
                 </tr>`;
             }).join('');
         }
@@ -5109,6 +4957,29 @@
             renderAccountTable(accountUsers);
         }
 
+        async function resetUserPassword(userId, username) {
+            if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
+            if (!(await showCustomConfirm('Reset Password', 'Reset password <b>' + esc(username) + '</b> ke default (<code>_pR0t3<s3<uR3</code>)?'))) return;
+            showLoading();
+            try {
+                const res = await fetch(EDGE_URL + '/admin-users', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'x-session-token': sessionToken || '' },
+                    body: JSON.stringify({ action: 'reset_password', id: userId, password: DEFAULT_PASSWORD })
+                });
+                if (!res.ok) {
+                    const err = await res.json().catch(() => ({}));
+                    throw new Error(err.error || ('HTTP ' + res.status));
+                }
+                await writeLog('Account Settings', 'Reset Password', '', '1', '', username, 'Password direset ke default');
+                showToast('Password <b>' + esc(username) + '</b> berhasil direset ke default', 'success');
+            } catch (error) {
+                hideLoading();
+                showToast('Gagal reset password: ' + error.message, 'error');
+                console.error(error);
+            }
+        }
+
         async function saveAccountRoles() {
             const changes = Object.entries(accountRoleChanges);
             if (changes.length === 0) { showToast('Tidak ada perubahan', 'warning'); return; }
@@ -5120,7 +4991,12 @@
             showLoading();
             try {
                 for (const [userId, newRole] of changes) {
-                    await sbUpdate('users', 'id', userId, { role: newRole });
+                    const res = await fetch(EDGE_URL + '/admin-users', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'x-session-token': sessionToken || '' },
+                        body: JSON.stringify({ action: 'update_role', id: parseInt(userId), role: newRole })
+                    });
+                    if (!res.ok) throw new Error('HTTP ' + res.status + ' saat update user ' + userId);
                 }
                 const adminChange = changes.find(([id]) => parseInt(id) === appState.currentUser?.id);
                 if (adminChange) appState.currentUser.role = adminChange[1];
