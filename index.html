@@ -1771,6 +1771,17 @@
                         <button class="btn btn-ghost btn-sm" onclick="toggleAddMasterForm()" id="btnToggleAddMaster"><i class="fas fa-chevron-down"></i> Buka Form</button>
                     </div>
                     <div id="addMasterForm" style="display:none;">
+                        <div style="margin-bottom:16px; padding:12px; border:1px dashed var(--border-strong); border-radius:var(--radius-md); background:var(--surface-1);">
+                            <span class="text-label" style="display:block; margin-bottom:8px;"><i class="fas fa-pen-to-square"></i> Edit Barang Existing (opsional)</span>
+                            <div style="display:flex; gap:8px; align-items:center;">
+                                <div style="position:relative; flex:1;">
+                                    <input type="text" id="editMasterSearch" placeholder="Cari kode / nama barang untuk diedit..." oninput="onEditMasterSearch()" autocomplete="off" style="width:100%;">
+                                    <div class="sd-dropdown-list" id="editMasterDropdown" style="max-height:220px;"></div>
+                                </div>
+                                <button type="button" class="btn btn-warning btn-sm" id="btnCancelMasterEdit" style="display:none;" onclick="cancelMasterEdit()"><i class="fas fa-times"></i> Batal Edit</button>
+                            </div>
+                            <div id="masterEditBadge" style="display:none; margin-top:8px; font-size:12px; color:var(--warning); font-weight:600;"></div>
+                        </div>
                         <div class="form-grid" style="margin-bottom:16px;">
                             <div class="form-group" style="margin-bottom:0;">
                                 <label>Nama Barang</label>
@@ -3302,8 +3313,9 @@
             const keterangan = document.getElementById('entryKeterangan').value || '-';
             if (!kodeMutasi) { showToast('Pilih kode mutasi!', 'error'); return; }
 
-            // Validasi stok untuk kode mutasi keluar/rusak/permanen
-            if (kodeMutasi === 2 || kodeMutasi === 3 || kodeMutasi === 4) {
+            // Validasi stok untuk kode mutasi keluar/rusak/permanen (mode tambah saja; mode edit pakai validasi refund-aware di cabang edit)
+            const editActive = appState.isEditMode && appState.editingRowIds.length > 0;
+            if ((kodeMutasi === 2 || kodeMutasi === 3 || kodeMutasi === 4) && !editActive) {
                 for (const item of items) {
                     const masterItem = appState.namaBarangList.find(m => m.kode === item.kodeBarang);
                     if (masterItem && masterItem.tersedia <= 0) {
@@ -3581,6 +3593,10 @@
         }
 
         function resetAddMasterForm() {
+            masterEditMode = null;
+            const kodeEl = document.getElementById('inputMasterKode'); if (kodeEl) kodeEl.disabled = false;
+            document.getElementById('btnCancelMasterEdit').style.display = 'none';
+            const b=document.getElementById('masterEditBadge'); if(b){b.style.display='none'; b.innerHTML='';}
             document.getElementById('inputMasterNama').value = '';
             document.getElementById('inputMasterKode').value = '';
             document.getElementById('inputMasterLokasi').value = '';
@@ -3678,6 +3694,7 @@
         }
 
         function previewMasterKode() {
+            if (masterEditMode) return;
             const nama = document.getElementById('inputMasterNama').value.trim();
             // Cek apakah nama ini udah ada di masterBarang
             const existing = appState.masterBarang.find(i => i.nama_barang && i.nama_barang.toLowerCase() === nama.toLowerCase());
@@ -3693,6 +3710,7 @@
         }
 
         function onMasterNamaSearch() {
+            if (masterEditMode) return;
             const input = document.getElementById('inputMasterNama');
             const dropdown = document.getElementById('masterNamaDropdown');
             const query = input.value.toLowerCase().trim();
@@ -3742,9 +3760,94 @@
             if (dropdown && input && !dropdown.contains(e.target) && e.target !== input) {
                 dropdown.classList.remove('show');
             }
+            const dd2 = document.getElementById('editMasterDropdown');
+            const inp2 = document.getElementById('editMasterSearch');
+            if (dd2 && inp2 && !dd2.contains(e.target) && e.target !== inp2) {
+                dd2.classList.remove('show');
+            }
         });
 
+        // ============================================
+        // EDIT MASTER BARANG (mode edit di form tambah)
+        // ============================================
+        let masterEditMode = null;
+
+        function onEditMasterSearch() {
+            const input = document.getElementById('editMasterSearch');
+            const dd = document.getElementById('editMasterDropdown');
+            const q = input.value.toLowerCase().trim();
+            dd.innerHTML = '';
+            if (!q) { dd.classList.remove('show'); return; }
+            const words = q.split(/\s+/);
+            const hits = appState.masterBarang.filter(i => {
+                const text = ((i.kode_barang || '') + ' ' + (i.nama_barang || '')).toLowerCase();
+                return words.every(w => text.includes(w));
+            }).slice(0, 15);
+            if (hits.length === 0) { dd.innerHTML = '<div class="dropdown-item" style="color:var(--text-muted);cursor:default;">Tidak ditemukan</div>'; dd.classList.add('show'); return; }
+            hits.forEach(i => {
+                const div = document.createElement('div'); div.className = 'dropdown-item'; div.style.cursor = 'pointer';
+                div.innerHTML = '<strong style="color:var(--primary);font-family:var(--font-mono);">' + esc(i.kode_barang) + '</strong> ' + esc(i.nama_barang) + ' <span style="color:var(--text-muted);font-size:11px;float:right;">paten: ' + (parseInt(i.stok_paten) || 0) + ' | tersedia: ' + (parseInt(i.tersedia) || 0) + '</span>';
+                div.onclick = () => loadMasterIntoForm(i);
+                dd.appendChild(div);
+            });
+            dd.classList.add('show');
+        }
+
+        function loadMasterIntoForm(row) {
+            masterEditMode = row;
+            document.getElementById('inputMasterNama').value = row.nama_barang || '';
+            const kodeEl = document.getElementById('inputMasterKode');
+            kodeEl.value = row.kode_barang || ''; kodeEl.disabled = true;
+            document.getElementById('inputMasterLokasi').value = row.lokasi_barang || '';
+            document.getElementById('inputMasterPaten').value = parseInt(row.stok_paten) || 0;
+            document.getElementById('inputMasterSN').value = row.serial_number || '';
+            document.getElementById('inputMasterFA').value = row.fa_number || '';
+            document.getElementById('inputMasterTersedia').value = parseInt(row.tersedia) || 0;
+            document.getElementById('editMasterSearch').value = '';
+            document.getElementById('editMasterDropdown').classList.remove('show');
+            document.getElementById('masterNamaDropdown').classList.remove('show');
+            document.getElementById('btnCancelMasterEdit').style.display = 'inline-flex';
+            const badge = document.getElementById('masterEditBadge');
+            badge.style.display = 'block';
+            badge.innerHTML = '<i class="fas fa-pen"></i> Mode Edit: <b>' + esc(row.kode_barang) + '</b> — ' + esc(row.nama_barang) + ' (kode terkunci)';
+        }
+
+        function cancelMasterEdit() {
+            resetAddMasterForm();
+        }
+
+        async function saveMasterEdit() {
+            const orig = masterEditMode;
+            const vals = {
+                nama_barang: document.getElementById('inputMasterNama').value.trim(),
+                lokasi_barang: document.getElementById('inputMasterLokasi').value,
+                serial_number: document.getElementById('inputMasterSN').value.trim() || 'Tidak ada SN',
+                fa_number: document.getElementById('inputMasterFA').value.trim() || 'Tidak ada FA',
+                stok_paten: parseInt(document.getElementById('inputMasterPaten').value) || 0,
+                tersedia: parseInt(document.getElementById('inputMasterTersedia').value) || 0
+            };
+            if (!vals.nama_barang || !vals.lokasi_barang) { showToast('Nama dan lokasi wajib diisi!', 'warning'); return; }
+            const labels = { nama_barang: 'Nama', lokasi_barang: 'Lokasi', serial_number: 'SN', fa_number: 'FA', stok_paten: 'Stok Paten', tersedia: 'Tersedia' };
+            const changes = []; const upd = {};
+            Object.keys(vals).forEach(k => {
+                const ov = String(orig[k] ?? ''); const nv = String(vals[k]);
+                if (ov !== nv) { changes.push(labels[k] + ': ' + ov + ' → ' + nv); upd[k] = vals[k]; }
+            });
+            if (changes.length === 0) { showToast('Tidak ada perubahan.', 'warning'); return; }
+            if (!(await showCustomConfirm('Edit Master Barang', '<b>' + esc(orig.kode_barang) + '</b><br>' + changes.join('<br>') + '<br><br>Simpan perubahan?'))) return;
+            showLoading();
+            try {
+                await sbUpdate('master_barang', 'kode_barang', orig.kode_barang, upd);
+                await writeLog('Master Barang', 'Edit Barang', orig.kode_barang, '0', '0', vals.nama_barang, changes.join(' | '));
+                hideLoading();
+                showToast('Perubahan tersimpan: ' + changes.length + ' field.', 'success');
+                cancelMasterEdit();
+                loadMasterBarang();
+            } catch (error) { hideLoading(); showToast('Gagal menyimpan perubahan.', 'error'); console.error(error); }
+        }
+
         async function submitAddMaster() {
+            if (masterEditMode) { await saveMasterEdit(); return; }
             const nama = document.getElementById('inputMasterNama').value.trim();
             const kode = document.getElementById('inputMasterKode').value.trim();
             const lokasi = document.getElementById('inputMasterLokasi').value;
@@ -3761,34 +3864,9 @@
             const existing = appState.masterBarang.find(i => i.kode_barang === kode || (i.nama_barang && i.nama_barang.toLowerCase() === nama.toLowerCase()));
 
             if (existing) {
-                // UPDATE: barang sudah ada, update stok paten (dan lokasi kalau beda)
-                const oldPaten = parseInt(existing.stok_paten) || 0;
-                const oldLokasi = existing.lokasi_barang || '';
-                if (paten === oldPaten && lokasi === oldLokasi) {
-                    showToast('Tidak ada perubahan.', 'warning');
-                    return;
-                }
-                let msg = `Update <b>${nama}</b> (${kode})`;
-                if (paten !== oldPaten) msg += `<br>Stok Paten: ${oldPaten} → <b>${paten}</b>`;
-                if (lokasi !== oldLokasi) msg += `<br>Lokasi: ${oldLokasi} → <b>${lokasi}</b>`;
-                if (!(await showCustomConfirm('Update Barang', msg + '<br><br>Lanjutkan?'))) return;
-
-                showLoading();
-                try {
-                    const updateData = {};
-                    if (paten !== oldPaten) updateData.stok_paten = paten;
-                    if (lokasi !== oldLokasi) updateData.lokasi_barang = lokasi;
-                    await sbUpdate('master_barang', 'kode_barang', kode, updateData);
-                    await writeLog('Master Barang', 'Update Paten', kode, '0', '0', nama, `Paten: ${oldPaten} → ${paten}` + (lokasi !== oldLokasi ? ` | Lokasi: ${oldLokasi} → ${lokasi}` : ''));
-                    hideLoading();
-                    showToast(`${nama} berhasil diupdate!`, 'success');
-                    resetAddMasterForm();
-                    loadMasterBarang();
-                } catch (error) {
-                    hideLoading();
-                    showToast('Terjadi kesalahan. Silakan coba lagi.', 'error'); console.error(error);
-                }
-            } else {
+                showToast('Barang sudah ada. Gunakan kolom "Edit Barang Existing" di atas untuk mengubah datanya.', 'warning');
+                return;
+            }
                 // INSERT: barang baru
                 const dupKode = appState.masterBarang.find(i => i.kode_barang === kode);
                 if (dupKode) { showToast('Kode ' + kode + ' sudah dipakai untuk "' + dupKode.nama_barang + '"!', 'error'); return; }
@@ -3817,7 +3895,6 @@
                     hideLoading();
                     showToast('Terjadi kesalahan. Silakan coba lagi.', 'error'); console.error(error);
                 }
-            }
         }
 
         // ============================================
