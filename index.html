@@ -1501,7 +1501,7 @@
                 <div class="top-bar-right">
                     <span class="topbar-date-pill"><i class="fas fa-calendar-day"></i><span id="currentDateDisplay">Hari Ini</span></span>
 
-                    <button class="btn btn-ghost btn-sm" onclick="loadDashboard()" title="Muat ulang data">
+                    <button class="btn btn-ghost btn-sm" onclick="refreshAllCache()" title="Muat ulang data dari server (abaikan cache)">
                         <i class="fas fa-rotate"></i>
                     </button>
                 </div>
@@ -1923,6 +1923,7 @@
                         <i class="fas fa-search" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
                         <input type="text" id="searchTransaksi" placeholder="Cari tiket, kode, atau nama..." oninput="filterTransaksi()" style="padding-left:44px;">
                     </div>
+                    <div id="transaksiCapNote" style="display:none; margin-top:12px; padding:12px 16px; background:var(--info-bg); color:var(--info); border:1px solid rgba(56,189,248,0.3); border-radius:var(--radius-sm); font-size:13px; font-weight:500; line-height:1.5;"></div>
                     <div class="table-container adaptive">
                         <table>
                             <thead><tr><th>Tanggal</th><th>Tiket</th><th>Peminjam</th><th>Kode</th><th>Nama Barang</th><th>Qty</th><th>Mutasi</th><th>Keterangan</th></tr></thead>
@@ -2335,7 +2336,9 @@
                 body: JSON.stringify({ action: 'insert', table, data: rows })
             });
             if (!res.ok) throw new Error('API error: ' + res.status);
-            return res.json();
+            const out = await res.json();
+            invalidateTableCache(table); // data tabel ini berubah -> cache tidak sah lagi
+            return out;
         }
         async function sbUpdate(table, matchCol, matchVal, data) {
             const res = await fetch(EDGE_URL + '/api-proxy', {
@@ -2344,7 +2347,9 @@
                 body: JSON.stringify({ action: 'update', table, data: { matchCol, matchVal, updateData: data } })
             });
             if (!res.ok) throw new Error('API error: ' + res.status);
-            return res.json();
+            const out = await res.json();
+            invalidateTableCache(table); // data tabel ini berubah -> cache tidak sah lagi
+            return out;
         }
 
         function parseParamString(paramStr) {
@@ -2374,6 +2379,112 @@
             currentUser: null,
             sortMaster: { col: '', asc: true }, sortStock: { col: '', asc: true }
         };
+        
+        /* ==================================================================
+           CACHE QUERY (percepat perpindahan menu)
+           ------------------------------------------------------------------
+           Kunci cache = tabel + params, BUKAN nama tabel saja. Satu tabel bisa
+           diambil dengan kolom/filter berbeda (mis. master_barang diambil lengkap
+           oleh Master Barang, tetapi hanya 2 kolom oleh kamus transaksi), jadi
+           menyatukan keduanya akan menghasilkan data yang salah.
+
+           PENTING — yang di-cache HANYA query daftar/menu lewat sbGetSWR().
+           Query di alur tulis (baca stok sebelum update, cari tiket untuk diedit,
+           alur pengembalian) tetap memakai sbGet() tanpa cache supaya perhitungan
+           stok selalu memakai data terbaru.
+
+           POLA: stale-while-revalidate.
+           Data cache ditampilkan SEGERA (menu terasa instan), lalu server ditanya
+           ulang di latar belakang. Bila hasilnya berbeda, cache diperbarui dan
+           tampilan dirender ulang. Dengan begitu data tidak pernah basi lebih dari
+           satu jeda jaringan — penting karena aplikasi dipakai banyak orang
+           sekaligus dan perubahan pengguna lain tidak memicu invalidasi lokal.
+           ================================================================== */
+        const CACHE_TTL = 300000;          // 5 menit: buang cache yang tidak terpakai
+        const REVALIDATE_MIN_INTERVAL = 8000; // jangan tanya server lebih sering dari ini
+        const queryCache = new Map();      // key -> { data, ts, lastRevalidate }
+
+        function cacheKey(table, params) { return table + '|' + (params || ''); }
+
+        /* Kembalikan data cache bila masih ada, atau null. */
+        function getCached(table, params) {
+            const k = cacheKey(table, params);
+            const hit = queryCache.get(k);
+            if (!hit) return null;
+            if (Date.now() - hit.ts > CACHE_TTL) { queryCache.delete(k); return null; }
+            return hit.data;
+        }
+
+        function storeCache(table, params, rows) {
+            const k = cacheKey(table, params);
+            const prev = queryCache.get(k);
+            queryCache.set(k, {
+                data: rows,
+                ts: Date.now(),
+                // Jaga jeda revalidasi agar bolak-balik menu cepat tidak memboroskan request.
+                lastRevalidate: prev ? prev.lastRevalidate : 0
+            });
+        }
+
+        /* Bandingkan dua hasil query secara murah namun andal. */
+        function sameRows(a, b) {
+            if (!Array.isArray(a) || !Array.isArray(b)) return false;
+            if (a.length !== b.length) return false;
+            try { return JSON.stringify(a) === JSON.stringify(b); }
+            catch (e) { return false; }
+        }
+
+        /* Ambil data untuk tampilan menu.
+           onRefresh dipanggil bila data latar belakang berbeda, agar tampilan
+           diperbarui. Melempar error HANYA bila tidak ada cache sama sekali,
+           sehingga kegagalan jaringan tidak merusak menu yang sudah berisi data. */
+        async function sbGetSWR(table, params, onRefresh) {
+            const cached = getCached(table, params);
+
+            if (cached) {
+                const hit = queryCache.get(cacheKey(table, params));
+                const due = Date.now() - (hit.lastRevalidate || 0) > REVALIDATE_MIN_INTERVAL;
+                if (due) {
+                    hit.lastRevalidate = Date.now();
+                    sbGet(table, params).then(fresh => {
+                        const rows = Array.isArray(fresh) ? fresh : [];
+                        if (!sameRows(rows, cached)) {
+                            storeCache(table, params, rows);
+                            if (typeof onRefresh === 'function') onRefresh();
+                        }
+                    }).catch(err => console.warn('Revalidasi latar gagal:', err));
+                }
+                return cached.slice();
+            }
+
+            const data = await sbGet(table, params);
+            const rows = Array.isArray(data) ? data : [];
+            storeCache(table, params, rows);
+            const hit = queryCache.get(cacheKey(table, params));
+            if (hit) hit.lastRevalidate = Date.now();
+            return rows.slice();
+        }
+
+        /* Buang semua cache milik satu tabel (dipanggil setelah tulis data). */
+        function invalidateTableCache(table) {
+            const prefix = table + '|';
+            for (const key of queryCache.keys()) {
+                if (key.startsWith(prefix)) queryCache.delete(key);
+            }
+            // Kamus kode transaksi berasal dari master_barang. Bila master_barang
+            // berubah, kamus harus ikut dibuang agar barang baru ikut dikenali.
+            if (table === 'master_barang') transaksiKamus = null;
+        }
+
+        /* Buang seluruh cache + paksa muat ulang halaman aktif. */
+        function refreshAllCache() {
+            queryCache.clear();
+            transaksiKamus = null;
+            const active = document.querySelector('.page.active');
+            const pageId = active ? active.id.replace('page-', '') : 'dashboard';
+            showToast('Memuat ulang data...', 'info');
+            showPage(pageId);
+        }
         function sortData(data, col, asc) {
             return [...data].sort((a, b) => {
                 let va = (a[col] || ''), vb = (b[col] || '');
@@ -2663,7 +2774,8 @@
         function showPage(page, el) {
             document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
             if (el) el.classList.add('active');
-            if(!el && page) { let menuItem = Array.from(document.querySelectorAll('.menu-item')).find(item => item.getAttribute('onclick').includes(page)); if(menuItem) menuItem.classList.add('active'); }
+            let resolvedItem = el || null;
+            if(!el && page) { resolvedItem = Array.from(document.querySelectorAll('.menu-item')).find(item => item.getAttribute('onclick').includes(page)) || null; if(resolvedItem) resolvedItem.classList.add('active'); }
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(`page-${page}`).classList.add('active');
             
@@ -2671,8 +2783,9 @@
             const breadcrumbCurrent = document.querySelector('#pageTitle .current');
             breadcrumbCurrent.classList.add('fading');
             setTimeout(() => {
-                let pageName = el ? el.querySelector('.menu-label-text').innerText : page;
-                breadcrumbCurrent.innerText = pageName;
+                // Pakai label menu bila tersedia; jatuh ke id halaman sebagai cadangan.
+                const labelEl = resolvedItem && resolvedItem.querySelector('.menu-label-text');
+                breadcrumbCurrent.innerText = labelEl ? labelEl.innerText : page;
                 breadcrumbCurrent.classList.remove('fading');
             }, 150);
 
@@ -2745,6 +2858,18 @@
         // Dashboard card click helpers
         let stockFilter = '';
         let transaksiDateFilter = null;
+        // --- Riwayat Transaksi: state pencarian jalur server ---
+        // (detail alasan ada di komentar blok "RIWAYAT TRANSAKSI" di bawah)
+        const TRANSAKSI_CAP = 1000;
+        let transaksiCapped = false;
+        let transaksiCurrentRows = [];
+        let transaksiSearchTerm = '';
+        let transaksiServerQuery = '';
+        let transaksiServerRows = [];
+        let transaksiServerNote = '';
+        let transaksiSearchTimer = null;
+        let transaksiSearchSeq = 0;
+        let transaksiKamus = null;
         function dashGoTransaksi() {
             const period = getDashboardPeriod();
             transaksiDateFilter = { start: period.start, end: period.end };
@@ -2756,14 +2881,31 @@
         }
 
         async function loadDashboard() {
-            showLoading();
+            // Jangan tampilkan overlay bila semua data masih ada di cache,
+            // supaya perpindahan menu terasa instan.
+            const qMaster = 'select=*';
+            const qEntry  = 'select=*&order=id.desc&limit=10000';
+            const qLog    = 'select=*&order=id.desc&limit=1000';
+            const allCached = getCached('master_barang', qMaster)
+                           && getCached('data_entry', qEntry)
+                           && getCached('log', qLog);
+            if (!allCached) showLoading();
             try {
                 const period = getDashboardPeriod();
-                // 1. Fetch Parallel Data
+                // 1. Fetch Parallel Data (cache + revalidasi latar belakang)
+                //    refreshOnce mencegah render ulang berulang tanpa akhir bila
+                //    beberapa query melaporkan perubahan pada saat yang sama.
+                let refreshDone = false;
+                const refresh = () => {
+                    if (refreshDone) return;
+                    if (!document.getElementById('page-dashboard').classList.contains('active')) return;
+                    refreshDone = true;
+                    setTimeout(() => { refreshDone = false; loadDashboard(); }, 0);
+                };
                 const [masterData, entryData, logData] = await Promise.all([
-                    sbGet('master_barang', 'select=*'),
-                    sbGet('data_entry', 'select=*&order=id.desc&limit=10000'), 
-                    sbGet('log', 'select=*&order=id.desc&limit=1000') 
+                    sbGetSWR('master_barang', qMaster, refresh),
+                    sbGetSWR('data_entry', qEntry, refresh), 
+                    sbGetSWR('log', qLog, refresh) 
                 ]);
                 hideLoading();
 
@@ -3134,12 +3276,35 @@
         // OTHER PAGES LOGIC (UNCHANGED)
         // ============================================
         async function loadDataEntry() {
-            showLoading();
+            const q = 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc';
+            if (!getCached('master_barang', q)) showLoading();
             try {
-                const list = await sbGet('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc'); hideLoading();
-                appState.namaBarangList = list.map(item => ({ kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang, tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0, rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0 }));
+                // onRefresh TIDAK memanggil loadDataEntry() lagi: fungsi itu menjalankan
+                // resetToNewEntry(), yang akan menghapus isian form saat user sedang
+                // memasukkan data. Di sini hanya daftar barang yang disegarkan.
+                const list = await sbGetSWR('master_barang', q, () => refreshNamaBarangList());
+                hideLoading();
+                applyNamaBarangList(list);
                 resetToNewEntry();
             } catch (error) { hideLoading(); showToast('Gagal memuat data barang', 'error'); }
+        }
+
+        function applyNamaBarangList(list) {
+            appState.namaBarangList = (Array.isArray(list) ? list : []).map(item => ({
+                kode: item.kode_barang, nama: item.nama_barang, lokasi: item.lokasi_barang,
+                tersedia: parseInt(item.tersedia) || 0, stokPaten: parseInt(item.stok_paten) || 0,
+                rusak: parseInt(item.rusak) || 0, permanen: parseInt(item.permanen) || 0
+            }));
+        }
+
+        /* Segarkan daftar barang tanpa menyentuh form yang sedang diisi. */
+        async function refreshNamaBarangList() {
+            const q = 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc';
+            try {
+                const list = await sbGet('master_barang', q);
+                applyNamaBarangList(list);
+                storeCache('master_barang', q, Array.isArray(list) ? list : []);
+            } catch (e) { console.warn('Gagal menyegarkan daftar barang:', e); }
         }
 
         async function searchTicket() {
@@ -3477,14 +3642,28 @@
             } else { warning.style.display = 'none'; }
         }
 
+        /* Dipanggil saat kode mutasi berganti: perbarui peringatan stok untuk semua item.
+           Sebelumnya onchange memanggil fungsi ini tetapi definisinya tidak ada,
+           sehingga memicu ReferenceError dan peringatan stok tidak ikut berubah. */
+        function updateAllItemWarnings() {
+            Object.keys(appState.itemData || {}).forEach(id => updateItemWarning(id));
+        }
+
         document.addEventListener('click', function(e) { document.querySelectorAll('.sd-dropdown-list').forEach(dd => { const parentRow = dd.closest('.item-row'); if (parentRow && !parentRow.contains(e.target)) dd.classList.remove('show'); }); });
 
         // ============================================
         // MASTER BARANG
         // ============================================
         async function loadMasterBarang() {
-            showLoading();
-            try { const data = await sbGet('master_barang', 'select=*&kode_barang.asc'); hideLoading(); appState.masterBarang = data; renderMasterBarang(data); }
+            const q = 'select=*&kode_barang.asc';
+            // Lewati overlay bila data masih ada di cache agar menu terasa instan.
+            if (!getCached('master_barang', q)) showLoading();
+            try {
+                const data = await sbGetSWR('master_barang', q, () => {
+                    if (document.getElementById('page-masterBarang').classList.contains('active')) loadMasterBarang();
+                });
+                hideLoading(); appState.masterBarang = data; renderMasterBarang(data);
+            }
             catch (error) { hideLoading(); showToast('Gagal memuat master barang', 'error'); }
         }
 
@@ -3870,8 +4049,14 @@
         // STOCK GUDANG
         // ============================================
         async function loadStockGudang() {
-            showLoading();
-            try { const data = await sbGet('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; filterStockGudang(); }
+            const q = 'select=kode_barang,nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc';
+            if (!getCached('master_barang', q)) showLoading();
+            try {
+                const data = await sbGetSWR('master_barang', q, () => {
+                    if (document.getElementById('page-stockGudang').classList.contains('active')) loadStockGudang();
+                });
+                hideLoading(); appState.stockGudang = data; filterStockGudang();
+            }
             catch (error) { hideLoading(); showToast('Gagal memuat stock gudang', 'error'); }
         }
 
@@ -3925,9 +4110,14 @@
         // STOCK OPNAME
         // ============================================
         async function loadStockOpname() {
-            showLoading();
+            const q = 'select=lokasi_barang&lokasi_barang=neq.&order=lokasi_barang.asc';
+            if (!getCached('master_barang', q)) showLoading();
             try {
-                const data = await sbGet('master_barang', 'select=lokasi_barang&lokasi_barang=neq.&order=lokasi_barang.asc'); hideLoading();
+                // Stock Opname adalah permukaan edit. onRefresh sengaja dikosongkan
+                // agar revalidasi latar belakang TIDAK merender ulang tabel saat user
+                // sedang mengubah status opname. Cache tetap disegarkan diam-diam, dan
+                // saveOpnameStatus() membatalkan cache master_barang setelah menyimpan.
+                const data = await sbGetSWR('master_barang', q); hideLoading();
                 const lokasiSet = [...new Set(data.map(r => r.lokasi_barang).filter(Boolean))];
                 const select = document.getElementById('opnameLokasi'); select.innerHTML = '<option value="">-- Pilih Lokasi --</option>';
                 lokasiSet.forEach(lok => { const option = document.createElement('option'); option.value = lok; option.textContent = lok; select.appendChild(option); });
@@ -3945,7 +4135,8 @@
             }
             showLoading();
             try {
-                const data = await sbGet('master_barang', `select=*&lokasi_barang=eq.${encodeURIComponent(lokasi)}&order=kode_barang.asc`); hideLoading();
+                const q = `select=*&lokasi_barang=eq.${encodeURIComponent(lokasi)}&order=kode_barang.asc`;
+                const data = await sbGetSWR('master_barang', q); hideLoading();
                 if (!data || data.length === 0) {
                     document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada barang di lokasi ini</td></tr>';
                     document.getElementById('btnSaveOpname').style.display = 'none'; document.getElementById('opnameFilterBar').style.display = 'none'; document.getElementById('btnScanBarcode').disabled = true; appState.opnameData = [];
@@ -4280,11 +4471,257 @@
         // ============================================
         // RIWAYAT TRANSAKSI
         // ============================================
+        /*
+           KETERBATASAN BACKEND (sudah diverifikasi lewat pengujian langsung):
+           - parseParamString hanya meneruskan filter ber-operator `eq.`;
+             operator lain (ilike/lt/gte/offset) dibuang sebelum request dikirim.
+           - Setiap request dibatasi 1000 baris, padahal data_entry berisi ±4200 baris.
+             Jadi yang termuat ke browser hanya 1000 transaksi terbaru.
+           - Filter `eq.` TIDAK ikut terpotong batas itu: ia mampu mengambil baris lama.
+             Sifatnya case-sensitive dan hanya menerima nilai persis.
+
+           STRATEGI PENCARIAN:
+           1. Teks bebas disaring di 1000 baris yang sudah termuat (instan, tanpa request).
+           2. Dilengkapi pencarian exact ke server (kode barang / nomor tiket) supaya
+              transaksi lama tetap ditemukan. Nilai yang diketik dinormalkan lewat
+              kamus master_barang agar tidak peka huruf besar/kecil.
+           3. Hasil keduanya digabung dan di-dedupe berdasarkan id.
+        */
         async function loadTransaksi() {
             transaksiDateFilter = null;
-            showLoading();
-            try { const data = await sbGet('data_entry', 'select=*,id&order=id.desc'); hideLoading(); appState.dataEntry = data; renderTransaksi(data); }
+            transaksiResetSearchState();
+            const searchEl = document.getElementById('searchTransaksi');
+            if (searchEl) searchEl.value = '';
+            const q = 'select=*,id&order=id.desc';
+            // Lewati overlay bila data masih ada di cache.
+            if (!getCached('data_entry', q)) showLoading();
+            try {
+                // onRefresh memakai transaksiRefreshData(), BUKAN loadTransaksi(),
+                // karena loadTransaksi() mengosongkan kotak pencarian dan filter
+                // periode yang sedang dipakai user.
+                const data = await sbGetSWR('data_entry', q, () => {
+                    if (document.getElementById('page-transaksi').classList.contains('active')) transaksiRefreshData();
+                });
+                hideLoading();
+                appState.dataEntry = Array.isArray(data) ? data : [];
+                // Edge function api-proxy memuat data secara berhalaman (range),
+                // sehingga lebih dari 1000 baris bisa termuat. Jika hasil melampaui
+                // batas lama, pagination terbukti bekerja -> data tidak terpotong.
+                // Jika hasil TEPAT di batas, kita tidak bisa memastikan -> tampilkan
+                // peringatan sebagai langkah aman.
+                transaksiCapped = appState.dataEntry.length === TRANSAKSI_CAP;
+                transaksiCurrentRows = appState.dataEntry;
+                updateTransaksiNote();
+                renderTransaksi(appState.dataEntry);
+            }
             catch (error) { hideLoading(); showToast('Gagal memuat transaksi', 'error'); }
+        }
+
+        /* Segarkan data transaksi di latar belakang TANPA menghapus kata pencarian
+           atau filter periode yang sedang dipakai user. */
+        async function transaksiRefreshData() {
+            const q = 'select=*,id&order=id.desc';
+            try {
+                const data = await sbGet('data_entry', q);
+                appState.dataEntry = Array.isArray(data) ? data : [];
+                storeCache('data_entry', q, appState.dataEntry);
+                transaksiCapped = appState.dataEntry.length === TRANSAKSI_CAP;
+                updateTransaksiNote();
+                const box = document.getElementById('searchTransaksi');
+                if (box && box.value.trim()) {
+                    filterTransaksi();          // hormati pencarian yang sedang aktif
+                } else {
+                    const base = transaksiBaseRows();
+                    transaksiCurrentRows = base;
+                    renderTransaksi(base);
+                }
+            } catch (e) { console.warn('Gagal menyegarkan transaksi:', e); }
+        }
+
+        /* Kamus master_barang: dipakai menormalkan input user menjadi kode kanonik.
+           master_barang berisi 906 baris sehingga termuat lengkap tanpa terpotong. */
+        async function transaksiEnsureKamus() {
+            if (transaksiKamus) return transaksiKamus;
+            try {
+                const list = await sbGet('master_barang', 'select=kode_barang,nama_barang');
+                const kodeMap = new Map();  // lowercase kode  -> kode kanonik
+                const namaMap = new Map();  // lowercase nama  -> kode kanonik
+                (Array.isArray(list) ? list : []).forEach(it => {
+                    const k = String(it.kode_barang || '').trim();
+                    if (!k) return;
+                    kodeMap.set(k.toLowerCase(), k);
+                    const n = String(it.nama_barang || '').trim().toLowerCase();
+                    if (n && !namaMap.has(n)) namaMap.set(n, k);
+                });
+                transaksiKamus = { kodeMap, namaMap };
+            } catch (e) {
+                transaksiKamus = { kodeMap: new Map(), namaMap: new Map(), gagal: true };
+            }
+            return transaksiKamus;
+        }
+
+        // --- Hybrid filter: local partial match + server exact-match by kode/tiket/peminjam ---
+        function transaksiResetSearchState() {
+            if (transaksiSearchTimer) { clearTimeout(transaksiSearchTimer); transaksiSearchTimer = null; }
+            transaksiSearchSeq++;            // batalkan request lama yang masih terbang
+            transaksiSearchTerm = '';
+            transaksiServerQuery = '';
+            transaksiServerRows = [];
+            transaksiServerNote = '';
+            appState.transaksiPage = 1;
+        }
+
+        /* Beri tahu user bahwa hanya 1000 transaksi terbaru yang termuat, dan
+           tampilkan hasil pencarian lanjutan ke server bila ada.
+           Nilai yang berasal dari input user wajib di-esc() karena masuk innerHTML. */
+        function updateTransaksiNote(withServerResult) {
+            const noteEl = document.getElementById('transaksiCapNote');
+            if (!noteEl) return;
+
+            let html = '';
+
+            if (transaksiCapped) {
+                html += '<i class="fas fa-circle-info"></i> Hanya <b>' + TRANSAKSI_CAP +
+                        ' transaksi terbaru</b> yang termuat (batas server). Ketik <b>kode barang persis</b> ' +
+                        '(mis. <code>Converter-104</code>) atau <b>nomor tiket</b> untuk menjangkau transaksi lama.';
+            }
+
+            if (withServerResult && transaksiServerQuery) {
+                if (html) html += '<br>';
+                html += '<i class="fas fa-database"></i> Pencarian server untuk <b>' +
+                        esc(transaksiServerQuery) + '</b>: ' + esc(transaksiServerNote || '');
+            }
+
+            if (html) {
+                noteEl.innerHTML = html;
+                noteEl.style.display = 'block';
+            } else {
+                noteEl.innerHTML = '';
+                noteEl.style.display = 'none';
+            }
+        }
+
+        /* Baris dasar untuk tampilan: data termuat, tetap tunduk pada filter periode
+           dashboard (perilaku ini sama seperti filterTransaksi versi sebelumnya). */
+        function transaksiBaseRows() {
+            const rows = Array.isArray(appState.dataEntry) ? appState.dataEntry : [];
+            if (!transaksiDateFilter) return rows;
+            return rows.filter(t => {
+                if (!t.tanggal) return false;
+                const d = parseDateSafely(t.tanggal);
+                return !Number.isNaN(d.getTime()) && d >= transaksiDateFilter.start && d < transaksiDateFilter.end;
+            });
+        }
+
+        /* Saring baris yang sudah termuat secara lokal (instan, tanpa jaringan). */
+        function transaksiLocalFilter(searchInput) {
+            return transaksiBaseRows().filter(t =>
+                (t.kode_barang || '').toLowerCase().includes(searchInput) ||
+                (t.nama_barang || '').toLowerCase().includes(searchInput) ||
+                (t.keterangan || '').toLowerCase().includes(searchInput) ||
+                (t.nama_peminjam || '').toLowerCase().includes(searchInput)
+            );
+        }
+
+        function filterTransaksi() {
+            appState.transaksiPage = 1;
+            const searchInput = document.getElementById('searchTransaksi').value.toLowerCase().trim();
+
+            // Selalu batalkan pencarian server yang tertunda/dalam perjalanan.
+            if (transaksiSearchTimer) { clearTimeout(transaksiSearchTimer); transaksiSearchTimer = null; }
+            transaksiSearchSeq++;
+
+            if (!searchInput) {
+                transaksiResetSearchState();
+                const base = transaksiBaseRows();
+                transaksiCurrentRows = base;
+                updateTransaksiNote();
+                renderTransaksi(base);
+                return;
+            }
+
+            // 1) Saring lokal langsung supaya tabel tetap responsif saat mengetik.
+            const localData = transaksiLocalFilter(searchInput);
+            transaksiCurrentRows = localData;
+            renderTransaksi(localData);
+
+            // 2) Lengkapi dengan pencarian exact ke server (di-debounce, karena
+            //    hanya inilah bagian yang butuh jaringan dan bisa menjangkau data lama).
+            if (transaksiLooksExact(searchInput)) {
+                transaksiSearchTimer = setTimeout(() => {
+                    transaksiFetchFromServer(searchInput);
+                }, 500);
+            }
+        }
+
+        /* Menentukan apakah input layak dicari ke server. Backend hanya dukung `eq.`
+           (exact, case-sensitive), jadi hanya kode barang / nomor tiket / nama lengkap
+           yang berguna. Dicocokkan lewat heuristik + kamus, bukan satu regex kaku. */
+        function transaksiLooksExact(s) {
+            if (!s) return false;
+            // Nomor tiket: angka murni (>= 3 digit, mis. 383523)
+            if (/^\d{3,}$/.test(s)) return true;
+            // Kode barang: mengandung angka dan tanpa spasi (Converter-104, PC-8, USB-40, HDMI-EXT-1)
+            if (/\d/.test(s) && !/\s/.test(s)) return true;
+            // Nama barang lengkap yang persis ada di kamus (bila kamus sudah termuat)
+            if (transaksiKamus && (transaksiKamus.kodeMap.has(s) || transaksiKamus.namaMap.has(s))) return true;
+            return false;
+        }
+
+        async function transaksiFetchFromServer(searchInput) {
+            const mySeq = ++transaksiSearchSeq;
+
+            // Input sudah berubah saat menunggu -> jangan lanjut.
+            const nowValue = document.getElementById('searchTransaksi').value.toLowerCase().trim();
+            if (nowValue !== searchInput) return;
+
+            let serverRows = [];
+            let queryLabel = '';
+
+            try {
+                const kamus = await transaksiEnsureKamus();
+                // Normalisasi huruf besar/kecil lewat kamus master_barang.
+                const cano = kamus.kodeMap.get(searchInput) || kamus.namaMap.get(searchInput);
+
+                if (cano) {
+                    const res = await sbGet('data_entry',
+                        `select=*,id&kode_barang=eq.${encodeURIComponent(cano)}&order=id.desc&limit=1000`);
+                    serverRows = Array.isArray(res) ? res : [];
+                    queryLabel = cano;
+                } else if (/^\d{3,}$/.test(searchInput)) {
+                    const res = await sbGet('data_entry',
+                        `select=*,id&nomor_tiket=eq.${encodeURIComponent(searchInput)}&order=id.desc&limit=1000`);
+                    serverRows = Array.isArray(res) ? res : [];
+                    queryLabel = searchInput;
+                }
+            } catch (e) {
+                console.error('Pencarian server gagal:', e);
+                if (mySeq !== transaksiSearchSeq) return;
+                showToast('Pencarian lanjutan ke server gagal', 'warning');
+                return;
+            }
+
+            // Kedaluwarsa: user sudah mengetik lagi.
+            if (mySeq !== transaksiSearchSeq) return;
+            if (document.getElementById('searchTransaksi').value.toLowerCase().trim() !== searchInput) return;
+
+            transaksiServerRows = serverRows;
+            transaksiServerQuery = queryLabel;
+
+            if (serverRows.length === 0) { updateTransaksiNote(); return; }
+
+            // Gabung hasil server dengan hasil lokal, dedupe berdasarkan id.
+            const localData = transaksiLocalFilter(searchInput);
+            const seen = new Set(localData.map(r => r.id));
+            const extra = serverRows.filter(r => !seen.has(r.id));
+            const combined = localData.concat(extra).sort((a, b) => (b.id || 0) - (a.id || 0));
+
+            transaksiCurrentRows = combined;
+            transaksiServerNote = extra.length
+                ? `+${extra.length} transaksi lama ditemukan lewat server`
+                : 'semua hasil sudah ada di data termuat';
+            renderTransaksi(combined);
+            updateTransaksiNote(true);
         }
 
         function renderTransaksi(data) {
@@ -4322,28 +4759,36 @@
             });
         }
 
-        function filterTransaksi() {
-            appState.transaksiPage = 1;
-            const search = document.getElementById('searchTransaksi').value.toLowerCase().trim();
-            let data = appState.dataEntry;
-            if (transaksiDateFilter) {
-                data = data.filter(t => {
-                    if (!t.tanggal) return false;
-                    const d = parseDateSafely(t.tanggal);
-                    return !Number.isNaN(d.getTime()) && d >= transaksiDateFilter.start && d < transaksiDateFilter.end;
-                });
-            }
-            const filtered = data.filter(t => (t.kode_barang || '').toLowerCase().includes(search) || (t.nama_barang || '').toLowerCase().includes(search) || (t.keterangan || '').toLowerCase().includes(search) || (t.nama_peminjam || '').toLowerCase().includes(search));
-            renderTransaksi(filtered);
-        }
 
         // ============================================
         // ACTIVE TICKET
         // ============================================
         async function loadActiveTicket() {
-            showLoading();
-            try { const data = await sbGet('data_entry', 'select=*,id&kode_mutasi=eq.2&order=id.desc'); hideLoading(); appState.activeTicketData = data; renderActiveTicket(data); }
+            const q = 'select=*,id&kode_mutasi=eq.2&order=id.desc';
+            if (!getCached('data_entry', q)) showLoading();
+            try { 
+                // onRefresh menyegarkan data TANPA menghapus pencarian aktif.
+                const data = await sbGetSWR('data_entry', q, () => {
+                    if (document.getElementById('page-activeTicket').classList.contains('active')) activeTicketRefreshData();
+                });
+                hideLoading(); 
+                appState.activeTicketData = data; 
+                renderActiveTicket(data); 
+            }
             catch (error) { hideLoading(); showToast('Gagal memuat data active ticket', 'error'); }
+        }
+
+        /* Segarkan tiket aktif di latar belakang, hormati kotak pencarian. */
+        async function activeTicketRefreshData() {
+            const q = 'select=*,id&kode_mutasi=eq.2&order=id.desc';
+            try {
+                const data = await sbGet('data_entry', q);
+                appState.activeTicketData = Array.isArray(data) ? data : [];
+                storeCache('data_entry', q, appState.activeTicketData);
+                const box = document.getElementById('searchActiveTicket');
+                if (box && box.value.trim()) filterActiveTicket();
+                else renderActiveTicket(appState.activeTicketData);
+            } catch (e) { console.warn('Gagal menyegarkan tiket aktif:', e); }
         }
 
         function groupActiveTickets(data) {
@@ -4479,10 +4924,14 @@
         let returnedTicketPage = 1;
 
         async function loadReturnedTicket() {
-            showLoading();
+            const q = 'select=*,id&kode_mutasi=eq.1&order=id.desc&limit=10000';
+            if (!getCached('data_entry', q)) showLoading();
             try {
                 // Ambil semua kode_mutasi=1 (masuk peminjaman / sudah kembali)
-                const data = await sbGet('data_entry', 'select=*,id&kode_mutasi=eq.1&order=id.desc&limit=10000');
+                // onRefresh menyegarkan data TANPA menghapus pencarian aktif.
+                const data = await sbGetSWR('data_entry', q, () => {
+                    if (document.getElementById('page-activeTicket').classList.contains('active')) returnedTicketRefreshData();
+                });
                 hideLoading();
                 returnedTicketData = data;
                 renderReturnedTicket(data);
@@ -4490,6 +4939,19 @@
                 hideLoading();
                 showToast('Gagal memuat data returned ticket', 'error');
             }
+        }
+
+        /* Segarkan tiket kembali di latar belakang, hormati kotak pencarian. */
+        async function returnedTicketRefreshData() {
+            const q = 'select=*,id&kode_mutasi=eq.1&order=id.desc&limit=10000';
+            try {
+                const data = await sbGet('data_entry', q);
+                returnedTicketData = Array.isArray(data) ? data : [];
+                storeCache('data_entry', q, returnedTicketData);
+                const box = document.getElementById('searchReturnedTicket');
+                if (box && box.value.trim()) filterReturnedTicket();
+                else renderReturnedTicket(returnedTicketData);
+            } catch (e) { console.warn('Gagal menyegarkan tiket kembali:', e); }
         }
 
         function renderReturnedTicket(data) {
@@ -4798,7 +5260,9 @@
                 const monthAgo = new Date(now - 30 * 24 * 60 * 60 * 1000);
                 const yearAgo = new Date(now - 365 * 24 * 60 * 60 * 1000);
 
-                const allData = await sbGet('user_activity', 'select=*&order=login_time.desc');
+                const allData = await sbGetSWR('user_activity', 'select=*&order=login_time.desc', () => {
+                    if (document.getElementById('page-timeManagement').classList.contains('active')) loadTimeManagement();
+                });
                 hideLoading();
 
                 // 1. Hari ini
