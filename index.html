@@ -1833,11 +1833,12 @@
                     </div>
                     <div class="form-group" style="position:relative;">
                         <i class="fas fa-search" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--text-muted);"></i>
-                        <input type="text" id="searchStock" placeholder="Cari nama barang..." oninput="filterStockGudang()" style="padding-left:44px;">
+                        <input type="text" id="searchStock" placeholder="Cari kode atau nama barang..." oninput="filterStockGudang()" style="padding-left:44px;">
                     </div>
                     <div class="table-container adaptive">
                         <table>
                             <thead><tr>
+                <th style="cursor:pointer;" onclick="appState.sortStock={col:'kode_barang',asc:appState.sortStock.col==='kode_barang'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Kode<span id="sortSkode"></span></th>
                 <th style="cursor:pointer;" onclick="appState.sortStock={col:'nama_barang',asc:appState.sortStock.col==='nama_barang'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Nama Barang<span id="sortSnama"></span></th>
                 <th style="cursor:pointer;" onclick="appState.sortStock={col:'lokasi_barang',asc:appState.sortStock.col==='lokasi_barang'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Lokasi<span id="sortSlokasi"></span></th>
                 <th style="cursor:pointer;" onclick="appState.sortStock={col:'tersedia',asc:appState.sortStock.col==='tersedia'?!appState.sortStock.asc:true};renderStockGudang(appState.stockGudang)">Tersedia<span id="sortStersedia"></span></th>
@@ -1901,10 +1902,10 @@
                     <div class="table-container adaptive">
                         <table>
                             <thead>
-                                <tr><th>Kode</th><th>Nama Barang</th><th>Lokasi</th><th>Tersedia</th><th>Rusak</th><th>Permanen</th><th>Dipinjam</th><th>Status Fisik</th><th>Status Opname</th></tr>
+                                <tr><th>Kode</th><th>Nama Barang</th><th>Lokasi</th><th>Tersedia</th><th>Rusak</th><th>Permanen</th><th>Dipinjam</th><th>Status Opname</th></tr>
                             </thead>
                             <tbody id="opnameTableBody">
-                                <tr><td colspan="9" style="text-align:center; padding: 40px; color: var(--text-muted); font-style: italic;">Pilih lokasi terlebih dahulu</td></tr>
+                                <tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style: italic;">Pilih lokasi terlebih dahulu</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -3488,7 +3489,7 @@
         }
 
         function renderMasterBarang(data) {
-            data = (data || []).filter(item => (parseInt(item.tersedia) || 0) > 0);
+            data = (data || []); // Tampilkan semua, termasuk stock 0
             document.getElementById('masterCount').textContent = `Ditemukan ${data.length} jenis item`;
             const tbody = document.getElementById('masterBarangTable');
             const tfoot = document.getElementById('masterBarangFoot');
@@ -3870,16 +3871,16 @@
         // ============================================
         async function loadStockGudang() {
             showLoading();
-            try { const data = await sbGet('master_barang', 'select=nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; filterStockGudang(); }
+            try { const data = await sbGet('master_barang', 'select=kode_barang,nama_barang,lokasi_barang,tersedia,rusak,permanen,stok_paten&order=nama_barang.asc'); hideLoading(); appState.stockGudang = data; filterStockGudang(); }
             catch (error) { hideLoading(); showToast('Gagal memuat stock gudang', 'error'); }
         }
 
         function renderStockGudang(data) {
-            data = (data || []).filter(item => (parseInt(item.tersedia) || 0) > 0);
+            data = (data || []); // Tampilkan semua, termasuk stock 0
             document.getElementById('stockCount').textContent = `${data.length} items`;
             const tbody = document.getElementById('stockGudangTable');
             const tfoot = document.getElementById('stockGudangFoot');
-            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>'; tfoot.innerHTML = ''; return; }
+            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada data</td></tr>'; tfoot.innerHTML = ''; return; }
             const sorted = appState.sortStock.col ? sortData(data, appState.sortStock.col, appState.sortStock.asc) : data;
             let totTersedia = 0, totRusak = 0, totPermanen = 0;
             tbody.innerHTML = sorted.map(item => {
@@ -3888,15 +3889,16 @@
                 const permanen = parseInt(item.permanen) || 0;
                 const paten = parseInt(item.stok_paten) || 0;
                 totTersedia += tersedia; totRusak += rusak; totPermanen += permanen;
-                return `<tr><td><strong>${esc(item.nama_barang || '-')}</strong></td><td>${esc(item.lokasi_barang || '-')}</td><td><strong style="font-size:16px;">${tersedia}</strong></td><td>${rusak > 0 ? '<span class="badge badge-danger badge-pill">' + rusak + '</span>' : '<span class="badge badge-success badge-pill">0</span>'}</td><td>${permanen > 0 ? '<span class="badge badge-danger badge-pill">' + permanen + '</span>' : '<span class="badge badge-dark badge-pill">0</span>'}</td><td>${paten}</td></tr>`;
+                return `<tr><td><strong>${esc(item.kode_barang || '-')}</strong></td><td><strong>${esc(item.nama_barang || '-')}</strong></td><td>${esc(item.lokasi_barang || '-')}</td><td><strong style="font-size:16px;">${tersedia}</strong></td><td>${rusak > 0 ? '<span class="badge badge-danger badge-pill">' + rusak + '</span>' : '<span class="badge badge-success badge-pill">0</span>'}</td><td>${permanen > 0 ? '<span class="badge badge-danger badge-pill">' + permanen + '</span>' : '<span class="badge badge-dark badge-pill">0</span>'}</td><td>${paten}</td></tr>`;
             }).join('');
             tfoot.innerHTML = `<tr style="background:var(--surface-2); font-weight:700; border-top:2px solid var(--primary);">
-                <td colspan="2" style="text-align:right; color:var(--primary);">Jumlah</td>
+                <td colspan="3" style="text-align:right; color:var(--primary);">Jumlah</td>
                 <td><strong style="font-size:16px;">${totTersedia}</strong></td>
                 <td><span style="color:var(--danger);">${totRusak}</span></td>
                 <td><span style="color:var(--warning);">${totPermanen}</span></td>
                 <td></td>
             </tr>`;
+            document.getElementById('sortSkode').textContent = sortArrow('kode_barang', appState.sortStock);
             document.getElementById('sortSnama').textContent = sortArrow('nama_barang', appState.sortStock);
             document.getElementById('sortSlokasi').textContent = sortArrow('lokasi_barang', appState.sortStock);
             document.getElementById('sortStersedia').textContent = sortArrow('tersedia', appState.sortStock);
@@ -3912,7 +3914,7 @@
             else if (stockFilter === 'habis') data = data.filter(item => (parseInt(item.tersedia) || 0) === 0);
             if (words.length > 0) {
                 data = data.filter(item => {
-                    const text = ((item.nama_barang || '') + ' ' + (item.lokasi_barang || '')).toLowerCase();
+                    const text = ((item.kode_barang || '') + ' ' + (item.nama_barang || '') + ' ' + (item.lokasi_barang || '')).toLowerCase();
                     return words.every(w => text.includes(w));
                 });
             }
@@ -3929,7 +3931,7 @@
                 const lokasiSet = [...new Set(data.map(r => r.lokasi_barang).filter(Boolean))];
                 const select = document.getElementById('opnameLokasi'); select.innerHTML = '<option value="">-- Pilih Lokasi --</option>';
                 lokasiSet.forEach(lok => { const option = document.createElement('option'); option.value = lok; option.textContent = lok; select.appendChild(option); });
-                document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Pilih lokasi terlebih dahulu</td></tr>';
+                document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Pilih lokasi terlebih dahulu</td></tr>';
                 document.getElementById('btnExport').disabled = true; document.getElementById('btnSaveOpname').style.display = 'none'; document.getElementById('opnameAlert').style.display = 'none'; document.getElementById('opnameFilterBar').style.display = 'none'; document.getElementById('btnScanBarcode').disabled = true; appState.opnameData = [];
             } catch (error) { hideLoading(); showToast('Gagal memuat daftar lokasi', 'error'); }
         }
@@ -3937,7 +3939,7 @@
         async function onLokasiChange() {
             const lokasi = document.getElementById('opnameLokasi').value;
             if (!lokasi) {
-                document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Pilih lokasi terlebih dahulu</td></tr>';
+                document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Pilih lokasi terlebih dahulu</td></tr>';
                 document.getElementById('btnExport').disabled = true; document.getElementById('btnSaveOpname').style.display = 'none'; document.getElementById('opnameAlert').style.display = 'none'; document.getElementById('opnameFilterBar').style.display = 'none'; document.getElementById('btnScanBarcode').disabled = true; appState.opnameData = [];
                 return;
             }
@@ -3945,7 +3947,7 @@
             try {
                 const data = await sbGet('master_barang', `select=*&lokasi_barang=eq.${encodeURIComponent(lokasi)}&order=kode_barang.asc`); hideLoading();
                 if (!data || data.length === 0) {
-                    document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada barang di lokasi ini</td></tr>';
+                    document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada barang di lokasi ini</td></tr>';
                     document.getElementById('btnSaveOpname').style.display = 'none'; document.getElementById('opnameFilterBar').style.display = 'none'; document.getElementById('btnScanBarcode').disabled = true; appState.opnameData = [];
                     return;
                 }
@@ -3993,14 +3995,12 @@
 
         function renderOpnameTable(data) {
             const tbody = document.getElementById('opnameTableBody');
-            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada barang dengan status ini</td></tr>'; return; }
+            if (!data || data.length === 0) { tbody.innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada barang dengan status ini</td></tr>'; return; }
             tbody.innerHTML = data.map(item => {
-                let statusFisik = '<span class="badge badge-success">OK</span>';
-                if (item.outstanding > 0) statusFisik = '<span class="badge badge-warning">Ada Pinjaman</span>'; else if (item.tersedia <= 0) statusFisik = '<span class="badge badge-danger">Habis</span>'; else if (item.stokPaten > 0 && item.tersedia < item.stokPaten) statusFisik = '<span class="badge badge-danger">Stok Rendah</span>';
                 const selectedBelum = item.isOpnameDone ? '' : 'selected'; const selectedSudah = item.isOpnameDone ? 'selected' : '';
                 let dateInfo = item.lastOpnameDate ? `<br><small style="color:var(--text-muted); font-size:10px;">Terakhir: ${item.lastOpnameDate}</small>` : '';
                 const viewOnly = !isAdmin();
-                return `<tr data-kode="${esc(item.kode)}"><td><strong>${esc(item.kode)}</strong></td><td>${esc(item.nama)}</td><td>${esc(item.lokasi)}</td><td><strong>${item.tersedia}</strong></td><td><span class="badge badge-danger badge-pill">${item.rusak}</span></td><td><span class="badge badge-dark badge-pill">${item.permanen}</span></td><td><span class="badge badge-warning badge-pill">${item.outstanding}</span></td><td>${statusFisik}</td><td><select class="opname-status-select" data-kode="${esc(item.kode)}" ${viewOnly ? 'disabled' : ''}><option value="Belum" ${selectedBelum}>Belum Teropname</option><option value="Sudah" ${selectedSudah}>Sudah Teropname</option></select>${dateInfo}</td></tr>`;
+                return `<tr data-kode="${esc(item.kode)}"><td><strong>${esc(item.kode)}</strong></td><td>${esc(item.nama)}</td><td>${esc(item.lokasi)}</td><td><strong>${item.tersedia}</strong></td><td><span class="badge badge-danger badge-pill">${item.rusak}</span></td><td><span class="badge badge-dark badge-pill">${item.permanen}</span></td><td><span class="badge badge-warning badge-pill">${item.outstanding}</span></td><td><select class="opname-status-select" data-kode="${esc(item.kode)}" ${viewOnly ? 'disabled' : ''}><option value="Belum" ${selectedBelum}>Belum Teropname</option><option value="Sudah" ${selectedSudah}>Sudah Teropname</option></select>${dateInfo}</td></tr>`;
             }).join('');
         }
 
@@ -4324,7 +4324,7 @@
 
         function filterTransaksi() {
             appState.transaksiPage = 1;
-            const search = document.getElementById('searchTransaksi').value.toLowerCase();
+            const search = document.getElementById('searchTransaksi').value.toLowerCase().trim();
             let data = appState.dataEntry;
             if (transaksiDateFilter) {
                 data = data.filter(t => {
