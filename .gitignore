@@ -1,0 +1,18 @@
+# Konfigurasi pribadi dan credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.netrc
+
+# File lokal, cache, dan hasil pengujian
+node_modules/
+tmp/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
