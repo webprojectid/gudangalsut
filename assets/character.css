@@ -1,0 +1,55 @@
+/* Petrol, electric cyan and copper: depth comes from gradients and soft shadows. */
+:root,[data-theme="light"]{
+ --bg-base:#e9eff2;--workspace-surface:#edf1f3;--surface-2:#e5edf0;--surface-3:#ccdce3;
+ --border-default:#b9ced5;--border-strong:#628d9b;--primary:#00677a;--primary-light:#00677a;--primary-rgb:0,103,122;--on-accent:#01232a;--on-coral:#28120b;--text-muted:#526b74;
+ --accent-cyan:#05c6df;--accent-coral:#ef7442;--secondary:#cf4b21;--lime:#a5d933;
+ --hero-start:#17b5c4;--hero-mid:#19b1aa;--hero-end:#1dbaa0;--hero-ring:#0c677b;--hero-orb:#e8a328;
+ --heat-0:#e5ecef;--heat-1:#339ba3;--heat-2:#167d84;--heat-3:#086b72;--heat-4:#005c64;
+}
+[data-theme="dark"]{
+ --primary:#45d2e3;--primary-light:#45d2e3;--primary-rgb:69,210,227;--on-primary:#052c35;--text-muted:#95b2bd;
+ --bg-base:#071219;--workspace-surface:#0c1b24;--surface-1:#132a36;--surface-2:#193846;--surface-3:#254957;
+ --border-default:#345d6b;--border-strong:#58909d;--accent-cyan:#04b8d3;--accent-coral:#ee773f;--secondary:#ff8f55;--lime:#addd36;
+ --hero-start:#0c3443;--hero-mid:#08647b;--hero-end:#063444;--hero-ring:#04b8d3;--hero-orb:#a96620;
+ --heat-0:#1d3541;--heat-1:#1b6e6a;--heat-2:#2ec0ac;--heat-3:#03c3ab;--heat-4:#a4da35;
+}
+body{background:radial-gradient(ellipse at 0 0,rgba(0,123,147,.17),transparent 46%),radial-gradient(ellipse at 100% 100%,rgba(224,100,37,.09),transparent 50%),var(--bg-base)}
+.workspace-panel,.chart-panel,.panel,.metric,.metric-card,.card,.inventory-card,.delete-panel{background-image:linear-gradient(135deg,rgba(var(--white-rgb),.14),transparent 60%);border-color:var(--border-default);box-shadow:0 9px 22px rgba(var(--shadow-rgb),.07)}
+.metric-cyan{background:linear-gradient(120deg,#00a8c7,#07d1d3 62%,#009bba);color:#052e39;border-color:#008ba4}
+.metric-coral{background:linear-gradient(120deg,#dc5829,#fa9d47 65%,#e87539);color:#351a12;border-color:#b84721}
+.metric,.metric-card{border:0}
+.panel-title i,.metric-head i,.nav-item .nav-icon,.section-icon{box-shadow:inset 0 1px 0 #ffffff50,0 4px 10px rgba(var(--shadow-rgb),.15);border:1px solid var(--border-strong);background-image:linear-gradient(145deg,#ffffff30,transparent)}
+.panel,.chart-panel,.workspace-panel{border:0}
+.btn-primary,.ticket-search-btn{background:linear-gradient(135deg,var(--primary),#007383);box-shadow:inset 0 1px 0 #ffffff40,0 5px 12px rgba(0,106,131,.22)}
+[data-theme="dark"] .btn-primary{background:linear-gradient(135deg,#47d2e0,#06a9c1);color:#052c35}
+.sidebar{background:linear-gradient(160deg,var(--surface-1),var(--surface-2));border-right:1px solid var(--border-strong)}
+.nav-item.active{box-shadow:inset 3px 0 0 var(--primary),0 4px 11px rgba(var(--shadow-rgb),.1)}
+.calendar-heatmap .heatmap-cell{background-image:linear-gradient(135deg,#ffffff22,transparent);border:1px solid rgba(var(--shadow-rgb),.1);box-shadow:inset 0 1px 0 #ffffff30}
+.calendar-heatmap .heat-3,.calendar-heatmap .heat-4{color:#fff}
+.login-brand-desc,.login-brand-foot,.login-brand-mark small,.login-brand-content>.eyebrow,.login-brand-title em,.login-brand-title{color:#073543}
+[data-theme="dark"] .login-brand-desc,[data-theme="dark"] .login-brand-foot,[data-theme="dark"] .login-brand-mark small,[data-theme="dark"] .login-brand-title,[data-theme="dark"] .login-brand-title em,[data-theme="dark"] .login-brand-content>.eyebrow{color:#d8f6fc}
+.master-delete-trigger{color:var(--danger);margin-left:4px}.master-delete-trigger:hover{background:var(--danger-bg)}
+.inventory-card-with-actions{position:relative;display:flex;flex-direction:column}.inventory-card-with-actions>.inventory-card{width:100%;flex:1}.master-delete-grid{align-self:flex-end;margin-top:6px;color:var(--danger)}
+.delete-panel{width:min(560px,100%);max-height:calc(100dvh - 36px);overflow:auto;background-color:var(--surface-1);border:0;border-radius:24px;padding:25px;color:var(--text-primary)}
+.delete-panel h2{margin:15px 0;font-size:23px}.delete-identity{display:grid;gap:5px;padding:13px;background:linear-gradient(120deg,var(--surface-2),var(--surface-1));border-radius:10px}.delete-identity span,.delete-explainer{font-size:12px;color:var(--text-secondary);line-height:1.6}.delete-panel fieldset{border:1px solid var(--border-default);border-radius:13px;margin:16px 0;padding:12px 14px}.delete-panel legend{font-size:12px;font-weight:650;padding:0 7px}.delete-panel legend b{display:inline-grid;place-items:center;width:24px;height:24px;margin-right:5px;border-radius:8px;background:linear-gradient(135deg,var(--primary),#007585);color:#fff}.delete-panel label{display:block;font-size:11px;color:var(--text-secondary);margin:6px 0}.delete-panel input,.delete-panel textarea{width:100%;background:var(--surface-2);color:var(--text-primary);border:1px solid var(--border-strong);border-radius:8px;padding:10px;font:inherit;font-size:12px}.delete-feedback{min-height:18px;color:var(--danger);font-size:12px;line-height:1.5}.delete-submit{background:linear-gradient(135deg,#b43531,#ca4930);color:white;box-shadow:0 5px 13px #992b2925}.delete-panel :disabled{opacity:.6;cursor:wait}
+
+.calendar-heatmap .heat-1,.calendar-heatmap .heat-2{color:white}
+[data-theme="dark"] .calendar-heatmap .heat-2{color:#052c35}
+.tone-cyan,.badge-primary,.badge-info{background:linear-gradient(135deg,#00596f,#087583);color:#fff}
+.tone-coral,.badge-danger{background:linear-gradient(135deg,#a73532,#c6502f);color:#fff}
+.tone-mint,.badge-success{background:linear-gradient(135deg,#00644f,#168366);color:#fff}
+.tone-amber,.badge-warning{background:linear-gradient(135deg,#945800,#9c6104);color:#fff}
+.badge{box-shadow:inset 0 1px 0 #ffffff30,0 2px 4px rgba(var(--shadow-rgb),.12);border:1px solid #ffffff20}
+.panel-head>i,.page-heading-icon,.section-heading>i{color:var(--primary);filter:drop-shadow(0 2px 2px rgba(var(--shadow-rgb),.16))}
+
+.reauth-panel footer{margin-top:20px}
+
+.calendar-heatmap .heat-1{color:#01232a}[data-theme="dark"] .calendar-heatmap .heat-1{color:#edf8fa}
+
+.detail-overlay:has(.delete-panel){padding:18px;align-items:center}
+.delete-panel footer{position:sticky;bottom:0;z-index:2;background:var(--surface-1);padding:12px 0 2px;margin-top:10px;box-shadow:0 -8px 14px rgba(var(--shadow-rgb),.035)}
+
+/* Clean surfaces: no ornamental rails or segmented scroll decoration. */
+.story-progress{display:none}
+.glass-card,.glass-card-elevated,.card,.inventory-card,.metric-card,.delete-panel{border:0}
+.btn-add-item,.drop-hint,#dropHint{border:0!important}

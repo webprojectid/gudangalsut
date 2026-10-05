@@ -1,0 +1,275 @@
+/* CSM motion: short feedback, quiet surfaces, and visible progress during real work.
+   Page, card, dialog and chart entrances are orchestrated by motion.js. */
+:root {
+  --motion-ease-out: cubic-bezier(.16, 1, .3, 1);
+  --motion-ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --motion-fast: 160ms;
+  --motion-surface: 260ms;
+}
+
+/* One animation owner per surface. Existing CSS remains a no-JS fallback. */
+html.motion-enabled :is(.page.active, .animate-in, .item-row, .login-box, .detail-panel) {
+  animation: none;
+}
+html.motion-enabled :is(.custom-modal-overlay, .custom-modal-box, .toast) {
+  transition: none;
+}
+html.motion-enabled .custom-modal-box { transform: none; }
+.motion-closing { pointer-events: none !important; }
+.motion-loading-bar[hidden] { display: none; }
+html.motion-surface-switch::view-transition-old(root) {
+  animation: csm-surface-out 180ms cubic-bezier(.4, 0, 1, 1) both;
+}
+html.motion-surface-switch::view-transition-new(root) {
+  animation: csm-surface-in 420ms var(--motion-ease-out) both;
+}
+html.motion-surface-switch::view-transition-group(root) { animation-duration: 420ms; }
+@keyframes csm-surface-out { to { opacity: 0; transform: scale(.99); filter: blur(3px); } }
+@keyframes csm-surface-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+html.motion-enabled :is(
+  .btn, .btn-icon-ghost, .sidebar-toggle-btn, .theme-toggle, .search-launch,
+  .affix-btn, .btn-add-item, .ticket-search-btn, .mutasi-choice,
+  .view-switch button, .period-controls button, .inventory-pagination button,
+  .location-shortcuts button, [role="tab"]
+) {
+  transition:
+    transform var(--motion-fast) var(--motion-ease-out),
+    background-color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    box-shadow var(--motion-surface) var(--motion-ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+html.motion-enabled :is(.btn, .btn-add-item, .ticket-search-btn):active:not(:disabled) {
+  transform: translateY(1px) scale(.98);
+  transition-duration: 80ms;
+}
+html.motion-enabled :is(
+  .btn-icon-ghost, .sidebar-toggle-btn, .theme-toggle, .search-launch, .affix-btn,
+  .mutasi-choice, .view-switch button, .period-controls button,
+  .inventory-pagination button, .location-shortcuts button, [role="tab"]
+):active:not(:disabled) {
+  transform: scale(.96);
+  transition-duration: 80ms;
+}
+html.motion-enabled .btn-primary:hover:not(:disabled) {
+  box-shadow: 0 6px 17px rgba(var(--primary-rgb), .2);
+}
+html.motion-enabled :is(.btn-primary, .ticket-search-btn) > .fa-arrow-right {
+  transition: transform var(--motion-surface) var(--motion-ease-out);
+}
+
+html.motion-enabled .menu-item {
+  transition:
+    background-color 200ms ease,
+    color 180ms ease,
+    box-shadow var(--motion-surface) var(--motion-ease-out);
+}
+html.motion-enabled .menu-item > i {
+  transition: transform var(--motion-surface) var(--motion-ease-out);
+}
+html.motion-enabled .menu-item:active > i { transform: scale(.9); }
+html.motion-enabled .menu-item.active::before {
+  height: 22px;
+  box-shadow: 0 0 12px rgba(var(--primary-rgb), .14);
+}
+html.motion-enabled :is(.mutasi-choice, .view-switch button, [role="tab"]) {
+  isolation: isolate;
+}
+html.motion-enabled :is(.mutasi-choice.active, .view-switch .selected, [role="tab"][aria-selected="true"]) {
+  box-shadow: 0 2px 7px rgba(var(--shadow-rgb), .045);
+}
+
+html.motion-enabled :is(.inventory-card, .location-card, .metric) {
+  transition:
+    transform var(--motion-surface) var(--motion-ease-out),
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow var(--motion-surface) var(--motion-ease-out);
+}
+html.motion-enabled :is(.product-mini, .ranked-asset, .search-result, .ticket-product, .location-row) {
+  transition: background-color 180ms ease, color 180ms ease;
+}
+html.motion-enabled :is(.inventory-product, .inventory-card, .ranked-asset, .product-mini, .search-result) .product-image {
+  transition: transform 320ms var(--motion-ease-out);
+}
+html.motion-enabled :is(tbody tr, .dropdown-item, .sd-dropdown-item) {
+  transition: background-color 160ms ease;
+}
+html.motion-enabled :is(tbody tr):hover { background: var(--surface-2); }
+html.motion-enabled :is(.form-group input, .form-group select, .form-group textarea, input[type="search"]) {
+  transition: border-color 180ms ease, box-shadow 200ms ease, background-color 180ms ease;
+}
+html.motion-enabled .form-group:focus-within > label,
+html.motion-enabled .login-label-row:has(+ .input-affix:focus-within) label {
+  color: var(--primary);
+}
+html.motion-enabled .form-group > label,
+html.motion-enabled .login-label-row label { transition: color 180ms ease; }
+html.motion-enabled .form-group :is(input, select, textarea):focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), .09);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.motion-enabled .menu-item:not(.active):hover > i { transform: translateY(-1px); }
+  html.motion-enabled .btn-primary:hover:not(:disabled) > .fa-arrow-right { transform: translateX(3px); }
+  html.motion-enabled :is(.mutasi-choice, .location-card, .inventory-card):hover:not(:disabled) {
+    border-color: var(--primary);
+  }
+  html.motion-enabled :is(.inventory-card, .location-card):hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(var(--shadow-rgb), .065);
+  }
+  html.motion-enabled :is(.inventory-product, .inventory-card, .ranked-asset, .product-mini, .search-result):hover .product-image {
+    transform: scale(1.04);
+  }
+  html.motion-enabled :is(.ranked-asset, .search-result, .ticket-product):hover { background: var(--surface-2); }
+}
+
+/* Data refreshing never turns the current content into a blank skeleton. */
+html.motion-enabled .top-bar { position: relative; }
+.motion-loading-bar {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--accent-soft);
+  border-radius: 2px;
+  z-index: 3;
+}
+.motion-loading-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 38%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, var(--primary) 42%, var(--accent-cyan) 72%, transparent);
+  animation: csm-progress-travel 1250ms var(--motion-ease-in-out) infinite;
+}
+.motion-pending { cursor: progress; }
+button.motion-pending {
+  position: relative;
+  opacity: 1;
+  transform: none !important;
+  cursor: progress;
+}
+button.motion-pending::after {
+  content: '';
+  position: absolute;
+  inset: auto 12px 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: .48;
+  transform-origin: left;
+  animation: csm-pending-line 1100ms var(--motion-ease-in-out) infinite;
+  pointer-events: none;
+}
+.motion-busy:not(button) {
+  box-shadow: inset 0 0 0 1px rgba(var(--primary-rgb), .16);
+}
+.motion-feedback {
+  border-color: var(--success) !important;
+  box-shadow: 0 0 0 3px var(--success-bg), 0 0 0 4px var(--success);
+  transition: border-color 220ms ease, box-shadow 300ms ease;
+}
+tr.motion-feedback > td { background: var(--success-bg); }
+.motion-invalid {
+  border-color: var(--danger) !important;
+  box-shadow: 0 0 0 3px var(--danger-bg);
+}
+.motion-invalid:is(input, select, textarea),
+.form-group.motion-invalid :is(input, select, textarea) { border-color: var(--danger) !important; }
+
+/* The overlay is tied to real requests; it has no simulated completion percentage. */
+html.motion-enabled #loading {
+  background: rgba(var(--white-rgb), .36);
+  backdrop-filter: blur(8px);
+}
+html.motion-enabled .terminal-loader {
+  position: relative;
+  width: 218px;
+  max-width: calc(100vw - 40px);
+  padding: 112px 24px 25px;
+  border: 1px solid var(--border-default);
+  border-radius: 26px;
+  box-shadow: 0 24px 72px rgba(var(--shadow-rgb), .16);
+  background: var(--surface-1);
+}
+html.motion-enabled .terminal-loader::before {
+  position: absolute;
+  top: 28px;
+  left: calc(50% - 28px);
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--surface-3);
+  border-top-color: var(--primary);
+  border-right-color: var(--accent-cyan);
+  animation: csm-loader-orbit 1100ms linear infinite;
+}
+html.motion-enabled .terminal-loader::after {
+  content: '';
+  position: absolute;
+  top: 43px;
+  left: calc(50% - 14px);
+  height: 27px;
+  width: 28px;
+  background: url('csm-mark.svg') center / contain no-repeat;
+}
+html.motion-enabled .terminal-loader .text {
+  color: var(--text-muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+html.motion-enabled .terminal-loader .text::before {
+  content: 'Gudang CSM';
+  display: block;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+}
+html.motion-enabled :is(.custom-modal-box, .search-box) {
+  border: 1px solid var(--border-default);
+}
+html.motion-enabled .toast {
+  border-radius: 16px;
+  box-shadow: 0 14px 36px rgba(var(--shadow-rgb), .15);
+}
+
+@keyframes csm-loader-orbit { to { transform: rotate(360deg); } }
+@keyframes csm-progress-travel {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(365%); }
+}
+@keyframes csm-pending-line {
+  0% { transform: scaleX(.12); opacity: .22; }
+  55% { transform: scaleX(.85); opacity: .55; }
+  100% { transform: scaleX(.12); opacity: .22; }
+}
+
+/* Interaction motion follows the device preference. The requested login product
+   autoplay belongs to login.css and is deliberately not touched here. */
+@media (prefers-reduced-motion: reduce) {
+  html.motion-enabled :is(
+    .btn, .btn-icon-ghost, .sidebar-toggle-btn, .theme-toggle, .search-launch,
+    .affix-btn, .btn-add-item, .ticket-search-btn, .mutasi-choice, .menu-item,
+    .menu-item > i, .view-switch button, .period-controls button,
+    .inventory-pagination button, .location-shortcuts button, [role="tab"],
+    .inventory-card, .location-card, .metric, .product-image
+  ) { transition-duration: .01ms; }
+  html.motion-enabled :is(.btn, .inventory-card, .location-card, .metric):hover,
+  html.motion-enabled :is(.btn, .mutasi-choice, .theme-toggle):active,
+  html.motion-enabled .menu-item > i,
+  html.motion-enabled :is(.inventory-product, .inventory-card, .ranked-asset, .product-mini, .search-result) .product-image {
+    transform: none !important;
+  }
+  .motion-loading-bar::before { animation: none; width: 100%; opacity: .55; }
+  button.motion-pending::after { animation: none; transform: none; opacity: .5; }
+  html.motion-enabled .terminal-loader::before { animation: none; }
+}

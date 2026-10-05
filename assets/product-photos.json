@@ -1,0 +1,5042 @@
+{
+  "version": 2,
+  "byName": {
+    "kabel hdmi highspeed 1m": "hdmi-cable",
+    "kabel hdmi vention 1m": "hdmi-cable",
+    "kabel hdmi generik 1,5m": "hdmi-cable",
+    "kabel hdmi bafo 1,5m": "hdmi-cable",
+    "kabel hdmi awm 1,5m": "hdmi-cable",
+    "kabel hdmi highspeed 1,5m": "hdmi-cable",
+    "kabel hdmi netline 1,5m": "hdmi-cable",
+    "kabel hdmi proftech 1,5 m": "hdmi-cable",
+    "kabel hdmi awm 2m": "hdmi-cable",
+    "kabel hdmi bafo 2m": "hdmi-cable",
+    "kabel hdmi highspeed 2m": "hdmi-cable",
+    "kabel hdmi vcom 2m": "hdmi-cable",
+    "kabel hdmi vention 2m": "hdmi-cable",
+    "kabel hdmi bafo 3m": "hdmi-cable",
+    "kabel hdmi vention 3m": "hdmi-cable",
+    "kabel hdmi generik 3m": "hdmi-cable",
+    "kabel hdmi vention 5m": "hdmi-cable",
+    "kabel hdmi bafo 5m": "hdmi-cable",
+    "kabel hdmi vcom 5m": "hdmi-cable",
+    "kabel hdmi netline 10m": "hdmi-cable",
+    "kabel hdmi vention 10m": "hdmi-cable",
+    "kabel hdmi bafo 10m": "hdmi-cable",
+    "kabel hdmi generik 15m": "hdmi-cable",
+    "kabel hdmi awm 15m": "hdmi-cable",
+    "kabel hdmi bafo 15m": "hdmi-cable",
+    "kabel hdmi vention 15m": "hdmi-cable",
+    "kabel hdmi proftech 15m": "hdmi-cable",
+    "kabel hdmi bafo 20m": "hdmi-cable",
+    "kabel hdmi bafo 25m": "hdmi-cable",
+    "kabel hdmi bafo 30m": "hdmi-cable",
+    "kabel hdmi bafo 50m": "hdmi-cable",
+    "kabel hdmi extender male to female vention 3m": "hdmi-cable",
+    "kabel hdmi 3m ugreen": "hdmi-cable",
+    "converter dp to hdmi (bafo bf-3382)": "bafo-bf-3382",
+    "orico soundcard skt3": "orico-skt3",
+    "tplink - sf1005d (5 port) + adaptor": "tp-link-sf1005d",
+    "hdmi spliter vention 1x4": "vention-splitter4",
+    "kabel usb extender 5m": "usb-extender",
+    "kabel usb extender ugreen 5m": "usb-extender",
+    "kabel usb extender 10m": "usb-extender",
+    "kabel usb extender 20m netline": "usb-extender",
+    "kabel usb extender 30m netline": "usb-extender",
+    "kabel kamera logi ptz 5m": "logitech-group",
+    "kabel kamera logi ptz 10m": "logitech-group",
+    "kabel kamera logi ptz 15m": "logitech-group",
+    "kamera logitech backup kelas 1": "logitech-group",
+    "kamera logitech backup kelas 2": "logitech-group",
+    "kamera logitech pro 2": "logitech-group",
+    "kamera ptz logitech grup (rusak)": "logitech-group",
+    "mouse hp": "mouse-hp",
+    "converter dp to vga (vention)": "vention-dp-vga",
+    "mini pc paket 1": "mini-pc",
+    "mini pc paket 2": "mini-pc",
+    "mini pc paket 3": "mini-pc",
+    "mini pc paket 4": "mini-pc",
+    "mini pc paket 5": "mini-pc",
+    "mini pc paket 6": "mini-pc",
+    "mini pc paket 7": "mini-pc",
+    "mini pc paket 8": "mini-pc",
+    "mini pc paket 9": "mini-pc",
+    "mini pc paket 10": "mini-pc",
+    "mini pc paket 11": "mini-pc",
+    "mini pc paket 12": "mini-pc",
+    "mini pc paket 13": "mini-pc",
+    "mini pc paket 14": "mini-pc",
+    "mini pc paket 15": "mini-pc",
+    "v-gen ssd 256gb sata": "vgen-sata",
+    "v-gen ssd 512gb sata": "vgen-sata",
+    "hdd hgst 1tb 2.5ins": "hdd-25",
+    "hdd wd 1tb 2.5ins": "hdd-25",
+    "hdd seagate 500gb 2.5ins": "hdd-25",
+    "v-gen hyper ssd nvme 256gb": "vgen-nvme",
+    "converter dp to hdmi (vention)": "vention-dp-hdmi",
+    "kabel data charger micro usb saramonic": "usb-cable",
+    "hdd wd 500gb 3.5ins": "hdd-35",
+    "hdd toshiba 1tb 3.5ins": "hdd-35",
+    "hdd seagate 160gb 3.5ins": "hdd-35",
+    "hdd wd 1tb 3.5ins": "hdd-35",
+    "hdd seagate 80gb 3.5ins": "hdd-35",
+    "hdd hitachi 500gb3.5ins": "hdd-35",
+    "orico 4 port shc-u3 (hub)": "orico-shc-u3",
+    "dongle bluetooth": "bluetooth-dongle",
+    "tp-link tl-sf1008d (5 port)": "tp-link-sf1008d",
+    "tp-link tl-sf1008d (8 port) + adaptor": "tp-link-sf1008d",
+    "head charger untuk saramonic": "usb-charger",
+    "converter dp to vga (bafo bf-3332)": "bafo-bf-3332",
+    "kabel hdmi bafo optik 30m": "hdmi-optical",
+    "kabel hdmi optik 50m": "hdmi-optical",
+    "monitor hp v193": "hp-v193",
+    "ram longdimm 1gb ddr 2": "ram-dimm",
+    "ram longdimm 1gb ddr 3": "ram-dimm",
+    "ram longdimm 1gb ddr 4": "ram-dimm",
+    "ram longdimm 2gb ddr 3": "ram-dimm",
+    "ram longdimm 4gb ddr 3": "ram-dimm",
+    "ram longdimm 4gb ddr 4": "ram-dimm",
+    "ram longdimm ddr 3": "ram-dimm",
+    "kabel extension hdmi bafo 2m": "hdmi-extension",
+    "hdmi switcher 2x1": "hdmi-switch2",
+    "flashdisk 64gb": "flash-drive",
+    "hardisk eksternal hitam": "external-hdd",
+    "hardisk eksternal putih": "external-hdd",
+    "hardisk eksternal vention": "external-hdd",
+    "keyboard hp ku-1516": "hp-ku1516",
+    "monitor hp pro display p191": "hp-p191",
+    "monitor prodisplay p191": "hp-p191",
+    "monitor hp p191": "hp-p191",
+    "power suplly black silver 400w": "pc-psu",
+    "power suplly hp": "pc-psu",
+    "power supply hp": "pc-psu",
+    "tp-link sg-105 (5 port 1gb) + adaptor": "tp-link-sg105",
+    "soundcard ugreen": "ugreen-soundcard",
+    "converter hdmi to hdmi repeater": "hdmi-coupler",
+    "converter hdmi to hdmi vention": "hdmi-coupler",
+    "sambungan hdmi male to male": "hdmi-coupler",
+    "sambungan hdmi male to female": "hdmi-coupler",
+    "kabel vga (male to female) g. lt 4": "vga-cable",
+    "kabel vga (male to male) g. lt 4": "vga-cable",
+    "kabel vga (male to male) g. lt 10": "vga-cable",
+    "kabel vga (male to female) g.lt. 10": "vga-cable",
+    "kabel a to b 3m": "usb-ab",
+    "kabel a to b 1,5m": "usb-ab",
+    "kabel usb 2.0 a male to b male - 15m (ugreen)": "usb-ab",
+    "port type a to b": "usb-ab",
+    "mouse hp mofyuo": "hp-mofyu0",
+    "masking tape": "tape",
+    "lakban hitam besar": "tape",
+    "lakban putih besar": "tape",
+    "double tape 3m": "tape",
+    "tas dell": "laptop-bag",
+    "tas laptop cadeen": "laptop-bag",
+    "tas laptop copper": "laptop-bag",
+    "tas laptop": "laptop-bag",
+    "poly sync 20": "poly-sync20",
+    "poly sync 20 + (usb)": "poly-sync20",
+    "philips contact cleaner": "contact-cleaner",
+    "wd-40 khusus peralatan elektronik": "contact-cleaner",
+    "contact cleaner": "contact-cleaner",
+    "hagibis wireless hd transmitter": "hagibis-wireless",
+    "hagibis wireless hd transmitter 1 set": "hagibis-wireless",
+    "hdmi extender 200m via utp cat5e cat6 (bafo)": "hdmi-extender",
+    "hdmi to lan extender 60m via utp cat5e cat6 (bafo)": "hdmi-extender",
+    "keyboard logitech k120": "logitech-k120",
+    "new monitor hp v194": "hp-v194",
+    "monitor hp v194": "hp-v194",
+    "mini pc hp prodesk 400 g5 l": "hp-prodesk400g5",
+    "mini pc hp prodesk 400 g5": "hp-prodesk400g5",
+    "hdmi switcher 2x4": "hdmi-switch4",
+    "d-link des-1005d (5 port)": "d-link-des1005d",
+    "tripod takara": "tripod",
+    "charger laptop hp": "hp-charger",
+    "switching adaptor": "switching-adapter",
+    "power supply 5a/12v": "switching-adapter",
+    "charger laptop hp type c": "hp-charger-usbc",
+    "bracket mini pc": "bracket-mini",
+    "bracket pc lenovo": "bracket-mini",
+    "converter mini dp to vga hdmi (ugreen)": "ugreen-minidp",
+    "video capture card hagibis": "hagibis-capture",
+    "audio spliter y": "audio-aux",
+    "aux saramonic": "audio-aux",
+    "converter usb-c 6 in 1 baseus": "baseus-hub6",
+    "converter mini dp to vga (bafo)": "bafo-minidp",
+    "dvd writer samsung r. it": "dvd-writer",
+    "dvd writer samsung g. lt 10": "dvd-writer",
+    "ht icom ic - v88": "icom-v88",
+    "kabel type c 3m ugreen": "usb-c",
+    "kabel power kepala 3": "power-3",
+    "kabel power lubang 3": "power-3",
+    "spiral ks-8kb 10m": "cable-wrap",
+    "spiral ks-8kb 10m - mall alsut": "cable-wrap",
+    "kamera tenveo backup event": "tenveo-nv20a",
+    "kamera tenveo nv20a backup": "tenveo-nv20a",
+    "web camera logitech c270": "logitech-c270",
+    "keyboard logitech k220 wireless + mouse": "logitech-k220",
+    "keyboard hp pr1101u": "hp-pr1101u",
+    "keyboard hp ku-1156": "hp-ku1156",
+    "laptop dell latitude 3410": "dell-latitude3410",
+    "laptop hp probook 430 g7": "hp-probook430g7",
+    "monitor hp lv1911": "hp-lv1911",
+    "new monitor hp lv1911": "hp-lv1911",
+    "mouse asus": "mouse-asus",
+    "thinclient hp t620 ram 4gb hdd 32gb + adapter (ex tv wall)": "hp-t620",
+    "thinclient hp t620 ram 4gb hdd 32gb": "hp-t620",
+    "file folder a4 bantex": "folder",
+    "file folder a5 bantex": "folder",
+    "pointer logitech": "logitech-r500",
+    "pointer logitech r500 laser": "logitech-r500",
+    "printer standalone hp laserjet m107 a (bw)": "hp-laser107a",
+    "toner printer hp laser 107a": "hp-laser107a",
+    "pulpen hitam": "pen",
+    "pulpen biru": "pen",
+    "ram sodim 4gb pc3-12800s": "ram-sodimm",
+    "ram sodim 8gb pc3-12800s": "ram-sodimm",
+    "hdmi matrix lindy 4x4": "lindy-matrix",
+    "hdmi spliter vention 1x2": "vention-splitter2",
+    "hdmi spliter bafo 1x4": "hdmi-splitter4",
+    "hdmi spliter 1x4 nyk": "hdmi-splitter4",
+    "steker broco": "power-plug",
+    "kepala colokan stop kontak": "power-plug",
+    "stop kontak 2 lubang": "power-strip",
+    "stop kontak 4 lubang": "power-strip",
+    "tplink - ls1005g": "tp-link-ls1005g",
+    "tenda - s105 (5 port)": "tenda-s105",
+    "tool box": "tool-box",
+    "tool box tekiro": "tool-box",
+    "troli krisbow": "trolley",
+    "troli prestar jepang 300 kg": "trolley",
+    "usb omnikey 5321": "hid-omnikey5321",
+    "ugreen docking nvme enclosure": "nvme-enclosure",
+    "dongle usb tenda u1": "tenda-u1",
+    "adapter rfid soyal": "rfid-adapter",
+    "charger laptop lenovo": "lenovo-charger",
+    "adaptor mini pc": "mini-pc-adapter",
+    "charger ht": "ht-charger",
+    "charger vacum": "charger-vacuum",
+    "boya microphone speaker by-bmm400": "boya-bmm400",
+    "saramonic blink 500 pro 2": "saramonic-blink500",
+    "baterai cmos": "cmos-battery",
+    "storage box penyimpanan": "storage-box",
+    "bracket monitor": "bracket-monitor",
+    "cairan pembersih biru": "cleaner",
+    "pasta cpu": "thermal-paste",
+    "cooling pad notebook": "cooling-pad",
+    "aten cs1774 (vga spliter)": "aten-cs1774",
+    "converter mini dp thunderbolt to hdmi": "minidp-hdmi",
+    "converter usb 3.0 to lan(bafo bf-b30030)": "bafo-b30030",
+    "converter usb 3.0 type c to lan(belkin)": "belkin-usblan",
+    "converter dp to hdmi (hp)": "hp-dp-hdmi",
+    "video capture card hd31 (acasis)": "acasis-hd31",
+    "hdmi capture ezcap261": "ezcap261",
+    "video capture card vention": "vention-capture",
+    "wireless hdmi 2 in 1 transmitter": "wireless-hdmi",
+    "converter usb-c 6 in 1 vention": "vention-hub6",
+    "converter vga to hdmi (netline)": "vga-hdmi",
+    "kabel utp to usb": "ethernet-usb",
+    "extender hdmi to lan bafo bf-372b": "bafo-bf-372b",
+    "dvi to vga g. lt. 10": "dvi-vga",
+    "converter usb-c 8 in 1 baseus": "baseus-hub8",
+    "aten vs 132a": "aten-vs132a",
+    "aten vs92a": "aten-vs92a",
+    "aten v0202": "aten-v0202",
+    "isi cutter": "cutter-blade",
+    "cutter": "cutter",
+    "glue gun": "glue-gun",
+    "isi glue gun 1kg": "glue-stick",
+    "gunting": "scissors",
+    "ht icom ic - v8": "icom-v8",
+    "imac late 2012\"21,5 inc\" + keyboard+mouse": "imac-2012",
+    "ipad pro2021 m1 11inch": "ipad-pro2021",
+    "usb saramonic": "saramonic-usb",
+    "kabel mini hdmi to hdmi 2m ugreen": "mini-hdmi",
+    "kabel power lubang 2": "power-2",
+    "kabel usb to hdmi": "usb-hdmi",
+    "kabel aux rca": "aux-rca",
+    "sambungan vga female to female": "vga-coupler",
+    "kabel ties/kabel tis/cable tie (pengikat kabel)": "cable-ties",
+    "kabel dp to dp": "dp-cable",
+    "kabel nym supreme 100m": "nym-cable",
+    "kain majun": "cleaning-rag",
+    "web camera logitech 930e": "logitech-c930e",
+    "keyboard acer": "keyboard-acer",
+    "keyboard hp 150 wired": "hp-150keyboard",
+    "keyboard logitech k270": "logitech-k270",
+    "keystone lock": "keystone",
+    "label": "label",
+    "laptop hp probook 440 g5": "hp-probook440g5",
+    "laptop lenovo legion": "laptop-legion",
+    "monitor hp p204v (hdmi)": "hp-p204v",
+    "monitor hp m24fwa 23,8 inch": "hp-m24fwa",
+    "monitor hp v220": "hp-v220",
+    "mouse acer": "mouse-acer",
+    "mouse logitech b100": "logitech-b100",
+    "mouse hp sm-2022": "hp-sm2022",
+    "mouse pad": "mouse-pad",
+    "pc acer nitro": "pc-acer-nitro",
+    "pc asus bm6ad_bm1ad_bp1ad": "asus-bm6ad",
+    "pc hp 280 g1 mt": "hp-280g1",
+    "pembolong kertas": "paper-punch",
+    "penutup rfid boss": "rfid-cover",
+    "bracket tv standing nb ava1500": "nb-ava1500",
+    "sticky note joyko warrna warni": "sticky-notes",
+    "digital watt meter power meter energy meter pengukur arus listrik": "watt-meter",
+    "mesin vacuum blower gbl 82-270 kit bosch": "bosch-gbl82",
+    "printer label brother pt-h110": "brother-pth110",
+    "isi label tape printer brother": "label-tape",
+    "spidol hitam": "marker",
+    "hdmi matrix 4x4": "hdmi-matrix",
+    "spliter 1x2 (eyota)": "hdmi-splitter2",
+    "v-gen platinum": "vgen-platinum",
+    "isi steples": "staples",
+    "stepler": "stapler",
+    "d-link dgs-1008a (8 port)": "d-link-dgs1008a",
+    "tiang kamera ptz": "camera-stand",
+    "tinta printer hp 955xl black": "hp-955xl",
+    "uneed rechargeable electric screwdriver with led": "screwdriver",
+    "libeck 650 ex": "libec-650ex",
+    "tv samsung ua43k5005ak": "samsung-k5005",
+    "tv tcl 55inch type 55p71b": "tcl-p71b",
+    "orico docking nvme enclosure tcm-c3": "orico-tcm-c3",
+    "orico docking nvme enclosure tcm 2": "orico-tcm2",
+    "usb omnikey 5021": "hid-omnikey5021",
+    "soundcard audio yamaha": "sound-mixer",
+    "hdmi switcher 3x1": "hdmi-switch3",
+    "kabel dp to hdmi": "dp-hdmi-cable"
+  },
+  "byCode": {
+    "Kabel-12": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1m"
+    },
+    "Kabel-13": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1m"
+    },
+    "Kabel-14": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 1m"
+    },
+    "Kabel-15": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 1m"
+    },
+    "Kabel-16": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-17": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-18": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-19": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-20": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-21": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-22": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-23": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-24": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 1,5m"
+    },
+    "Kabel-25": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 1,5m"
+    },
+    "Kabel-26": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 1,5m"
+    },
+    "Kabel-27": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 1,5m"
+    },
+    "Kabel-28": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 1,5m"
+    },
+    "Kabel-29": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 1,5m"
+    },
+    "Kabel-30": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1,5m"
+    },
+    "Kabel-31": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1,5m"
+    },
+    "Kabel-32": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1,5m"
+    },
+    "Kabel-33": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1,5m"
+    },
+    "Kabel-34": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1,5m"
+    },
+    "Kabel-35": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 1,5m"
+    },
+    "Kabel-36": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-37": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-38": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-39": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-40": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-41": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-42": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-43": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-44": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-45": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-46": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 1,5m"
+    },
+    "Kabel-47": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi proftech 1,5 m"
+    },
+    "Kabel-48": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 2m"
+    },
+    "Kabel-49": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 2m"
+    },
+    "Kabel-50": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 2m"
+    },
+    "Kabel-51": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 2m"
+    },
+    "Kabel-52": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 2m"
+    },
+    "Kabel-53": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 2m"
+    },
+    "Kabel-54": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-55": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-56": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-57": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-58": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-59": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-60": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-61": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-62": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-63": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-64": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-65": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-66": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-67": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-68": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-69": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-70": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-71": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-72": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-73": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-74": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-75": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-76": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-77": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-78": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-79": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-80": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-81": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-82": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-83": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-84": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-85": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-86": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-87": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-88": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-89": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-90": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-91": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-92": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 2m"
+    },
+    "Kabel-99": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-100": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-101": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-102": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-103": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-104": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-105": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-106": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-107": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-108": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-109": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-110": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-111": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-112": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-113": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-114": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-115": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-116": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-117": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi highspeed 2m"
+    },
+    "Kabel-118": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vcom 2m"
+    },
+    "Kabel-119": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vcom 2m"
+    },
+    "Kabel-120": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vcom 2m"
+    },
+    "Kabel-121": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vcom 2m"
+    },
+    "Kabel-122": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vcom 2m"
+    },
+    "Kabel-123": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 2m"
+    },
+    "Kabel-124": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-125": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-126": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-127": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-128": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-129": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-130": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-131": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-132": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-133": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-134": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-135": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-136": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-137": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-138": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-139": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-140": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-141": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Kabel-142": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 3m"
+    },
+    "Kabel-143": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 3m"
+    },
+    "Kabel-144": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 3m"
+    },
+    "Kabel-145": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 3m"
+    },
+    "Kabel-146": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 3m"
+    },
+    "Kabel-147": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-148": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-149": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-150": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-151": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-152": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-153": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-154": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-155": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-156": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-157": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-158": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-159": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-160": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-161": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-162": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-163": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 3m"
+    },
+    "Kabel-166": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 5m"
+    },
+    "Kabel-167": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 5m"
+    },
+    "Kabel-168": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-169": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-170": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-171": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-172": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-173": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-174": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-175": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-176": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-177": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-178": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-179": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-180": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-181": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-182": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-183": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-184": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-185": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-186": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-187": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vcom 5m"
+    },
+    "Kabel-188": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 10m"
+    },
+    "Kabel-189": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi netline 10m"
+    },
+    "Kabel-190": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 10m"
+    },
+    "Kabel-191": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-192": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-193": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-194": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-195": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-196": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-197": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-198": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-199": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-200": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-201": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-202": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 15m"
+    },
+    "Kabel-203": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 15m"
+    },
+    "Kabel-204": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi generik 15m"
+    },
+    "Kabel-205": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi awm 15m"
+    },
+    "Kabel-206": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-207": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-208": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-209": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-210": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-211": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-212": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-213": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-214": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-215": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-216": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-217": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-218": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-219": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-220": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-221": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-222": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-223": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-224": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-225": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 15m"
+    },
+    "Kabel-226": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 15m"
+    },
+    "Kabel-227": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi vention 15m"
+    },
+    "Kabel-228": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi proftech 15m"
+    },
+    "Kabel-229": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-230": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-231": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-232": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-233": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-234": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-235": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-236": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-237": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-238": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-239": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-240": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-241": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-242": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-243": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-244": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-245": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 25m"
+    },
+    "Kabel-246": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 30m"
+    },
+    "Kabel-247": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 30m"
+    },
+    "Kabel-248": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 30m"
+    },
+    "Kabel-249": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 30m"
+    },
+    "Kabel-250": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 30m"
+    },
+    "Kabel-251": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 30m"
+    },
+    "Kabel-252": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 30m"
+    },
+    "Kabel-260": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 50m"
+    },
+    "Kabel-261": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 50m"
+    },
+    "Kabel-262": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi extender male to female vention 3m"
+    },
+    "Kabel-292": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi 3m ugreen"
+    },
+    "Kabel-326": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 20m"
+    },
+    "Kabel-327": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-328": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 10m"
+    },
+    "Kabel-330": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 5m"
+    },
+    "Kabel-331": {
+      "id": "hdmi-cable",
+      "name": "kabel hdmi bafo 3m"
+    },
+    "Converter-48": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-49": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-50": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-51": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-52": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-54": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-55": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-56": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-57": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-58": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-59": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-60": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-61": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-62": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-63": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-65": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-66": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-67": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-68": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-69": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-70": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-71": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-72": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-73": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-74": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-75": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-77": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-78": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-79": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-80": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-81": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-82": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-83": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-84": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-85": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-86": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-88": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-89": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-90": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-91": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-92": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-93": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-94": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-95": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-96": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-97": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-99": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-100": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-101": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-102": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-103": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-104": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-105": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-106": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "Converter-107": {
+      "id": "bafo-bf-3382",
+      "name": "converter dp to hdmi (bafo bf-3382)"
+    },
+    "USB-1": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-2": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-3": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-4": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-5": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-6": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-7": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-8": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-9": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-10": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-11": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-12": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-13": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-14": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-15": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-16": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-17": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-18": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-19": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-20": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-21": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-22": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-23": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-24": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-25": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-26": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-27": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-28": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-29": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-30": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-31": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-32": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-33": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-34": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-35": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-36": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-37": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-38": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-39": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-40": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-41": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-42": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-75": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "USB-76": {
+      "id": "orico-skt3",
+      "name": "orico soundcard skt3"
+    },
+    "Switch-5": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-6": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-7": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-8": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-9": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-10": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-11": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-12": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-13": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-14": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-15": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-16": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-17": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-18": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-19": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-20": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-21": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-22": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-23": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-24": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-25": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-26": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-27": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-28": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-29": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-30": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-31": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-32": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-33": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-34": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-35": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-36": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-37": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Switch-38": {
+      "id": "tp-link-sf1005d",
+      "name": "tplink - sf1005d (5 port) + adaptor"
+    },
+    "Spliter-4": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-5": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-6": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-7": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-8": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-9": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-10": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-11": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-12": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-13": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-14": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-15": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-16": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-17": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-18": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-19": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-20": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-21": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-22": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-23": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-24": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-25": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-26": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-27": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-28": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-29": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-30": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-31": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-32": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-33": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-34": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Spliter-35": {
+      "id": "vention-splitter4",
+      "name": "hdmi spliter vention 1x4"
+    },
+    "Kabel-263": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 5m"
+    },
+    "Kabel-264": {
+      "id": "usb-extender",
+      "name": "kabel usb extender ugreen 5m"
+    },
+    "Kabel-265": {
+      "id": "usb-extender",
+      "name": "kabel usb extender ugreen 5m"
+    },
+    "Kabel-266": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 10m"
+    },
+    "Kabel-267": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-268": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-269": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-270": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-271": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-272": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-273": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-274": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-275": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-276": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-277": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-278": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-279": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-280": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-281": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-282": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-283": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-284": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-285": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 20m netline"
+    },
+    "Kabel-286": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 30m netline"
+    },
+    "Kabel-287": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 30m netline"
+    },
+    "Kabel-288": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 30m netline"
+    },
+    "Kabel-289": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 30m netline"
+    },
+    "Kabel-290": {
+      "id": "usb-extender",
+      "name": "kabel usb extender 30m netline"
+    },
+    "Kabel-293": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 5m"
+    },
+    "Kabel-294": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 5m"
+    },
+    "Kabel-295": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 5m"
+    },
+    "Kabel-296": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 5m"
+    },
+    "Kabel-297": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 5m"
+    },
+    "Kabel-298": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 5m"
+    },
+    "Kabel-299": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 10m"
+    },
+    "Kabel-300": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 10m"
+    },
+    "Kabel-301": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 10m"
+    },
+    "Kabel-302": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 15m"
+    },
+    "Kabel-303": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 15m"
+    },
+    "Kabel-304": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 15m"
+    },
+    "Kabel-305": {
+      "id": "logitech-group",
+      "name": "kabel kamera logi ptz 15m"
+    },
+    "Kamera-1": {
+      "id": "logitech-group",
+      "name": "kamera logitech backup kelas 1"
+    },
+    "Kamera-2": {
+      "id": "logitech-group",
+      "name": "kamera logitech backup kelas 2"
+    },
+    "Kamera-3": {
+      "id": "logitech-group",
+      "name": "kamera logitech pro 2"
+    },
+    "Kamera-4": {
+      "id": "logitech-group",
+      "name": "kamera ptz logitech grup (rusak)"
+    },
+    "Mouse-4": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-6": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-12": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-13": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-14": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-15": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-16": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-17": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-18": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-19": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-20": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-21": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-22": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-23": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-24": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-25": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Mouse-26": {
+      "id": "mouse-hp",
+      "name": "mouse hp"
+    },
+    "Converter-3": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-4": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-5": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-108": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-109": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-110": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-111": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-112": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-114": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-115": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-116": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-117": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-118": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-119": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "Converter-120": {
+      "id": "vention-dp-vga",
+      "name": "converter dp to vga (vention)"
+    },
+    "PC-1": {
+      "id": "mini-pc",
+      "name": "mini pc paket 1"
+    },
+    "PC-2": {
+      "id": "mini-pc",
+      "name": "mini pc paket 2"
+    },
+    "PC-3": {
+      "id": "mini-pc",
+      "name": "mini pc paket 3"
+    },
+    "PC-4": {
+      "id": "mini-pc",
+      "name": "mini pc paket 4"
+    },
+    "PC-5": {
+      "id": "mini-pc",
+      "name": "mini pc paket 5"
+    },
+    "PC-6": {
+      "id": "mini-pc",
+      "name": "mini pc paket 6"
+    },
+    "PC-7": {
+      "id": "mini-pc",
+      "name": "mini pc paket 7"
+    },
+    "PC-8": {
+      "id": "mini-pc",
+      "name": "mini pc paket 8"
+    },
+    "PC-9": {
+      "id": "mini-pc",
+      "name": "mini pc paket 9"
+    },
+    "PC-10": {
+      "id": "mini-pc",
+      "name": "mini pc paket 10"
+    },
+    "PC-11": {
+      "id": "mini-pc",
+      "name": "mini pc paket 11"
+    },
+    "PC-12": {
+      "id": "mini-pc",
+      "name": "mini pc paket 12"
+    },
+    "PC-13": {
+      "id": "mini-pc",
+      "name": "mini pc paket 13"
+    },
+    "PC-14": {
+      "id": "mini-pc",
+      "name": "mini pc paket 14"
+    },
+    "PC-15": {
+      "id": "mini-pc",
+      "name": "mini pc paket 15"
+    },
+    "SSD-2": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 256gb sata"
+    },
+    "SSD-3": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 256gb sata"
+    },
+    "SSD-4": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 256gb sata"
+    },
+    "SSD-5": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 256gb sata"
+    },
+    "SSD-6": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 256gb sata"
+    },
+    "SSD-7": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 256gb sata"
+    },
+    "SSD-8": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "SSD-9": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "SSD-10": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "SSD-11": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "SSD-12": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "SSD-13": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "SSD-14": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "SSD-15": {
+      "id": "vgen-sata",
+      "name": "v-gen ssd 512gb sata"
+    },
+    "HDD-1": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-2": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-3": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-4": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-5": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-6": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-7": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-8": {
+      "id": "hdd-25",
+      "name": "hdd hgst 1tb 2.5ins"
+    },
+    "HDD-9": {
+      "id": "hdd-25",
+      "name": "hdd wd 1tb 2.5ins"
+    },
+    "HDD-10": {
+      "id": "hdd-25",
+      "name": "hdd wd 1tb 2.5ins"
+    },
+    "HDD-14": {
+      "id": "hdd-25",
+      "name": "hdd seagate 500gb 2.5ins"
+    },
+    "HDD-15": {
+      "id": "hdd-25",
+      "name": "hdd seagate 500gb 2.5ins"
+    },
+    "SSD-1": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-17": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-18": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-19": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-20": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-21": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-22": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-23": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-24": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-25": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-26": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "SSD-27": {
+      "id": "vgen-nvme",
+      "name": "v-gen hyper ssd nvme 256gb"
+    },
+    "Converter-36": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-37": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-38": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-39": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-40": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-42": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-43": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-44": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-45": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-46": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Converter-47": {
+      "id": "vention-dp-hdmi",
+      "name": "converter dp to hdmi (vention)"
+    },
+    "Kabel-2": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-3": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-4": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-5": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-6": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-7": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-8": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-9": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-10": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "Kabel-11": {
+      "id": "usb-cable",
+      "name": "kabel data charger micro usb saramonic"
+    },
+    "HDD-11": {
+      "id": "hdd-35",
+      "name": "hdd wd 500gb 3.5ins"
+    },
+    "HDD-12": {
+      "id": "hdd-35",
+      "name": "hdd wd 500gb 3.5ins"
+    },
+    "HDD-13": {
+      "id": "hdd-35",
+      "name": "hdd wd 500gb 3.5ins"
+    },
+    "HDD-16": {
+      "id": "hdd-35",
+      "name": "hdd toshiba 1tb 3.5ins"
+    },
+    "HDD-17": {
+      "id": "hdd-35",
+      "name": "hdd seagate 160gb 3.5ins"
+    },
+    "HDD-18": {
+      "id": "hdd-35",
+      "name": "hdd seagate 160gb 3.5ins"
+    },
+    "HDD-19": {
+      "id": "hdd-35",
+      "name": "hdd wd 1tb 3.5ins"
+    },
+    "HDD-20": {
+      "id": "hdd-35",
+      "name": "hdd seagate 80gb 3.5ins"
+    },
+    "HDD-21": {
+      "id": "hdd-35",
+      "name": "hdd hitachi 500gb3.5ins"
+    },
+    "USB-50": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-51": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-52": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-53": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-54": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-55": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-56": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-77": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-78": {
+      "id": "orico-shc-u3",
+      "name": "orico 4 port shc-u3 (hub)"
+    },
+    "USB-57": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-58": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-59": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-60": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-61": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-62": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-63": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-64": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "USB-65": {
+      "id": "bluetooth-dongle",
+      "name": "dongle bluetooth"
+    },
+    "Switch-39": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (5 port)"
+    },
+    "Switch-40": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (8 port) + adaptor"
+    },
+    "Switch-41": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (8 port) + adaptor"
+    },
+    "Switch-42": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (8 port) + adaptor"
+    },
+    "Switch-43": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (8 port) + adaptor"
+    },
+    "Switch-44": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (8 port) + adaptor"
+    },
+    "Switch-45": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (8 port) + adaptor"
+    },
+    "Switch-46": {
+      "id": "tp-link-sf1008d",
+      "name": "tp-link tl-sf1008d (8 port) + adaptor"
+    },
+    "Adaptor-5": {
+      "id": "usb-charger",
+      "name": "head charger untuk saramonic"
+    },
+    "Adaptor-6": {
+      "id": "usb-charger",
+      "name": "head charger untuk saramonic"
+    },
+    "Adaptor-7": {
+      "id": "usb-charger",
+      "name": "head charger untuk saramonic"
+    },
+    "Adaptor-8": {
+      "id": "usb-charger",
+      "name": "head charger untuk saramonic"
+    },
+    "Adaptor-9": {
+      "id": "usb-charger",
+      "name": "head charger untuk saramonic"
+    },
+    "Adaptor-10": {
+      "id": "usb-charger",
+      "name": "head charger untuk saramonic"
+    },
+    "Adaptor-11": {
+      "id": "usb-charger",
+      "name": "head charger untuk saramonic"
+    },
+    "Converter-6": {
+      "id": "bafo-bf-3332",
+      "name": "converter dp to vga (bafo bf-3332)"
+    },
+    "Converter-7": {
+      "id": "bafo-bf-3332",
+      "name": "converter dp to vga (bafo bf-3332)"
+    },
+    "Converter-8": {
+      "id": "bafo-bf-3332",
+      "name": "converter dp to vga (bafo bf-3332)"
+    },
+    "Converter-9": {
+      "id": "bafo-bf-3332",
+      "name": "converter dp to vga (bafo bf-3332)"
+    },
+    "Converter-10": {
+      "id": "bafo-bf-3332",
+      "name": "converter dp to vga (bafo bf-3332)"
+    },
+    "Converter-11": {
+      "id": "bafo-bf-3332",
+      "name": "converter dp to vga (bafo bf-3332)"
+    },
+    "Converter-12": {
+      "id": "bafo-bf-3332",
+      "name": "converter dp to vga (bafo bf-3332)"
+    },
+    "Kabel-253": {
+      "id": "hdmi-optical",
+      "name": "kabel hdmi bafo optik 30m"
+    },
+    "Kabel-254": {
+      "id": "hdmi-optical",
+      "name": "kabel hdmi bafo optik 30m"
+    },
+    "Kabel-255": {
+      "id": "hdmi-optical",
+      "name": "kabel hdmi bafo optik 30m"
+    },
+    "Kabel-256": {
+      "id": "hdmi-optical",
+      "name": "kabel hdmi bafo optik 30m"
+    },
+    "Kabel-257": {
+      "id": "hdmi-optical",
+      "name": "kabel hdmi bafo optik 30m"
+    },
+    "Kabel-258": {
+      "id": "hdmi-optical",
+      "name": "kabel hdmi optik 50m"
+    },
+    "Kabel-259": {
+      "id": "hdmi-optical",
+      "name": "kabel hdmi optik 50m"
+    },
+    "Monitor-4": {
+      "id": "hp-v193",
+      "name": "monitor hp v193"
+    },
+    "Monitor-5": {
+      "id": "hp-v193",
+      "name": "monitor hp v193"
+    },
+    "Monitor-6": {
+      "id": "hp-v193",
+      "name": "monitor hp v193"
+    },
+    "Monitor-7": {
+      "id": "hp-v193",
+      "name": "monitor hp v193"
+    },
+    "Monitor-8": {
+      "id": "hp-v193",
+      "name": "monitor hp v193"
+    },
+    "Monitor-9": {
+      "id": "hp-v193",
+      "name": "monitor hp v193"
+    },
+    "Monitor-10": {
+      "id": "hp-v193",
+      "name": "monitor hp v193"
+    },
+    "RAM-1": {
+      "id": "ram-dimm",
+      "name": "ram longdimm 1gb ddr 2"
+    },
+    "RAM-2": {
+      "id": "ram-dimm",
+      "name": "ram longdimm 1gb ddr 3"
+    },
+    "RAM-3": {
+      "id": "ram-dimm",
+      "name": "ram longdimm 1gb ddr 4"
+    },
+    "RAM-4": {
+      "id": "ram-dimm",
+      "name": "ram longdimm 2gb ddr 3"
+    },
+    "RAM-5": {
+      "id": "ram-dimm",
+      "name": "ram longdimm 4gb ddr 3"
+    },
+    "RAM-6": {
+      "id": "ram-dimm",
+      "name": "ram longdimm 4gb ddr 4"
+    },
+    "RAM-7": {
+      "id": "ram-dimm",
+      "name": "ram longdimm ddr 3"
+    },
+    "Kabel-93": {
+      "id": "hdmi-extension",
+      "name": "kabel extension hdmi bafo 2m"
+    },
+    "Kabel-94": {
+      "id": "hdmi-extension",
+      "name": "kabel extension hdmi bafo 2m"
+    },
+    "Kabel-95": {
+      "id": "hdmi-extension",
+      "name": "kabel extension hdmi bafo 2m"
+    },
+    "Kabel-96": {
+      "id": "hdmi-extension",
+      "name": "kabel extension hdmi bafo 2m"
+    },
+    "Kabel-97": {
+      "id": "hdmi-extension",
+      "name": "kabel extension hdmi bafo 2m"
+    },
+    "Kabel-98": {
+      "id": "hdmi-extension",
+      "name": "kabel extension hdmi bafo 2m"
+    },
+    "Switcher-5": {
+      "id": "hdmi-switch2",
+      "name": "hdmi switcher 2x1"
+    },
+    "Switcher-6": {
+      "id": "hdmi-switch2",
+      "name": "hdmi switcher 2x1"
+    },
+    "Switcher-7": {
+      "id": "hdmi-switch2",
+      "name": "hdmi switcher 2x1"
+    },
+    "Switcher-8": {
+      "id": "hdmi-switch2",
+      "name": "hdmi switcher 2x1"
+    },
+    "Switcher-9": {
+      "id": "hdmi-switch2",
+      "name": "hdmi switcher 2x1"
+    },
+    "Switcher-10": {
+      "id": "hdmi-switch2",
+      "name": "hdmi switcher 2x1"
+    },
+    "Storage-1": {
+      "id": "flash-drive",
+      "name": "flashdisk 64gb"
+    },
+    "Storage-2": {
+      "id": "flash-drive",
+      "name": "flashdisk 64gb"
+    },
+    "Storage-3": {
+      "id": "flash-drive",
+      "name": "flashdisk 64gb"
+    },
+    "Storage-4": {
+      "id": "flash-drive",
+      "name": "flashdisk 64gb"
+    },
+    "Storage-5": {
+      "id": "flash-drive",
+      "name": "flashdisk 64gb"
+    },
+    "Storage-6": {
+      "id": "flash-drive",
+      "name": "flashdisk 64gb"
+    },
+    "HDD-22": {
+      "id": "external-hdd",
+      "name": "hardisk eksternal hitam"
+    },
+    "HDD-23": {
+      "id": "external-hdd",
+      "name": "hardisk eksternal hitam"
+    },
+    "HDD-24": {
+      "id": "external-hdd",
+      "name": "hardisk eksternal putih"
+    },
+    "HDD-26": {
+      "id": "external-hdd",
+      "name": "hardisk eksternal vention"
+    },
+    "HDD-27": {
+      "id": "external-hdd",
+      "name": "hardisk eksternal vention"
+    },
+    "Keyboard-5": {
+      "id": "hp-ku1516",
+      "name": "keyboard hp ku-1516"
+    },
+    "Keyboard-6": {
+      "id": "hp-ku1516",
+      "name": "keyboard hp ku-1516"
+    },
+    "Keyboard-7": {
+      "id": "hp-ku1516",
+      "name": "keyboard hp ku-1516"
+    },
+    "Keyboard-8": {
+      "id": "hp-ku1516",
+      "name": "keyboard hp ku-1516"
+    },
+    "Keyboard-9": {
+      "id": "hp-ku1516",
+      "name": "keyboard hp ku-1516"
+    },
+    "Monitor-3": {
+      "id": "hp-p191",
+      "name": "monitor hp pro display p191"
+    },
+    "Monitor-12": {
+      "id": "hp-p191",
+      "name": "monitor prodisplay p191"
+    },
+    "Monitor-15": {
+      "id": "hp-p191",
+      "name": "monitor hp p191"
+    },
+    "Monitor-16": {
+      "id": "hp-p191",
+      "name": "monitor hp p191"
+    },
+    "Monitor-17": {
+      "id": "hp-p191",
+      "name": "monitor hp p191"
+    },
+    "PSU-1": {
+      "id": "pc-psu",
+      "name": "power suplly black silver 400w"
+    },
+    "PSU-2": {
+      "id": "pc-psu",
+      "name": "power suplly black silver 400w"
+    },
+    "PSU-3": {
+      "id": "pc-psu",
+      "name": "power suplly black silver 400w"
+    },
+    "PSU-5": {
+      "id": "pc-psu",
+      "name": "power suplly hp"
+    },
+    "PSU-6": {
+      "id": "pc-psu",
+      "name": "power supply hp"
+    },
+    "Switch-47": {
+      "id": "tp-link-sg105",
+      "name": "tp-link sg-105 (5 port 1gb) + adaptor"
+    },
+    "Switch-48": {
+      "id": "tp-link-sg105",
+      "name": "tp-link sg-105 (5 port 1gb) + adaptor"
+    },
+    "Switch-49": {
+      "id": "tp-link-sg105",
+      "name": "tp-link sg-105 (5 port 1gb) + adaptor"
+    },
+    "Switch-50": {
+      "id": "tp-link-sg105",
+      "name": "tp-link sg-105 (5 port 1gb) + adaptor"
+    },
+    "Switch-51": {
+      "id": "tp-link-sg105",
+      "name": "tp-link sg-105 (5 port 1gb) + adaptor"
+    },
+    "USB-43": {
+      "id": "ugreen-soundcard",
+      "name": "soundcard ugreen"
+    },
+    "USB-44": {
+      "id": "ugreen-soundcard",
+      "name": "soundcard ugreen"
+    },
+    "USB-45": {
+      "id": "ugreen-soundcard",
+      "name": "soundcard ugreen"
+    },
+    "USB-46": {
+      "id": "ugreen-soundcard",
+      "name": "soundcard ugreen"
+    },
+    "USB-47": {
+      "id": "ugreen-soundcard",
+      "name": "soundcard ugreen"
+    },
+    "Converter-98": {
+      "id": "hdmi-coupler",
+      "name": "converter hdmi to hdmi repeater"
+    },
+    "Converter-113": {
+      "id": "hdmi-coupler",
+      "name": "converter hdmi to hdmi vention"
+    },
+    "Kabel-319": {
+      "id": "hdmi-coupler",
+      "name": "sambungan hdmi male to male"
+    },
+    "Kabel-320": {
+      "id": "hdmi-coupler",
+      "name": "sambungan hdmi male to female"
+    },
+    "Kabel-310": {
+      "id": "vga-cable",
+      "name": "kabel vga (male to female) g. lt 4"
+    },
+    "Kabel-311": {
+      "id": "vga-cable",
+      "name": "kabel vga (male to male) g. lt 4"
+    },
+    "Kabel-312": {
+      "id": "vga-cable",
+      "name": "kabel vga (male to male) g. lt 10"
+    },
+    "Kabel-313": {
+      "id": "vga-cable",
+      "name": "kabel vga (male to female) g.lt. 10"
+    },
+    "Kabel-316": {
+      "id": "usb-ab",
+      "name": "kabel a to b 3m"
+    },
+    "Kabel-317": {
+      "id": "usb-ab",
+      "name": "kabel a to b 1,5m"
+    },
+    "Kabel-325": {
+      "id": "usb-ab",
+      "name": "kabel usb 2.0 a male to b male - 15m (ugreen)"
+    },
+    "USB-73": {
+      "id": "usb-ab",
+      "name": "port type a to b"
+    },
+    "Mouse-7": {
+      "id": "hp-mofyu0",
+      "name": "mouse hp mofyuo"
+    },
+    "Mouse-8": {
+      "id": "hp-mofyu0",
+      "name": "mouse hp mofyuo"
+    },
+    "Mouse-9": {
+      "id": "hp-mofyu0",
+      "name": "mouse hp mofyuo"
+    },
+    "Mouse-10": {
+      "id": "hp-mofyu0",
+      "name": "mouse hp mofyuo"
+    },
+    "Peripheral-1": {
+      "id": "tape",
+      "name": "masking tape"
+    },
+    "Peripheral-2": {
+      "id": "tape",
+      "name": "lakban hitam besar"
+    },
+    "Peripheral-3": {
+      "id": "tape",
+      "name": "lakban putih besar"
+    },
+    "Peripheral-6": {
+      "id": "tape",
+      "name": "double tape 3m"
+    },
+    "Tas-1": {
+      "id": "laptop-bag",
+      "name": "tas dell"
+    },
+    "Tas-2": {
+      "id": "laptop-bag",
+      "name": "tas laptop cadeen"
+    },
+    "Tas-3": {
+      "id": "laptop-bag",
+      "name": "tas laptop copper"
+    },
+    "Tas-4": {
+      "id": "laptop-bag",
+      "name": "tas laptop"
+    },
+    "Audio-2": {
+      "id": "poly-sync20",
+      "name": "poly sync 20"
+    },
+    "Audio-3": {
+      "id": "poly-sync20",
+      "name": "poly sync 20"
+    },
+    "Audio-4": {
+      "id": "poly-sync20",
+      "name": "poly sync 20 + (usb)"
+    },
+    "Cairan Pembersih-2": {
+      "id": "contact-cleaner",
+      "name": "philips contact cleaner"
+    },
+    "Cairan Pembersih-3": {
+      "id": "contact-cleaner",
+      "name": "wd-40 khusus peralatan elektronik"
+    },
+    "Cairan Pembersih-4": {
+      "id": "contact-cleaner",
+      "name": "contact cleaner"
+    },
+    "Converter-23": {
+      "id": "hagibis-wireless",
+      "name": "hagibis wireless hd transmitter"
+    },
+    "Converter-24": {
+      "id": "hagibis-wireless",
+      "name": "hagibis wireless hd transmitter 1 set"
+    },
+    "Converter-25": {
+      "id": "hagibis-wireless",
+      "name": "hagibis wireless hd transmitter 1 set"
+    },
+    "Converter-121": {
+      "id": "hdmi-extender",
+      "name": "hdmi extender 200m via utp cat5e cat6 (bafo)"
+    },
+    "Converter-122": {
+      "id": "hdmi-extender",
+      "name": "hdmi extender 200m via utp cat5e cat6 (bafo)"
+    },
+    "Converter-123": {
+      "id": "hdmi-extender",
+      "name": "hdmi to lan extender 60m via utp cat5e cat6 (bafo)"
+    },
+    "Keyboard-12": {
+      "id": "logitech-k120",
+      "name": "keyboard logitech k120"
+    },
+    "Keyboard-13": {
+      "id": "logitech-k120",
+      "name": "keyboard logitech k120"
+    },
+    "Keyboard-14": {
+      "id": "logitech-k120",
+      "name": "keyboard logitech k120"
+    },
+    "Monitor-14": {
+      "id": "hp-v194",
+      "name": "new monitor hp v194"
+    },
+    "Monitor-18": {
+      "id": "hp-v194",
+      "name": "monitor hp v194"
+    },
+    "Monitor-19": {
+      "id": "hp-v194",
+      "name": "monitor hp v194"
+    },
+    "PC-16": {
+      "id": "hp-prodesk400g5",
+      "name": "mini pc hp prodesk 400 g5 l"
+    },
+    "PC-17": {
+      "id": "hp-prodesk400g5",
+      "name": "mini pc hp prodesk 400 g5 l"
+    },
+    "PC-18": {
+      "id": "hp-prodesk400g5",
+      "name": "mini pc hp prodesk 400 g5"
+    },
+    "Switcher-1": {
+      "id": "hdmi-switch4",
+      "name": "hdmi switcher 2x4"
+    },
+    "Switcher-2": {
+      "id": "hdmi-switch4",
+      "name": "hdmi switcher 2x4"
+    },
+    "Switcher-3": {
+      "id": "hdmi-switch4",
+      "name": "hdmi switcher 2x4"
+    },
+    "Switch-1": {
+      "id": "d-link-des1005d",
+      "name": "d-link des-1005d (5 port)"
+    },
+    "Switch-2": {
+      "id": "d-link-des1005d",
+      "name": "d-link des-1005d (5 port)"
+    },
+    "Switch-3": {
+      "id": "d-link-des1005d",
+      "name": "d-link des-1005d (5 port)"
+    },
+    "Tripod-2": {
+      "id": "tripod",
+      "name": "tripod takara"
+    },
+    "Tripod-3": {
+      "id": "tripod",
+      "name": "tripod takara"
+    },
+    "Tripod-4": {
+      "id": "tripod",
+      "name": "tripod takara"
+    },
+    "Adaptor-2": {
+      "id": "hp-charger",
+      "name": "charger laptop hp"
+    },
+    "Adaptor-3": {
+      "id": "hp-charger",
+      "name": "charger laptop hp"
+    },
+    "Adaptor-14": {
+      "id": "switching-adapter",
+      "name": "switching adaptor"
+    },
+    "PSU-4": {
+      "id": "switching-adapter",
+      "name": "power supply 5a/12v"
+    },
+    "Adaptor-16": {
+      "id": "hp-charger-usbc",
+      "name": "charger laptop hp type c"
+    },
+    "Adaptor-17": {
+      "id": "hp-charger-usbc",
+      "name": "charger laptop hp type c"
+    },
+    "Bracket-1": {
+      "id": "bracket-mini",
+      "name": "bracket mini pc"
+    },
+    "Peripheral-7": {
+      "id": "bracket-mini",
+      "name": "bracket pc lenovo"
+    },
+    "Converter-2": {
+      "id": "ugreen-minidp",
+      "name": "converter mini dp to vga hdmi (ugreen)"
+    },
+    "Converter-13": {
+      "id": "ugreen-minidp",
+      "name": "converter mini dp to vga hdmi (ugreen)"
+    },
+    "Converter-20": {
+      "id": "hagibis-capture",
+      "name": "video capture card hagibis"
+    },
+    "Converter-21": {
+      "id": "hagibis-capture",
+      "name": "video capture card hagibis"
+    },
+    "Converter-32": {
+      "id": "audio-aux",
+      "name": "audio spliter y"
+    },
+    "Kabel-315": {
+      "id": "audio-aux",
+      "name": "aux saramonic"
+    },
+    "Converter-34": {
+      "id": "baseus-hub6",
+      "name": "converter usb-c 6 in 1 baseus"
+    },
+    "Converter-35": {
+      "id": "baseus-hub6",
+      "name": "converter usb-c 6 in 1 baseus"
+    },
+    "Converter-76": {
+      "id": "bafo-minidp",
+      "name": "converter mini dp to vga (bafo)"
+    },
+    "Converter-87": {
+      "id": "bafo-minidp",
+      "name": "converter mini dp to vga (bafo)"
+    },
+    "DVD-1": {
+      "id": "dvd-writer",
+      "name": "dvd writer samsung r. it"
+    },
+    "DVD-2": {
+      "id": "dvd-writer",
+      "name": "dvd writer samsung g. lt 10"
+    },
+    "HT-2": {
+      "id": "icom-v88",
+      "name": "ht icom ic - v88"
+    },
+    "HT-3": {
+      "id": "icom-v88",
+      "name": "ht icom ic - v88"
+    },
+    "Kabel-164": {
+      "id": "usb-c",
+      "name": "kabel type c 3m ugreen"
+    },
+    "Kabel-165": {
+      "id": "usb-c",
+      "name": "kabel type c 3m ugreen"
+    },
+    "Kabel-306": {
+      "id": "power-3",
+      "name": "kabel power kepala 3"
+    },
+    "Kabel-308": {
+      "id": "power-3",
+      "name": "kabel power lubang 3"
+    },
+    "Kabel-314": {
+      "id": "cable-wrap",
+      "name": "spiral ks-8kb 10m"
+    },
+    "Kabel-329": {
+      "id": "cable-wrap",
+      "name": "spiral ks-8kb 10m - mall alsut"
+    },
+    "Kamera-5": {
+      "id": "tenveo-nv20a",
+      "name": "kamera tenveo backup event"
+    },
+    "Kamera-6": {
+      "id": "tenveo-nv20a",
+      "name": "kamera tenveo nv20a backup"
+    },
+    "Kamera-8": {
+      "id": "logitech-c270",
+      "name": "web camera logitech c270"
+    },
+    "Kamera-9": {
+      "id": "logitech-c270",
+      "name": "web camera logitech c270"
+    },
+    "Keyboard-2": {
+      "id": "logitech-k220",
+      "name": "keyboard logitech k220 wireless + mouse"
+    },
+    "Keyboard-3": {
+      "id": "logitech-k220",
+      "name": "keyboard logitech k220 wireless + mouse"
+    },
+    "Keyboard-10": {
+      "id": "hp-pr1101u",
+      "name": "keyboard hp pr1101u"
+    },
+    "Keyboard-11": {
+      "id": "hp-pr1101u",
+      "name": "keyboard hp pr1101u"
+    },
+    "Keyboard-15": {
+      "id": "hp-ku1156",
+      "name": "keyboard hp ku-1156"
+    },
+    "Keyboard-16": {
+      "id": "hp-ku1156",
+      "name": "keyboard hp ku-1156"
+    },
+    "Laptop-1": {
+      "id": "dell-latitude3410",
+      "name": "laptop dell latitude 3410"
+    },
+    "Laptop-2": {
+      "id": "dell-latitude3410",
+      "name": "laptop dell latitude 3410"
+    },
+    "Laptop-4": {
+      "id": "hp-probook430g7",
+      "name": "laptop hp probook 430 g7"
+    },
+    "Laptop-5": {
+      "id": "hp-probook430g7",
+      "name": "laptop hp probook 430 g7"
+    },
+    "Monitor-11": {
+      "id": "hp-lv1911",
+      "name": "monitor hp lv1911"
+    },
+    "Monitor-13": {
+      "id": "hp-lv1911",
+      "name": "new monitor hp lv1911"
+    },
+    "Mouse-3": {
+      "id": "mouse-asus",
+      "name": "mouse asus"
+    },
+    "Mouse-5": {
+      "id": "mouse-asus",
+      "name": "mouse asus"
+    },
+    "PC-19": {
+      "id": "hp-t620",
+      "name": "thinclient hp t620 ram 4gb hdd 32gb + adapter (ex tv wall)"
+    },
+    "PC-20": {
+      "id": "hp-t620",
+      "name": "thinclient hp t620 ram 4gb hdd 32gb"
+    },
+    "Peripheral-4": {
+      "id": "folder",
+      "name": "file folder a4 bantex"
+    },
+    "Peripheral-5": {
+      "id": "folder",
+      "name": "file folder a5 bantex"
+    },
+    "Pointer-1": {
+      "id": "logitech-r500",
+      "name": "pointer logitech"
+    },
+    "Pointer-2": {
+      "id": "logitech-r500",
+      "name": "pointer logitech r500 laser"
+    },
+    "Printer-2": {
+      "id": "hp-laser107a",
+      "name": "printer standalone hp laserjet m107 a (bw)"
+    },
+    "Tinta-1": {
+      "id": "hp-laser107a",
+      "name": "toner printer hp laser 107a"
+    },
+    "Pulpen-1": {
+      "id": "pen",
+      "name": "pulpen hitam"
+    },
+    "Pulpen-2": {
+      "id": "pen",
+      "name": "pulpen biru"
+    },
+    "RAM-8": {
+      "id": "ram-sodimm",
+      "name": "ram sodim 4gb pc3-12800s"
+    },
+    "RAM-9": {
+      "id": "ram-sodimm",
+      "name": "ram sodim 8gb pc3-12800s"
+    },
+    "Spliter-1": {
+      "id": "lindy-matrix",
+      "name": "hdmi matrix lindy 4x4"
+    },
+    "Spliter-2": {
+      "id": "lindy-matrix",
+      "name": "hdmi matrix lindy 4x4"
+    },
+    "Spliter-36": {
+      "id": "vention-splitter2",
+      "name": "hdmi spliter vention 1x2"
+    },
+    "Spliter-37": {
+      "id": "vention-splitter2",
+      "name": "hdmi spliter vention 1x2"
+    },
+    "Spliter-38": {
+      "id": "hdmi-splitter4",
+      "name": "hdmi spliter bafo 1x4"
+    },
+    "Spliter-39": {
+      "id": "hdmi-splitter4",
+      "name": "hdmi spliter 1x4 nyk"
+    },
+    "Steker-1": {
+      "id": "power-plug",
+      "name": "steker broco"
+    },
+    "Stop Kontak-1": {
+      "id": "power-plug",
+      "name": "kepala colokan stop kontak"
+    },
+    "Stop Kontak-2": {
+      "id": "power-strip",
+      "name": "stop kontak 2 lubang"
+    },
+    "Stop Kontak-3": {
+      "id": "power-strip",
+      "name": "stop kontak 4 lubang"
+    },
+    "Switch-52": {
+      "id": "tp-link-ls1005g",
+      "name": "tplink - ls1005g"
+    },
+    "Switch-53": {
+      "id": "tp-link-ls1005g",
+      "name": "tplink - ls1005g"
+    },
+    "Switch-54": {
+      "id": "tenda-s105",
+      "name": "tenda - s105 (5 port)"
+    },
+    "Switch-55": {
+      "id": "tenda-s105",
+      "name": "tenda - s105 (5 port)"
+    },
+    "Tool Box-1": {
+      "id": "tool-box",
+      "name": "tool box"
+    },
+    "Tool Box-2": {
+      "id": "tool-box",
+      "name": "tool box tekiro"
+    },
+    "Troli-1": {
+      "id": "trolley",
+      "name": "troli krisbow"
+    },
+    "Troli-2": {
+      "id": "trolley",
+      "name": "troli prestar jepang 300 kg"
+    },
+    "USB-67": {
+      "id": "hid-omnikey5321",
+      "name": "usb omnikey 5321"
+    },
+    "USB-68": {
+      "id": "hid-omnikey5321",
+      "name": "usb omnikey 5321"
+    },
+    "USB-69": {
+      "id": "nvme-enclosure",
+      "name": "ugreen docking nvme enclosure"
+    },
+    "USB-70": {
+      "id": "nvme-enclosure",
+      "name": "ugreen docking nvme enclosure"
+    },
+    "USB-71": {
+      "id": "tenda-u1",
+      "name": "dongle usb tenda u1"
+    },
+    "USB-72": {
+      "id": "tenda-u1",
+      "name": "dongle usb tenda u1"
+    },
+    "Adaptor-1": {
+      "id": "rfid-adapter",
+      "name": "adapter rfid soyal"
+    },
+    "Adaptor-4": {
+      "id": "lenovo-charger",
+      "name": "charger laptop lenovo"
+    },
+    "Adaptor-12": {
+      "id": "mini-pc-adapter",
+      "name": "adaptor mini pc"
+    },
+    "Adaptor-13": {
+      "id": "ht-charger",
+      "name": "charger ht"
+    },
+    "Adaptor-15": {
+      "id": "charger-vacuum",
+      "name": "charger vacum"
+    },
+    "Audio-1": {
+      "id": "boya-bmm400",
+      "name": "boya microphone speaker by-bmm400"
+    },
+    "Audio-5": {
+      "id": "saramonic-blink500",
+      "name": "saramonic blink 500 pro 2"
+    },
+    "Baterai-1": {
+      "id": "cmos-battery",
+      "name": "baterai cmos"
+    },
+    "Box-1": {
+      "id": "storage-box",
+      "name": "storage box penyimpanan"
+    },
+    "Bracket-2": {
+      "id": "bracket-monitor",
+      "name": "bracket monitor"
+    },
+    "Cairan Pembersih-1": {
+      "id": "cleaner",
+      "name": "cairan pembersih biru"
+    },
+    "Cairan Pembersih-5": {
+      "id": "thermal-paste",
+      "name": "pasta cpu"
+    },
+    "Cooling Pad-1": {
+      "id": "cooling-pad",
+      "name": "cooling pad notebook"
+    },
+    "Converter-1": {
+      "id": "aten-cs1774",
+      "name": "aten cs1774 (vga spliter)"
+    },
+    "Converter-14": {
+      "id": "minidp-hdmi",
+      "name": "converter mini dp thunderbolt to hdmi"
+    },
+    "Converter-15": {
+      "id": "bafo-b30030",
+      "name": "converter usb 3.0 to lan(bafo bf-b30030)"
+    },
+    "Converter-16": {
+      "id": "belkin-usblan",
+      "name": "converter usb 3.0 type c to lan(belkin)"
+    },
+    "Converter-17": {
+      "id": "hp-dp-hdmi",
+      "name": "converter dp to hdmi (hp)"
+    },
+    "Converter-18": {
+      "id": "acasis-hd31",
+      "name": "video capture card hd31 (acasis)"
+    },
+    "Converter-19": {
+      "id": "ezcap261",
+      "name": "hdmi capture ezcap261"
+    },
+    "Converter-22": {
+      "id": "vention-capture",
+      "name": "video capture card vention"
+    },
+    "Converter-26": {
+      "id": "wireless-hdmi",
+      "name": "wireless hdmi 2 in 1 transmitter"
+    },
+    "Converter-27": {
+      "id": "vention-hub6",
+      "name": "converter usb-c 6 in 1 vention"
+    },
+    "Converter-28": {
+      "id": "vga-hdmi",
+      "name": "converter vga to hdmi (netline)"
+    },
+    "Converter-29": {
+      "id": "ethernet-usb",
+      "name": "kabel utp to usb"
+    },
+    "Converter-30": {
+      "id": "bafo-bf-372b",
+      "name": "extender hdmi to lan bafo bf-372b"
+    },
+    "Converter-31": {
+      "id": "dvi-vga",
+      "name": "dvi to vga g. lt. 10"
+    },
+    "Converter-33": {
+      "id": "baseus-hub8",
+      "name": "converter usb-c 8 in 1 baseus"
+    },
+    "Converter-41": {
+      "id": "aten-vs132a",
+      "name": "aten vs 132a"
+    },
+    "Converter-53": {
+      "id": "aten-vs92a",
+      "name": "aten vs92a"
+    },
+    "Converter-64": {
+      "id": "aten-v0202",
+      "name": "aten v0202"
+    },
+    "Cutter-1": {
+      "id": "cutter-blade",
+      "name": "isi cutter"
+    },
+    "Cutter-2": {
+      "id": "cutter",
+      "name": "cutter"
+    },
+    "Glue Gun-1": {
+      "id": "glue-gun",
+      "name": "glue gun"
+    },
+    "Glue Gun-2": {
+      "id": "glue-stick",
+      "name": "isi glue gun 1kg"
+    },
+    "Gunting-1": {
+      "id": "scissors",
+      "name": "gunting"
+    },
+    "HT-1": {
+      "id": "icom-v8",
+      "name": "ht icom ic - v8"
+    },
+    "Imac-1": {
+      "id": "imac-2012",
+      "name": "imac late 2012\"21,5 inc\" + keyboard+mouse"
+    },
+    "Ipad": {
+      "id": "ipad-pro2021",
+      "name": "ipad pro2021 m1 11inch"
+    },
+    "Kabel-1": {
+      "id": "saramonic-usb",
+      "name": "usb saramonic"
+    },
+    "Kabel-291": {
+      "id": "mini-hdmi",
+      "name": "kabel mini hdmi to hdmi 2m ugreen"
+    },
+    "Kabel-307": {
+      "id": "power-2",
+      "name": "kabel power lubang 2"
+    },
+    "Kabel-309": {
+      "id": "usb-hdmi",
+      "name": "kabel usb to hdmi"
+    },
+    "Kabel-318": {
+      "id": "aux-rca",
+      "name": "kabel aux rca"
+    },
+    "Kabel-321": {
+      "id": "vga-coupler",
+      "name": "sambungan vga female to female"
+    },
+    "Kabel-322": {
+      "id": "cable-ties",
+      "name": "kabel ties/kabel tis/cable tie (pengikat kabel)"
+    },
+    "Kabel-323": {
+      "id": "dp-cable",
+      "name": "kabel dp to dp"
+    },
+    "Kabel-324": {
+      "id": "nym-cable",
+      "name": "kabel nym supreme 100m"
+    },
+    "Kain Majun-1": {
+      "id": "cleaning-rag",
+      "name": "kain majun"
+    },
+    "Kamera-7": {
+      "id": "logitech-c930e",
+      "name": "web camera logitech 930e"
+    },
+    "Keyboard-1": {
+      "id": "keyboard-acer",
+      "name": "keyboard acer"
+    },
+    "Keyboard-4": {
+      "id": "hp-150keyboard",
+      "name": "keyboard hp 150 wired"
+    },
+    "Keyboard-17": {
+      "id": "logitech-k270",
+      "name": "keyboard logitech k270"
+    },
+    "Keystone Lock-1": {
+      "id": "keystone",
+      "name": "keystone lock"
+    },
+    "Label-1": {
+      "id": "label",
+      "name": "label"
+    },
+    "Laptop-3": {
+      "id": "hp-probook440g5",
+      "name": "laptop hp probook 440 g5"
+    },
+    "Laptop-6": {
+      "id": "laptop-legion",
+      "name": "laptop lenovo legion"
+    },
+    "Monitor-1": {
+      "id": "hp-p204v",
+      "name": "monitor hp p204v (hdmi)"
+    },
+    "Monitor-2": {
+      "id": "hp-m24fwa",
+      "name": "monitor hp m24fwa 23,8 inch"
+    },
+    "Monitor-20": {
+      "id": "hp-v220",
+      "name": "monitor hp v220"
+    },
+    "Mouse-1": {
+      "id": "mouse-acer",
+      "name": "mouse acer"
+    },
+    "Mouse-2": {
+      "id": "logitech-b100",
+      "name": "mouse logitech b100"
+    },
+    "Mouse-11": {
+      "id": "hp-sm2022",
+      "name": "mouse hp sm-2022"
+    },
+    "Mouse Pad-1": {
+      "id": "mouse-pad",
+      "name": "mouse pad"
+    },
+    "PC-21": {
+      "id": "pc-acer-nitro",
+      "name": "pc acer nitro"
+    },
+    "PC-22": {
+      "id": "asus-bm6ad",
+      "name": "pc asus bm6ad_bm1ad_bp1ad"
+    },
+    "PC-23": {
+      "id": "hp-280g1",
+      "name": "pc hp 280 g1 mt"
+    },
+    "Pembolong Kertas-1": {
+      "id": "paper-punch",
+      "name": "pembolong kertas"
+    },
+    "Penutup RFID-1": {
+      "id": "rfid-cover",
+      "name": "penutup rfid boss"
+    },
+    "Peripheral-8": {
+      "id": "nb-ava1500",
+      "name": "bracket tv standing nb ava1500"
+    },
+    "Peripheral-9": {
+      "id": "sticky-notes",
+      "name": "sticky note joyko warrna warni"
+    },
+    "Peripheral-10": {
+      "id": "watt-meter",
+      "name": "digital watt meter power meter energy meter pengukur arus listrik"
+    },
+    "Peripheral-11": {
+      "id": "bosch-gbl82",
+      "name": "mesin vacuum blower gbl 82-270 kit bosch"
+    },
+    "Printer-1": {
+      "id": "brother-pth110",
+      "name": "printer label brother pt-h110"
+    },
+    "Printer-3": {
+      "id": "label-tape",
+      "name": "isi label tape printer brother"
+    },
+    "Spidol-1": {
+      "id": "marker",
+      "name": "spidol hitam"
+    },
+    "Spliter-3": {
+      "id": "hdmi-matrix",
+      "name": "hdmi matrix 4x4"
+    },
+    "Spliter-40": {
+      "id": "hdmi-splitter2",
+      "name": "spliter 1x2 (eyota)"
+    },
+    "SSD-16": {
+      "id": "vgen-platinum",
+      "name": "v-gen platinum"
+    },
+    "Stepler-1": {
+      "id": "staples",
+      "name": "isi steples"
+    },
+    "Stepler-2": {
+      "id": "stapler",
+      "name": "stepler"
+    },
+    "Switch-4": {
+      "id": "d-link-dgs1008a",
+      "name": "d-link dgs-1008a (8 port)"
+    },
+    "Tiang Kamera-1": {
+      "id": "camera-stand",
+      "name": "tiang kamera ptz"
+    },
+    "Tinta-2": {
+      "id": "hp-955xl",
+      "name": "tinta printer hp 955xl black"
+    },
+    "Tools-1": {
+      "id": "screwdriver",
+      "name": "uneed rechargeable electric screwdriver with led"
+    },
+    "Tripod-1": {
+      "id": "libec-650ex",
+      "name": "libeck 650 ex"
+    },
+    "TV-1": {
+      "id": "samsung-k5005",
+      "name": "tv samsung ua43k5005ak"
+    },
+    "TV-2": {
+      "id": "tcl-p71b",
+      "name": "tv tcl 55inch type 55p71b"
+    },
+    "USB-48": {
+      "id": "orico-tcm-c3",
+      "name": "orico docking nvme enclosure tcm-c3"
+    },
+    "USB-49": {
+      "id": "orico-tcm2",
+      "name": "orico docking nvme enclosure tcm 2"
+    },
+    "USB-66": {
+      "id": "hid-omnikey5021",
+      "name": "usb omnikey 5021"
+    },
+    "USB-74": {
+      "id": "sound-mixer",
+      "name": "soundcard audio yamaha"
+    },
+    "Switcher-4": {
+      "id": "hdmi-switch3",
+      "name": "hdmi switcher 3x1"
+    },
+    "Kabel-332": {
+      "id": "dp-hdmi-cable",
+      "name": "kabel dp to hdmi"
+    }
+  },
+  "models": {
+    "hdmi-cable": {
+      "src": "assets/products/catalog/hdmi-cable.webp",
+      "kind": "reference",
+      "title": "HDMI cable coiled product",
+      "source": "https://bursakameraprofesional.co.id/products/atomos-atomflex-full-hdmi-to-full-hdmi-coiled-cable-extend-atom4k60c5"
+    },
+    "bafo-bf-3382": {
+      "src": "assets/products/catalog/bafo-bf-3382.webp",
+      "kind": "model",
+      "title": "BAFO BF-3382 DisplayPort HDMI",
+      "source": "https://www.kharismakencana.com/bafo-bf-3382-cable-converter-display-port-to-hdmi.html"
+    },
+    "orico-skt3": {
+      "src": "assets/products/catalog/orico-skt3.webp",
+      "kind": "model",
+      "title": "ORICO SKT3 USB sound card",
+      "source": "http://orico.co.id/index.php?id_product=540&controller=product"
+    },
+    "tp-link-sf1005d": {
+      "src": "assets/products/catalog/tp-link-sf1005d.webp",
+      "kind": "model",
+      "title": "TP-Link TL-SF1005D switch",
+      "source": "https://www.tp-link.com/id/service-provider/unmanaged-switch/tl-sf1005d/"
+    },
+    "vention-splitter4": {
+      "src": "assets/products/catalog/vention-splitter4.webp",
+      "kind": "model",
+      "title": "Vention HDMI splitter 1x4",
+      "source": "https://sinarphoto.com/ProductInfo.asp?id=7813"
+    },
+    "usb-extender": {
+      "src": "assets/products/catalog/usb-extender.webp",
+      "kind": "reference",
+      "title": "USB active extension cable",
+      "source": "https://cabletimetech.com/id/products/usb-3-0-active-extension-cable-male-to-female-5m-10m-15m-20m-with-amplifier"
+    },
+    "logitech-group": {
+      "src": "assets/products/catalog/logitech-group.webp",
+      "kind": "model",
+      "title": "Logitech GROUP conference camera",
+      "source": "https://www.tokopedia.com/gadgetjakarta200/logitech-group-cc3500e-video-live-meeting-rapat-conference-camera-hd-group-only-531ec"
+    },
+    "mouse-hp": {
+      "src": "assets/products/catalog/mouse-hp.webp",
+      "kind": "reference",
+      "title": "HP wired mouse",
+      "source": "https://www.hp.com/au-en/shop/hp-wired-mouse-1000-4qm14aa.html"
+    },
+    "vention-dp-vga": {
+      "src": "assets/products/catalog/vention-dp-vga.webp",
+      "kind": "model",
+      "title": "Vention DisplayPort VGA adapter",
+      "source": "https://ventiontech.com/id/products/displayport-to-vga-adapter-1080p-display-port-male-to-vga-female-audio-converter-for-projector-hdtv-monitor-dp-to-vga"
+    },
+    "mini-pc": {
+      "src": "assets/products/catalog/mini-pc.webp",
+      "kind": "reference",
+      "title": "mini PC desktop computer",
+      "source": "https://id.made-in-china.com/co_share-fl/product_Mini-Desktop-Computer-Core-I5-8259u-Barebone-HTPC-Nettop-Mini-PC-HD-VGA-Ultra-Thin-Cloud-PC_yssnngoueg.html"
+    },
+    "vgen-sata": {
+      "src": "assets/products/catalog/vgen-sata.webp",
+      "kind": "model",
+      "title": "V-GEN SATA SSD",
+      "source": "https://els.id/product/ssd-25-256gb-v-gen-platinum-sata-iii/"
+    },
+    "hdd-25": {
+      "src": "assets/products/catalog/hdd-25.webp",
+      "kind": "reference",
+      "title": "2.5 inch internal hard drive",
+      "source": "https://id.made-in-china.com/co_ulikessd/product_Popular-Portable-Disque-Dur-2-5-Inch-SATA-7200-Rpm-HDD-Internal-Drive-Hard-Disk_yuurueysyg.html"
+    },
+    "vgen-nvme": {
+      "src": "assets/products/catalog/vgen-nvme.webp",
+      "kind": "model",
+      "title": "V-GEN Hyper NVMe SSD",
+      "source": "https://www.v-gen.co.id/ssd/v-gen-ssd-hyper-m2-nvme/"
+    },
+    "vention-dp-hdmi": {
+      "src": "assets/products/catalog/vention-dp-hdmi.webp",
+      "kind": "model",
+      "title": "Vention DisplayPort HDMI adapter",
+      "source": "https://ventiontech.com/id/products/hdmi-a-male-to-dp-male-hd-cable"
+    },
+    "usb-cable": {
+      "src": "assets/products/catalog/usb-cable.webp",
+      "kind": "reference",
+      "title": "micro USB cable",
+      "source": "https://ventiontech.com/id/products/usb-2-0-a-male-to-micro-b-male-2a-cable-black"
+    },
+    "hdd-35": {
+      "src": "assets/products/catalog/hdd-35.webp",
+      "kind": "reference",
+      "title": "3.5 inch internal hard drive",
+      "source": "https://bazargpt.com/product/western-digital-wd-3-5-inch-internal-hard-drive-1403764"
+    },
+    "orico-shc-u3": {
+      "src": "assets/products/catalog/orico-shc-u3.webp",
+      "kind": "model",
+      "title": "ORICO SHC-U3 4 port USB hub",
+      "source": "https://orico.cc/index/product/detail/970.html"
+    },
+    "bluetooth-dongle": {
+      "src": "assets/products/catalog/bluetooth-dongle.webp",
+      "kind": "reference",
+      "title": "USB Bluetooth adapter",
+      "source": "https://shopee.co.id/UGREEN-Bluetooth-5.4-USB-Adapter-Transmitter-for-PC-Dongle-Wireless-Mouse-Keyboard-Music-Audio-Receiver-i.16096404.28461572454"
+    },
+    "tp-link-sf1008d": {
+      "src": "assets/products/catalog/tp-link-sf1008d.webp",
+      "kind": "model",
+      "title": "TP-Link TL-SF1008D switch",
+      "source": "https://www.acnniaga.com/shop/tp-link-tl-sf1008d-white-desktop-switch-8-port-10-100mbps/"
+    },
+    "usb-charger": {
+      "src": "assets/products/catalog/usb-charger.webp",
+      "kind": "reference",
+      "title": "USB wall charger",
+      "source": "https://ventiontech.com/id/products/1-port-usb-c-wall-charger-20w-eu-us-plug-white-black"
+    },
+    "bafo-bf-3332": {
+      "src": "assets/products/catalog/bafo-bf-3332.webp",
+      "kind": "model",
+      "title": "BAFO BF-3332 DisplayPort VGA",
+      "source": "https://www.enterkomputer.com/detail/107216/Bafo-Kabel-Display-Port-To-VGA-BF-3332"
+    },
+    "hdmi-optical": {
+      "src": "assets/products/catalog/hdmi-optical.webp",
+      "kind": "reference",
+      "title": "optical HDMI cable",
+      "source": "https://www.aten.com/global/en/products/professional-audiovideo/video-extenders/ve7835/"
+    },
+    "hp-v193": {
+      "src": "assets/products/catalog/hp-v193.webp",
+      "kind": "model",
+      "title": "HP V193 monitor",
+      "source": "https://www.shi.com/product/29263248/HP-v193-LED-monitor"
+    },
+    "ram-dimm": {
+      "src": "assets/products/catalog/ram-dimm.webp",
+      "kind": "reference",
+      "title": "DDR3 DIMM memory",
+      "source": "https://enlight-indonesia.com/product/enpc-memory-ddr4-sodimm-8gb-3200mhz/"
+    },
+    "hdmi-extension": {
+      "src": "assets/products/catalog/hdmi-extension.webp",
+      "kind": "reference",
+      "title": "HDMI male female extension cable",
+      "source": "https://shopee.co.id/Vention-Kabel-HDMI-Male-to-Female-Extension-Cable-Black-Garansi-Resmi-ORIGINAL-NEW-MODEL-AHC-1.5M-i.19303190.14210709904"
+    },
+    "hdmi-switch2": {
+      "src": "assets/products/catalog/hdmi-switch2.webp",
+      "kind": "reference",
+      "title": "HDMI switch 2x1",
+      "source": "https://www.jakartanotebook.com/p/robotsky-hdmi-bi-directional-switch-2x1-or-1x2-3d-v1.4-4k-acdg0-black"
+    },
+    "flash-drive": {
+      "src": "assets/products/catalog/flash-drive.webp",
+      "kind": "reference",
+      "title": "USB flash drive 64GB",
+      "source": "https://www.klikgalaxy.com/sandisk-cruzer-blade-usb-flash-drive-64gb.html"
+    },
+    "external-hdd": {
+      "src": "assets/products/catalog/external-hdd.webp",
+      "kind": "reference",
+      "title": "external hard drive",
+      "source": "https://www.nytimes.com/wirecutter/reviews/best-external-hard-drives/"
+    },
+    "hp-ku1516": {
+      "src": "assets/products/catalog/hp-ku1516.webp",
+      "kind": "model",
+      "title": "HP KU-1516 keyboard",
+      "source": "https://amso.eu/en/products/computers/computer-accessories/keyboards-and-mice/keyboards/hp-ku-1516-usb-qwerty-office-keyboard-aesthetic-black-266781"
+    },
+    "hp-p191": {
+      "src": "assets/products/catalog/hp-p191.webp",
+      "kind": "model",
+      "title": "HP ProDisplay P191 monitor",
+      "source": "https://platindokaryaprima.com/hp-prodisplay-p191-18-5-in-led-monitor-c9e54aa/"
+    },
+    "pc-psu": {
+      "src": "assets/products/catalog/pc-psu.webp",
+      "kind": "reference",
+      "title": "desktop power supply",
+      "source": "https://shopee.co.id/QOOUI-Power-Supply-500W-PSU-PC-Komputer-ATX-Fan-12CM-Silent-CPU-4-4-Pin-PSU-550W-QOOUI-RGB-Gaming-Desktop-i.1551186266.56765920988"
+    },
+    "tp-link-sg105": {
+      "src": "assets/products/catalog/tp-link-sg105.webp",
+      "kind": "model",
+      "title": "TP-Link TL-SG105 switch",
+      "source": "https://www.tp-link.com/id/business-networking/unmanaged-switch/tl-sg105/"
+    },
+    "ugreen-soundcard": {
+      "src": "assets/products/catalog/ugreen-soundcard.webp",
+      "kind": "model",
+      "title": "UGREEN USB sound card",
+      "source": "https://batamkamera.com/product/sound-card-ugreen-usb-2-0-cm129/"
+    },
+    "hdmi-coupler": {
+      "src": "assets/products/catalog/hdmi-coupler.webp",
+      "kind": "reference",
+      "title": "HDMI female coupler",
+      "source": "https://ventionstore.id/product/vention-hdmi-konektor-adapter-female-to-female-coupler-aluminium-alloy-premium-quality/"
+    },
+    "vga-cable": {
+      "src": "assets/products/catalog/vga-cable.webp",
+      "kind": "reference",
+      "title": "VGA cable",
+      "source": "https://id.wikipedia.org/wiki/Berkas:Vga-cable.jpg"
+    },
+    "usb-ab": {
+      "src": "assets/products/catalog/usb-ab.webp",
+      "kind": "reference",
+      "title": "USB A to B printer cable",
+      "source": "https://shopee.co.id/CABLETIME-Kabel-USB-Printer-3.0-USB-A-To-USB-B-Male-To-Male-For-Scanner-i.1044269675.14298145810"
+    },
+    "hp-mofyu0": {
+      "src": "assets/products/catalog/hp-mofyu0.webp",
+      "kind": "model",
+      "title": "HP MOFYUO mouse",
+      "source": "https://www.walmart.com/ip/HP-MOFYUO-USB-Optical-Wired-Mouse-Black-Without-Retail-Packaging/736311423"
+    },
+    "tape": {
+      "src": "assets/products/catalog/tape.webp",
+      "kind": "reference",
+      "title": "3M adhesive tape",
+      "source": "https://www.3m.co.id/3M/en_ID/p/d/b40071696/"
+    },
+    "laptop-bag": {
+      "src": "assets/products/catalog/laptop-bag.webp",
+      "kind": "reference",
+      "title": "laptop bag",
+      "source": "https://thepaperbunny.co.id/products/utility-laptop-bag-15-mist"
+    },
+    "poly-sync20": {
+      "src": "assets/products/catalog/poly-sync20.webp",
+      "kind": "model",
+      "title": "Poly Sync 20 speakerphone",
+      "source": "https://plazait.co.id/product/poly-sync-20-microsoft-teams-certified-usb-a-speakerphone"
+    },
+    "contact-cleaner": {
+      "src": "assets/products/catalog/contact-cleaner.webp",
+      "kind": "reference",
+      "title": "WD40 specialist contact cleaner",
+      "source": "https://wd40.asia/id/product/wd-40-specialist-contact-cleaner/"
+    },
+    "hagibis-wireless": {
+      "src": "assets/products/catalog/hagibis-wireless.webp",
+      "kind": "model",
+      "title": "Hagibis wireless HDMI transmitter",
+      "source": "https://www.tokopedia.com/dnd-olshop/hagibis-wireless-hdmi-video-transmitter-receiver-extender-display-tv-tx-rx-set"
+    },
+    "hdmi-extender": {
+      "src": "assets/products/catalog/hdmi-extender.webp",
+      "kind": "reference",
+      "title": "BAFO HDMI ethernet extender",
+      "source": "https://shopee.co.id/BAFO-HDMI-EXTENDER-HDMI-EXTENSION-KABEL-LAN-ETHERNET-60M-200M-BAFO-i.628122268.52353880435"
+    },
+    "logitech-k120": {
+      "src": "assets/products/catalog/logitech-k120.webp",
+      "kind": "model",
+      "title": "Logitech K120 keyboard",
+      "source": "https://www.logitech.com/id-id/shop/p/k120-usb-standard-computer"
+    },
+    "hp-v194": {
+      "src": "assets/products/catalog/hp-v194.webp",
+      "kind": "model",
+      "title": "HP V194 monitor",
+      "source": "https://shopee.co.id/MONITOR-Hp-V194-LED-ORGINAL-PRODUK-LIKE-NEW-i.1203738124.26413752034"
+    },
+    "hp-prodesk400g5": {
+      "src": "assets/products/catalog/hp-prodesk400g5.webp",
+      "kind": "model",
+      "title": "HP ProDesk 400 G5 mini PC",
+      "source": "https://pemmz.com/mini-pc-desktop-hp-prodesk-400-g5-i5-9500t-hdd-1tb.html"
+    },
+    "hdmi-switch4": {
+      "src": "assets/products/catalog/hdmi-switch4.webp",
+      "kind": "reference",
+      "title": "HDMI switch splitter 2x4",
+      "source": "https://shopee.co.id/Hdmi-Switch-Splitter-2X4-Matrix-%282-Input-4-Output%29-Cod--i.65885758.22031497314"
+    },
+    "d-link-des1005d": {
+      "src": "assets/products/catalog/d-link-des1005d.webp",
+      "kind": "model",
+      "title": "D-Link DES-1005D switch",
+      "source": "https://www.dlink.com/hr/hr/products/des-1005d-5-port-10-100mbps-desktop-switch"
+    },
+    "tripod": {
+      "src": "assets/products/catalog/tripod.webp",
+      "kind": "reference",
+      "title": "Takara camera tripod",
+      "source": "https://www.takara.co.id/product-page/legacy-204-lightweight-tripod-fluid-head-for-camera-smartphone-tripod-only"
+    },
+    "hp-charger": {
+      "src": "assets/products/catalog/hp-charger.webp",
+      "kind": "reference",
+      "title": "HP laptop power adapter",
+      "source": "https://www.ebay.com/itm/173502802378"
+    },
+    "switching-adapter": {
+      "src": "assets/products/catalog/switching-adapter.webp",
+      "kind": "reference",
+      "title": "12V switching power adapter",
+      "source": "https://shopee.co.id/Adaptor-Power-12V-1A-Switching-Power-Supply-Adapter-i.15925234.3833049087"
+    },
+    "hp-charger-usbc": {
+      "src": "assets/products/catalog/hp-charger-usbc.webp",
+      "kind": "reference",
+      "title": "HP USB C laptop charger",
+      "source": "https://www.hp.com/id-id/shop/hp-usb-c-65w-laptop-charger-671r3ut.html"
+    },
+    "bracket-mini": {
+      "src": "assets/products/catalog/bracket-mini.webp",
+      "kind": "reference",
+      "title": "mini PC VESA bracket",
+      "source": "https://www.tokopedia.com/oxihom/bracket-mini-pc-cpu-holder-oximus-ev41-vesa-holder-pole-holder-underdesk-mount-custom-adjustable-width-mini-pc-cpu-vesa-holder-pasang-di-vesa-pasang-di-tiang-bracket-pasang-di-bawah-meja-ev41-hitam-d0c94"
+    },
+    "ugreen-minidp": {
+      "src": "assets/products/catalog/ugreen-minidp.webp",
+      "kind": "model",
+      "title": "UGREEN Mini DisplayPort HDMI VGA adapter",
+      "source": "https://www.amazon.ae/UGREEN-DisplayPort-Converter-Thunderbolt-Compatible/dp/B00LL3O236"
+    },
+    "hagibis-capture": {
+      "src": "assets/products/catalog/hagibis-capture.webp",
+      "kind": "model",
+      "title": "Hagibis HDMI capture card",
+      "source": "https://www.blibli.com/p/hagibis-video-capture-card-60fps-4k-hdmi-to-usb-3-0/ps--AKE-70012-00371"
+    },
+    "audio-aux": {
+      "src": "assets/products/catalog/audio-aux.webp",
+      "kind": "reference",
+      "title": "3.5mm audio splitter cable",
+      "source": "https://www.jakartanotebook.com/p/kabel-audio-splitter-cable-earphone-headphone-hifi-3.5mm-to-2x3.5mm-av115-black"
+    },
+    "baseus-hub6": {
+      "src": "assets/products/catalog/baseus-hub6.webp",
+      "kind": "model",
+      "title": "Baseus USB C hub 6 in 1",
+      "source": "https://baseusonline.com/product/1545/baseus-6-in-1-usb-c-hub-100w-pd-4k-hdmi-rj45"
+    },
+    "bafo-minidp": {
+      "src": "assets/products/catalog/bafo-minidp.webp",
+      "kind": "model",
+      "title": "BAFO Mini DisplayPort VGA adapter",
+      "source": "https://shopee.co.id/Bafo-BF-2612-Mini-DisplayPort-to-VGA-Adapter-i.259076790.11307318392"
+    },
+    "dvd-writer": {
+      "src": "assets/products/catalog/dvd-writer.webp",
+      "kind": "reference",
+      "title": "Samsung external DVD writer",
+      "source": "https://shopee.co.id/DVD-CD-RW-EXTERNAL-SAMSUNG-USB-3.0-Pembaca-Writer-Drive-Burner-Player-i.174403403.23755083482"
+    },
+    "icom-v88": {
+      "src": "assets/products/catalog/icom-v88.webp",
+      "kind": "model",
+      "title": "ICOM IC V88 radio",
+      "source": "https://alafone.com/product/icom-ic-v88-walkie-talkie/"
+    },
+    "usb-c": {
+      "src": "assets/products/catalog/usb-c.webp",
+      "kind": "reference",
+      "title": "UGREEN USB C cable",
+      "source": "https://ugreenonline.com/ugreen-15268-1-5m-100w-5a-qc4-0-pd-usb-type-c-to-usb-c-2-0-silicone-fast-charging-cable-white-us557-10015268.html"
+    },
+    "power-3": {
+      "src": "assets/products/catalog/power-3.webp",
+      "kind": "reference",
+      "title": "IEC C13 power cord",
+      "source": "https://allegro.pl/oferta/microconnect-power-cord-us-c13-1-8m-15782795781"
+    },
+    "cable-wrap": {
+      "src": "assets/products/catalog/cable-wrap.webp",
+      "kind": "reference",
+      "title": "spiral cable wrap",
+      "source": "https://www.walmart.com/ip/9576755008"
+    },
+    "tenveo-nv20a": {
+      "src": "assets/products/catalog/tenveo-nv20a-white.webp",
+      "kind": "model",
+      "title": "Tenveo NV20A PTZ camera",
+      "source": "https://www.parto.id/produk/detail/TenveoNV20ANDI20XZoomPTZCameraVideoConference1749119965438"
+    },
+    "logitech-c270": {
+      "src": "assets/products/catalog/logitech-c270.webp",
+      "kind": "model",
+      "title": "Logitech C270 webcam",
+      "source": "https://www.lapstore.de/a.php/shop/lapstore/lang/en/a/7912/kw/Logitech-C270-HD-Webcam/"
+    },
+    "logitech-k220": {
+      "src": "assets/products/catalog/logitech-k220.webp",
+      "kind": "model",
+      "title": "Logitech MK220 wireless keyboard mouse",
+      "source": "https://maltazon.com/keyboards/Logitech-MK220-Wireless-Keyboard-and-Mouse-Kit-English-Layout"
+    },
+    "hp-pr1101u": {
+      "src": "assets/products/catalog/hp-pr1101u.webp",
+      "kind": "model",
+      "title": "HP PR1101U keyboard",
+      "source": "https://protectcovers.com/products/pr1101u-cover"
+    },
+    "hp-ku1156": {
+      "src": "assets/products/catalog/hp-ku1156.webp",
+      "kind": "model",
+      "title": "HP KU-1156 keyboard",
+      "source": "https://dropmax.pl/en/products/hp-ku-1156-usb-wired-membrane-keyboard-48599.html"
+    },
+    "dell-latitude3410": {
+      "src": "assets/products/catalog/dell-latitude3410.webp",
+      "kind": "model",
+      "title": "Dell Latitude 3410 laptop",
+      "source": "https://thanhmaistore.vn/products/laptop-dell-latitude-3410-core-i5-10310u-ram-16gb-ssd-256gb-ssd-14-0-inch-fhd"
+    },
+    "hp-probook430g7": {
+      "src": "assets/products/catalog/hp-probook430g7.webp",
+      "kind": "model",
+      "title": "HP ProBook 430 G7 laptop",
+      "source": "https://cellphones.com.vn/laptop-hp-probook-430-g7.html"
+    },
+    "hp-lv1911": {
+      "src": "assets/products/catalog/hp-lv1911.webp",
+      "kind": "model",
+      "title": "HP LV1911 monitor",
+      "source": "https://laptomart.com/products/refurbished-hp-lv1911-18-5-led-monitor"
+    },
+    "mouse-asus": {
+      "src": "assets/products/catalog/mouse-asus.webp",
+      "kind": "reference",
+      "title": "ASUS wired mouse",
+      "source": "https://www.bestbuy.ca/en-ca/product/refurbished-good-asus-wired-usb-mouse-0kpt0-00031100-silver/17933574"
+    },
+    "hp-t620": {
+      "src": "assets/products/catalog/hp-t620.webp",
+      "kind": "model",
+      "title": "HP t620 thin client",
+      "source": "https://www.piospartslap.de/HP-t620-Thin-Client-Flexible-150-GHz-GX-415GA-8GB-SSD-4GB-RAM-Schwarz-mit-Netzteil"
+    },
+    "folder": {
+      "src": "assets/products/catalog/folder.webp",
+      "kind": "reference",
+      "title": "Bantex ring binder",
+      "source": "https://www.blibli.com/jual/binder-bantex-a4-2-ring"
+    },
+    "logitech-r500": {
+      "src": "assets/products/catalog/logitech-r500.webp",
+      "kind": "model",
+      "title": "Logitech R500 presenter",
+      "source": "https://coral.rs/misevi/logitech-r500-wireless-presenter-mid-gray_24897/"
+    },
+    "hp-laser107a": {
+      "src": "assets/products/catalog/hp-laser107a.webp",
+      "kind": "model",
+      "title": "HP Laser 107a printer",
+      "source": "https://support.hp.com/emea_africa-en/product/product-specs/hp...printer.../24494340"
+    },
+    "pen": {
+      "src": "assets/products/catalog/pen.webp",
+      "kind": "reference",
+      "title": "ballpoint pen",
+      "source": "https://www.rawpixel.com/image/12510177/ball-point-pen-metal-black-white-background-generated-image-rawpixel"
+    },
+    "ram-sodimm": {
+      "src": "assets/products/catalog/ram-sodimm.webp",
+      "kind": "reference",
+      "title": "DDR3 SODIMM memory",
+      "source": "https://harddiskdirect.com/acr128x64d3u1333c9-kingston-1gb-pc3-10600-ddr3-1333mhz-non-ecc-unbuffered-cl9-sodimm-single-rank-x8-memory-modules.html"
+    },
+    "lindy-matrix": {
+      "src": "assets/products/catalog/lindy-matrix.webp",
+      "kind": "model",
+      "title": "Lindy HDMI matrix 4x4",
+      "source": "https://www.digitec.ch/de/s1/product/lindy-4x4-hdmi-4k60-multi-view-matrix-mit-video-wall-scaling-38390-switch-box-58898028"
+    },
+    "vention-splitter2": {
+      "src": "assets/products/catalog/vention-splitter2.webp",
+      "kind": "model",
+      "title": "Vention HDMI splitter 1x2",
+      "source": "https://thaipick.com/product/lazada/3516855"
+    },
+    "hdmi-splitter4": {
+      "src": "assets/products/catalog/hdmi-splitter4.webp",
+      "kind": "reference",
+      "title": "HDMI splitter 1x4",
+      "source": "https://www.alternate.de/Digitus/4K-HDMI-Splitter-1x4/html/product/100120833"
+    },
+    "power-plug": {
+      "src": "assets/products/catalog/power-plug.webp",
+      "kind": "reference",
+      "title": "Broco electrical plug",
+      "source": "https://shopee.co.id/BROCO-STEKER-ARDE-COLOKAN-LISTRIK-SNI-i.152129060.23669914694"
+    },
+    "power-strip": {
+      "src": "assets/products/catalog/power-strip.webp",
+      "kind": "reference",
+      "title": "4 socket power strip",
+      "source": "https://fzwells.en.made-in-china.com/product/wZQAMXtjLIfF/China-4-Sockets-3500-W-16A-Switch-Surge-Protector-Extension-Cord-with-Grounding.html"
+    },
+    "tp-link-ls1005g": {
+      "src": "assets/products/catalog/tp-link-ls1005g.webp",
+      "kind": "model",
+      "title": "TP-Link LS1005G switch",
+      "source": "https://novazul.com.br/switch-5-portas-gigabit-10/100/1000-mbps-tp-link-ls1005g.html"
+    },
+    "tenda-s105": {
+      "src": "assets/products/catalog/tenda-s105.webp",
+      "kind": "model",
+      "title": "Tenda S105 switch",
+      "source": "https://www.ryans.com/tenda-s105-5-port-unmanaged-10100mbps-ethernet-switch"
+    },
+    "tool-box": {
+      "src": "assets/products/catalog/tool-box.webp",
+      "kind": "reference",
+      "title": "Tekiro tool box",
+      "source": "https://www.monotaro.id/s000074204.html"
+    },
+    "trolley": {
+      "src": "assets/products/catalog/trolley.webp",
+      "kind": "reference",
+      "title": "Prestar platform trolley",
+      "source": "https://nqcart.ae/products/prestar-platform-trolley-150-kg-made-in-japan-nf-101-not-complete"
+    },
+    "hid-omnikey5321": {
+      "src": "assets/products/catalog/hid-omnikey5321.webp",
+      "kind": "model",
+      "title": "HID OMNIKEY 5321 reader",
+      "source": "https://www.ebay.com/itm/295675458121"
+    },
+    "nvme-enclosure": {
+      "src": "assets/products/catalog/nvme-enclosure.webp",
+      "kind": "reference",
+      "title": "UGREEN NVMe enclosure",
+      "source": "https://www.daraz.lk/products/ugreen-m2-nvme-ssd-enclosure-usb-c-31-gen-2-to-m-key-mb-key-nvme-ngff-pcie-10gbps-external-enclosure-thunderbolt-3-compatible-with-macbook-pro-wd-samsung-toshiba-2230224222602280-nvme-pcie-ssd-i111156617.html"
+    },
+    "tenda-u1": {
+      "src": "assets/products/catalog/tenda-u1.webp",
+      "kind": "model",
+      "title": "Tenda U1 USB adapter",
+      "source": "https://www.tendacn.com/pt/product/support/U1.html"
+    },
+    "rfid-adapter": {
+      "src": "assets/products/catalog/rfid-adapter.webp",
+      "kind": "reference",
+      "title": "Soyal RFID power adapter",
+      "source": "https://www.ebay.com/itm/306002402846"
+    },
+    "lenovo-charger": {
+      "src": "assets/products/catalog/lenovo-charger.webp",
+      "kind": "reference",
+      "title": "Lenovo laptop charger",
+      "source": "https://www.lenovo-online.co.za/products/lenovo-ac-65w-round-tip-charger-gx20k78591-163963"
+    },
+    "mini-pc-adapter": {
+      "src": "assets/products/catalog/mini-pc-adapter.webp",
+      "kind": "reference",
+      "title": "HP mini PC power adapter",
+      "source": "https://www.ebay.com/itm/335282494712"
+    },
+    "ht-charger": {
+      "src": "assets/products/catalog/ht-charger.webp",
+      "kind": "reference",
+      "title": "walkie talkie charging cradle",
+      "source": "https://shopee.ph/Genuine-Kenwood-walkie-talkie-NX-240-NX340-digital-analog-dual-mode-full-range-long-distance-profess-i.1311220862.29267474662"
+    },
+    "charger-vacuum": {
+      "src": "assets/products/catalog/charger-vacuum.webp",
+      "kind": "reference",
+      "title": "vacuum charger power adapter",
+      "source": "https://www.lazada.co.th/tag/deerma-vacuum-cleaner-charger/"
+    },
+    "boya-bmm400": {
+      "src": "assets/products/catalog/boya-bmm400.webp",
+      "kind": "model",
+      "title": "BOYA BY-BMM400 speakerphone",
+      "source": "https://www.thewarehouse.co.nz/p/boya-by-bmm400-conference-microphone-speaker-for-smartphonepc-round-black/M36689296.html"
+    },
+    "saramonic-blink500": {
+      "src": "assets/products/catalog/saramonic-blink500-white.webp",
+      "kind": "model",
+      "title": "Saramonic Blink 500 Pro B2",
+      "source": "https://www.galaxy.co.id/products/saramonic-blink-500-pro-b2-2-person-wireless-microphone-system"
+    },
+    "cmos-battery": {
+      "src": "assets/products/catalog/cmos-battery.webp",
+      "kind": "reference",
+      "title": "CR2032 CMOS battery",
+      "source": "https://shopee.co.th/MAINBOARD-BATTERY-CR2032-i.147695708.7371297795"
+    },
+    "storage-box": {
+      "src": "assets/products/catalog/storage-box.webp",
+      "kind": "reference",
+      "title": "plastic storage box",
+      "source": "https://www.tradeindia.com/products/15-to-110-litres-large-rectangular-plastic-stackable-storage-boxes-with-lid-7341636.html"
+    },
+    "bracket-monitor": {
+      "src": "assets/products/catalog/bracket-monitor.webp",
+      "kind": "reference",
+      "title": "VESA monitor bracket",
+      "source": "https://www.bestbuy.ca/en-ca/product/steel-vesa-bracket-75x75-and-100x100-mounting-for-computer-monitors-quick-release-removable-vesa-plate-black-pt-sd-va01a/16566498"
+    },
+    "cleaner": {
+      "src": "assets/products/catalog/cleaner.webp",
+      "kind": "reference",
+      "title": "electronics screen cleaning liquid",
+      "source": "https://www.onesafeatacado.com/screen-cleaner-limpa-telas-60ml"
+    },
+    "thermal-paste": {
+      "src": "assets/products/catalog/thermal-paste.webp",
+      "kind": "reference",
+      "title": "CPU thermal paste",
+      "source": "https://www.wellsunfan.com/products/cooler-paste-cpu/"
+    },
+    "cooling-pad": {
+      "src": "assets/products/catalog/cooling-pad.webp",
+      "kind": "reference",
+      "title": "laptop cooling pad",
+      "source": "https://gcscomputerpro.com/shop/products/cem-n11-coolerpad-laptop-stand-and-cooling-pad-2x-14cm-fan-5x-angle-stand-black"
+    },
+    "aten-cs1774": {
+      "src": "assets/products/catalog/aten-cs1774.webp",
+      "kind": "model",
+      "title": "ATEN CS1774 KVM switch",
+      "source": "https://www.aten.com/global/en/products/kvm/desktop-kvm-switches/cs1774/"
+    },
+    "minidp-hdmi": {
+      "src": "assets/products/catalog/minidp-hdmi.webp",
+      "kind": "reference",
+      "title": "Mini DisplayPort HDMI adapter",
+      "source": "https://www.macshop.com.sg/products/j5create-mini-displayport-to-4k-hdmi-adapter-jda159-2o"
+    },
+    "bafo-b30030": {
+      "src": "assets/products/catalog/bafo-b30030-white.webp",
+      "kind": "reference",
+      "title": "BAFO BF-B30030 USB LAN",
+      "source": "https://blossomzones.com/shop/modem-networking/bafo-bf-b330-usb-3-0-gigabit-lan/"
+    },
+    "belkin-usblan": {
+      "src": "assets/products/catalog/belkin-usblan.webp",
+      "kind": "model",
+      "title": "Belkin USB C Ethernet adapter",
+      "source": "https://www.belkin.com/p/usb-c-to-gigabit-ethernet-adapter-usb-type-c/P-F2CU040-APL.html"
+    },
+    "hp-dp-hdmi": {
+      "src": "assets/products/catalog/hp-dp-hdmi.webp",
+      "kind": "reference",
+      "title": "HP DisplayPort HDMI adapter",
+      "source": "https://www.hp.com/emea_africa-en/products/accessories/product-details/18477191"
+    },
+    "acasis-hd31": {
+      "src": "assets/products/catalog/acasis-hd31.webp",
+      "kind": "model",
+      "title": "ACASIS HD31 capture card",
+      "source": "https://shopee.com.my/ACASIS-4K-HDMI-To-USB-2.0-Video-Capture-Card-1080p-60fps-Game-Live-Recording-Box-With-Microphone-HD33-HD31-i.264580473.7965821256"
+    },
+    "ezcap261": {
+      "src": "assets/products/catalog/ezcap261.webp",
+      "kind": "model",
+      "title": "EZCAP 261 HDMI capture",
+      "source": "https://bigbigstudio.com/golive-ezcap-261m-usb-3-0-streaming-hd-1080p-4k-hdmi-video-capture-card-game-live-box-for-android-iphone-and-cameras.html"
+    },
+    "vention-capture": {
+      "src": "assets/products/catalog/vention-capture-white.webp",
+      "kind": "model",
+      "title": "Vention HDMI capture card",
+      "source": "https://pegastore.id/produk/vention-video-capture-card-usb-to-hdmi-6903122025094540&source=brand&c="
+    },
+    "wireless-hdmi": {
+      "src": "assets/products/catalog/wireless-hdmi.webp",
+      "kind": "reference",
+      "title": "wireless HDMI transmitter receiver",
+      "source": "https://us.lemorele.com/products/p400-wireless-hdmi"
+    },
+    "vention-hub6": {
+      "src": "assets/products/catalog/vention-hub6-white.webp",
+      "kind": "model",
+      "title": "Vention USB C hub 6 in 1",
+      "source": "https://ventionstore.id/product/vention-multiport-hub-6in1-usb-type-c-to-usb3-0-card-reader-power-delivery/"
+    },
+    "vga-hdmi": {
+      "src": "assets/products/catalog/vga-hdmi.webp",
+      "kind": "reference",
+      "title": "VGA HDMI converter",
+      "source": "https://ploutarxoselectronics.gr/en/%CE%BC%CE%B5%CF%84%CE%B1%CF%84%CF%81%CE%BF%CF%80%CE%AD%CE%B1%CF%82-hdmi-%CF%83%CE%B5-vga-%CE%BA%CE%B1%CE%B9-35mm-jack-%CE%B3%CE%B9%CE%B1-%CE%AE%CF%87%CE%BF-%CF%83%CE%B5-%CE%BB%CE%B5%CF%85%CE%BA%CF%8C-%CF%87%CF%81%CF%8E%CE%BC%CE%B1/9719"
+    },
+    "ethernet-usb": {
+      "src": "assets/products/catalog/ethernet-usb.webp",
+      "kind": "reference",
+      "title": "USB ethernet extender",
+      "source": "https://be.vicedeal.com/products/usb-2-0-200m-extender-over-rj45-ethernet-cable-usb2-0-rj45-200m-extension-adapter-tx-rx-sender-receiver?variant=UHJvZHVjdFZhcmlhbnQ6NTA3NTY5MDc0"
+    },
+    "bafo-bf-372b": {
+      "src": "assets/products/catalog/bafo-bf-372b-white.webp",
+      "kind": "model",
+      "title": "BAFO BF-372B HDMI extender",
+      "source": "https://toko.nale.co.id/produk/bafo-bf-372b-60m-hdmi-extender-over-cat6-lan-cable-with-ir/"
+    },
+    "dvi-vga": {
+      "src": "assets/products/catalog/dvi-vga.webp",
+      "kind": "reference",
+      "title": "DVI VGA adapter",
+      "source": "https://zemel.com.au/dvi-i-dual-link-male-24-5-to-vga-female-adapter-converter-dvi-to-vga-m/f-connector/"
+    },
+    "baseus-hub8": {
+      "src": "assets/products/catalog/baseus-hub8.webp",
+      "kind": "model",
+      "title": "Baseus USB C hub 8 in 1",
+      "source": "https://www.hurt.com.pl/adapter-8w1-baseus-cahub-cv0g-hub-usb-c-to-3x-usb-3-0-hdmi-usb-c-pd-rj45-czytnik-microsd-sd-p19116.html"
+    },
+    "aten-vs132a": {
+      "src": "assets/products/catalog/aten-vs132a.webp",
+      "kind": "model",
+      "title": "ATEN VS132A VGA splitter",
+      "source": "https://www.aten.com/global/en/products/professional-audiovideo/video-splitters/vs132a/"
+    },
+    "aten-vs92a": {
+      "src": "assets/products/catalog/aten-vs92a.webp",
+      "kind": "model",
+      "title": "ATEN VS92A VGA splitter",
+      "source": "https://www.aten.com/global/en/products/professional-audiovideo/video-splitters/vs92a/"
+    },
+    "aten-v0202": {
+      "src": "assets/products/catalog/aten-v0202.webp",
+      "kind": "reference",
+      "title": "ATEN V0202 VGA splitter",
+      "source": "https://www.aten.com/global/en/products/professional-audiovideo/video-splitters/vs0102/"
+    },
+    "cutter-blade": {
+      "src": "assets/products/catalog/cutter-blade.webp",
+      "kind": "reference",
+      "title": "utility knife replacement blades",
+      "source": "https://www.knivesandtools.com/en/pt/-knivesandtools-replacement-blades-for-utility-knife-set-of-10.htm"
+    },
+    "cutter": {
+      "src": "assets/products/catalog/cutter.webp",
+      "kind": "reference",
+      "title": "utility cutter knife",
+      "source": "https://www.walmart.com/ip/5-Pack-EcoQuality-Red-Utility-Knife-Retractable-Box-Cutter-Cartons-Boxes-Cardboard-18mm-Wide-Blade-Great-Warehouse-Office-Arts-Crafts-Home-Use/709337069"
+    },
+    "glue-gun": {
+      "src": "assets/products/catalog/glue-gun.webp",
+      "kind": "reference",
+      "title": "hot glue gun",
+      "source": "https://ayaha.in/products/nfi-essentials-60w-hot-melt-glue-gun-with-on-off-switch-anti-drip-heavy-duty-industrial-leak-proof-diy-projects-for-school-arts-craft-and-quick-repairs"
+    },
+    "glue-stick": {
+      "src": "assets/products/catalog/glue-stick.webp",
+      "kind": "reference",
+      "title": "hot glue sticks",
+      "source": "https://surebonder.com/products/q-707-high-performance-bulk-hot-melt-glue-sticks-5-8-x-10-25-lbs-clear"
+    },
+    "scissors": {
+      "src": "assets/products/catalog/scissors.webp",
+      "kind": "reference",
+      "title": "office scissors",
+      "source": "https://shopee.vn/K%C3%A9o-v%C4%83n-ph%C3%B2ng-Thi%C3%AAn-Long-Flexoffice-FO-SC01-i.368671137.13196302842"
+    },
+    "icom-v8": {
+      "src": "assets/products/catalog/icom-v8.webp",
+      "kind": "model",
+      "title": "ICOM IC V8 radio",
+      "source": "https://wan.sa/ar/ic-v8/p870600322"
+    },
+    "imac-2012": {
+      "src": "assets/products/catalog/imac-2012.webp",
+      "kind": "model",
+      "title": "Apple iMac 2012 21.5 inch",
+      "source": "https://reboot-it.com.au/products/apple-imac-a1418-late-2012-i5-3335s-2-7ghz-8gb-1tb-21-5-3mth-wty-2802"
+    },
+    "ipad-pro2021": {
+      "src": "assets/products/catalog/ipad-pro2021.webp",
+      "kind": "model",
+      "title": "Apple iPad Pro 2021 11 inch",
+      "source": "https://www.att.com/buy/tablets/apple-ipad-pro-11-inch-2021-128gb-silver.html"
+    },
+    "saramonic-usb": {
+      "src": "assets/products/catalog/saramonic-usb.webp",
+      "kind": "reference",
+      "title": "Saramonic USB wireless receiver",
+      "source": "https://saramonicusa.com/blink-100-b5-ultra-portable-clip-on-wireless-mic-sys-w-usb-c-receiver-for-android-ios-computers/"
+    },
+    "mini-hdmi": {
+      "src": "assets/products/catalog/mini-hdmi.webp",
+      "kind": "reference",
+      "title": "UGREEN mini HDMI cable",
+      "source": "https://ayoubcomputers.com/ugreen-mini-hdmi-male-to-hdmi-male-cable-1-5m-black-11167/"
+    },
+    "power-2": {
+      "src": "assets/products/catalog/power-2.webp",
+      "kind": "reference",
+      "title": "IEC C7 figure 8 power cord",
+      "source": "https://www.walmart.com/ip/998170312"
+    },
+    "usb-hdmi": {
+      "src": "assets/products/catalog/usb-hdmi.webp",
+      "kind": "reference",
+      "title": "USB HDMI adapter",
+      "source": "https://en.j5create.com/products/jua254"
+    },
+    "aux-rca": {
+      "src": "assets/products/catalog/aux-rca.webp",
+      "kind": "reference",
+      "title": "3.5mm RCA audio cable",
+      "source": "https://www.mattblatt.com.au/mb/buy/panatech-35mm-headphone-jack-to-2-rca-male-aux-cable-auxiliary-stereo-audio-line-15m-3_5mm-2-rca-aux-cable/"
+    },
+    "vga-coupler": {
+      "src": "assets/products/catalog/vga-coupler.webp",
+      "kind": "reference",
+      "title": "VGA female coupler",
+      "source": "https://bigamart.com/product/vga-female-to-female-adapter-pack-of-2-svga-coupler-15-way-vga-gender-changer-cable-extender/"
+    },
+    "cable-ties": {
+      "src": "assets/products/catalog/cable-ties.webp",
+      "kind": "reference",
+      "title": "nylon cable ties",
+      "source": "https://kabelbinders.com/products/white-cable-ties"
+    },
+    "dp-cable": {
+      "src": "assets/products/catalog/dp-cable.webp",
+      "kind": "reference",
+      "title": "DisplayPort cable",
+      "source": "https://www.pc-portatil.com/cable-displayport-para-monitor-macho-macho.html"
+    },
+    "nym-cable": {
+      "src": "assets/products/catalog/nym-cable.webp",
+      "kind": "reference",
+      "title": "Supreme NYM cable",
+      "source": "https://www.mbizmarket.co.id/catalog/detail/nym-3x25-50-meter-supreme-5496598-8859223.html"
+    },
+    "cleaning-rag": {
+      "src": "assets/products/catalog/cleaning-rag.webp",
+      "kind": "reference",
+      "title": "cotton cleaning rag",
+      "source": "https://wipingworld.com/products/white-knit-t-shirt-100-cotton-cleaning-rags-600-lbs-bags-multipurpose-cleaning"
+    },
+    "logitech-c930e": {
+      "src": "assets/products/catalog/logitech-c930e.webp",
+      "kind": "model",
+      "title": "Logitech C930e webcam",
+      "source": "https://allegro.pl/oferta/kamera-logitech-hd-pro-webcam-c930e-960-000972-10046878132"
+    },
+    "keyboard-acer": {
+      "src": "assets/products/catalog/keyboard-acer.webp",
+      "kind": "reference",
+      "title": "Acer keyboard",
+      "source": "https://www.laptopsdirect.co.uk/acer-combo-100-wireless-keyboard-and-mouse-combo-in-black-gp.acc11.00b/version.asp"
+    },
+    "hp-150keyboard": {
+      "src": "assets/products/catalog/hp-150keyboard.webp",
+      "kind": "model",
+      "title": "HP 150 wired keyboard",
+      "source": "https://www.hp.com/be-nl/products/accessories/product-details/2101243928"
+    },
+    "logitech-k270": {
+      "src": "assets/products/catalog/logitech-k270.webp",
+      "kind": "model",
+      "title": "Logitech K270 keyboard",
+      "source": "https://shop.globesystems.dk/logitech-k270-wireless-keyboard-nordic"
+    },
+    "keystone": {
+      "src": "assets/products/catalog/keystone-lock-clean.webp",
+      "kind": "reference",
+      "title": "Laptop security cable lock",
+      "source": "https://www.kensington.com/p/products/technology-device-security-products/device-security-keyed-locks/slim-nanosaver-2.0-keyed-laptop-lock/",
+      "requiresConfirmation": true
+    },
+    "label": {
+      "src": "assets/products/catalog/label.webp",
+      "kind": "reference",
+      "title": "adhesive label roll",
+      "source": "https://sh-chenchen.en.made-in-china.com/product/FZctsfWCAJhE/China-Custom-Printed-Paper-Packaging-Label-Bottle-Brand-Logo-Waterproof-Adhesive-Vinyl-Roll-Label-Round-Stickers-Labels.html"
+    },
+    "hp-probook440g5": {
+      "src": "assets/products/catalog/hp-probook440g5.webp",
+      "kind": "model",
+      "title": "HP ProBook 440 G5 laptop",
+      "source": "https://www.electronicscrazy.sg/certified-refurbished-hp-probook-440-g5-14-inches-laptop-intel-core-i5-8th-gen-8gb-ram-256gb-ssd-wifi-webcam-windows-10-pro/"
+    },
+    "laptop-legion": {
+      "src": "assets/products/catalog/laptop-legion.webp",
+      "kind": "reference",
+      "title": "Lenovo Legion laptop",
+      "source": "https://ecommerce.datablitz.com.ph/products/lenovo-legion-slim-7-16irh8-82y3006gph-gaming-laptop-glacier-white-16-3-2k-3200x2000-165hz-ips-i9-13900h-32gb-ram-1tb-ssd-rtx-4070-windows-11-home-ms-office-home-student-2021-lenovo-legion-armored-backpack"
+    },
+    "hp-p204v": {
+      "src": "assets/products/catalog/hp-p204v.webp",
+      "kind": "model",
+      "title": "HP P204v monitor",
+      "source": "https://www.mycomputeraruba.co/index.php?order=DESC&path=106_1092&product_id=13199&route=product%2Fproduct&sort=p.price"
+    },
+    "hp-m24fwa": {
+      "src": "assets/products/catalog/hp-m24fwa.webp",
+      "kind": "model",
+      "title": "HP M24fwa monitor",
+      "source": "https://jp.ext.hp.com/monitors/personal/hp_m24fwa/"
+    },
+    "hp-v220": {
+      "src": "assets/products/catalog/hp-v220.webp",
+      "kind": "model",
+      "title": "HP V220 monitor",
+      "source": "https://support.hp.com/ee-en/product/troubleshooting/hp-v220-21.5-inch-monitor/23207692"
+    },
+    "mouse-acer": {
+      "src": "assets/products/catalog/mouse-acer.webp",
+      "kind": "reference",
+      "title": "Acer wired mouse",
+      "source": "https://www.setofficial.co.id/acer-omw316-mouse-optical-wired-usb.html"
+    },
+    "logitech-b100": {
+      "src": "assets/products/catalog/logitech-b100.webp",
+      "kind": "model",
+      "title": "Logitech B100 mouse",
+      "source": "https://zoommer.ge/en/laptop-accessories/logitech-corded-mouse-b100-white-p18103"
+    },
+    "hp-sm2022": {
+      "src": "assets/products/catalog/hp-sm2022.webp",
+      "kind": "model",
+      "title": "HP SM-2022 mouse",
+      "source": "https://www.hp.com/cl-es/shop/mouse-inalambrico-hp-202-2ne06aa.html"
+    },
+    "mouse-pad": {
+      "src": "assets/products/catalog/mouse-pad.webp",
+      "kind": "reference",
+      "title": "black mouse pad",
+      "source": "https://www.multitronic.fi/en/products/4361100"
+    },
+    "pc-acer-nitro": {
+      "src": "assets/products/catalog/pc-acer-nitro.webp",
+      "kind": "reference",
+      "title": "Acer Nitro desktop",
+      "source": "https://www.techcrazy.co.nz/products/acer-nitro-gaming-desktop-intel-i5-9400-16gb-ram-1tb-ssd-windows-10-home-geforce-gtx-1650-as-new-condition"
+    },
+    "asus-bm6ad": {
+      "src": "assets/products/catalog/asus-bm6ad.webp",
+      "kind": "model",
+      "title": "ASUS BM6AD desktop",
+      "source": "https://www.newegg.com/asus-cm1740-us-2af/p/N82E16883220153"
+    },
+    "hp-280g1": {
+      "src": "assets/products/catalog/hp-280g1.webp",
+      "kind": "model",
+      "title": "HP 280 G1 MT desktop",
+      "source": "https://www.klikglodok.com/toko/hp/30427-harga-hp-280-g1-mt-x8q21pa-desktop-pc-core-i3-4170-4gb-500gb-dos.html"
+    },
+    "paper-punch": {
+      "src": "assets/products/catalog/paper-punch.webp",
+      "kind": "reference",
+      "title": "office paper punch",
+      "source": "https://platino.com.gt/perforador-fast-pf20-negro-60"
+    },
+    "rfid-cover": {
+      "src": "assets/products/catalog/rfid-cover.webp",
+      "kind": "reference",
+      "title": "RFID reader cover",
+      "source": "https://hecere.en.made-in-china.com/product/MmfpXTilVtWD/China-Portable-Middle-Range-4m-860-960-MHz-UHF-RFID-Reader-with-Integrated-Antenna-RS232.html"
+    },
+    "nb-ava1500": {
+      "src": "assets/products/catalog/nb-ava1500.webp",
+      "kind": "model",
+      "title": "North Bayou AVA1500 TV stand",
+      "source": "https://cse.jo/nb-north-bayou-ava1500-60-1p-32-to-75-standing-mobile-tv-cart-bracket"
+    },
+    "sticky-notes": {
+      "src": "assets/products/catalog/sticky-notes.webp",
+      "kind": "reference",
+      "title": "Joyko colorful sticky notes",
+      "source": "https://www.mbizmarket.co.id/catalog/detail/sticky-notes-9-warna-joyko-5cmx5cm-225-shets-1473053-4140771.html"
+    },
+    "watt-meter": {
+      "src": "assets/products/catalog/watt-meter.webp",
+      "kind": "reference",
+      "title": "digital watt meter socket",
+      "source": "https://shopee.tw/EU-Digital-Watt-Power-Meter-Socket-Wattage-Energy-Meter-Volt-i.28019174.23612098996"
+    },
+    "bosch-gbl82": {
+      "src": "assets/products/catalog/bosch-gbl82.webp",
+      "kind": "model",
+      "title": "Bosch GBL 82-270 blower",
+      "source": "https://makerbazar.in/products/bosch-professional-air-blowers"
+    },
+    "brother-pth110": {
+      "src": "assets/products/catalog/brother-pth110.webp",
+      "kind": "model",
+      "title": "Brother PT-H110 label printer",
+      "source": "https://www.printerland.co.za/product/brother-pt-h110/139307"
+    },
+    "label-tape": {
+      "src": "assets/products/catalog/label-tape.webp",
+      "kind": "reference",
+      "title": "Brother label tape cartridge",
+      "source": "https://www.printerland.co.uk/product/brother-btag-231-12mm-labelling-tape-black-on-white-/171693"
+    },
+    "marker": {
+      "src": "assets/products/catalog/marker.webp",
+      "kind": "reference",
+      "title": "black whiteboard marker",
+      "source": "https://www.teaching.com.au/product/lumocolor-whiteboard-marker-bullet-black-8211-pack-of-10"
+    },
+    "hdmi-matrix": {
+      "src": "assets/products/catalog/hdmi-matrix.webp",
+      "kind": "reference",
+      "title": "HDMI matrix 4x4",
+      "source": "https://www.lenkeng.com/de/p_detail/102/type/type3/"
+    },
+    "hdmi-splitter2": {
+      "src": "assets/products/catalog/hdmi-splitter2.webp",
+      "kind": "reference",
+      "title": "HDMI splitter 1x2",
+      "source": "https://www.elkjop.no/product/tjenester-og-tilbehor/kabler-og-kontakter/kabeladapter/1-x-2-hdmi-splitter-ultrahd-4k-60hz-stoder-3d-hdmi20-hdcp22/716568"
+    },
+    "vgen-platinum": {
+      "src": "assets/products/catalog/vgen-platinum-white.webp",
+      "kind": "reference",
+      "title": "V-GEN Platinum memory",
+      "source": "https://www.blibli.com/p/ram-ddr4-sodimm-v-gen-platinum-4gb-pc25600-3200mhz-memory-laptop-vgen/ps--VAO-49005-01134"
+    },
+    "staples": {
+      "src": "assets/products/catalog/staples.webp",
+      "kind": "reference",
+      "title": "stapler staples",
+      "source": "https://storage.googleapis.com/dckdxyhfvqicpe/what-if-we-eat-stapler-pin.html"
+    },
+    "stapler": {
+      "src": "assets/products/catalog/stapler.webp",
+      "kind": "reference",
+      "title": "office stapler",
+      "source": "https://sindabad.com/matador-office-mate-big-stapler.html"
+    },
+    "d-link-dgs1008a": {
+      "src": "assets/products/catalog/d-link-dgs1008a.webp",
+      "kind": "model",
+      "title": "D-Link DGS-1008A switch",
+      "source": "https://www.topmarket.co.il/en/d-link-dgs-1008a-network-switch-unmanaged-white/"
+    },
+    "camera-stand": {
+      "src": "assets/products/catalog/camera-stand.webp",
+      "kind": "reference",
+      "title": "PTZ camera stand",
+      "source": "https://www.cdw.com/product/avteq-floor-stand-for-eagleeye-director-studio-x30-a20-a30-and-ptz-camera/7785285"
+    },
+    "hp-955xl": {
+      "src": "assets/products/catalog/hp-955xl.webp",
+      "kind": "model",
+      "title": "HP 955XL black cartridge",
+      "source": "https://www.hp.com/th-th/shop/hp-955xl-high-yield-black-original-ink-cartridge-l0s72aa.html"
+    },
+    "screwdriver": {
+      "src": "assets/products/catalog/screwdriver-cutout.webp",
+      "kind": "reference",
+      "title": "Uneed electric screwdriver",
+      "source": "https://www.blibli.com/p/uneed-screwdriver-electric-cordless-obeng-listrik-35-set-usd601/ps--UNI-60030-00534",
+      "backgroundEdited": true
+    },
+    "libec-650ex": {
+      "src": "assets/products/catalog/libec-650ex.webp",
+      "kind": "model",
+      "title": "Libec 650 EX tripod",
+      "source": "https://shopee.co.id/Libec-Video-Tripod-650-Ex-Garansi-Resmi-i.1102958486.19896399707"
+    },
+    "samsung-k5005": {
+      "src": "assets/products/catalog/samsung-k5005-white.webp",
+      "kind": "model",
+      "title": "Samsung UA43K5005 television",
+      "source": "https://www.anugrahpratama.com/product/samsung-43-inch-full-hd-flat-tv-k5005-series-5-ua43k5005/"
+    },
+    "tcl-p71b": {
+      "src": "assets/products/catalog/tcl-p71b.webp",
+      "kind": "model",
+      "title": "TCL 55P71B television",
+      "source": "https://fullspecs.net/smart-tv/tcl/55p71b-specifications/"
+    },
+    "orico-tcm-c3": {
+      "src": "assets/products/catalog/orico-tcm-c3.webp",
+      "kind": "model",
+      "title": "ORICO TCM-C3 NVMe enclosure",
+      "source": "https://www.carousell.sg/p/orico-tcm2-c3-type-c-10gbps-nvme-m-2-ssd-enclosure-black-1271464259/"
+    },
+    "orico-tcm2": {
+      "src": "assets/products/catalog/orico-tcm2.webp",
+      "kind": "model",
+      "title": "ORICO TCM2 NVMe enclosure",
+      "source": "https://www.oricothailand.com/orico_th/tcm2-g20-bk-bp.html"
+    },
+    "hid-omnikey5021": {
+      "src": "assets/products/catalog/hid-omnikey5021.webp",
+      "kind": "model",
+      "title": "HID OMNIKEY 5021 reader",
+      "source": "https://smart-card.ru/catalog/schityvateli_smart_kart/nastolnye_schityvateli/3378/"
+    },
+    "sound-mixer": {
+      "src": "assets/products/catalog/sound-mixer.webp",
+      "kind": "reference",
+      "title": "Yamaha USB audio mixer",
+      "source": "https://leisuretec.co.uk/products/ag06-mk2-6-channel-mixer-with-usb-audio-interface-white"
+    },
+    "hdmi-switch3": {
+      "src": "assets/products/catalog/hdmi-switch3.webp",
+      "kind": "reference",
+      "title": "HDMI switch 3x1",
+      "source": "https://www.mercadolibre.cl/switch-hdmi-4k-pasivo-3x1-control-remoto/p/MLC26591843"
+    },
+    "dp-hdmi-cable": {
+      "src": "assets/products/catalog/dp-hdmi-cable.webp",
+      "kind": "reference",
+      "title": "DisplayPort to HDMI cable",
+      "source": "https://fado.vn/us/amazon/amazon-basics-displayport-source-to-hdmi-display-cable-uni-directional-3-foot-black-B015OW3GJK.html"
+    }
+  }
+}

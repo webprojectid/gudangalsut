@@ -1,0 +1,199 @@
+/* Purposeful motion surfaces: period changes, scroll chapters and pointer physics. */
+.period-motion-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  max-width: 100%;
+  margin-top: 10px;
+  padding: 7px 12px;
+  border: 1px solid var(--border-default);
+  border-radius: 16px;
+  color: var(--text-secondary);
+  background: var(--surface-1);
+  font-size: 10px;
+  font-weight: 550;
+  line-height: 1.4;
+  transition:
+    padding 400ms var(--motion-ease-out),
+    border-radius 400ms var(--motion-ease-out),
+    background-color 240ms ease,
+    border-color 240ms ease,
+    color 240ms ease,
+    box-shadow 400ms var(--motion-ease-out);
+}
+.period-status-label { min-width: 0; }
+.period-status-icon {
+  display: block;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  overflow: visible;
+  fill: none;
+  color: var(--success);
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.period-status-icon > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: inherit;
+}
+.period-status-icon circle {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  transform-origin: center;
+  transition: stroke-dashoffset 300ms ease, opacity 220ms ease;
+}
+.period-status-icon path {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 0;
+  opacity: 1;
+  transition: stroke-dashoffset 420ms var(--motion-ease-out), opacity 200ms ease;
+}
+#page-dashboard[data-period-state="loading"] .period-motion-status {
+  padding-inline: 15px;
+  border-radius: 12px;
+  color: var(--primary);
+  background: var(--accent-soft);
+  border-color: rgba(var(--primary-rgb), .23);
+  box-shadow: 0 4px 14px rgba(var(--primary-rgb), .075);
+}
+#page-dashboard[data-period-state="loading"] .period-status-icon { color: var(--primary); }
+#page-dashboard[data-period-state="loading"] .period-status-icon circle {
+  stroke-dasharray: .72 .28;
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: csm-period-orbit 1000ms linear infinite;
+}
+#page-dashboard[data-period-state="loading"] .period-status-icon path {
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+#page-dashboard[data-period-state="ready"] .period-status-icon path { transition-delay: 60ms; }
+#page-dashboard[data-period-state="error"] .period-motion-status {
+  color: var(--danger);
+  background: var(--danger-bg);
+  border-color: var(--danger);
+  box-shadow: none;
+}
+#page-dashboard[data-period-state="error"] .period-status-icon { color: var(--danger); }
+#page-dashboard[data-period-state="error"] .period-status-icon circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 1;
+  animation: none;
+}
+#page-dashboard[data-period-state="error"] .period-status-icon path { opacity: 0; stroke-dashoffset: 1; }
+.period-motion-stage {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--surface-1);
+  border-radius: inherit;
+  pointer-events: none;
+  user-select: none;
+  z-index: 4;
+}
+
+/* Section progress reports the current page's scroll position. It never loops. */
+.story-progress-host { position: relative; }
+.story-progress {
+  position: absolute;
+  inset: auto 0 -12px;
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  height: 2px;
+  max-width: 180px;
+  color: var(--primary);
+  pointer-events: none;
+}
+.story-progress > span {
+  display: block;
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  background: var(--border-default);
+  border-radius: 4px;
+}
+.story-progress > span::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform: scaleX(var(--story-chapter-progress, 0));
+  transform-origin: left;
+  transition: transform 160ms linear;
+}
+html[data-story-active="true"] .menu-item.active::before { background: rgba(var(--primary-rgb), .24); }
+html[data-story-active="true"] .menu-item.active::after {
+  content: '';
+  position: absolute;
+  left: -14px;
+  bottom: calc(50% - 11px);
+  width: 3px;
+  height: 22px;
+  border-radius: 4px;
+  background: var(--primary);
+  transform: scaleY(max(.12, var(--story-scroll-progress, 0)));
+  transform-origin: bottom;
+  transition: transform 160ms linear;
+}
+
+/* Independent rotate composes with WAAPI's translate, avoiding competing owners. */
+@media (hover: hover) and (pointer: fine) {
+  html.motion-enabled .inventory-card {
+    rotate: var(--motion-tilt-x, 0) var(--motion-tilt-y, 1) 0 var(--motion-tilt-angle, 0deg);
+    transform-origin: 50% 60%;
+    transition:
+      rotate 480ms var(--motion-ease-out),
+      transform var(--motion-surface) var(--motion-ease-out),
+      border-color 180ms ease,
+      background-color 180ms ease,
+      box-shadow var(--motion-surface) var(--motion-ease-out);
+  }
+  html.motion-enabled .inventory-card.motion-tilt-active { transition-duration: 110ms, 260ms, 180ms, 180ms, 260ms; }
+  .calendar-heatmap .heatmap-cell { position: relative; }
+  .calendar-heatmap .heatmap-cell::after {
+    content: '';
+    position: absolute;
+    inset: 4px 4px auto auto;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0;
+    transform: scale(.3);
+  }
+  .calendar-heatmap .heatmap-cell:hover::after { animation: csm-cell-signal 520ms var(--motion-ease-out) both; }
+}
+@keyframes csm-cell-signal {
+  0% { opacity: 0; transform: scale(.3); }
+  45% { opacity: .6; transform: scale(1.3); }
+  100% { opacity: .4; transform: scale(1); }
+}
+@keyframes csm-period-orbit { to { transform: rotate(360deg); } }
+
+@media (max-width: 600px) {
+  .period-motion-status { font-size: 9px; gap: 6px; padding: 6px 10px; min-height: 30px; }
+  .period-status-icon { width: 16px; height: 16px; }
+  .story-progress { max-width: 130px; gap: 3px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .period-motion-status, .period-status-icon circle, .period-status-icon path,
+  .story-progress > span::after, html[data-story-active="true"] .menu-item.active::after { transition: none; }
+  #page-dashboard[data-period-state="loading"] .period-status-icon circle { animation: none; }
+  html.motion-enabled .inventory-card { rotate: none !important; }
+  .calendar-heatmap .heatmap-cell:hover::after { animation: none; opacity: .4; transform: none; }
+}
