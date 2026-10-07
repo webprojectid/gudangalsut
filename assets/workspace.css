@@ -1,10 +1,8 @@
-/* CSM Workspace — shared visual system. No legacy theme overrides. */
+/* Layout primitives; appearance tokens live in character.css. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap');
 :root {
   --font-mono:'DM Sans',sans-serif;
   --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:20px; --space-6:24px; --space-8:32px; --space-10:40px; --space-12:48px; --space-16:64px;
-  --radius-sm:10px; --radius-md:14px; --radius-lg:22px; --radius-xl:28px; --radius-full:999px;
-  --text-xs:12px; --text-sm:13px; --text-base:14px; --text-md:16px; --text-lg:20px; --text-xl:28px; --text-2xl:36px; --text-3xl:44px;
   --rail-w:82px; --sidebar-w:232px; --content-max:1740px;
   --transition-smooth:background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
 }

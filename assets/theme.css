@@ -1,36 +1,4 @@
-/* Cyan, coral and lime. Every surface follows the same appearance tokens. */
-:root,[data-theme="light"]{
-  color-scheme:light;
-  --bg-base:#f2fafb;--bg-mesh-1:#f7fcfc;--workspace-surface:#f8fcfc;
-  --surface-1:#fff;--surface-2:#f1f8f9;--surface-3:#e3eff1;
-  --text-primary:#16333b;--text-secondary:#49636c;--text-muted:#657e86;
-  --border-subtle:#e7f0f2;--border-default:#d9e7e9;--border-strong:#a8c4ca;
-  --primary:#007c8f;--primary-light:#007c8f;--primary-rgb:0,124,143;--on-primary:#fff;
-  --secondary:#f76454;--accent-cyan:#28d6e1;--on-accent:#07323b;--accent-soft:#e0f8fa;
-  --accent-coral:#ff8f79;--on-coral:#462c29;--coral-soft:#fff0e9;--lime:#c9f26b;
-  --success:#0b805f;--success-bg:#e8faf1;--warning:#996016;--warning-bg:#fff4cd;
-  --danger:#cc3f49;--danger-bg:#ffefeb;--info:#007d9a;--info-bg:#e1f8fc;
-  --shadow-rgb:15,70,82;--white-rgb:255,255,255;--glow:rgba(255,255,255,.48);
-  --tooltip-bg:#16333b;--tooltip-text:#f5ffff;--toast-bg:#16333b;--on-toast:#f5ffff;
-  --hero-start:#c9f6f5;--hero-mid:#dff8ee;--hero-end:#ebf7c9;--hero-ring:#96d8cd;--hero-orb:#ffd0a8;
-  --heat-0:#edf5f2;--heat-1:#d4f4e9;--heat-2:#99e8d2;--heat-3:#46cda9;--heat-4:#008168;
-}
-[data-theme="dark"]{
-  color-scheme:dark;
-  --bg-base:#0d171c;--bg-mesh-1:#101d23;--workspace-surface:#122128;
-  --surface-1:#192c34;--surface-2:#20353e;--surface-3:#29434c;
-  --text-primary:#ebf8fa;--text-secondary:#aec9ce;--text-muted:#86a7b0;
-  --border-subtle:#27414a;--border-default:#34515b;--border-strong:#527681;
-  --primary:#55d9e5;--primary-light:#55d9e5;--primary-rgb:85,217,229;--on-primary:#092c36;
-  --secondary:#ff937f;--accent-cyan:#22b9ca;--on-accent:#052c35;--accent-soft:#173f4b;
-  --accent-coral:#f29578;--on-coral:#392824;--coral-soft:#3d2d29;--lime:#c9f26b;
-  --success:#6bdfb5;--success-bg:#193e32;--warning:#ffd576;--warning-bg:#3f341e;
-  --danger:#ff948b;--danger-bg:#432c30;--info:#65d8ec;--info-bg:#193d49;
-  --shadow-rgb:0,8,12;--white-rgb:44,78,85;--glow:rgba(28,127,127,.14);
-  --tooltip-bg:#e2f8fa;--tooltip-text:#14333d;--toast-bg:#d8f6f7;--on-toast:#0f3038;
-  --hero-start:#123943;--hero-mid:#173e3d;--hero-end:#293e30;--hero-ring:#33817c;--hero-orb:#6d5437;
-  --heat-0:#20313a;--heat-1:#21473d;--heat-2:#276e52;--heat-3:#42ad66;--heat-4:#bdeb61;
-}
+/* Theme behavior uses the canonical palette in character.css. */
 body{background:radial-gradient(ellipse at 0 0,var(--accent-soft),transparent 60%),var(--bg-base)}
 button{color:inherit}
 :focus-visible{outline-color:var(--primary)}

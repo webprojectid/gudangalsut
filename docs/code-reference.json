@@ -1,0 +1,2393 @@
+{
+  "format": 1,
+  "scope": "stable",
+  "files": [
+    {
+      "file": ".gitignore",
+      "bytes": 205,
+      "lines": 19,
+      "sha256": "b014b5b8315aea03230f36c7fd2fa1a70305db9fb981073270f41be46604e6df",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": ".nojekyll",
+      "bytes": 0,
+      "lines": 1,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "CNAME",
+      "bytes": 15,
+      "lines": 1,
+      "sha256": "dbd122b293dbfb455274556a8e807051b140dca38310ca6b6faa4802cc3a3034",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/character.css",
+      "bytes": 18388,
+      "lines": 203,
+      "sha256": "a3f2e43eb2ab4084d04f03dc061124ee622d4ec8ee77912c6e764d8819287206",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/chart-data.js",
+      "bytes": 6410,
+      "lines": 86,
+      "sha256": "1fbc5940feb01cc912808dc90be23b24f405eedabaa4aa14e4354e9deb6391ca",
+      "symbols": [
+        {
+          "name": "number",
+          "line": 6
+        },
+        {
+          "name": "register",
+          "line": 7
+        },
+        {
+          "name": "setCalendar",
+          "line": 44
+        },
+        {
+          "name": "selectDashboardDate",
+          "line": 61
+        },
+        {
+          "name": "syncHistoryDateFilter",
+          "line": 73
+        },
+        {
+          "name": "format",
+          "line": 78
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/chart-motion.js",
+      "bytes": 9707,
+      "lines": 187,
+      "sha256": "b817b19b65260859eaa5b9e5fa4261815b60e97206c25523ad0726e34cc683d9",
+      "symbols": [
+        {
+          "name": "fingerprint",
+          "line": 12
+        },
+        {
+          "name": "mergeOptions",
+          "line": 20
+        },
+        {
+          "name": "reduced",
+          "line": 30
+        },
+        {
+          "name": "pointIndex",
+          "line": 33
+        },
+        {
+          "name": "pointCount",
+          "line": 36
+        },
+        {
+          "name": "entering",
+          "line": 39
+        },
+        {
+          "name": "stagger",
+          "line": 43
+        },
+        {
+          "name": "previousY",
+          "line": 49
+        },
+        {
+          "name": "configure",
+          "line": 58
+        },
+        {
+          "name": "profile",
+          "line": 68
+        },
+        {
+          "name": "beforeInit",
+          "line": 93
+        },
+        {
+          "name": "render",
+          "line": 108
+        },
+        {
+          "name": "refresh",
+          "line": 150
+        },
+        {
+          "name": "register",
+          "line": 159
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/csm-mark.svg",
+      "bytes": 491,
+      "lines": 7,
+      "sha256": "cef50c8f4f03e24176188520b3bfeee6e50c7d9b6bdee054a83222b0a6a97f8e",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/dashboard-analytics.js",
+      "bytes": 12818,
+      "lines": 120,
+      "sha256": "eaaed3392a27ee3edbfbc7392b45526d2f5560596dd5df0aac47021afc91ec0b",
+      "symbols": [
+        {
+          "name": "buildDashboardAnalytics",
+          "line": 4
+        },
+        {
+          "name": "createAnalyticsChart",
+          "line": 48
+        },
+        {
+          "name": "compactDashboardLegend",
+          "line": 65
+        },
+        {
+          "name": "renderDashboardAnalytics",
+          "line": 68
+        },
+        {
+          "name": "monthLabel",
+          "line": 88
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/login.css",
+      "bytes": 5891,
+      "lines": 56,
+      "sha256": "0dd05885ef1db3f182965b95d165e60996d8e7ea5e7808f3f3a49f08c29dc6d2",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/master-delete-policy.js",
+      "bytes": 1503,
+      "lines": 21,
+      "sha256": "3485b37ed27dd565444d22b6505682d953df8d876d8d4afaba27775477fd2e17",
+      "symbols": [
+        {
+          "name": "deny",
+          "line": 4
+        },
+        {
+          "name": "policy",
+          "line": 5
+        },
+        {
+          "name": "validate",
+          "line": 13
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/master-delete.js",
+      "bytes": 9404,
+      "lines": 64,
+      "sha256": "5b3f9cbc351d0e23c6dd49182225933ada06b092368f0ae6fee065b8e7478eff",
+      "symbols": [
+        {
+          "name": "openMasterDelete",
+          "line": 4
+        },
+        {
+          "name": "confirmAdminCredentials",
+          "line": 49
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/motion-design.css",
+      "bytes": 6240,
+      "lines": 200,
+      "sha256": "90678b168437ae1ba5694e15394211c91aaebcba7966fa53543b28235a7ed6bd",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/motion.css",
+      "bytes": 10482,
+      "lines": 276,
+      "sha256": "10898ed9efa39aa64f1fa8ff0a397ef4f775d6e62ef4add4b247cc856b905872",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/motion.js",
+      "bytes": 26742,
+      "lines": 352,
+      "sha256": "201fce43175edb1713fc2eba5342deb5d006f8b315037aef4c93534ca361f4ab",
+      "symbols": [
+        {
+          "name": "version",
+          "line": 11
+        },
+        {
+          "name": "cancel",
+          "line": 12
+        },
+        {
+          "name": "play",
+          "line": 20
+        },
+        {
+          "name": "oscillator",
+          "line": 43
+        },
+        {
+          "name": "spring",
+          "line": 63
+        },
+        {
+          "name": "finite",
+          "line": 79
+        },
+        {
+          "name": "bounded",
+          "line": 81
+        },
+        {
+          "name": "setEffect",
+          "line": 92
+        },
+        {
+          "name": "forgetEffect",
+          "line": 97
+        },
+        {
+          "name": "clearVisuals",
+          "line": 102
+        },
+        {
+          "name": "visualLayer",
+          "line": 103
+        },
+        {
+          "name": "text",
+          "line": 109
+        },
+        {
+          "name": "cleanup",
+          "line": 124
+        },
+        {
+          "name": "particles",
+          "line": 145
+        },
+        {
+          "name": "cleanup",
+          "line": 152
+        },
+        {
+          "name": "morph",
+          "line": 168
+        },
+        {
+          "name": "draw",
+          "line": 180
+        },
+        {
+          "name": "cleanup",
+          "line": 183
+        },
+        {
+          "name": "tick",
+          "line": 187
+        },
+        {
+          "name": "reveal",
+          "line": 190
+        },
+        {
+          "name": "stagger",
+          "line": 193
+        },
+        {
+          "name": "page",
+          "line": 197
+        },
+        {
+          "name": "panelOf",
+          "line": 203
+        },
+        {
+          "name": "openOverlay",
+          "line": 204
+        },
+        {
+          "name": "closeOverlay",
+          "line": 216
+        },
+        {
+          "name": "disclosure",
+          "line": 230
+        },
+        {
+          "name": "remove",
+          "line": 242
+        },
+        {
+          "name": "insert",
+          "line": 249
+        },
+        {
+          "name": "pulse",
+          "line": 255
+        },
+        {
+          "name": "metric",
+          "line": 263
+        },
+        {
+          "name": "syncProgress",
+          "line": 266
+        },
+        {
+          "name": "begin",
+          "line": 271
+        },
+        {
+          "name": "loading",
+          "line": 282
+        },
+        {
+          "name": "switchSurface",
+          "line": 291
+        },
+        {
+          "name": "toast",
+          "line": 307
+        },
+        {
+          "name": "trackActions",
+          "line": 311
+        },
+        {
+          "name": "ready",
+          "line": 333
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/period-motion.js",
+      "bytes": 6598,
+      "lines": 94,
+      "sha256": "9d4132a75f6f1fc92f641197060ced502e8cac331788594960c96e487e208561",
+      "symbols": [
+        {
+          "name": "reduced",
+          "line": 5
+        },
+        {
+          "name": "keyOf",
+          "line": 6
+        },
+        {
+          "name": "visible",
+          "line": 7
+        },
+        {
+          "name": "status",
+          "line": 8
+        },
+        {
+          "name": "setStatus",
+          "line": 18
+        },
+        {
+          "name": "dispose",
+          "line": 24
+        },
+        {
+          "name": "capture",
+          "line": 29
+        },
+        {
+          "name": "begin",
+          "line": 46
+        },
+        {
+          "name": "release",
+          "line": 64
+        },
+        {
+          "name": "cancel",
+          "line": 90
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/product-photos.json",
+      "bytes": 151505,
+      "lines": 5043,
+      "sha256": "c95b14a4d7e7b6e820ba21d93cdccd9cb9b14f44b1c5e949ad47fbf467226ec7",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/adapter.svg",
+      "bytes": 739,
+      "lines": 1,
+      "sha256": "d972598863eb89bfdc55842bf4e547f1c679ec3ccf7d54087888036a3547b127",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/audio.svg",
+      "bytes": 822,
+      "lines": 1,
+      "sha256": "8b593a2237e727527c1ab5df1ec5c832559600cfd37622bd1dd11b6d9367a32e",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/box.svg",
+      "bytes": 640,
+      "lines": 1,
+      "sha256": "cda1eb2596fa9c3513dbdce5e200014d193788a047b8268bd2e2a7e8ba124235",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/cable.svg",
+      "bytes": 956,
+      "lines": 1,
+      "sha256": "355b41e9f8da519558cfee5e4d8bfe338feed0e9475b6955ea9274576b692a7d",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/camera.svg",
+      "bytes": 842,
+      "lines": 1,
+      "sha256": "c291b1fd3a21d66682006dd95f4e1db86376064e7a7ecf7ea5a3ec7db828c5d1",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/keyboard.svg",
+      "bytes": 1960,
+      "lines": 1,
+      "sha256": "fb4e17254d85f0131b7aeffb9e79fdda0511f6bde43d239184db7cc0aa1c5363",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/laptop.svg",
+      "bytes": 703,
+      "lines": 1,
+      "sha256": "613515c22fce9438cd0d7486244769fe72318138458654f7aced62f26a7495ee",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/monitor.svg",
+      "bytes": 750,
+      "lines": 1,
+      "sha256": "09b88e5cf0977642ffa8c269388062e61902a3f137899356b71d8869c58a3140",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/products/router.svg",
+      "bytes": 848,
+      "lines": 1,
+      "sha256": "bf691685cac10cf518df8b542600337741ddadf25826df71963af8c20be28c76",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/story-motion.js",
+      "bytes": 11255,
+      "lines": 196,
+      "sha256": "7fb653f31612dc09374d9bf9fa9021464733869857080f8d1cd41c3eb9679094",
+      "symbols": [
+        {
+          "name": "activePage",
+          "line": 13
+        },
+        {
+          "name": "cleanTilt",
+          "line": 18
+        },
+        {
+          "name": "clearPage",
+          "line": 26
+        },
+        {
+          "name": "revealSection",
+          "line": 47
+        },
+        {
+          "name": "buildProgress",
+          "line": 66
+        },
+        {
+          "name": "scan",
+          "line": 82
+        },
+        {
+          "name": "updateProgress",
+          "line": 102
+        },
+        {
+          "name": "onScroll",
+          "line": 115
+        },
+        {
+          "name": "onResize",
+          "line": 119
+        },
+        {
+          "name": "applyTilt",
+          "line": 120
+        },
+        {
+          "name": "onPointerMove",
+          "line": 132
+        },
+        {
+          "name": "onPointerOut",
+          "line": 140
+        },
+        {
+          "name": "bind",
+          "line": 143
+        },
+        {
+          "name": "refresh",
+          "line": 169
+        },
+        {
+          "name": "onVisibility",
+          "line": 175
+        },
+        {
+          "name": "onPreference",
+          "line": 176
+        },
+        {
+          "name": "destroy",
+          "line": 177
+        },
+        {
+          "name": "ready",
+          "line": 182
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/theme.css",
+      "bytes": 4193,
+      "lines": 48,
+      "sha256": "95d25ee67d02016e58704019bbfe3ac6d0cd6472069673329dedacdd24bbd578",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/theme.js",
+      "bytes": 4322,
+      "lines": 73,
+      "sha256": "30e78e966950f656dd4fcd562ee58b581dab9afb1930c54fdbb40af3ab19b58b",
+      "symbols": [
+        {
+          "name": "colors",
+          "line": 9
+        },
+        {
+          "name": "value",
+          "line": 11
+        },
+        {
+          "name": "styleChart",
+          "line": 14
+        },
+        {
+          "name": "chartColors",
+          "line": 33
+        },
+        {
+          "name": "categoryColors",
+          "line": 37
+        },
+        {
+          "name": "refreshCharts",
+          "line": 41
+        },
+        {
+          "name": "updateButtons",
+          "line": 48
+        },
+        {
+          "name": "apply",
+          "line": 56
+        },
+        {
+          "name": "toggleWorkspaceTheme",
+          "line": 65
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/ui-state.js",
+      "bytes": 8642,
+      "lines": 124,
+      "sha256": "c717dd734051bce2aa693146196d62a3b490e44cc5aadf40478c215b6ddd6d1b",
+      "symbols": [
+        {
+          "name": "queryKey",
+          "line": 20
+        },
+        {
+          "name": "mount",
+          "line": 21
+        },
+        {
+          "name": "render",
+          "line": 40
+        },
+        {
+          "name": "watch",
+          "line": 64
+        },
+        {
+          "name": "begin",
+          "line": 73
+        },
+        {
+          "name": "settle",
+          "line": 79
+        },
+        {
+          "name": "clear",
+          "line": 87
+        },
+        {
+          "name": "entrySignature",
+          "line": 107
+        },
+        {
+          "name": "captureEntryBaseline",
+          "line": 112
+        },
+        {
+          "name": "entryHasChanges",
+          "line": 113
+        },
+        {
+          "name": "confirmEntryDiscard",
+          "line": 114
+        },
+        {
+          "name": "requestEntryReset",
+          "line": 116
+        },
+        {
+          "name": "requestNewEntry",
+          "line": 117
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/workspace.css",
+      "bytes": 46759,
+      "lines": 55,
+      "sha256": "822c8d58da96ae33115ef4c62a829526939ae61977e9210dcbcd46a8b8513580",
+      "symbols": [],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "assets/workspace.js",
+      "bytes": 45602,
+      "lines": 380,
+      "sha256": "444a8a14f79d76bbfcca5957064312b02df9fab056e5dfe48920dfcccb0b57aa",
+      "symbols": [
+        {
+          "name": "activeMasterRows",
+          "line": 9
+        },
+        {
+          "name": "locationLabel",
+          "line": 28
+        },
+        {
+          "name": "itemCategory",
+          "line": 31
+        },
+        {
+          "name": "normalizedPhotoName",
+          "line": 36
+        },
+        {
+          "name": "itemPhotoInfo",
+          "line": 43
+        },
+        {
+          "name": "itemPhoto",
+          "line": 57
+        },
+        {
+          "name": "handleProductImageError",
+          "line": 58
+        },
+        {
+          "name": "refreshProductImages",
+          "line": 62
+        },
+        {
+          "name": "productImage",
+          "line": 70
+        },
+        {
+          "name": "productPhotoNote",
+          "line": 75
+        },
+        {
+          "name": "itemButton",
+          "line": 83
+        },
+        {
+          "name": "numberValue",
+          "line": 86
+        },
+        {
+          "name": "itemStatus",
+          "line": 87
+        },
+        {
+          "name": "statusBadge",
+          "line": 93
+        },
+        {
+          "name": "emptyState",
+          "line": 94
+        },
+        {
+          "name": "recordDate",
+          "line": 95
+        },
+        {
+          "name": "isInPeriod",
+          "line": 101
+        },
+        {
+          "name": "ticketAge",
+          "line": 102
+        },
+        {
+          "name": "setText",
+          "line": 103
+        },
+        {
+          "name": "loadDashboard",
+          "line": 111
+        },
+        {
+          "name": "render",
+          "line": 144
+        },
+        {
+          "name": "dashboardRevalidate",
+          "line": 151
+        },
+        {
+          "name": "renderDashboard",
+          "line": 152
+        },
+        {
+          "name": "goLatestDashboardPeriod",
+          "line": 176
+        },
+        {
+          "name": "chartSeriesColors",
+          "line": 177
+        },
+        {
+          "name": "renderWorkspaceChart",
+          "line": 178
+        },
+        {
+          "name": "renderDashboardCharts",
+          "line": 183
+        },
+        {
+          "name": "renderPaginationControls",
+          "line": 202
+        },
+        {
+          "name": "renderMasterBarang",
+          "line": 208
+        },
+        {
+          "name": "renderStockGudang",
+          "line": 209
+        },
+        {
+          "name": "filterMasterBarang",
+          "line": 210
+        },
+        {
+          "name": "filterStockGudang",
+          "line": 211
+        },
+        {
+          "name": "inventoryFilterChanged",
+          "line": 212
+        },
+        {
+          "name": "setInventoryView",
+          "line": 213
+        },
+        {
+          "name": "inventorySort",
+          "line": 214
+        },
+        {
+          "name": "fillFilter",
+          "line": 215
+        },
+        {
+          "name": "renderInventory",
+          "line": 216
+        },
+        {
+          "name": "closeWorkspaceOverlay",
+          "line": 241
+        },
+        {
+          "name": "finish",
+          "line": 249
+        },
+        {
+          "name": "mountWorkspaceOverlay",
+          "line": 259
+        },
+        {
+          "name": "openAssetDetail",
+          "line": 269
+        },
+        {
+          "name": "openWorkspaceSearch",
+          "line": 287
+        },
+        {
+          "name": "mutationLabel",
+          "line": 300
+        },
+        {
+          "name": "chooseMutation",
+          "line": 301
+        },
+        {
+          "name": "updateEntrySummary",
+          "line": 302
+        },
+        {
+          "name": "updateItemCount",
+          "line": 307
+        },
+        {
+          "name": "addItemRow",
+          "line": 308
+        },
+        {
+          "name": "selectItemForInput",
+          "line": 309
+        },
+        {
+          "name": "loadStockOpname",
+          "line": 311
+        },
+        {
+          "name": "renderOpnameLocations",
+          "line": 317
+        },
+        {
+          "name": "refreshOpnameLocationCards",
+          "line": 324
+        },
+        {
+          "name": "chooseOpnameLocation",
+          "line": 332
+        },
+        {
+          "name": "goOpnameLocation",
+          "line": 333
+        },
+        {
+          "name": "ticketContents",
+          "line": 334
+        },
+        {
+          "name": "renderActiveTicket",
+          "line": 338
+        },
+        {
+          "name": "goAgedTickets",
+          "line": 349
+        },
+        {
+          "name": "clearTicketAgeFilter",
+          "line": 350
+        },
+        {
+          "name": "renderReturnedTicket",
+          "line": 351
+        },
+        {
+          "name": "syncSidebarAccessibility",
+          "line": 365
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "index.html",
+      "bytes": 245522,
+      "lines": 3704,
+      "sha256": "d15a78da8ff20e0bbddb9424073eaddf796dfab51495a4bb6f2cb6e92bbe705d",
+      "symbols": [
+        {
+          "name": "playSound",
+          "line": 792
+        },
+        {
+          "name": "normalizeName",
+          "line": 824
+        },
+        {
+          "name": "formatNum",
+          "line": 828
+        },
+        {
+          "name": "countUp",
+          "line": 832
+        },
+        {
+          "name": "update",
+          "line": 835
+        },
+        {
+          "name": "relatifWaktu",
+          "line": 844
+        },
+        {
+          "name": "parseDateSafely",
+          "line": 864
+        },
+        {
+          "name": "toggleDesktopSidebar",
+          "line": 881
+        },
+        {
+          "name": "toggleMobileSidebar",
+          "line": 895
+        },
+        {
+          "name": "showCustomConfirm",
+          "line": 902
+        },
+        {
+          "name": "cleanup",
+          "line": 920
+        },
+        {
+          "name": "esc",
+          "line": 960
+        },
+        {
+          "name": "setSessionToken",
+          "line": 975
+        },
+        {
+          "name": "clearSessionToken",
+          "line": 979
+        },
+        {
+          "name": "edgeFetch",
+          "line": 983
+        },
+        {
+          "name": "sbGet",
+          "line": 996
+        },
+        {
+          "name": "sbInsert",
+          "line": 1012
+        },
+        {
+          "name": "sbUpdate",
+          "line": 1023
+        },
+        {
+          "name": "parseParamString",
+          "line": 1035
+        },
+        {
+          "name": "cacheKey",
+          "line": 1067
+        },
+        {
+          "name": "getCached",
+          "line": 1070
+        },
+        {
+          "name": "storeCache",
+          "line": 1078
+        },
+        {
+          "name": "sameRows",
+          "line": 1090
+        },
+        {
+          "name": "sbGetSWR",
+          "line": 1101
+        },
+        {
+          "name": "invalidateTableCache",
+          "line": 1130
+        },
+        {
+          "name": "refreshAllCache",
+          "line": 1141
+        },
+        {
+          "name": "sortData",
+          "line": 1149
+        },
+        {
+          "name": "sortArrow",
+          "line": 1160
+        },
+        {
+          "name": "writeLog",
+          "line": 1166
+        },
+        {
+          "name": "isAdmin",
+          "line": 1179
+        },
+        {
+          "name": "applyViewOnlyMode",
+          "line": 1183
+        },
+        {
+          "name": "callChangePassword",
+          "line": 1240
+        },
+        {
+          "name": "handleLogin",
+          "line": 1249
+        },
+        {
+          "name": "setLoginBusy",
+          "line": 1304
+        },
+        {
+          "name": "togglePasswordVisibility",
+          "line": 1322
+        },
+        {
+          "name": "showLoginHelp",
+          "line": 1333
+        },
+        {
+          "name": "rememberUsername",
+          "line": 1338
+        },
+        {
+          "name": "restoreRememberedUsername",
+          "line": 1345
+        },
+        {
+          "name": "stopLoginIdle",
+          "line": 1356
+        },
+        {
+          "name": "endCurrentSession",
+          "line": 1357
+        },
+        {
+          "name": "commit",
+          "line": 1384
+        },
+        {
+          "name": "completeLogin",
+          "line": 1396
+        },
+        {
+          "name": "commit",
+          "line": 1400
+        },
+        {
+          "name": "resetIdleTimer",
+          "line": 1418
+        },
+        {
+          "name": "submitForceChangePassword",
+          "line": 1436
+        },
+        {
+          "name": "cancelForceChangePassword",
+          "line": 1468
+        },
+        {
+          "name": "handleLogout",
+          "line": 1478
+        },
+        {
+          "name": "showPage",
+          "line": 1484
+        },
+        {
+          "name": "closeSidebar",
+          "line": 1520
+        },
+        {
+          "name": "showToast",
+          "line": 1522
+        },
+        {
+          "name": "finish",
+          "line": 1531
+        },
+        {
+          "name": "showLoading",
+          "line": 1536
+        },
+        {
+          "name": "hideLoading",
+          "line": 1537
+        },
+        {
+          "name": "getDashboardPeriod",
+          "line": 1539
+        },
+        {
+          "name": "shiftDashboardMonth",
+          "line": 1557
+        },
+        {
+          "name": "resetDashboardMonth",
+          "line": 1567
+        },
+        {
+          "name": "dashGoTransaksi",
+          "line": 1589
+        },
+        {
+          "name": "dashGoStock",
+          "line": 1594
+        },
+        {
+          "name": "loadDataEntry",
+          "line": 1600
+        },
+        {
+          "name": "applyNamaBarangList",
+          "line": 1615
+        },
+        {
+          "name": "refreshNamaBarangList",
+          "line": 1624
+        },
+        {
+          "name": "searchTicket",
+          "line": 1633
+        },
+        {
+          "name": "loadTransactionToForm",
+          "line": 1644
+        },
+        {
+          "name": "formatDateForInput",
+          "line": 1672
+        },
+        {
+          "name": "enableEditMode",
+          "line": 1676
+        },
+        {
+          "name": "toggleFormInputs",
+          "line": 1684
+        },
+        {
+          "name": "resetToNewEntry",
+          "line": 1696
+        },
+        {
+          "name": "updateMasterBarangStock",
+          "line": 1703
+        },
+        {
+          "name": "reverseMasterBarangStock",
+          "line": 1721
+        },
+        {
+          "name": "adjustMasterStock",
+          "line": 1740
+        },
+        {
+          "name": "submitEntry",
+          "line": 1751
+        },
+        {
+          "name": "eff",
+          "line": 1795
+        },
+        {
+          "name": "neg",
+          "line": 1805
+        },
+        {
+          "name": "resetForm",
+          "line": 1854
+        },
+        {
+          "name": "legacyAddItemRow",
+          "line": 1864
+        },
+        {
+          "name": "removeItemRow",
+          "line": 1898
+        },
+        {
+          "name": "renumberItems",
+          "line": 1908
+        },
+        {
+          "name": "legacyUpdateItemCount",
+          "line": 1915
+        },
+        {
+          "name": "onItemSearch",
+          "line": 1919
+        },
+        {
+          "name": "legacySelectItemForInput",
+          "line": 1939
+        },
+        {
+          "name": "onItemQtyChange",
+          "line": 1953
+        },
+        {
+          "name": "updateItemWarning",
+          "line": 1955
+        },
+        {
+          "name": "updateAllItemWarnings",
+          "line": 1972
+        },
+        {
+          "name": "loadMasterBarang",
+          "line": 1979
+        },
+        {
+          "name": "toggleAddMasterForm",
+          "line": 1995
+        },
+        {
+          "name": "resetAddMasterForm",
+          "line": 2009
+        },
+        {
+          "name": "checkKodeDuplicate",
+          "line": 2027
+        },
+        {
+          "name": "showQRCode",
+          "line": 2040
+        },
+        {
+          "name": "closeQRModal",
+          "line": 2049
+        },
+        {
+          "name": "showChangePassword",
+          "line": 2056
+        },
+        {
+          "name": "closeChangePassword",
+          "line": 2066
+        },
+        {
+          "name": "submitChangePassword",
+          "line": 2072
+        },
+        {
+          "name": "previewMasterKode",
+          "line": 2113
+        },
+        {
+          "name": "onMasterNamaSearch",
+          "line": 2129
+        },
+        {
+          "name": "onEditMasterSearch",
+          "line": 2192
+        },
+        {
+          "name": "loadMasterIntoForm",
+          "line": 2215
+        },
+        {
+          "name": "cancelMasterEdit",
+          "line": 2237
+        },
+        {
+          "name": "saveMasterEdit",
+          "line": 2241
+        },
+        {
+          "name": "submitAddMaster",
+          "line": 2271
+        },
+        {
+          "name": "loadStockGudang",
+          "line": 2324
+        },
+        {
+          "name": "legacyLoadStockOpname",
+          "line": 2339
+        },
+        {
+          "name": "onLokasiChange",
+          "line": 2356
+        },
+        {
+          "name": "applyOpnameFilter",
+          "line": 2388
+        },
+        {
+          "name": "filterOpnameBySearch",
+          "line": 2405
+        },
+        {
+          "name": "updateOpnameSummary",
+          "line": 2409
+        },
+        {
+          "name": "renderOpnameTable",
+          "line": 2415
+        },
+        {
+          "name": "saveOpnameStatus",
+          "line": 2426
+        },
+        {
+          "name": "startBarcodeScan",
+          "line": 2487
+        },
+        {
+          "name": "onScanSuccess",
+          "line": 2512
+        },
+        {
+          "name": "showScanToast",
+          "line": 2570
+        },
+        {
+          "name": "stopBarcodeScan",
+          "line": 2584
+        },
+        {
+          "name": "closing",
+          "line": 2592
+        },
+        {
+          "name": "startDataEntryScan",
+          "line": 2611
+        },
+        {
+          "name": "onDataEntryScanSuccess",
+          "line": 2634
+        },
+        {
+          "name": "exportToExcel",
+          "line": 2711
+        },
+        {
+          "name": "loadTransaksi",
+          "line": 2727
+        },
+        {
+          "name": "transaksiRefreshData",
+          "line": 2760
+        },
+        {
+          "name": "transaksiEnsureKamus",
+          "line": 2781
+        },
+        {
+          "name": "transaksiResetSearchState",
+          "line": 2802
+        },
+        {
+          "name": "updateTransaksiNote",
+          "line": 2815
+        },
+        {
+          "name": "transaksiBaseRows",
+          "line": 2844
+        },
+        {
+          "name": "transaksiLocalFilter",
+          "line": 2855
+        },
+        {
+          "name": "filterTransaksi",
+          "line": 2865
+        },
+        {
+          "name": "transaksiLooksExact",
+          "line": 2899
+        },
+        {
+          "name": "transaksiFetchFromServer",
+          "line": 2910
+        },
+        {
+          "name": "renderTransaksi",
+          "line": 2966
+        },
+        {
+          "name": "getMutasiBadge",
+          "line": 2984
+        },
+        {
+          "name": "loadActiveTicket",
+          "line": 3005
+        },
+        {
+          "name": "activeTicketRefreshData",
+          "line": 3022
+        },
+        {
+          "name": "groupActiveTickets",
+          "line": 3034
+        },
+        {
+          "name": "toggleTicketDetail",
+          "line": 3063
+        },
+        {
+          "name": "toggleAnimatedTicketDetail",
+          "line": 3067
+        },
+        {
+          "name": "saveActiveTicketNote",
+          "line": 3097
+        },
+        {
+          "name": "filterActiveTicket",
+          "line": 3116
+        },
+        {
+          "name": "loadReturnedTicket",
+          "line": 3133
+        },
+        {
+          "name": "returnedTicketRefreshData",
+          "line": 3153
+        },
+        {
+          "name": "toggleReturnedDetail",
+          "line": 3166
+        },
+        {
+          "name": "undoReturnTicket",
+          "line": 3170
+        },
+        {
+          "name": "filterReturnedTicket",
+          "line": 3212
+        },
+        {
+          "name": "onDragTicket",
+          "line": 3228
+        },
+        {
+          "name": "initDropZone",
+          "line": 3243
+        },
+        {
+          "name": "returnTicket",
+          "line": 3267
+        },
+        {
+          "name": "startActivityTracking",
+          "line": 3322
+        },
+        {
+          "name": "stopActivityTracking",
+          "line": 3340
+        },
+        {
+          "name": "onUserActivity",
+          "line": 3352
+        },
+        {
+          "name": "recordLoginSession",
+          "line": 3356
+        },
+        {
+          "name": "saveActivity",
+          "line": 3374
+        },
+        {
+          "name": "loadTimeManagement",
+          "line": 3411
+        },
+        {
+          "name": "loadAccountSettings",
+          "line": 3555
+        },
+        {
+          "name": "renderAccountTable",
+          "line": 3578
+        },
+        {
+          "name": "isSelf",
+          "line": 3585
+        },
+        {
+          "name": "onRoleChange",
+          "line": 3609
+        },
+        {
+          "name": "resetUserPassword",
+          "line": 3621
+        },
+        {
+          "name": "saveAccountRoles",
+          "line": 3650
+        }
+      ],
+      "imports": [
+        {
+          "target": "assets/csm-mark.svg",
+          "line": 21
+        },
+        {
+          "target": "assets/csm-mark.svg",
+          "line": 22
+        },
+        {
+          "target": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+          "line": 24
+        },
+        {
+          "target": "https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js",
+          "line": 27
+        },
+        {
+          "target": "https://cdn.jsdelivr.net/npm/chart.js",
+          "line": 28
+        },
+        {
+          "target": "https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js",
+          "line": 29
+        },
+        {
+          "target": "assets/theme.js",
+          "line": 31
+        },
+        {
+          "target": "assets/motion.js",
+          "line": 32
+        },
+        {
+          "target": "assets/chart-motion.js",
+          "line": 33
+        },
+        {
+          "target": "assets/period-motion.js",
+          "line": 34
+        },
+        {
+          "target": "assets/workspace.css",
+          "line": 36
+        },
+        {
+          "target": "assets/login.css",
+          "line": 37
+        },
+        {
+          "target": "assets/theme.css",
+          "line": 38
+        },
+        {
+          "target": "assets/motion.css",
+          "line": 39
+        },
+        {
+          "target": "assets/motion-design.css",
+          "line": 40
+        },
+        {
+          "target": "assets/character.css",
+          "line": 41
+        },
+        {
+          "target": "assets/workspace.js",
+          "line": 3689
+        },
+        {
+          "target": "assets/ui-state.js",
+          "line": 3690
+        },
+        {
+          "target": "assets/chart-data.js",
+          "line": 3691
+        },
+        {
+          "target": "assets/master-delete-policy.js",
+          "line": 3692
+        },
+        {
+          "target": "assets/master-delete.js",
+          "line": 3693
+        },
+        {
+          "target": "assets/dashboard-analytics.js",
+          "line": 3694
+        },
+        {
+          "target": "assets/story-motion.js",
+          "line": 3695
+        }
+      ],
+      "handlers": [
+        {
+          "event": "onclick",
+          "function": "stopBarcodeScan",
+          "line": 67
+        },
+        {
+          "event": "onclick",
+          "function": "closeQRModal",
+          "line": 85
+        },
+        {
+          "event": "onclick",
+          "function": "closeChangePassword",
+          "line": 94
+        },
+        {
+          "event": "onclick",
+          "function": "submitChangePassword",
+          "line": 106
+        },
+        {
+          "event": "onclick",
+          "function": "closeSidebar",
+          "line": 113
+        },
+        {
+          "event": "onclick",
+          "function": "toggleWorkspaceTheme",
+          "line": 132
+        },
+        {
+          "event": "onclick",
+          "function": "showLoginHelp",
+          "line": 183
+        },
+        {
+          "event": "onclick",
+          "function": "togglePasswordVisibility",
+          "line": 189
+        },
+        {
+          "event": "onclick",
+          "function": "handleLogin",
+          "line": 202
+        },
+        {
+          "event": "onclick",
+          "function": "togglePasswordVisibility",
+          "line": 227
+        },
+        {
+          "event": "onclick",
+          "function": "togglePasswordVisibility",
+          "line": 240
+        },
+        {
+          "event": "onclick",
+          "function": "submitForceChangePassword",
+          "line": 249
+        },
+        {
+          "event": "onclick",
+          "function": "cancelForceChangePassword",
+          "line": 252
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 274
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 281
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 284
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 287
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 294
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 301
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 304
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 311
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 314
+        },
+        {
+          "event": "onclick",
+          "function": "handleLogout",
+          "line": 326
+        },
+        {
+          "event": "onclick",
+          "function": "toggleDesktopSidebar",
+          "line": 335
+        },
+        {
+          "event": "onclick",
+          "function": "toggleWorkspaceTheme",
+          "line": 345
+        },
+        {
+          "event": "onclick",
+          "function": "openWorkspaceSearch",
+          "line": 346
+        },
+        {
+          "event": "onclick",
+          "function": "refreshAllCache",
+          "line": 348
+        },
+        {
+          "event": "onclick",
+          "function": "showChangePassword",
+          "line": 349
+        },
+        {
+          "event": "onclick",
+          "function": "shiftDashboardMonth",
+          "line": 355
+        },
+        {
+          "event": "onchange",
+          "function": "loadDashboard",
+          "line": 355
+        },
+        {
+          "event": "onclick",
+          "function": "shiftDashboardMonth",
+          "line": 355
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 355
+        },
+        {
+          "event": "onclick",
+          "function": "dashGoStock",
+          "line": 356
+        },
+        {
+          "event": "onclick",
+          "function": "dashGoStock",
+          "line": 356
+        },
+        {
+          "event": "onclick",
+          "function": "goAgedTickets",
+          "line": 356
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 358
+        },
+        {
+          "event": "onclick",
+          "function": "dashGoStock",
+          "line": 359
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 360
+        },
+        {
+          "event": "onclick",
+          "function": "dashGoTransaksi",
+          "line": 361
+        },
+        {
+          "event": "onclick",
+          "function": "goLatestDashboardPeriod",
+          "line": 365
+        },
+        {
+          "event": "onclick",
+          "function": "dashGoTransaksi",
+          "line": 366
+        },
+        {
+          "event": "onclick",
+          "function": "dashGoStock",
+          "line": 370
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 371
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 372
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 373
+        },
+        {
+          "event": "onclick",
+          "function": "showPage",
+          "line": 376
+        },
+        {
+          "event": "onkeydown",
+          "function": "if",
+          "line": 393
+        },
+        {
+          "event": "onclick",
+          "function": "searchTicket",
+          "line": 394
+        },
+        {
+          "event": "onclick",
+          "function": "requestNewEntry",
+          "line": 396
+        },
+        {
+          "event": "onsubmit",
+          "function": "submitEntry",
+          "line": 401
+        },
+        {
+          "event": "onchange",
+          "function": "updateAllItemWarnings",
+          "line": 407
+        },
+        {
+          "event": "onclick",
+          "function": "enableEditMode",
+          "line": 420
+        },
+        {
+          "event": "onclick",
+          "function": "addItemRow",
+          "line": 432
+        },
+        {
+          "event": "onclick",
+          "function": "startDataEntryScan",
+          "line": 433
+        },
+        {
+          "event": "onclick",
+          "function": "requestEntryReset",
+          "line": 439
+        },
+        {
+          "event": "onclick",
+          "function": "toggleAddMasterForm",
+          "line": 447
+        },
+        {
+          "event": "oninput",
+          "function": "onEditMasterSearch",
+          "line": 458
+        },
+        {
+          "event": "onclick",
+          "function": "cancelMasterEdit",
+          "line": 461
+        },
+        {
+          "event": "oninput",
+          "function": "previewMasterKode",
+          "line": 469
+        },
+        {
+          "event": "oninput",
+          "function": "checkKodeDuplicate",
+          "line": 474
+        },
+        {
+          "event": "onclick",
+          "function": "submitAddMaster",
+          "line": 501
+        },
+        {
+          "event": "onclick",
+          "function": "resetAddMasterForm",
+          "line": 502
+        },
+        {
+          "event": "oninput",
+          "function": "inventoryFilterChanged",
+          "line": 514
+        },
+        {
+          "event": "onchange",
+          "function": "inventoryFilterChanged",
+          "line": 515
+        },
+        {
+          "event": "onchange",
+          "function": "inventoryFilterChanged",
+          "line": 515
+        },
+        {
+          "event": "onchange",
+          "function": "inventoryFilterChanged",
+          "line": 515
+        },
+        {
+          "event": "onclick",
+          "function": "setInventoryView",
+          "line": 516
+        },
+        {
+          "event": "onclick",
+          "function": "setInventoryView",
+          "line": 516
+        },
+        {
+          "event": "onclick",
+          "function": "inventorySort",
+          "line": 517
+        },
+        {
+          "event": "onclick",
+          "function": "inventorySort",
+          "line": 517
+        },
+        {
+          "event": "oninput",
+          "function": "inventoryFilterChanged",
+          "line": 533
+        },
+        {
+          "event": "onchange",
+          "function": "inventoryFilterChanged",
+          "line": 534
+        },
+        {
+          "event": "onchange",
+          "function": "inventoryFilterChanged",
+          "line": 534
+        },
+        {
+          "event": "onchange",
+          "function": "inventoryFilterChanged",
+          "line": 534
+        },
+        {
+          "event": "onclick",
+          "function": "setInventoryView",
+          "line": 535
+        },
+        {
+          "event": "onclick",
+          "function": "setInventoryView",
+          "line": 535
+        },
+        {
+          "event": "onclick",
+          "function": "inventorySort",
+          "line": 536
+        },
+        {
+          "event": "onclick",
+          "function": "inventorySort",
+          "line": 536
+        },
+        {
+          "event": "onclick",
+          "function": "saveOpnameStatus",
+          "line": 549
+        },
+        {
+          "event": "onclick",
+          "function": "exportToExcel",
+          "line": 552
+        },
+        {
+          "event": "onchange",
+          "function": "onLokasiChange",
+          "line": 561
+        },
+        {
+          "event": "onclick",
+          "function": "startBarcodeScan",
+          "line": 565
+        },
+        {
+          "event": "onchange",
+          "function": "applyOpnameFilter",
+          "line": 573
+        },
+        {
+          "event": "oninput",
+          "function": "filterOpnameBySearch",
+          "line": 580
+        },
+        {
+          "event": "oninput",
+          "function": "filterTransaksi",
+          "line": 613
+        },
+        {
+          "event": "oninput",
+          "function": "filterActiveTicket",
+          "line": 639
+        },
+        {
+          "event": "oninput",
+          "function": "filterReturnedTicket",
+          "line": 668
+        },
+        {
+          "event": "onchange",
+          "function": "loadTimeManagement",
+          "line": 743
+        },
+        {
+          "event": "onclick",
+          "function": "saveAccountRoles",
+          "line": 778
+        },
+        {
+          "event": "onclick",
+          "function": "loadAccountSettings",
+          "line": 781
+        },
+        {
+          "event": "onclick",
+          "function": "removeItemRow",
+          "line": 1875
+        },
+        {
+          "event": "oninput",
+          "function": "onItemSearch",
+          "line": 1879
+        },
+        {
+          "event": "oninput",
+          "function": "onItemQtyChange",
+          "line": 1882
+        },
+        {
+          "event": "onchange",
+          "function": "onRoleChange",
+          "line": 3592
+        },
+        {
+          "event": "onclick",
+          "function": "resetUserPassword",
+          "line": 3601
+        }
+      ]
+    },
+    {
+      "file": "supabase/functions/admin-users/index.ts",
+      "bytes": 4202,
+      "lines": 87,
+      "sha256": "c3cff267b4fdc8579e5fef6c066ab5a4322a191200bbc0f3aca07f2c1bc778ac",
+      "symbols": [
+        {
+          "name": "json",
+          "line": 13
+        },
+        {
+          "name": "sb",
+          "line": 16
+        },
+        {
+          "name": "secureSession",
+          "line": 31
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "supabase/functions/api-proxy/index.ts",
+      "bytes": 11019,
+      "lines": 222,
+      "sha256": "44db48ba2b03c3fb3092dd312e8a0ec769ac2932ade69a3814f32fc04d5a252c",
+      "symbols": [
+        {
+          "name": "secureSession",
+          "line": 33
+        },
+        {
+          "name": "buildQuery",
+          "line": 122
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "supabase/functions/change-password/index.ts",
+      "bytes": 1388,
+      "lines": 18,
+      "sha256": "90b43bd0cbff5e666bf4a535f8890f621f1e8cc7394a7db4f1fe9d15b018fa01",
+      "symbols": [
+        {
+          "name": "json",
+          "line": 4
+        },
+        {
+          "name": "rpc",
+          "line": 5
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "supabase/functions/db-sync/index.ts",
+      "bytes": 4089,
+      "lines": 79,
+      "sha256": "80d7cc2c95f8d86974955e46669ffdba50449156834e37384df789f33f73fb26",
+      "symbols": [
+        {
+          "name": "ini",
+          "line": 3
+        },
+        {
+          "name": "json",
+          "line": 14
+        },
+        {
+          "name": "sb",
+          "line": 17
+        },
+        {
+          "name": "secureSession",
+          "line": 26
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "supabase/functions/login/index.ts",
+      "bytes": 1626,
+      "lines": 21,
+      "sha256": "a3f0a31be4d519bea3fd437b0c8e3dc53aaffbc054c93069086d2b98ae413870",
+      "symbols": [
+        {
+          "name": "json",
+          "line": 4
+        },
+        {
+          "name": "rpc",
+          "line": 5
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "supabase/migrations/202610060001_guarded_master_delete.sql",
+      "bytes": 11653,
+      "lines": 177,
+      "sha256": "5b2d0a8808c951630400662fdddeef1fa160e2d16b5462cab01b8f7685918559",
+      "symbols": [
+        {
+          "name": "IF",
+          "line": 8
+        },
+        {
+          "name": "IF",
+          "line": 13
+        },
+        {
+          "name": "csm_entry_master_guard",
+          "line": 24
+        },
+        {
+          "name": "csm_log_master_guard",
+          "line": 37
+        },
+        {
+          "name": "csm_master_archive_guard",
+          "line": 54
+        },
+        {
+          "name": "csm_verify_admin",
+          "line": 84
+        },
+        {
+          "name": "csm_delete_master",
+          "line": 121
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    },
+    {
+      "file": "supabase/migrations/202610060002_secure_sessions.sql",
+      "bytes": 10825,
+      "lines": 114,
+      "sha256": "fa91c352571331d01918fd13a0e769beb358683b8776bc21c33a854838ea233b",
+      "symbols": [
+        {
+          "name": "IF",
+          "line": 7
+        },
+        {
+          "name": "IF",
+          "line": 14
+        },
+        {
+          "name": "csm_hash_password",
+          "line": 18
+        },
+        {
+          "name": "csm_password_matches",
+          "line": 21
+        },
+        {
+          "name": "csm_user_security_guard",
+          "line": 26
+        },
+        {
+          "name": "csm_rate_allow",
+          "line": 38
+        },
+        {
+          "name": "csm_session_user",
+          "line": 45
+        },
+        {
+          "name": "csm_login",
+          "line": 55
+        },
+        {
+          "name": "csm_logout",
+          "line": 67
+        },
+        {
+          "name": "csm_change_password",
+          "line": 71
+        },
+        {
+          "name": "csm_verify_admin",
+          "line": 82
+        },
+        {
+          "name": "csm_reset_password",
+          "line": 91
+        }
+      ],
+      "imports": [],
+      "handlers": []
+    }
+  ]
+}

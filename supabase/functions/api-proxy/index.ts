@@ -109,7 +109,8 @@ serve(async (req) => {
     }
     if(table==='log' && action==='insert')for(const row of data){row.user=username;}
     // Reject relational selects: public clients may only request this table's columns.
-    if(params?.select && !/^(\*|[a-z_]+(?:,[a-z_]+)*)$/.test(params.select))throw new Error('Invalid select');
+    if(params?.select && (typeof params.select!=="string" || !/^(?:\*|[a-z_][a-z0-9_]*)(?:,(?:\*|[a-z_][a-z0-9_]*))*$/.test(params.select)))
+      return new Response(JSON.stringify({error:'Daftar kolom tidak valid.',code:'INVALID_SELECT'}),{status:400,headers:{...corsHeaders,'Content-Type':'application/json'}});
     let result;
 
     if (action === "get") {

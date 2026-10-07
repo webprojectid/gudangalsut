@@ -1,6 +1,6 @@
 /* Derived views of existing inventory and data_entry rows. No database writes. */
 'use strict';
-const dashboardPalette = ['#009fc5','#e76a32','#009c79','#d69a13','#527884'];
+let dashboardPalette;
 function buildDashboardAnalytics(master, entries, period, now = new Date()) {
     const byCode = new Map(master.map(item=>[item.kode_barang,item]));
     const dated = entries.map(row=>({row,date:recordDate(row.tanggal)})).filter(item=>item.date&&item.date<=now);
@@ -46,7 +46,6 @@ function buildDashboardAnalytics(master, entries, period, now = new Date()) {
         topScope:current.length?period.label:'Seluruh riwayat tersimpan',ticketCount:tickets.size,invalidDates:entries.length-dated.length};
 }
 function createAnalyticsChart(key, id, type, labels, datasets, extra = {}) {
-    if(typeof Chart==='undefined')return;
     const options = {responsive:true,maintainAspectRatio:false,
         animation:{duration:window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:350},
         plugins:{legend:{display:false},tooltip:{backgroundColor:'#16333b',padding:11,cornerRadius:10}},
@@ -54,6 +53,8 @@ function createAnalyticsChart(key, id, type, labels, datasets, extra = {}) {
                 y:{beginAtZero:true,border:{display:false},grid:{color:'#e7f0f2'},ticks:{precision:0,maxTicksLimit:5}}},...extra};
     if(type==='doughnut')delete options.scales;
     const canvas = document.getElementById(id), config = {type,data:{labels,datasets},options};
+    window.csmChartData?.register(canvas,config);
+    if(typeof Chart==='undefined') {if(canvas)canvas.hidden=true;return;}
     if (window.csmChartMotion?.render) window.dashCharts[key] = window.csmChartMotion.render(canvas, config);
     else {
         const existing = Chart.getChart?.(canvas);
@@ -65,6 +66,14 @@ function compactDashboardLegend(rows, colors) {
     return rows.map((row,index)=>`<div><span><i style="background:${colors[index%colors.length]}"></i>${esc(row.label)}</span><strong>${formatNum(row.qty)}</strong></div>`).join('');
 }
 function renderDashboardAnalytics(data) {
+    dashboardPalette = chartSeriesColors();
+    const attention = document.getElementById('dashboardAttention');
+    if (attention) {
+        attention.hidden = false;
+        setText('attentionOut',formatNum(data.health.find(row=>row.key==='habis').qty));
+        setText('attentionDamage',formatNum(data.master.reduce((sum,row)=>sum+numberValue(row.rusak),0)));
+        setText('attentionLoans',formatNum(data.ages[3].qty));
+    }
     const total = data.mutations.reduce((sum,row)=>sum+row.qty,0);
     setText('dashMovementTotal',`${formatNum(total)} unit`);setText('dashMixTotal',formatNum(total));
     document.getElementById('dashMutationLegend').innerHTML=compactDashboardLegend(data.mutations,dashboardPalette);
@@ -72,8 +81,10 @@ function renderDashboardAnalytics(data) {
     setText('dashHeatmapMonth',data.period.label);
     document.getElementById('dashActivityHeatmap').innerHTML=`${days.map(day=>`<small class="calendar-weekday">${day}</small>`).join('')}${'<span class="calendar-spacer" aria-hidden="true"></span>'.repeat(data.calendarOffset)}${data.heatmap.map(row=>{
         const label=`${row.date.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'})} · ${formatNum(row.qty)} unit transaksi`;
-        return `<span class="heatmap-cell heat-${row.qty?Math.min(4,Math.ceil(row.qty/heatMax*4)):0}" role="img" aria-label="${esc(label)}" title="${esc(label)}"><b>${row.day}</b></span>`;
+        const iso = `${row.date.getFullYear()}-${String(row.date.getMonth()+1).padStart(2,'0')}-${String(row.day).padStart(2,'0')}`;
+        return `<button type="button" class="heatmap-cell heat-${row.qty?Math.min(4,Math.ceil(row.qty/heatMax*4)):0}" data-date="${iso}" onclick="selectDashboardDate(this.dataset.date)" aria-label="${esc(label)}" aria-pressed="false"><b>${row.day}</b></button>`;
     }).join('')}`;
+    window.csmChartData?.setCalendar(data);
     const monthLabel = date=>date.toLocaleDateString('id-ID',{month:'short',year:'2-digit'});
     setText('dashTrendRange',`${monthLabel(data.months[0])} – ${monthLabel(data.months.at(-1))}`);
     setText('dashTrendTotal',`${formatNum(data.monthly.flat().reduce((a,b)=>a+b,0))} unit`);
@@ -86,22 +97,23 @@ function renderDashboardAnalytics(data) {
     setText('dashLocationSummary',`${formatNum(data.locations.reduce((sum,row)=>sum+row.available,0))} unit tersedia · ${formatNum(data.locations.reduce((sum,row)=>sum+row.broken,0))} unit rusak`);
     const horizontal = {indexAxis:'y',scales:{
         x:{beginAtZero:true,stacked:true,border:{display:false},grid:{color:'#e7f0f2'},ticks:{precision:0,maxTicksLimit:5}},
-        y:{stacked:true,border:{display:false},grid:{display:false},ticks:{font:{size:9},callback:function(value){
+        y:{stacked:true,border:{display:false},grid:{display:false},ticks:{font:{size:12},callback:function(value){
             const text=this.getLabelForValue(value);return text.length>23?text.slice(0,21)+'…':text;
         }}}
     }};
-    createAnalyticsChart('locationStock','chartLocationStock','bar',locationLabels,[['Tersedia','available','#009c79'],['Dipinjam','borrowed','#009fc5'],['Rusak','broken','#e76a32']].map(([label,key,color])=>({label,data:data.locations.map(row=>row[key]),backgroundColor:color,borderRadius:5,maxBarThickness:22})),horizontal);
+    createAnalyticsChart('locationStock','chartLocationStock','bar',locationLabels,[['Tersedia','available',dashboardPalette[2]],['Dipinjam','borrowed',dashboardPalette[0]],['Rusak','broken',dashboardPalette[1]]].map(([label,key,color])=>({label,data:data.locations.map(row=>row[key]),backgroundColor:color,borderRadius:5,maxBarThickness:22})),horizontal);
     setText('dashHealthyPercent',`${data.master.length?Math.round(data.health[0].qty/data.master.length*100):0}%`);
-    document.getElementById('dashStockHealthLegend').innerHTML=compactDashboardLegend(data.health,['#009c79','#d69a13','#e76a32']);
-    createAnalyticsChart('health','chartStockHealth','doughnut',data.health.map(row=>row.label),[{data:data.health.map(row=>row.qty),backgroundColor:['#009c79','#d69a13','#e76a32'],borderWidth:4,borderColor:'#fff',borderRadius:5}],{cutout:'78%'});
+    const healthColors = [dashboardPalette[2],dashboardPalette[3],dashboardPalette[1]];
+    document.getElementById('dashStockHealthLegend').innerHTML=compactDashboardLegend(data.health,healthColors);
+    createAnalyticsChart('health','chartStockHealth','doughnut',data.health.map(row=>row.label),[{label:'Jenis barang',data:data.health.map(row=>row.qty),backgroundColor:healthColors,borderWidth:4,borderColor:'#fff',borderRadius:5}],{cutout:'78%'});
     const ages = data.ages.filter((row,index)=>index<4||row.qty);
-    createAnalyticsChart('loanAges','chartLoanAges','bar',ages.map(row=>row.label),[{label:'Tiket aktif',data:ages.map(row=>row.qty),backgroundColor:['#009fc5','#087c9e','#d69a13','#e76a32','#527884'],borderRadius:7,maxBarThickness:34}]);
+    createAnalyticsChart('loanAges','chartLoanAges','bar',ages.map(row=>row.label),[{label:'Tiket aktif',data:ages.map(row=>row.qty),backgroundColor:[dashboardPalette[0],dashboardPalette[2],dashboardPalette[3],dashboardPalette[1],dashboardPalette[4]],borderRadius:7,maxBarThickness:34}]);
     setText('dashLoanAgeSummary',`${data.ticketCount} tiket aktif · ${data.ages[3].qty} tiket berusia 30+ hari${data.ages[4].qty?` · ${data.ages[4].qty} tanpa tanggal`:''}`);
-    createAnalyticsChart('locationOpname','chartLocationOpname','bar',locationLabels,[{label:'Sudah opname',data:data.locations.map(row=>row.checked),backgroundColor:'#009fc5',borderRadius:5,maxBarThickness:22},{label:'Belum opname',data:data.locations.map(row=>row.items-row.checked),backgroundColor:'#e3eff1',borderRadius:5,maxBarThickness:22}],horizontal);
+    createAnalyticsChart('locationOpname','chartLocationOpname','bar',locationLabels,[{label:'Sudah opname',data:data.locations.map(row=>row.checked),backgroundColor:dashboardPalette[0],borderRadius:5,maxBarThickness:22},{label:'Belum opname',data:data.locations.map(row=>row.items-row.checked),backgroundColor:dashboardPalette[4],borderRadius:5,maxBarThickness:22}],horizontal);
     document.getElementById('dashLocationShortcuts').innerHTML=data.locations.filter(row=>row.items).map(row=>`<button data-location="${esc(row.name)}" onclick="goOpnameLocation(this.dataset.location)" title="Buka opname ${esc(locationLabel(row.name))}">${esc(locationLabel(row.name))} <i class="fas fa-arrow-right"></i></button>`).join('');
     setText('dashCategoryTotal',formatNum(data.master.reduce((sum,row)=>sum+numberValue(row.tersedia),0)));
     setText('dashPopularCaption',`${data.topScope} · unit tercatat`);
     const max = Math.max(1,...data.top.map(row=>row.qty));
     document.getElementById('dashPopular').innerHTML=data.top.length?data.top.map((row,index)=>`<button class="ranked-asset" data-code="${esc(row.code)}" onclick="openAssetDetail(this.dataset.code)"><span class="rank-number">${index+1}</span>${productImage(row.item)}<span class="rank-details"><strong>${esc(row.item.nama_barang||row.code)}</strong><small>${esc(row.code)}</small><span class="rank-bar"><i style="width:${row.qty/max*100}%;background:${dashboardPalette[index]}"></i></span></span><b>${formatNum(row.qty)}</b></button>`).join(''):emptyState('Belum ada data entry');
-    document.getElementById('dashLatestEntries').innerHTML=data.latest.length?data.latest.map(row=>`<tr><td>${itemButton({...row,nama_barang:row.nama_barang||row.kode_barang})}</td><td><strong>#${esc(row.nomor_tiket||'—')}</strong></td><td>${esc(row.tanggal)}</td><td><span class="badge badge-${({1:'success',2:'primary',3:'danger',4:'warning',5:'info'})[Number(row.kode_mutasi)]||'primary'}">${esc(mutationLabel(row.kode_mutasi))}</span></td><td><strong>${numberValue(row.qty)}</strong></td><td>${esc(row.nama_peminjam||'—')}</td></tr>`).join(''):`<tr><td colspan="6">${emptyState('Belum ada data entry')}</td></tr>`;
+    document.getElementById('dashLatestEntries').innerHTML=data.latest.length?data.latest.map(row=>`<tr><td>${itemButton({...row,nama_barang:row.nama_barang||row.kode_barang})}</td><td><strong>#${esc(row.nomor_tiket||'Belum diisi')}</strong></td><td>${esc(row.tanggal)}</td><td><span class="badge badge-${({1:'success',2:'primary',3:'danger',4:'warning',5:'info'})[Number(row.kode_mutasi)]||'primary'}">${esc(mutationLabel(row.kode_mutasi))}</span></td><td><strong>${numberValue(row.qty)}</strong></td><td>${esc(row.nama_peminjam||'Belum diisi')}</td></tr>`).join(''):`<tr><td colspan="6">${emptyState('Belum ada data entry')}</td></tr>`;
 }

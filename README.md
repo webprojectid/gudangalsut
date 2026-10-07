@@ -1,6 +1,10 @@
-# CSM Online — Gudang CSM
+# CSM Online / Gudang CSM
 
 Website statis dengan foto produk lokal, dashboard inventaris, Light/Dark dan motion. Upload **isi folder ini** sebagai root repository: index.html, assets, CNAME dan .nojekyll berada langsung di root.
+
+Pegangan agent berikutnya: [AGENTS.md](AGENTS.md), [gambaran project](docs/agent-handbook.md), [aturan bisnis dan hitungan](docs/business-rules.md), [kontrak backend/database](docs/backend-contract.md), [pengembangan dan rilis](docs/development-and-release.md), serta [indeks source/fungsi](docs/code-reference.md). Indeks JSON tersedia di docs/code-reference.json. Dokumentasi menjelaskan versi stabil dan bug terbuka; keberadaan dokumen tidak mengubah alur aplikasi atau membuktikan deployment live terbaru.
+
+Revisi anti-slop 7 Oktober 2026 memperbarui status loading/error/retry, menjaga draft Data Entry selama sesi, memperjelas prioritas dashboard, menambahkan tabel angka chart dan akses tanggal kalender, serta merapikan warna/keyboard/mobile. Revisi ini khusus frontend; tidak menjalankan migrasi atau deploy backend. Kontrak tulis pada folder ini tetap versi stabil. Kandidat inventory atomik berada di root workspace dan memerlukan rilis backend terpisah.
 
 ## Keamanan dan dampak pembaruan
 

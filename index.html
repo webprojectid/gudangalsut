@@ -17,7 +17,7 @@
     <!-- SECURITY: No sniff -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSM Online — Gudang CSM</title>
+    <title>CSM Online | Gudang CSM</title>
     <link rel="icon" type="image/svg+xml" href="assets/csm-mark.svg">
     <link rel="apple-touch-icon" href="assets/csm-mark.svg">
     <!-- Fonts & Icons -->
@@ -132,8 +132,8 @@
             <div class="login-brand-top"><div class="login-brand-mark"><img src="assets/csm-mark.svg" alt=""><span><strong>CSM Online</strong><small>Gudang CSM</small></span></div><button type="button" class="theme-toggle" data-theme-toggle onclick="toggleWorkspaceTheme()" aria-label="Aktifkan Dark mode"><i class="fas fa-moon" aria-hidden="true"></i><span>Dark</span></button></div>
             <div class="login-brand-content">
                 <span class="eyebrow">GUDANG CSM</span>
-                <h2 class="login-brand-title">Semua aset.<br><em>Selalu terhubung.</em></h2>
-                <p class="login-brand-desc">Temukan barang, pantau stok, dan kelola peminjaman. Satu ruang untuk aktivitas timmu.</p>
+            <h2 class="login-brand-title">Cari barang.<br><em>Catat pergerakannya.</em></h2>
+            <p class="login-brand-desc">Cek lokasi dan stok, catat transaksi, lalu pantau barang yang masih dipinjam.</p>
                 <div class="login-showcase" id="loginShowcase" role="group" aria-label="Koleksi produk Gudang CSM">
                     <div class="showcase-orbit orbit-one" aria-hidden="true"></div>
                     <div class="showcase-orbit orbit-two" aria-hidden="true"></div>
@@ -323,7 +323,7 @@
                     <span class="role" id="sidebarUserRole">Administrator</span>
                 </div>
                 <div style="flex:1;"></div>
-                <button class="btn-icon-ghost" onclick="handleLogout()" title="Logout"><i class="fas fa-right-from-bracket"></i></button>
+                <button class="btn-icon-ghost" onclick="handleLogout()" title="Keluar" aria-label="Keluar"><i class="fas fa-right-from-bracket"></i></button>
             </div>
         </nav>
 
@@ -333,7 +333,7 @@
             <div class="top-bar">
                 <div class="top-bar-left">
                     <button id="desktopSidebarToggle" class="sidebar-toggle-btn" aria-label="Buka atau ringkas navigasi" onclick="toggleDesktopSidebar()">
-                        <i class="fas fa-chevron-left"></i>
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i><span class="mobile-menu-label">Menu</span>
                     </button>
                     <div class="breadcrumb" id="pageTitle">
                         <span class="crumb-home">CSM Online</span>
@@ -351,28 +351,26 @@
                 </div>
             </div>
 
-            <!-- ==================================================================== -->
-            <!-- NEW DASHBOARD PAGES WITH REDESIGNED BENTO GRID                       -->
-            <!-- ==================================================================== -->
             <div class="page active" id="page-dashboard">
-                <div class="page-heading"><div class="welcome-strip"><span class="welcome-symbol"><i class="far fa-sun"></i></span><div><span class="eyebrow">YOUR INVENTORY, AT A GLANCE</span><h1 id="dashboardGreeting">Selamat datang.</h1><p>Gambaran aset dan aktivitas kampus hari ini.</p></div></div><div class="heading-actions"><div class="period-controls"><button onclick="shiftDashboardMonth(-1)" aria-label="Bulan sebelumnya"><i class="fas fa-chevron-left"></i></button><input type="month" id="dashboardMonth" aria-label="Periode dashboard" onchange="loadDashboard()"><button id="dashboardNextMonth" onclick="shiftDashboardMonth(1)" aria-label="Bulan berikutnya"><i class="fas fa-chevron-right"></i></button></div><button class="btn btn-primary admin-only" onclick="showPage('dataEntry')"><i class="fas fa-plus"></i> Transaksi baru</button></div></div>
+                <div class="page-heading"><div><h1 id="dashboardGreeting">Selamat datang.</h1><p>Stok saat ini dan pergerakan barang pada bulan terpilih.</p></div><div class="heading-actions"><div class="period-controls"><button onclick="shiftDashboardMonth(-1)" aria-label="Bulan sebelumnya"><i class="fas fa-chevron-left"></i></button><input type="month" id="dashboardMonth" aria-label="Periode dashboard" onchange="loadDashboard()"><button id="dashboardNextMonth" onclick="shiftDashboardMonth(1)" aria-label="Bulan berikutnya"><i class="fas fa-chevron-right"></i></button></div><button class="btn btn-primary admin-only" onclick="showPage('dataEntry')"><i class="fas fa-plus"></i> Transaksi baru</button></div></div>
+                <section id="dashboardAttention" class="attention-board" aria-label="Perlu ditindaklanjuti" hidden><h2>Perlu ditindaklanjuti</h2><p>Periksa kondisi stok dan pinjaman saat ini.</p><div class="attention-actions"><button class="attention-action" onclick="dashGoStock('habis')"><span>Stok habis</span><strong id="attentionOut">Belum dimuat</strong><small>Jenis barang · Periksa stok</small></button><button class="attention-action" data-tone="damage" onclick="dashGoStock('rusak')"><span>Barang rusak</span><strong id="attentionDamage">Belum dimuat</strong><small>Unit · Periksa barang</small></button><button class="attention-action" data-tone="age" onclick="goAgedTickets()"><span>Pinjaman 30+ hari</span><strong id="attentionLoans">Belum dimuat</strong><small>Tiket · Tinjau pinjaman</small></button></div></section>
                 <div class="metric-grid">
-                    <button class="metric metric-cyan" onclick="showPage('masterBarang')"><div class="metric-head">Total jenis barang<i class="fas fa-cubes"></i></div><div class="metric-value" id="dashTotalSku">—</div><div class="metric-foot"><span>Seluruh lokasi</span><span class="metric-link">Lihat inventaris ↗</span></div></button>
-                    <button class="metric metric-coral" onclick="dashGoStock('')"><div class="metric-head">Unit tersedia<i class="fas fa-box-open"></i></div><div class="metric-value" id="dashAvailable">—</div><div class="metric-foot"><span>Siap digunakan saat ini</span><span class="metric-link">Lihat stok ↗</span></div></button>
-                    <button class="metric" onclick="showPage('activeTicket')"><div class="metric-head">Pinjaman aktif<i class="fas fa-arrow-right-arrow-left"></i></div><div class="metric-value" id="dashBorrowed">—</div><div class="metric-foot"><span id="dashActiveCaption">Tiket belum kembali</span><span class="metric-link">↗</span></div></button>
-                    <button class="metric" onclick="dashGoTransaksi()"><div class="metric-head">Tiket periode<i class="fas fa-chart-simple"></i></div><div class="metric-value" id="dashTransactions">—</div><div class="metric-foot"><span id="dashPeriodCaption">Bulan terpilih</span><span class="metric-link">↗</span></div></button>
+                    <button class="metric metric-cyan" onclick="showPage('masterBarang')"><div class="metric-head">Total jenis barang<i class="fas fa-cubes"></i></div><div class="metric-value" id="dashTotalSku"><span class="loading-value">Belum dimuat</span></div><div class="metric-foot"><span>Seluruh lokasi</span><span class="metric-link">Lihat inventaris</span></div></button>
+                    <button class="metric metric-coral" onclick="dashGoStock('')"><div class="metric-head">Unit tersedia<i class="fas fa-box-open"></i></div><div class="metric-value" id="dashAvailable"><span class="loading-value">Belum dimuat</span></div><div class="metric-foot"><span>Siap digunakan saat ini</span><span class="metric-link">Lihat stok</span></div></button>
+                    <button class="metric" onclick="showPage('activeTicket')"><div class="metric-head">Pinjaman aktif<i class="fas fa-arrow-right-arrow-left"></i></div><div class="metric-value" id="dashBorrowed"><span class="loading-value">Belum dimuat</span></div><div class="metric-foot"><span id="dashActiveCaption">Tiket belum kembali</span><span class="metric-link">Lihat pinjaman</span></div></button>
+                    <button class="metric" onclick="dashGoTransaksi()"><div class="metric-head">Tiket periode<i class="fas fa-chart-simple"></i></div><div class="metric-value" id="dashTransactions"><span class="loading-value">Belum dimuat</span></div><div class="metric-foot"><span id="dashPeriodCaption">Bulan terpilih</span><span class="metric-link">Lihat riwayat</span></div></button>
                 </div>
                 <div id="dashboardEmptyPeriod" class="empty-period" hidden></div>
                 <div class="dashboard-analytics-grid">
-                    <section class="panel analytics-panel span-6"><div class="panel-head"><div><h2>Aktivitas inventaris</h2><p>Unit tercatat per tanggal transaksi</p></div><span class="badge badge-primary" id="dashMovementTotal">—</span></div><div class="legend analytics-legend"><span><i style="background:#17bed0"></i>Stok baru</span><span><i style="background:#ff8067"></i>Dipinjam</span><span><i style="background:#27bda0"></i>Kembali</span><span><i style="background:#ffb84a"></i>Rusak</span><span><i style="background:#96adb7"></i>Permanen</span></div><div class="analytics-chart daily-chart"><div class="chart-empty" id="chartEmpty" hidden><strong>Belum ada transaksi di periode ini.</strong><button class="btn btn-ghost btn-sm" onclick="goLatestDashboardPeriod()">Lihat bulan terakhir aktif</button></div><canvas id="chartMutasi" role="img" aria-label="Unit mutasi harian periode terpilih"></canvas></div><p class="chart-caption" id="chartPeriodNote"></p></section>
-                    <section class="panel analytics-panel span-3"><div class="panel-head"><div><h2>Komposisi mutasi</h2><p>Status pada periode terpilih</p></div><button class="btn-icon-ghost" onclick="dashGoTransaksi()" aria-label="Buka transaksi periode"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="analytics-chart mix-chart"><canvas id="chartMutationMix" role="img" aria-label="Komposisi unit menurut kode mutasi"></canvas><div class="donut-center"><strong id="dashMixTotal">—</strong><span>unit tercatat</span></div></div><div class="compact-legend" id="dashMutationLegend"></div></section>
-                    <section class="panel analytics-panel span-3"><div class="panel-head"><div><h2>Pola aktivitas</h2><p id="dashHeatmapMonth">Kalender aktivitas bulanan</p></div><i class="fas fa-calendar-days analytics-head-icon"></i></div><div class="calendar-heatmap" id="dashActivityHeatmap" role="group" aria-label="Kalender unit transaksi per tanggal"></div><div class="heatmap-key"><span>Sedikit</span><i></i><i></i><i></i><i></i><span>Banyak</span></div><p class="chart-caption">Total unit transaksi per tanggal pada bulan terpilih. Arahkan ke tanggal untuk melihat jumlahnya.</p></section>
-                    <section class="panel analytics-panel span-7"><div class="panel-head"><div><h2>Tren mutasi 12 bulan</h2><p id="dashTrendRange">Riwayat data entry</p></div><span class="badge badge-primary" id="dashTrendTotal">—</span></div><div class="legend analytics-legend"><span><i style="background:#17bed0"></i>Stok baru</span><span><i style="background:#ff8067"></i>Dipinjam</span><span><i style="background:#27bda0"></i>Kembali</span><span><i style="background:#ffb84a"></i>Rusak / permanen</span></div><div class="analytics-chart"><canvas id="chartYearlyMovement" role="img" aria-label="Tren unit mutasi selama dua belas bulan"></canvas></div><p class="chart-caption">Berdasarkan tanggal data entry dan status mutasi tersimpan.</p></section>
-                    <section class="panel analytics-panel span-5"><div class="panel-head"><div><h2>Kondisi stok per lokasi</h2><p>Snapshot inventaris saat ini</p></div><span class="badge badge-primary" id="dashLocationCount">—</span></div><div class="legend analytics-legend"><span><i style="background:#27bda0"></i>Tersedia</span><span><i style="background:#17bed0"></i>Dipinjam</span><span><i style="background:#ff8067"></i>Rusak</span></div><div class="analytics-chart"><canvas id="chartLocationStock" role="img" aria-label="Unit tersedia dipinjam dan rusak per lokasi"></canvas></div><p class="chart-caption" id="dashLocationSummary"></p></section>
-                    <section class="panel analytics-panel span-4"><div class="panel-head"><div><h2>Kesehatan stok</h2><p>Jumlah jenis barang saat ini</p></div><button class="btn-icon-ghost" onclick="dashGoStock('low')" aria-label="Periksa stok rendah"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="analytics-chart health-chart"><canvas id="chartStockHealth" role="img" aria-label="Jenis barang tersedia stok rendah dan stok habis"></canvas><div class="donut-center"><strong id="dashHealthyPercent">—</strong><span>stok aman</span></div></div><div class="compact-legend" id="dashStockHealthLegend"></div></section>
+                    <section class="panel analytics-panel span-6"><div class="panel-head"><div><h2>Aktivitas inventaris</h2><p>Unit tercatat per tanggal transaksi</p></div><span class="badge badge-primary" id="dashMovementTotal"><span class="loading-value">Belum dimuat</span></span></div><div class="legend analytics-legend"><span><i style="background:#17bed0"></i>Stok baru</span><span><i style="background:#ff8067"></i>Dipinjam</span><span><i style="background:#27bda0"></i>Kembali</span><span><i style="background:#ffb84a"></i>Rusak</span><span><i style="background:#96adb7"></i>Permanen</span></div><div class="analytics-chart daily-chart"><div class="chart-empty" id="chartEmpty" hidden><strong>Belum ada transaksi di periode ini.</strong><button class="btn btn-ghost btn-sm" onclick="goLatestDashboardPeriod()">Lihat bulan terakhir aktif</button></div><canvas id="chartMutasi" role="img" aria-label="Unit mutasi harian periode terpilih"></canvas></div><p class="chart-caption" id="chartPeriodNote"></p></section>
+                    <section class="panel analytics-panel span-3"><div class="panel-head"><div><h2>Komposisi mutasi</h2><p>Status pada periode terpilih</p></div><button class="btn-icon-ghost" onclick="dashGoTransaksi()" aria-label="Buka transaksi periode"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="analytics-chart mix-chart"><canvas id="chartMutationMix" role="img" aria-label="Komposisi unit menurut kode mutasi"></canvas><div class="donut-center"><strong id="dashMixTotal"><span class="loading-value">Belum dimuat</span></strong><span>unit tercatat</span></div></div><div class="compact-legend" id="dashMutationLegend"></div></section>
+                    <section class="panel analytics-panel span-3"><div class="panel-head"><div><h2>Pola aktivitas</h2><p id="dashHeatmapMonth">Kalender aktivitas bulanan</p></div><i class="fas fa-calendar-days analytics-head-icon"></i></div><div class="calendar-heatmap" id="dashActivityHeatmap" role="group" aria-label="Kalender unit transaksi per tanggal"></div><div class="heatmap-key"><span>Sedikit</span><i></i><i></i><i></i><i></i><span>Banyak</span></div><p class="chart-caption">Total unit transaksi per tanggal pada bulan terpilih. Pilih tanggal untuk melihat jumlah unit dan membuka riwayat.</p></section>
+                    <section class="panel analytics-panel span-7"><div class="panel-head"><div><h2>Tren mutasi 12 bulan</h2><p id="dashTrendRange">Riwayat data entry</p></div><span class="badge badge-primary" id="dashTrendTotal"><span class="loading-value">Belum dimuat</span></span></div><div class="legend analytics-legend"><span><i style="background:#17bed0"></i>Stok baru</span><span><i style="background:#ff8067"></i>Dipinjam</span><span><i style="background:#27bda0"></i>Kembali</span><span><i style="background:#ffb84a"></i>Rusak / permanen</span></div><div class="analytics-chart"><canvas id="chartYearlyMovement" role="img" aria-label="Tren unit mutasi selama dua belas bulan"></canvas></div><p class="chart-caption">Berdasarkan tanggal data entry dan status mutasi tersimpan.</p></section>
+                    <section class="panel analytics-panel span-5"><div class="panel-head"><div><h2>Kondisi stok per lokasi</h2><p>Inventaris saat ini</p></div><span class="badge badge-primary" id="dashLocationCount"><span class="loading-value">Belum dimuat</span></span></div><div class="legend analytics-legend"><span><i style="background:#27bda0"></i>Tersedia</span><span><i style="background:#17bed0"></i>Dipinjam</span><span><i style="background:#ff8067"></i>Rusak</span></div><div class="analytics-chart"><canvas id="chartLocationStock" role="img" aria-label="Unit tersedia dipinjam dan rusak per lokasi"></canvas></div><p class="chart-caption" id="dashLocationSummary"></p></section>
+                    <section class="panel analytics-panel span-4"><div class="panel-head"><div><h2>Kesehatan stok</h2><p>Jumlah jenis barang saat ini</p></div><button class="btn-icon-ghost" onclick="dashGoStock('low')" aria-label="Periksa stok rendah"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="analytics-chart health-chart"><canvas id="chartStockHealth" role="img" aria-label="Jenis barang tersedia stok rendah dan stok habis"></canvas><div class="donut-center"><strong id="dashHealthyPercent"><span class="loading-value">Belum dimuat</span></strong><span>stok aman</span></div></div><div class="compact-legend" id="dashStockHealthLegend"></div></section>
                     <section class="panel analytics-panel span-4"><div class="panel-head"><div><h2>Usia pinjaman aktif</h2><p>Jumlah tiket menurut lama pinjaman</p></div><button class="btn-icon-ghost" onclick="showPage('activeTicket')" aria-label="Tinjau pinjaman aktif"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="analytics-chart"><canvas id="chartLoanAges" role="img" aria-label="Distribusi usia tiket aktif"></canvas></div><p class="chart-caption" id="dashLoanAgeSummary"></p></section>
-                    <section class="panel analytics-panel span-4 gauge-panel"><div class="panel-head"><div><h2>Progress opname</h2><p>Pemeriksaan seluruh inventaris</p></div><button class="btn-icon-ghost" onclick="showPage('stockOpname')" aria-label="Buka stock opname"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="gauge-container"><canvas id="chartOpname" role="img" aria-label="Persentase barang yang sudah diperiksa"></canvas><div class="gauge-label"><strong id="dashOpnamePercent">—</strong><span>Sudah diperiksa</span></div></div><div class="gauge-footer"><div><span>Sudah opname</span><strong id="dashOpnameDone">—</strong></div><div><span>Belum opname</span><strong id="dashOpnameRemaining">—</strong></div></div></section>
-                    <section class="panel analytics-panel span-4"><div class="panel-head"><div><h2>Komposisi inventaris</h2><p>Unit tersedia per kategori visual</p></div><button class="btn-icon-ghost" onclick="showPage('stockGudang')" aria-label="Buka inventaris"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="analytics-chart category-chart"><canvas id="chartKategori" role="img" aria-label="Komposisi unit tersedia per kategori"></canvas><div class="donut-center"><strong id="dashCategoryTotal">—</strong><span>unit tersedia</span></div></div><div class="compact-legend" id="dashCategoryLegend"></div></section>
+                    <section class="panel analytics-panel span-4 gauge-panel"><div class="panel-head"><div><h2>Progres opname</h2><p>Pemeriksaan seluruh inventaris</p></div><button class="btn-icon-ghost" onclick="showPage('stockOpname')" aria-label="Buka stock opname"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="gauge-container"><canvas id="chartOpname" role="img" aria-label="Persentase barang yang sudah diperiksa"></canvas><div class="gauge-label"><strong id="dashOpnamePercent"><span class="loading-value">Belum dimuat</span></strong><span>Sudah diperiksa</span></div></div><div class="gauge-footer"><div><span>Sudah opname</span><strong id="dashOpnameDone"><span class="loading-value">Belum dimuat</span></strong></div><div><span>Belum opname</span><strong id="dashOpnameRemaining"><span class="loading-value">Belum dimuat</span></strong></div></div></section>
+                    <section class="panel analytics-panel span-4"><div class="panel-head"><div><h2>Komposisi inventaris</h2><p>Unit tersedia per kategori visual</p></div><button class="btn-icon-ghost" onclick="showPage('stockGudang')" aria-label="Buka inventaris"><i class="fas fa-arrow-up-right-from-square"></i></button></div><div class="analytics-chart category-chart"><canvas id="chartKategori" role="img" aria-label="Komposisi unit tersedia per kategori"></canvas><div class="donut-center"><strong id="dashCategoryTotal"><span class="loading-value">Belum dimuat</span></strong><span>unit tersedia</span></div></div><div class="compact-legend" id="dashCategoryLegend"></div></section>
                     <section class="panel analytics-panel span-4"><div class="panel-head"><div><h2>Opname per lokasi</h2><p>Jenis barang diperiksa / belum</p></div><i class="fas fa-location-dot analytics-head-icon"></i></div><div class="analytics-chart"><canvas id="chartLocationOpname" role="img" aria-label="Jumlah jenis barang sudah dan belum opname per lokasi"></canvas></div><div class="location-shortcuts" id="dashLocationShortcuts"></div></section>
                     <section class="panel analytics-panel span-4"><div class="panel-head"><div><h2>Top aset bergerak</h2><p id="dashPopularCaption">Unit tercatat pada periode terpilih</p></div><span class="badge badge-primary">Top 5</span></div><div class="asset-ranking" id="dashPopular"></div></section>
                     <section class="panel analytics-transactions span-12"><div class="panel-head"><div><h2>Data entry terbaru</h2><p>Transaksi dari seluruh riwayat tersimpan</p></div><button class="btn btn-ghost btn-sm" onclick="showPage('transaksi')">Semua transaksi <i class="fas fa-arrow-right"></i></button></div><div class="table-container"><table><thead><tr><th>Barang</th><th>Tiket</th><th>Tanggal</th><th>Mutasi</th><th>Qty</th><th>Peminjam / PIC</th></tr></thead><tbody id="dashLatestEntries"></tbody></table></div></section>
@@ -381,7 +379,7 @@
 
             <!-- DATA ENTRY PAGE -->
             <div class="page" id="page-dataEntry">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Transaksi baru</h1><p>Catat pergerakan barang dengan detail yang lengkap.</p></div></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Transaksi baru</h1><p>Catat pergerakan barang dengan detail yang lengkap.</p></div></div>
                 <div class="glass-card-elevated animate-in">
                     <div class="card-header-flex">
                         <h2 class="card-title"><i class="fas fa-edit"></i> Input Transaksi Baru</h2>
@@ -395,7 +393,7 @@
                                 <input type="text" id="searchTicketInput" placeholder="Masukkan nomor tiket..." onkeydown="if(event.key === 'Enter') searchTicket()">
                                 <button class="ticket-search-btn" onclick="searchTicket()" title="Cari transaksi"><i class="fas fa-magnifying-glass"></i><span>Cari</span></button>
                             </div>
-                            <button class="btn btn-warning" onclick="resetToNewEntry()" style="display:none;" id="btnResetSearch"><i class="fas fa-times"></i> Batal</button>
+                            <button class="btn btn-warning" onclick="requestNewEntry()" style="display:none;" id="btnResetSearch"><i class="fas fa-times"></i> Transaksi baru</button>
                         </div>
                     </div>
                     
@@ -438,15 +436,15 @@
                         
                         <div style="margin-top: var(--space-8); display: flex; gap: var(--space-3); flex-wrap: wrap;">
                             <button type="submit" class="btn btn-primary btn-lg" id="btnSubmit" disabled><i class="fas fa-check-circle"></i> <span id="btnSubmitText">Simpan Transaksi</span></button>
-                            <button type="button" class="btn btn-ghost btn-lg" onclick="resetForm()"><i class="fas fa-redo"></i> Reset Form</button>
+                            <button type="button" class="btn btn-ghost btn-lg" onclick="requestEntryReset()"><i class="fas fa-redo"></i> Kosongkan form</button>
                         </div>
-                    </form><aside class="entry-aside panel"><span class="eyebrow">READY TO RECORD</span><h3>Ringkasan transaksi</h3><p>Periksa pilihan barang dan jumlah sebelum menyimpan.</p><div class="summary-stat"><span>Jenis transaksi</span><strong id="entrySummaryType">Belum dipilih</strong></div><div class="summary-stat"><span>Jenis barang</span><strong id="entrySummaryItems">0</strong></div><div class="summary-stat"><span>Total unit</span><strong id="entrySummaryQty">0</strong></div><p>Stok dihitung ulang dari server saat transaksi disimpan.</p></aside></div>
+                    </form><aside class="entry-aside panel"><h3>Ringkasan transaksi</h3><p>Periksa pilihan barang dan jumlah sebelum menyimpan.</p><div class="summary-stat"><span>Jenis transaksi</span><strong id="entrySummaryType">Belum dipilih</strong></div><div class="summary-stat"><span>Jenis barang</span><strong id="entrySummaryItems">0</strong></div><div class="summary-stat"><span>Total unit</span><strong id="entrySummaryQty">0</strong></div><p>Status penyimpanan muncul setelah server merespons. Periksa riwayat dan stok setelah transaksi tersimpan.</p></aside></div>
                 </div>
             </div>
 
             <!-- MASTER BARANG PAGE -->
             <div class="page" id="page-masterBarang">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Inventaris</h1><p>Setiap aset, lokasi, dan detailnya dalam satu ruang.</p></div><button class="btn btn-primary admin-only" id="btnToggleAddMaster" onclick="toggleAddMasterForm()"><i class="fas fa-plus"></i> Tambah atau edit barang</button></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Inventaris</h1><p>Setiap aset, lokasi, dan detailnya dalam satu ruang.</p></div><button class="btn btn-primary admin-only" id="btnToggleAddMaster" onclick="toggleAddMasterForm()"><i class="fas fa-plus"></i> Tambah atau edit barang</button></div>
                 <div class="glass-card animate-in" id="addMasterCard" style="display:none;margin-bottom:24px;">
                     <div class="card-header-flex">
                         <h2 class="card-title"><i class="fas fa-plus-circle" style="color:var(--success);"></i> Tambah Master Barang</h2>
@@ -466,7 +464,7 @@
                         </div>
                         <div class="form-grid" style="margin-bottom:16px;">
                             <div class="form-group" style="margin-bottom:0;">
-                                <label>Nama Barang</label>
+                                <label for="inputMasterNama">Nama Barang</label>
                                 <div style="position:relative;">
                                     <input type="text" id="inputMasterNama" placeholder="Contoh: Kabel HDMI 10M" oninput="previewMasterKode(); onMasterNamaSearch();" autocomplete="off">
                                     <div class="sd-dropdown-list" id="masterNamaDropdown" style="max-height:200px;"></div>
@@ -477,7 +475,7 @@
                                 <div id="kodeWarning" style="display:none; font-size:12px; color:var(--danger); margin-top:6px; font-weight:600;"><i class="fas fa-exclamation-triangle"></i> Kode sudah digunakan!</div>
                             </div>
                             <div class="form-group" style="margin-bottom:0;">
-                                <label>Lokasi</label>
+                                <label for="inputMasterLokasi">Lokasi</label>
                                 <select id="inputMasterLokasi">
                                     <option value="">-- Pilih Lokasi --</option>
                                     <option value="Gudang Lantai 10">Gudang Lantai 10</option>
@@ -500,7 +498,7 @@
                             </div>
                         </div>
                         <div style="display:flex; gap:12px;">
-                            <button class="btn btn-success btn-sm" onclick="submitAddMaster()"><i class="fas fa-plus"></i> Tambah Barang</button>
+                            <button class="btn btn-primary btn-sm" id="btnSaveMaster" onclick="submitAddMaster()">Tambah barang</button>
                             <button class="btn btn-ghost btn-sm" onclick="resetAddMasterForm()"><i class="fas fa-redo"></i> Reset</button>
                         </div>
                     </div>
@@ -513,7 +511,7 @@
                     </div>
 
                     <div class="inventory-summary" id="masterSummary"></div>
-                    <div class="table-toolbar"><div class="search-field"><i class="fas fa-search"></i><input id="searchMaster" type="search" placeholder="Cari nama, kode, SN, atau lokasi..." aria-label="Cari masterBarang" oninput="inventoryFilterChanged('master')"></div>
+                    <div class="table-toolbar"><div class="search-field"><i class="fas fa-search"></i><input id="searchMaster" type="search" placeholder="Cari nama, kode, SN, atau lokasi..." aria-label="Cari inventaris" oninput="inventoryFilterChanged('master')"></div>
                     <select id="masterLocation" aria-label="Filter lokasi" onchange="inventoryFilterChanged('master')"><option value="">Semua lokasi</option></select><select id="masterCategory" aria-label="Filter kategori" onchange="inventoryFilterChanged('master')"><option value="">Semua kategori</option></select><select id="masterStatus" aria-label="Filter kondisi" onchange="inventoryFilterChanged('master')"><option value="">Semua kondisi</option><option value="ready">Tersedia</option><option value="low">Stok rendah</option><option value="habis">Stok habis</option><option value="rusak">Ada kerusakan</option></select>
                     <div class="view-switch"><button id="masterListButton" class="selected" aria-label="Tampilan daftar" onclick="setInventoryView('master','list')"><i class="fas fa-list"></i></button><button id="masterGridButton" aria-label="Tampilan grid" onclick="setInventoryView('master','grid')"><i class="fas fa-border-all"></i></button></div></div>
                     <div class="table-container" id="masterList"><table><thead><tr><th><button class="table-sort" onclick="inventorySort('master','nama_barang')">Barang <i class="fas fa-sort"></i></button></th><th>Lokasi</th><th><button class="table-sort" onclick="inventorySort('master','tersedia')">Tersedia <i class="fas fa-sort"></i></button></th><th>Minimum</th><th>Rusak</th><th>Kondisi</th><th></th></tr></thead><tbody id="masterBarangTable"></tbody><tfoot id="masterBarangFoot"></tfoot></table></div>
@@ -524,7 +522,7 @@
 
             <!-- STOCK GUDANG PAGE -->
             <div class="page" id="page-stockGudang">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Stock overview</h1><p>Temukan barang yang siap digunakan dan kondisi stoknya.</p></div></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Kondisi stok</h1><p>Temukan barang yang siap digunakan dan kondisi stoknya.</p></div></div>
                 <div class="glass-card animate-in">
                     <div class="card-header-flex">
                         <h2 class="card-title"><i class="fas fa-warehouse"></i> Stock Gudang</h2>
@@ -532,7 +530,7 @@
                     </div>
 
                     <div class="inventory-summary" id="stockSummary"></div>
-                    <div class="table-toolbar"><div class="search-field"><i class="fas fa-search"></i><input id="searchStock" type="search" placeholder="Cari nama, kode, SN, atau lokasi..." aria-label="Cari stockGudang" oninput="inventoryFilterChanged('stock')"></div>
+                    <div class="table-toolbar"><div class="search-field"><i class="fas fa-search"></i><input id="searchStock" type="search" placeholder="Cari nama, kode, SN, atau lokasi..." aria-label="Cari stok gudang" oninput="inventoryFilterChanged('stock')"></div>
                     <select id="stockLocation" aria-label="Filter lokasi" onchange="inventoryFilterChanged('stock')"><option value="">Semua lokasi</option></select><select id="stockCategory" aria-label="Filter kategori" onchange="inventoryFilterChanged('stock')"><option value="">Semua kategori</option></select><select id="stockStatus" aria-label="Filter kondisi" onchange="inventoryFilterChanged('stock')"><option value="">Semua kondisi</option><option value="ready">Tersedia</option><option value="low">Stok rendah</option><option value="habis">Stok habis</option><option value="rusak">Ada kerusakan</option></select>
                     <div class="view-switch"><button id="stockListButton" class="selected" aria-label="Tampilan daftar" onclick="setInventoryView('stock','list')"><i class="fas fa-list"></i></button><button id="stockGridButton" aria-label="Tampilan grid" onclick="setInventoryView('stock','grid')"><i class="fas fa-border-all"></i></button></div></div>
                     <div class="table-container" id="stockList"><table><thead><tr><th><button class="table-sort" onclick="inventorySort('stock','nama_barang')">Barang <i class="fas fa-sort"></i></button></th><th>Lokasi</th><th><button class="table-sort" onclick="inventorySort('stock','tersedia')">Tersedia <i class="fas fa-sort"></i></button></th><th>Minimum</th><th>Rusak</th><th>Kondisi</th><th></th></tr></thead><tbody id="stockGudangTable"></tbody><tfoot id="stockGudangFoot"></tfoot></table></div>
@@ -543,7 +541,7 @@
 
             <!-- STOCK OPNAME PAGE -->
             <div class="page" id="page-stockOpname">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Stock opname</h1><p>Pilih lokasi, periksa barang, dan simpan hasil pemeriksaan.</p></div></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Stock opname</h1><p>Pilih lokasi, periksa barang, dan simpan hasil pemeriksaan.</p></div></div>
                 <div id="opnameLocations" class="location-selector"></div><div class="glass-card animate-in">
                     <div class="card-header-flex">
                         <h2 class="card-title"><i class="fas fa-clipboard-check"></i> Stock Opname</h2>
@@ -604,7 +602,7 @@
 
             <!-- TRANSAKSI PAGE -->
             <div class="page" id="page-transaksi">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Riwayat transaksi</h1><p>Telusuri pergerakan barang, tiket, dan penanggung jawab.</p></div></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Riwayat transaksi</h1><p>Telusuri pergerakan barang, tiket, dan penanggung jawab.</p></div></div>
                 <div class="glass-card animate-in">
                     <div class="card-header-flex">
                         <h2 class="card-title"><i class="fas fa-history"></i> Riwayat Transaksi</h2>
@@ -627,7 +625,7 @@
             
             <!-- ACTIVE TICKET PAGE -->
             <div class="page" id="page-activeTicket">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Peminjaman</h1><p>Pantau tiket aktif dan proses pengembalian barang.</p></div></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Peminjaman</h1><p>Pantau tiket aktif dan proses pengembalian barang.</p></div></div>
                 <div class="ticket-layout">
 
                 <!-- CARD 1: ACTIVE TICKETS (BELUM KEMBALI) -->
@@ -686,7 +684,7 @@
 
             <!-- TIME MANAGEMENT PAGE -->
             <div class="page" id="page-timeManagement">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Aktivitas tim</h1><p>Ringkasan sesi dan estimasi durasi aktif pengguna.</p></div></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Aktivitas tim</h1><p>Ringkasan sesi dan estimasi durasi aktif pengguna.</p></div></div>
                     <div class="team-overview-grid">
                         <div class="glass-card animate-in">
                             <div class="card-header-flex">
@@ -728,21 +726,21 @@
                         <div class="card-header-flex">
                             <span class="text-label">Grafik Aktivitas 7 Hari Terakhir</span>
                         </div>
-                        <div style="height:280px; position:relative;"><canvas id="chartTimeWeekly"></canvas></div>
+                        <div style="height:280px; position:relative;"><canvas id="chartTimeWeekly" role="img" aria-label="Jam aktif tim tujuh hari terakhir"></canvas></div>
                     </div>
 
                     <div class="glass-card animate-in delay-3" style="margin-bottom:24px;">
                         <div class="card-header-flex">
                             <span class="text-label">Grafik Aktivitas 30 Hari Terakhir</span>
                         </div>
-                        <div style="height:280px; position:relative;"><canvas id="chartTimeMonthly"></canvas></div>
+                        <div style="height:280px; position:relative;"><canvas id="chartTimeMonthly" role="img" aria-label="Jam aktif tim tiga puluh hari terakhir"></canvas></div>
                     </div>
 
                     <div class="glass-card animate-in delay-4">
                         <div class="card-header-flex">
                             <h2 class="card-title"><i class="fas fa-users" style="color:var(--success);"></i> Detail Per User</h2>
                             <div style="display:flex; gap:8px;">
-                                <select id="tmFilterPeriod" onchange="loadTimeManagement()" style="padding:6px 12px; border-radius:var(--radius-full); background:var(--surface-2); border:1px solid var(--border-default); color:var(--text-primary); font-size:12px; outline:none;">
+                                <select id="tmFilterPeriod" aria-label="Periode aktivitas tim" onchange="loadTimeManagement()" style="padding:6px 12px; border-radius:var(--radius-full); background:var(--surface-2); border:1px solid var(--border-default); color:var(--text-primary); font-size:12px; outline:none;">
                                     <option value="today">Hari Ini</option>
                                     <option value="week">Minggu Ini</option>
                                     <option value="month">Bulan Ini</option>
@@ -761,7 +759,7 @@
 
             <!-- ACCOUNT SETTINGS PAGE -->
             <div class="page" id="page-accountSettings">
-<div class="page-heading"><div><span class="eyebrow">GUDANG CSM / WORKSPACE</span><h1>Kelola akses</h1><p>Atur peran dan akses anggota workspace.</p></div></div>
+<div class="page-heading"><div><span class="eyebrow">GUDANG CSM</span><h1>Kelola akses</h1><p>Atur peran dan akses anggota tim.</p></div></div>
                 <div class="glass-card animate-in">
                     <div class="card-header-flex">
                         <h2 class="card-title"><i class="fas fa-users-gear" style="color:var(--secondary);"></i> Account Settings</h2>
@@ -790,9 +788,7 @@
         </div>
     </div>
     <script>
-        // ============================================
         // SOUND EFFECTS
-        // ============================================
         function playSound(type) {
             try {
                 const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -824,9 +820,7 @@
             } catch (e) {}
         }
 
-        // ============================================
         // UTILS
-        // ============================================
         function normalizeName(name) {
             return name ? name.trim().toLowerCase().replace(/\b\w/g, c => c.toUpperCase()) : 'Unknown';
         }
@@ -877,9 +871,7 @@
         }
 
 
-        // ============================================
         // UI THEME & LAYOUT LOGIC
-        // ============================================
         /*
             Sidebar states:
             - rail (default): icon-only; expanded only with the pin button
@@ -907,7 +899,7 @@
             overlay.style.display = isOpen ? 'block' : 'none';
         }
 
-        function showCustomConfirm(title, message) {
+        function showCustomConfirm(title, message, actionLabel) {
             // Replacing a confirmation cancels its previous caller rather than orphaning it.
             const overlay = document.getElementById('customConfirm');
             overlay._confirmResolve?.(false);
@@ -921,6 +913,8 @@
                 document.getElementById('customConfirmCancel').focus();
 
                 const btnOk = document.getElementById('customConfirmOk');
+                const actionLabels = {'Logout':'Keluar','Edit Master Barang':'Simpan perubahan','Tambah Barang':'Tambah barang','Simpan Status Opname':'Simpan opname','Undo Pengembalian':'Batalkan pengembalian','Kembalikan Tiket':'Kembalikan barang','Reset Password':'Buat password sementara','Simpan Role':'Simpan role','Password sementara':'Selesai'};
+                btnOk.textContent = actionLabel || actionLabels[title] || 'Simpan perubahan';
                 const btnCancel = document.getElementById('customConfirmCancel');
 
                 const cleanup = () => {
@@ -962,9 +956,7 @@
             document.getElementById('currentDateDisplay').textContent = today.toLocaleDateString('en-US', dateOpts);
         });
 
-        // ============================================
         // SECURITY: HTML SANITIZER (Anti-XSS)
-        // ============================================
         function esc(str) {
             if (str === null || str === undefined) return '';
             return String(str)
@@ -976,9 +968,7 @@
                 .replace(/\//g, '&#x2F;');
         }
 
-        // ============================================
         // SUPABASE CONFIG (Edge Functions)
-        // ============================================
         const SB_URL = 'https://sufiawwyymeoiqjtjbzd.supabase.co';
         const EDGE_URL = SB_URL + '/functions/v1';
         let sessionToken = null;
@@ -1004,6 +994,8 @@
         }
 
         async function sbGet(table, params = '') {
+            const readTicket = window.csmReadState?.begin(table, params);
+            try {
             const parsedParams = parseParamString(params);
             const res = await edgeFetch(EDGE_URL + '/api-proxy', {
                 method: 'POST',
@@ -1012,7 +1004,10 @@
             });
             if (!res.ok) throw new Error('API error: ' + res.status);
             const rows=await res.json();
+            if (!Array.isArray(rows)) throw new Error('Respons data tidak valid.');
+            window.csmReadState?.settle(readTicket, true);
             return table==='master_barang'&&parsedParams.select!=='kode_barang'&&typeof activeMasterRows==='function'?activeMasterRows(rows):rows;
+            } catch (error) { window.csmReadState?.settle(readTicket, false); throw error; }
         }
         async function sbInsert(table, rows) {
             const res = await edgeFetch(EDGE_URL + '/api-proxy', {
@@ -1054,9 +1049,7 @@
             return result;
         }
 
-        // ============================================
         // APP STATE & GLOBALS
-        // ============================================
         let appState = {
             masterBarang: [], dataEntry: [], stockGudang: [], namaBarangList: [],
             itemCounter: 0, itemData: {}, isEditMode: false, editingRowIds: [], opnameData: [], activeTicketData: [],
@@ -1065,26 +1058,8 @@
             sortMaster: { col: '', asc: true }, sortStock: { col: '', asc: true }
         };
         
-        /* ==================================================================
-           CACHE QUERY (percepat perpindahan menu)
-           ------------------------------------------------------------------
-           Kunci cache = tabel + params, BUKAN nama tabel saja. Satu tabel bisa
-           diambil dengan kolom/filter berbeda (mis. master_barang diambil lengkap
-           oleh Master Barang, tetapi hanya 2 kolom oleh kamus transaksi), jadi
-           menyatukan keduanya akan menghasilkan data yang salah.
-
-           PENTING — yang di-cache HANYA query daftar/menu lewat sbGetSWR().
-           Query di alur tulis (baca stok sebelum update, cari tiket untuk diedit,
-           alur pengembalian) tetap memakai sbGet() tanpa cache supaya perhitungan
-           stok selalu memakai data terbaru.
-
-           POLA: stale-while-revalidate.
-           Data cache ditampilkan SEGERA (menu terasa instan), lalu server ditanya
-           ulang di latar belakang. Bila hasilnya berbeda, cache diperbarui dan
-           tampilan dirender ulang. Dengan begitu data tidak pernah basi lebih dari
-           satu jeda jaringan — penting karena aplikasi dipakai banyak orang
-           sekaligus dan perubahan pengguna lain tidak memicu invalidasi lokal.
-           ================================================================== */
+        /* Query daftar di-cache per session, tabel dan params; alur tulis membaca langsung.
+           Revalidasi gagal mempertahankan snapshot dengan pemberitahuan di menu. */
         const CACHE_TTL = 300000;          // 5 menit: buang cache yang tidak terpakai
         const REVALIDATE_MIN_INTERVAL = 8000; // jangan tanya server lebih sering dari ini
         const queryCache = new Map();      // key -> { data, ts, lastRevalidate }
@@ -1133,8 +1108,9 @@
                     hit.lastRevalidate = Date.now();
                     sbGet(table, params).then(fresh => {
                         const rows = Array.isArray(fresh) ? fresh : [];
-                        if (!sameRows(rows, cached)) {
-                            storeCache(table, params, rows);
+                        const changed = !sameRows(rows, cached);
+                        storeCache(table, params, rows);
+                        if (changed) {
                             if (typeof onRefresh === 'function') onRefresh();
                         }
                     }).catch(err => console.warn('Revalidasi latar gagal:', err));
@@ -1186,9 +1162,7 @@
         }
         window.dashCharts = {}; 
 
-        // ============================================
         // LOG WRITER
-        // ============================================
         async function writeLog(halaman, aksi, kodeBarang, qty, kodeMutasi, detail, keterangan) {
             try {
                 const now = new Date();
@@ -1198,9 +1172,7 @@
             } catch (e) { console.error(e); }
         }
 
-        // ============================================
         // AUTH
-        // ============================================
 
 
 
@@ -1386,10 +1358,14 @@
             window.csmPeriodMotion?.cancel();
             stopLoginIdle(); stopActivityTracking(); clearSessionToken();
             appState.currentUser = null;
+            window.csmReadState?.clear();
             queryCache.clear();transaksiKamus=null;
+            stockFilter='';transaksiDateFilter=null;
             accountUsers=[];accountRoleChanges={};
+            returnedTicketData=[];returnedTicketPage=1;resetAddMasterForm();
             ['masterBarang','dataEntry','stockGudang','namaBarangList','opnameData','activeTicketData'].forEach(key=>appState[key]=[]);
-            workspace.master=[];workspace.dashboardFingerprint='';
+            workspace.master=[];workspace.entries=[];workspace.logs=[];workspace.dashboardFingerprint='';workspace.renderedPeriod='';workspace.dashboardInitialized=false;workspace.dashboardRequest++;workspace.ticketAgeFilter=0;
+            Object.values(workspace.localPhotos).forEach(url=>URL.revokeObjectURL(url));workspace.localPhotos={};
             const accountTable=document.getElementById('accountTableBody');if(accountTable)accountTable.replaceChildren();
             closeSidebar();
             closeWorkspaceOverlay({immediate:true});
@@ -1431,6 +1407,7 @@
                 window.scrollTo({top:0,behavior:'instant'});
             };
             if (window.csmMotion) csmMotion.switchSurface(commit, document.getElementById('appContainer')); else commit();
+            if (appState.currentUser !== u) return;
             document.getElementById('sidebarUserName').textContent = u.nama_lengkap || u.username;
             document.getElementById('sidebarUserRole').textContent = u.role || 'User';
             document.getElementById('sidebarAvatar').textContent = (u.nama_lengkap || u.username).substring(0, 2).toUpperCase();
@@ -1499,6 +1476,7 @@
         }
 
         async function handleLogout() {
+            if (!await confirmEntryDiscard('keluar dari akun')) return;
             if (await showCustomConfirm('Logout', 'Yakin ingin keluar?')) endCurrentSession();
         }
 
@@ -1516,7 +1494,6 @@
             document.getElementById(`page-${page}`).classList.add('active');
             window.csmMotion?.page(document.getElementById(`page-${page}`));
             
-            // Breadcrumb with fade
             const breadcrumbCurrent = document.querySelector('#pageTitle .current');
             const labelEl = resolvedItem && resolvedItem.querySelector('.menu-label-text');
             breadcrumbCurrent.textContent = labelEl ? labelEl.textContent : page;
@@ -1525,7 +1502,7 @@
             closeSidebar();
 
             // Reset dashboard filters when navigating via sidebar (not via dashboard card click)
-            if (el) { stockFilter = ''; transaksiDateFilter = null; }
+            if (el) { stockFilter = ''; transaksiDateFilter = null; workspace.ticketAgeFilter=0; }
             
             const end = window.csmMotion?.begin(document.getElementById(`page-${page}`)) || (()=>{});
             let loaded;
@@ -1559,9 +1536,6 @@
         function showLoading() { if(window.csmMotion)csmMotion.loading(true);else document.getElementById('loading').classList.add('active'); }
         function hideLoading() { if(window.csmMotion)csmMotion.loading(false);else document.getElementById('loading').classList.remove('active'); }
 
-        // ====================================================================
-        // DASHBOARD LOGIC (NEW BENTO REDESIGN)
-        // ====================================================================
         function getDashboardPeriod() {
             const picker = document.getElementById('dashboardMonth');
             const now = new Date();
@@ -1625,15 +1599,16 @@
 
         async function loadDataEntry() {
             const q = 'select=kode_barang,nama_barang,lokasi_barang,tersedia,stok_paten,rusak,permanen&order=nama_barang.asc';
+            window.csmReadState?.watch('entry', 'master_barang', q, loadDataEntry);
+            if (appState.entryDraftOwner !== appState.currentUser) {
+                resetToNewEntry(); appState.entryDraftOwner = appState.currentUser;
+            }
             if (!getCached('master_barang', q)) showLoading();
             try {
-                // onRefresh TIDAK memanggil loadDataEntry() lagi: fungsi itu menjalankan
-                // resetToNewEntry(), yang akan menghapus isian form saat user sedang
-                // memasukkan data. Di sini hanya daftar barang yang disegarkan.
+                // Revalidasi hanya memperbarui daftar barang, tanpa menyentuh draft.
                 const list = await sbGetSWR('master_barang', q, () => refreshNamaBarangList());
                 hideLoading();
                 applyNamaBarangList(list);
-                resetToNewEntry();
             } catch (error) { hideLoading(); showToast('Gagal memuat data barang', 'error'); }
         }
 
@@ -1658,6 +1633,7 @@
         async function searchTicket() {
             const ticket = document.getElementById('searchTicketInput').value.trim();
             if (!ticket) { showToast('Masukkan nomor tiket!', 'warning'); return; }
+            if (!await confirmEntryDiscard('buka tiket lain')) return;
             showLoading();
             try {
                 const results = await sbGet('data_entry', `select=*,id&nomor_tiket=eq.${encodeURIComponent(ticket)}&order=id.asc`); hideLoading();
@@ -1690,6 +1666,7 @@
             updateItemCount();
             toggleFormInputs(false);
             window.csmMotion?.reveal(document.getElementById('editModeControl'),{distance:6,duration:300});
+            captureEntryBaseline();
         }
 
         function formatDateForInput(dateStr) {
@@ -1881,6 +1858,7 @@
             document.getElementById('itemsContainer').innerHTML = '';
             if (!appState.isEditMode) { toggleFormInputs(true); document.getElementById('btnSubmitText').textContent = 'Simpan Transaksi'; } else { toggleFormInputs(false); }
             addItemRow();
+            captureEntryBaseline();
         }
 
         function legacyAddItemRow() {
@@ -1894,7 +1872,7 @@
             row.innerHTML = `
                 <div class="item-row-header">
                     <div style="display:flex; align-items:center; gap:10px;"><div class="item-number">${itemNumber}</div><strong>Barang #${itemNumber}</strong></div>
-                    <button type="button" class="btn-remove-item" onclick="removeItemRow('${itemId}')"><i class="fas fa-times"></i></button>
+                    <button type="button" class="btn-remove-item" aria-label="Hapus baris barang" onclick="removeItemRow('${itemId}')"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="item-row-grid">
                     <div class="form-group" style="margin-bottom:0; position:relative;">
@@ -1997,11 +1975,10 @@
 
         document.addEventListener('click', function(e) { document.querySelectorAll('.sd-dropdown-list').forEach(dd => { const parentRow = dd.closest('.item-row'); if (parentRow && !parentRow.contains(e.target)) dd.classList.remove('show'); }); });
 
-        // ============================================
         // MASTER BARANG
-        // ============================================
         async function loadMasterBarang() {
             const q = 'select=*&order=kode_barang.asc';
+            window.csmReadState?.watch('master', 'master_barang', q, loadMasterBarang);
             // Lewati overlay bila data masih ada di cache agar menu terasa instan.
             if (!getCached('master_barang', q)) showLoading();
             try {
@@ -2014,9 +1991,7 @@
         }
 
 
-        // ============================================
         // ADD MASTER BARANG
-        // ============================================
         function toggleAddMasterForm() {
             const form = document.getElementById('addMasterForm');
             const card = document.getElementById('addMasterCard');
@@ -2033,6 +2008,7 @@
 
         function resetAddMasterForm() {
             masterEditMode = null;
+            document.getElementById('btnSaveMaster').textContent = 'Tambah barang';
             const kodeEl = document.getElementById('inputMasterKode'); if (kodeEl) kodeEl.disabled = false;
             document.getElementById('btnCancelMasterEdit').style.display = 'none';
             const b=document.getElementById('masterEditBadge'); if(b){window.csmMotion?.cancel(b);b.style.display='none'; b.innerHTML='';}
@@ -2076,9 +2052,7 @@
             else modal.style.display = 'none';
         }
 
-        // ============================================
         // CHANGE PASSWORD
-        // ============================================
         function showChangePassword() {
             const modal = document.getElementById('changePasswordModal');
             modal.style.display = 'flex';
@@ -2168,6 +2142,8 @@
                     const div = document.createElement('div');
                     div.className = 'dropdown-item';
                     div.style.cursor = 'pointer';
+                    div.setAttribute('role','button'); div.tabIndex=0;
+                    div.onkeydown=event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();div.click();}};
                     // Highlight matching text
                     const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
                     const escapedNama = esc(nama);
@@ -2210,9 +2186,7 @@
             }
         });
 
-        // ============================================
         // EDIT MASTER BARANG (mode edit di form tambah)
-        // ============================================
         let masterEditMode = null;
 
         function onEditMasterSearch() {
@@ -2229,6 +2203,8 @@
             if (hits.length === 0) { dd.innerHTML = '<div class="dropdown-item" style="color:var(--text-muted);cursor:default;">Tidak ditemukan</div>'; dd.classList.add('show'); return; }
             hits.forEach(i => {
                 const div = document.createElement('div'); div.className = 'dropdown-item'; div.style.cursor = 'pointer';
+                div.setAttribute('role','button'); div.tabIndex = 0;
+                div.onkeydown = event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); div.click(); } };
                 div.innerHTML = '<strong style="color:var(--primary);font-family:var(--font-mono);">' + esc(i.kode_barang) + '</strong> ' + esc(i.nama_barang) + ' <span style="color:var(--text-muted);font-size:11px;float:right;">paten: ' + (parseInt(i.stok_paten) || 0) + ' | tersedia: ' + (parseInt(i.tersedia) || 0) + '</span>';
                 div.onclick = () => loadMasterIntoForm(i);
                 dd.appendChild(div);
@@ -2238,6 +2214,7 @@
 
         function loadMasterIntoForm(row) {
             masterEditMode = row;
+            document.getElementById('btnSaveMaster').textContent = 'Simpan perubahan';
             document.getElementById('inputMasterNama').value = row.nama_barang || '';
             const kodeEl = document.getElementById('inputMasterKode');
             kodeEl.value = row.kode_barang || ''; kodeEl.disabled = true;
@@ -2252,7 +2229,7 @@
             document.getElementById('btnCancelMasterEdit').style.display = 'inline-flex';
             const badge = document.getElementById('masterEditBadge');
             badge.style.display = 'block';
-            badge.innerHTML = '<i class="fas fa-pen"></i> Mode Edit: <b>' + esc(row.kode_barang) + '</b> — ' + esc(row.nama_barang) + ' (kode terkunci)';
+            badge.innerHTML = '<i class="fas fa-pen"></i> Mode edit: <b>' + esc(row.kode_barang) + '</b> · ' + esc(row.nama_barang) + ' (kode terkunci)';
             window.csmMotion?.reveal(badge, {distance:10, duration:340});
             window.csmMotion?.reveal(document.querySelector('#addMasterForm .form-grid'), {distance:10, duration:340});
         }
@@ -2343,11 +2320,10 @@
                 }
         }
 
-        // ============================================
         // STOCK GUDANG
-        // ============================================
         async function loadStockGudang() {
             const q = 'select=*&order=nama_barang.asc';
+            window.csmReadState?.watch('stock', 'master_barang', q, loadStockGudang);
             if (!getCached('master_barang', q)) showLoading();
             try {
                 const data = await sbGetSWR('master_barang', q, () => {
@@ -2359,9 +2335,7 @@
         }
 
 
-        // ============================================
         // STOCK OPNAME
-        // ============================================
         async function legacyLoadStockOpname() {
             const q = 'select=lokasi_barang&lokasi_barang=neq.&order=lokasi_barang.asc';
             if (!getCached('master_barang', q)) showLoading();
@@ -2389,6 +2363,7 @@
             showLoading();
             try {
                 const q = `select=*&lokasi_barang=eq.${encodeURIComponent(lokasi)}&order=kode_barang.asc`;
+                window.csmReadState?.watch('opnameItems', 'master_barang', q, onLokasiChange);
                 const data = await sbGetSWR('master_barang', q); hideLoading();
                 if (!data || data.length === 0) {
                     document.getElementById('opnameTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada barang di lokasi ini</td></tr>';
@@ -2502,9 +2477,7 @@
             } catch (error) { hideLoading(); showToast('Gagal menyimpan', 'error'); }
         }
 
-        // ============================================
         // BARCODE SCAN FOR STOCK OPNAME
-        // ============================================
         let html5QrCode = null;
         let scannerStartPending = null;
         let scannerStopPending = null;
@@ -2562,7 +2535,6 @@
                     const newStatus = select.value === 'Sudah' ? 'Belum' : 'Sudah';
                     select.value = newStatus;
 
-                    // Update opnameData
                     const opnameItem = appState.opnameData.find(i => i.kode === kode);
                     if (opnameItem) {
                         opnameItem.isOpnameDone = (newStatus === 'Sudah');
@@ -2590,7 +2562,6 @@
                     // Scroll to row
                     row.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                    // Update summary
                     updateOpnameSummary();
                 }
             }
@@ -2636,9 +2607,7 @@
             document.getElementById('scanResult').textContent = '';
         }
 
-        // ============================================
         // BARCODE SCAN FOR DATA ENTRY (CONTINUOUS)
-        // ============================================
         async function startDataEntryScan() {
             if (appState.isEditMode) return;
             const request = ++scannerRequest;
@@ -2752,9 +2721,7 @@
             } catch (error) { showToast('Gagal export', 'error'); }
         }
 
-        // ============================================
         // RIWAYAT TRANSAKSI
-        // ============================================
         /* Daftar memakai auto-pagination api-proxy (maksimal 20.000 baris).
            Pencarian lokal dilengkapi pencarian equality ke server. */
         async function loadTransaksi() {
@@ -2763,6 +2730,7 @@
             const searchEl = document.getElementById('searchTransaksi');
             if (searchEl) searchEl.value = '';
             const q = 'select=*,id&order=id.desc';
+            window.csmReadState?.watch('history', 'data_entry', q, () => window.csmReadState.canRender('history') ? transaksiRefreshData() : loadTransaksi());
             // Lewati overlay bila data masih ada di cache.
             if (!getCached('data_entry', q)) showLoading();
             try {
@@ -2996,6 +2964,8 @@
         }
 
         function renderTransaksi(data) {
+            window.syncHistoryDateFilter?.();
+            if (window.csmReadState && !csmReadState.canRender('history')) return;
             document.getElementById('transaksiCount').textContent = `${data.length} transaksi`;
             const tbody = document.getElementById('transaksiTable');
             if (!data || data.length === 0) {
@@ -3031,11 +3001,10 @@
         }
 
 
-        // ============================================
         // ACTIVE TICKET
-        // ============================================
         async function loadActiveTicket() {
             const q = 'select=*,id&kode_mutasi=eq.2&order=id.desc';
+            window.csmReadState?.watch('active', 'data_entry', q, () => window.csmReadState.canRender('active') ? activeTicketRefreshData() : loadActiveTicket());
             if (!getCached('data_entry', q)) showLoading();
             try { 
                 // onRefresh menyegarkan data TANPA menghapus pencarian aktif.
@@ -3157,14 +3126,13 @@
             renderActiveTicket(filtered);
         }
 
-        // ============================================
         // RETURNED TICKETS (SUDAH KEMBALI)
-        // ============================================
         let returnedTicketData = [];
         let returnedTicketPage = 1;
 
         async function loadReturnedTicket() {
             const q = 'select=*,id&kode_mutasi=eq.1&order=id.desc&limit=10000';
+            window.csmReadState?.watch('returned', 'data_entry', q, () => window.csmReadState.canRender('returned') ? returnedTicketRefreshData() : loadReturnedTicket());
             if (!getCached('data_entry', q)) showLoading();
             try {
                 // Ambil semua kode_mutasi=1 (masuk peminjaman / sudah kembali)
@@ -3254,9 +3222,7 @@
             renderReturnedTicket(filtered);
         }
 
-        // ============================================
         // DRAG & DROP: RETURN TICKET
-        // ============================================
         let draggedTiket = null;
 
         function onDragTicket(e) {
@@ -3264,7 +3230,6 @@
             e.currentTarget.style.opacity = '0.5';
             e.dataTransfer.effectAllowed = 'move';
             e.dataTransfer.setData('text/plain', draggedTiket);
-            // Show drop hint
             document.getElementById('dropHint').style.display = 'block';
         }
 
@@ -3308,7 +3273,6 @@
 
             showLoading();
             try {
-                // 1. Cari semua baris.kode_mutasi=2 untuk tiket ini
                 const rows = await sbGet('data_entry', `select=*&nomor_tiket=eq.${encodeURIComponent(nomorTiket)}&kode_mutasi=eq.2&limit=10000`);
                 if (!rows || rows.length === 0) {
                     hideLoading();
@@ -3316,7 +3280,6 @@
                     return;
                 }
 
-                // 2. Update setiap baris: kode_mutasi 2 → 1, update stock
                 for (const row of rows) {
                     // Reverse stok lama (kode 2): tersedia += qty, kelar tetap
                     await reverseMasterBarangStock(row.kode_barang, parseInt(row.qty) || 0, 2);
@@ -3333,14 +3296,12 @@
                     await sbUpdate('data_entry', 'id', row.id, { kode_mutasi: 1 });
                 }
 
-                // 3. Log
                 const items = rows.map(r => `${r.qty}x ${r.nama_barang}`).join(', ');
                 await writeLog('Active Ticket', 'Kembalikan Tiket', rows.map(r=>r.kode_barang).join(','), String(rows.length), '1', `Tiket #${nomorTiket}: ${items}`, `PIC: ${rows[0]?.nama_peminjam || '-'}`);
 
                 hideLoading();
                 showToast(`Tiket #${nomorTiket} berhasil dikembalikan (${rows.length} barang)!`, 'success');
 
-                // 4. Refresh kedua tabel
                 loadActiveTicket();
                 loadReturnedTicket();
             } catch (error) {
@@ -3349,9 +3310,7 @@
             }
         }
 
-        // ============================================
         // ACTIVITY TRACKING (IDLE DETECTION)
-        // ============================================
         let activityTimer = null;
         let lastActivityTime = Date.now();
         let currentSessionId = null;
@@ -3439,7 +3398,7 @@
         const origCompleteLogin = completeLogin;
         completeLogin = async function(u) {
             await origCompleteLogin(u);
-            startActivityTracking();
+            if (appState.currentUser === u) startActivityTracking();
         };
 
         // Stop tracking on logout
@@ -3448,10 +3407,9 @@
             await origHandleLogout();
         };
 
-        // ============================================
         // TIME MANAGEMENT PAGE
-        // ============================================
         async function loadTimeManagement() {
+            window.csmReadState?.watch('time', 'user_activity', 'select=*&order=login_time.desc', loadTimeManagement);
             showLoading();
             try {
                 const now = new Date();
@@ -3465,7 +3423,6 @@
                 });
                 hideLoading();
 
-                // 1. Hari ini
                 const todayData = allData.filter(d => d.date_str === todayStr);
                 let todaySeconds = todayData.reduce((s, d) => s + (parseInt(d.active_seconds) || 0), 0);
                 document.getElementById('tmTodayTotal').textContent = (todaySeconds / 3600).toFixed(1) + ' jam';
@@ -3491,7 +3448,6 @@
                     todayList.innerHTML = '<div style="font-size:12px; color:var(--text-muted); font-style:italic; padding:16px;">Belum ada aktivitas hari ini.</div>';
                 }
 
-                // 2. Averages
                 const daysWithActivity = [...new Set(allData.map(d => d.date_str))].length || 1;
                 const totalSeconds = allData.reduce((s, d) => s + (parseInt(d.active_seconds) || 0), 0);
                 const avgDaily = (totalSeconds / daysWithActivity / 3600).toFixed(1);
@@ -3507,7 +3463,6 @@
                 document.getElementById('tmAvgMonthly').textContent = avgMonthly;
                 document.getElementById('tmAvgYearly').textContent = avgYearly;
 
-                // 3. Weekly chart (7 hari terakhir)
                 const weekLabels = [];
                 const weekDataMap = {};
                 for (let i = 6; i >= 0; i--) {
@@ -3524,20 +3479,16 @@
                 if(window.tmCharts) Object.values(window.tmCharts).forEach(c => c && c.destroy());
                 window.tmCharts = {};
 
-                const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
-                Chart.defaults.color = isDark ? '#94a3b8' : '#657e86';
-                Chart.defaults.scale.grid.color = isDark ? 'rgba(255,255,255,0.05)' : '#e7f0f2';
 
-                window.tmCharts.weekly = new Chart(document.getElementById('chartTimeWeekly'), {
+                window.tmCharts.weekly = renderWorkspaceChart(document.getElementById('chartTimeWeekly'), {
                     type: 'bar',
                     data: {
                         labels: weekLabels,
-                        datasets: [{ data: Object.values(weekDataMap).map(v => +(v/3600).toFixed(1)), backgroundColor: '#17bed0', borderRadius: 6, barPercentage: 0.6 }]
+                        datasets: [{ label:'Jam aktif', data: Object.values(weekDataMap).map(v => +(v/3600).toFixed(1)), backgroundColor: chartSeriesColors()[0], borderRadius: 6, barPercentage: 0.6 }]
                     },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + ' jam' } } }, scales: { y: { beginAtZero: true, ticks: { callback: v => v + 'j' } } } }
                 });
 
-                // 4. Monthly chart (30 hari terakhir)
                 const monthLabels = [];
                 const monthDataMap = {};
                 for (let i = 29; i >= 0; i--) {
@@ -3551,16 +3502,15 @@
                     if (monthDataMap[d.date_str] !== undefined) monthDataMap[d.date_str] += (parseInt(d.active_seconds) || 0);
                 });
 
-                window.tmCharts.monthly = new Chart(document.getElementById('chartTimeMonthly'), {
+                window.tmCharts.monthly = renderWorkspaceChart(document.getElementById('chartTimeMonthly'), {
                     type: 'bar',
                     data: {
                         labels: monthLabels,
-                        datasets: [{ data: Object.values(monthDataMap).map(v => +(v/3600).toFixed(1)), backgroundColor: '#ff8067', borderRadius: 4, barPercentage: 0.7 }]
+                        datasets: [{ label:'Jam aktif', data: Object.values(monthDataMap).map(v => +(v/3600).toFixed(1)), backgroundColor: chartSeriesColors()[1], borderRadius: 4, barPercentage: 0.7 }]
                     },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => c.raw + ' jam' } } }, scales: { y: { beginAtZero: true, ticks: { callback: v => v + 'j' } }, x: { ticks: { maxTicksLimit: 15 } } } }
                 });
 
-                // 5. User table
                 const period = document.getElementById('tmFilterPeriod').value;
                 let filtered = allData;
                 if (period === 'today') filtered = allData.filter(d => d.date_str === todayStr);
@@ -3598,14 +3548,14 @@
         }
 
 
-        // ============================================
         // ACCOUNT SETTINGS (ADMIN ONLY)
-        // ============================================
         let accountUsers = [];
         let accountRoleChanges = {};
 
         async function loadAccountSettings() {
             if (!isAdmin()) { showToast('Akses ditolak. Hanya administrator.', 'error'); return; }
+            window.csmReadState?.watch('accounts', 'admin_users', 'list', loadAccountSettings);
+            const readTicket = window.csmReadState?.begin('admin_users', 'list');
             showLoading();
             try {
                 const res = await edgeFetch(EDGE_URL + '/admin-users', {
@@ -3615,16 +3565,18 @@
                 });
                 if (!res.ok) throw new Error('HTTP ' + res.status);
                 const data = await res.json();
+                if (!Array.isArray(data)) throw new Error('Respons pengguna tidak valid.');
+                window.csmReadState?.settle(readTicket, true);
                 hideLoading();
                 accountUsers = data;
                 accountRoleChanges = {};
                 document.getElementById('btnSaveRoles').disabled = true;
                 renderAccountTable(data);
-            } catch (error) { hideLoading(); showToast('Gagal memuat data user: ' + error.message, 'error'); }
+            } catch (error) { window.csmReadState?.settle(readTicket, false); hideLoading(); showToast('Gagal memuat data pengguna', 'error'); }
         }
 
         function renderAccountTable(data) {
-            document.getElementById('accountCount').textContent = data.length + ' users';
+            document.getElementById('accountCount').textContent = data.length + ' pengguna';
             const tbody = document.getElementById('accountTableBody');
             if (!data || data.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 40px; color: var(--text-muted); font-style:italic;">Tidak ada user</td></tr>';
@@ -3735,6 +3687,8 @@
         restoreRememberedUsername();
     </script>
     <script src="assets/workspace.js"></script>
+    <script src="assets/ui-state.js"></script>
+    <script src="assets/chart-data.js"></script>
     <script src="assets/master-delete-policy.js"></script>
     <script src="assets/master-delete.js"></script>
     <script src="assets/dashboard-analytics.js"></script>

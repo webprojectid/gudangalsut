@@ -23,10 +23,20 @@
             Object.assign(options.plugins.tooltip, { backgroundColor:palette.tooltip, titleColor:palette.tooltipText, bodyColor:palette.tooltipText });
         }
         for (const dataset of chart.data.datasets) {
+            if (chart.canvas.id === 'chartTimeWeekly') dataset.backgroundColor = chartColors()[0];
+            if (chart.canvas.id === 'chartTimeMonthly') dataset.backgroundColor = chartColors()[1];
             if (chart.config.type === 'doughnut') dataset.borderColor = palette.surface;
-            if (chart.canvas.id === 'chartOpname') dataset.backgroundColor[1] = palette.track;
-            if (chart.canvas.id === 'chartLocationOpname' && dataset.label === 'Belum opname') dataset.backgroundColor = palette.track;
+            if (chart.canvas.id === 'chartOpname') dataset.backgroundColor[1] = chartColors()[4];
+            if (chart.canvas.id === 'chartLocationOpname' && dataset.label === 'Belum opname') dataset.backgroundColor = chartColors()[4];
         }
+    }
+    function chartColors() {
+        const style = getComputedStyle(document.documentElement);
+        return ['--chart-in','--chart-out','--chart-return','--chart-damage','--chart-permanent'].map(name=>style.getPropertyValue(name).trim());
+    }
+    function categoryColors() {
+        const style = getComputedStyle(document.documentElement);
+        return [...chartColors(),...[6,7,8,9,10].map(index=>style.getPropertyValue(`--chart-category-${index}`).trim())];
     }
     function refreshCharts() {
         if (!window.Chart) return;
@@ -48,9 +58,12 @@
         document.documentElement.dataset.theme = theme;
         if (persist) { try { localStorage.setItem(storageKey, theme); } catch (_) {} }
         updateButtons(); refreshCharts();
+        if (typeof workspace !== 'undefined' && workspace.dashboardInitialized && workspace.dashboardFingerprint && typeof renderDashboard === 'function') {
+            workspace.dashboardFingerprint = ''; renderDashboard(getDashboardPeriod());
+        }
     }
     window.toggleWorkspaceTheme = () => apply(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-    window.csmTheme = { apply, refreshCharts };
+    window.csmTheme = { apply, refreshCharts, chartColors, categoryColors };
     document.addEventListener('DOMContentLoaded', () => {
         if (window.Chart) Chart.register({ id:'csmAppearance', beforeUpdate:styleChart });
         updateButtons(); refreshCharts();
